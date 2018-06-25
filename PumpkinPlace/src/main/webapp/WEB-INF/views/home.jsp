@@ -89,7 +89,7 @@ body {
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menuNavbar">
-        <span class="icon-bar"></span>
+        <span class="icon-bar"> </span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
@@ -103,17 +103,17 @@ body {
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">공연<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/pumpkinplace/showboard/showboard">공연</a></li>
+            <li><a href="/pumpkinplace/showboard/showboardmain">공연</a></li>
             <li><a href="#">공연 등록</a></li>
            </ul>
         </li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">게시판 <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">자유 게시판</a></li>
+            <li><a href="/pumpkinplace/board/list">자유 게시판</a></li>
           </ul>
         </li>
-        
+        <!--  -->
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">중고 거래<span class="caret"></span></a>
           <ul class="dropdown-menu">

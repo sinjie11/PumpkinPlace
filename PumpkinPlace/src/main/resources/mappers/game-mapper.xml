@@ -6,16 +6,12 @@
 <mapper namespace="com.error404.pumpkinplace.mappers.GameMapper">
 
 	<!-- Game 테이블 sql 쿼리문 작성 -->
-	
+
 	<!-- 1) Game Table의 모든 데이터를 뽑아냄 -->
 	<select id="selectAll" resultType="Game">
 		select * ${tbl_game}
 	</select>
 
-	<!-- 2) Member No를 이용해 Member ID와 gamescore를 뽑아내고,
-	 gamescore를 기준으로 내림차순으로 정렬 -->
-<!-- 	 	<select id="selectID&GamescoreByMemNo" resultType="Game">
-		select * ${tbl_game}
-	</select  > -->
+
 
 </mapper>
