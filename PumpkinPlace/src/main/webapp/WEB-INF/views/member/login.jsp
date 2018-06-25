@@ -42,11 +42,11 @@
 			                    <form role="form" action="/pumpkinplace/member/login-post" method="post" class="login-form">
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="form-username">Username</label>
-			                        	<input type="text" name="form-username" placeholder="Username..." class="form-username form-control" id="form-username" required>
+			                        	<input type="text" name="form-username" placeholder="Username..." class="form-username form-control" id="form-username">
 			                        </div>
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="form-password">Password</label>
-			                        	<input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password" required>
+			                        	<input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
 			                        </div>
 			                        <button type="submit" class="btn">Sign in!</button>
 			                    </form>
@@ -87,7 +87,7 @@
             $('.login-form').on('submit', function(e) {
             	
             	$(this).find('input[type="text"], input[type="password"], textarea').each(function(){
-            		if( $(this).val() == "" ) {
+            		if( $(this).val() == "" ) { // 공백 입력시 다음단계로 진행되지 못하게 막음
             			e.preventDefault();
             			$(this).addClass('input-error');
             		}
@@ -101,6 +101,7 @@
             
         });
         </script>
+        
         
         
     </body>
