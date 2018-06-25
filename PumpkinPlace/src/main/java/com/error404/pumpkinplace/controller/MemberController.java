@@ -37,22 +37,24 @@ public class MemberController {
 	} // end register(member)
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public void login(String target, Model model) {
-		logger.info("login(target: {}) 호출", target);
-		model.addAttribute("targetUrl", target);
+	public void login() {
+		logger.info("login() 호출");
 	} // end login(target)
 	
 	
 	@RequestMapping(value = "/login-post", method = RequestMethod.POST)
-	public void login(Member member, Model model) {
-		logger.info("login(mem_id: {}, mem_pwd: {}) 호출", member.getMem_id(), member.getMem_pwd());
+	public String login(Member member) {
 		
-		Member loginResult = memberService.read(member);
+		
+//		Member loginResult = memberService.read(member);
 		
 		// loginResult Null 체크 여부 확인
 		// null이 아니면 session에 로그인 정보 저장,  target으로 redirect
 		// -> 컨트롤러에서 직접 담당하지 않고, LoginInterceptor에서 담당.
-		model.addAttribute("loginResult", loginResult);
+//		model.addAttribute("loginResult", loginResult);
+		
+		
+		return "redirect:/";
 		
 	} // end login(member)
 	
@@ -70,3 +72,8 @@ public class MemberController {
 
 	
 } // end class MemberController
+
+
+
+
+
