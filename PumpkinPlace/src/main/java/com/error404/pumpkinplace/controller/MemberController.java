@@ -24,10 +24,17 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public void register() {
+		logger.info("register() GET 호출");
+		
+	} // end register()
+
+	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String register(Member member, RedirectAttributes attr) {
-		logger.info("register(mem_id: {}, mem_pwd: {}, mem_email: {}, mem_tel: {})",
-				member.getMem_id(), member.getMem_pwd(), member.getMem_email(), member.getMem_tel());
+		logger.info("register(mem_id: {}, mem_pwd: {})",
+				member.getMem_id(), member.getMem_pwd());
 		int result = memberService.create(member);
 		if (result == 1) { // 회원 가입 성공
 			attr.addFlashAttribute("registerResult", "success");

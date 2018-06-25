@@ -24,19 +24,20 @@ public class MemberDaoTest {
 	
 	@Test
 	public void doTest() {
-		insertTest();
+//		insertTest();
 //		selectByMemid();
+		loginTest();
 	} // end doTest()
 	
-	private void insertTest() {
+	private void insertTest() { // 회원 추가 테스트
 		Member member = new Member(0, "test", "test1234", "test1@naver.com", "010-9116-5281", null);
 		int result = memberDao.insert(member);
 		
 		logger.info("Insert result = {}", result);
 	} // end intertTest()
 	
-	private void selectByMemid() {
-		Member m = memberDao.select("admin");
+	private void selectByMemid() { // 아이디 중복 검색 테스트
+		Member m = memberDao.select("test");
 		if (m != null) {
 			logger.info("userid: {}, pwd: {}", 
 					m.getMem_id(), m.getMem_pwd());
@@ -45,5 +46,16 @@ public class MemberDaoTest {
 		}
 	} // selectByMemid()
 	
+
+	private void loginTest() { // 로그인(아이디, 패스워드) 중복 검색 테스트
+		Member m = new Member(0, "admin", "admin", null, null, null);
+		Member loginResult = memberDao.select(m);
+		if (loginResult != null) {
+			logger.info("로그인 성공");
+		} else {
+			logger.info("로그인 실패");
+		}
+		
+	} // end loginTest()
 	
 } // end class MemberDaoTest
