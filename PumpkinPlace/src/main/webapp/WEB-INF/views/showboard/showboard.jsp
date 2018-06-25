@@ -76,14 +76,12 @@ body {
       </ul>
     </div>
   </div>
-  
      <h1 style="background-color: white; margin: 0%;">
-     
-    
-    
+    	  
     	<img alt="이미지" src="${pageContext.request.contextPath}/resources/logo.png"
     	style="background-color: white; width: 100%; height: 200px;"/>
-     </h1>
+   
+    </h1>
 			
 		<nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -138,404 +136,230 @@ body {
             <li><a href="#">Q&A</a></li>
          </ul>
         </li>
-		 </ul>
-	</div>
+        
+        
+        
+        
+     </ul>
+
+   
+    </div>
   </div>
 </nav>
 </nav>
+		<!-- 검색창 -->
+      <div class="input-group" style=" width: 200px; float: right; margin-right: 50px; margin-top: 50px; " >
+        <input type="text" class="form-control" placeholder="Search" name="search">
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </div>
+      </div>
+  
+  <br/>
+ <br/>
+ <br/>
+  <br/>
+  
 
-<!-- end MenuBar -->
-
-
-
-
-<!-- 가운데 정렬해주는거 -->
+<!-- 가운데 정렬 -->
 <div class="container text-center">    
 
-  <h3></h3><br>
-  <!-- 공연 소개  -->
- 		<div class="row">
-				<div class="col-md-4">
-					<a href=""><img class="my-image" alt="Bootstrap Image Preview" src="http://ticketimage.interpark.com/Play/image/large/16/16013880_p.gif"
-					 /></a>
-					<h3>
-						공연 제목
-					</h3>
-					
-					<p>
-						내용
-					</p>
-				</div>
-				
-				<div class="col-md-4">
-					<a href=""><img class="my-image" alt="Bootstrap Image Preview" src="http://ticketimage.interpark.com/Play/image/large/09/09007147_p.gif"
-					 /></a>
-					<h3>
-						공연 제목
-					</h3>
-					
-					<p>
-						내용
-					</p>
-				</div>
-			
-				
-				<div class="col-md-4">
-					<a href=""><img class="my-image"   alt="Bootstrap Image Preview" src="http://ticketimage.interpark.com/Play/image/large/18/18007614_p.gif"/>
-					</a>
-					<h3>
-						공연 제목
-					</h3>
-					
-					<p>
-						내용
-					</p>
-				</div>
-			</div>
-		
-		
-			<div class="col-md-4">
-					<a href="">
-					<img alt="Bootstrap Image Preview" src="http://ticketimage.interpark.com/Play/image/large/18/18008332_p.gif" />
-					</a>
-					<h3>
-						공연 제목
-					</h3>
-					
-					<p>
-						내용
-					</p>
-				</div>
-			
-				<div class="col-md-4">
-					<a href="">
-					<img alt="Bootstrap Image Preview" src="http://ticketimage.interpark.com/Play/image/large/18/18007527_p.gif" />
-					</a>
-					<h3>
-						공연 제목
-					</h3>
-					
-					<p>
-						내용
-					</p>
-				</div>
-			
-				<div class="col-md-4">
-				<a href="">
-					<img alt="Bootstrap Image Preview" src="http://ticketimage.interpark.com/Play/image/large/18/18008486_p.gif" />
-					</a>
-					<h3>
-						공연 제목
-					</h3>
-					
-					<p>
-						내용
-					</p>
-				</div>
-			
-			<!-- end 공연 소개  -->
-		
-		
-			
-			
-			<!-- 자유 게시판 -->
-			<div class="row">
-				<div class="col-md-4">
-					<p class="text-left" style="font-size: medium;">
-						<b>자유 게시판</b> <a href="" style="float:right">more</a>
-					</p>
-				
-					
-					
-					<table class="table">
-						<thead>
-							<tr>
-								<th>
-									#
-								</th>
-								<th>
-									Product
-								</th>
-								<th>
-									Payment Taken
-								</th>
-								<th>
-									Status
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									1
-								</td>
-								<td>
-									TB - Monthly
-								</td>
-								<td>
-									01/04/2012
-								</td>
-								<td>
-									Default
-								</td>
-							</tr>
-							<tr class="table-active">
-								<td>
-									1
-								</td>
-								<td>
-									TB - Monthly
-								</td>
-								<td>
-									01/04/2012
-								</td>
-								<td>
-									Approved
-								</td>
-							</tr>
-							<tr class="table-success">
-								<td>
-									2
-								</td>
-								<td>
-									TB - Monthly
-								</td>
-								<td>
-									02/04/2012
-								</td>
-								<td>
-									Declined
-								</td>
-							</tr>
-							<tr class="table-warning">
-								<td>
-									3
-								</td>
-								<td>
-									TB - Monthly
-								</td>
-								<td>
-									03/04/2012
-								</td>
-								<td>
-									Pending
-								</td>
-							</tr>
-							<tr class="table-danger">
-								<td>
-									4
-								</td>
-								<td>
-									TB - Monthly
-								</td>
-								<td>
-									04/04/2012
-								</td>
-								<td>
-									Call in to confirm
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				
-				<!-- 구인구직 -->
-				<div class="col-md-4">
-				<p class="text-left" style="font-size: medium;">
-						<b>구인구직</b> <a href="" style="float:right">more</a>
-					</p>
-					<table class="table">
-						<thead>
-							<tr>
-								<th>
-									#
-								</th>
-								<th>
-									Product
-								</th>
-								<th>
-									Payment Taken
-								</th>
-								<th>
-									Status
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									1
-								</td>
-								<td>
-									TB - Monthly
-								</td>
-								<td>
-									01/04/2012
-								</td>
-								<td>
-									Default
-								</td>
-							</tr>
-							<tr class="table-active">
-								<td>
-									1
-								</td>
-								<td>
-									TB - Monthly
-								</td>
-								<td>
-									01/04/2012
-								</td>
-								<td>
-									Approved
-								</td>
-							</tr>
-							<tr class="table-success">
-								<td>
-									2
-								</td>
-								<td>
-									TB - Monthly
-								</td>
-								<td>
-									02/04/2012
-								</td>
-								<td>
-									Declined
-								</td>
-							</tr>
-							<tr class="table-warning">
-								<td>
-									3
-								</td>
-								<td>
-									TB - Monthly
-								</td>
-								<td>
-									03/04/2012
-								</td>
-								<td>
-									Pending
-								</td>
-							</tr>
-							<tr class="table-danger">
-								<td>
-									4
-								</td>
-								<td>
-									TB - Monthly
-								</td>
-								<td>
-									04/04/2012
-								</td>
-								<td>
-									Call in to confirm
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				
-				<!-- 중고거래 -->
-				<div class="col-md-4">
-				<p class="text-left" style="font-size: medium;">
-						<b>중고 거래</b> <a href="" style="float:right">more</a>
-					</p>
-					<table class="table">
-						<thead>
-							<tr>
-								<th>
-									#
-								</th>
-								<th>
-									Product
-								</th>
-								<th>
-									Payment Taken
-								</th>
-								<th>
-									Status
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									1
-								</td>
-								<td>
-									TB - Monthly
-								</td>
-								<td>
-									01/04/2012
-								</td>
-								<td>
-									Default
-								</td>
-							</tr>
-							<tr class="table-active">
-								<td>
-									1
-								</td>
-								<td>
-									TB - Monthly
-								</td>
-								<td>
-									01/04/2012
-								</td>
-								<td>
-									Approved
-								</td>
-							</tr>
-							<tr class="table-success">
-								<td>
-									2
-								</td>
-								<td>
-									TB - Monthly
-								</td>
-								<td>
-									02/04/2012
-								</td>
-								<td>
-									Declined
-								</td>
-							</tr>
-							<tr class="table-warning">
-								<td>
-									3
-								</td>
-								<td>
-									TB - Monthly
-								</td>
-								<td>
-									03/04/2012
-								</td>
-								<td>
-									Pending
-								</td>
-							</tr>
-							<tr class="table-danger">
-								<td>
-									4
-								</td>
-								<td>
-									TB - Monthly
-								</td>
-								<td>
-									04/04/2012
-								</td>
-								<td>
-									Call in to confirm
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	
+
+<!-- 카테고리 선택 (임시) -->
+ <ul class="nav nav-tabs" style="margin-bottom: 50px;">
+    <li class="active"><a data-toggle="tab" href="#home">전체</a></li>
+    <li><a data-toggle="tab" href="#menu1">서울</a></li>
+    <li><a data-toggle="tab" href="#menu2">경기</a></li>
+    <li><a data-toggle="tab" href="#menu3">부산</a></li>
+     <li><a data-toggle="tab" href="#menu3">광주</a></li>
+   </ul>
+   
+<div class="tab-content">
+    
+    
+    <!-- 바디부분 -->
  
+	<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-3">
+					<a href=""><img alt="Bootstrap Image Preview" src="http://ticketimage.interpark.com/Play/image/large/18/18008332_p.gif" /></a>
+					<div class="card">
+						<h5 class="card-header">
+							<b>Card title</b>
+						</h5>
+						<div class="card-body">
+							<p class="card-text">
+								Card content
+							</p>
+						</div>
+						<div class="card-footer">
+							Card footer
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<a href=""><img alt="Bootstrap Image Preview" src="http://ticketimage.interpark.com/Play/image/large/18/18007527_p.gif" /></a>
+					<div class="card">
+						<h5 class="card-header">
+							<b>Card title</b>
+						</h5>
+						<div class="card-body">
+							<p class="card-text">
+								Card content
+							</p>
+						</div>
+						<div class="card-footer">
+							Card footer
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<a href=""><img alt="Bootstrap Image Preview" src="http://ticketimage.interpark.com/Play/image/large/18/18008486_p.gif" /></a>
+					<div class="card">
+						<h5 class="card-header">
+					<b>Card title</b>
+						</h5>
+						<div class="card-body">
+							<p class="card-text">
+								Card content
+							</p>
+						</div>
+						<div class="card-footer">
+							Card footer
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<a href=""><img alt="Bootstrap Image Preview" src="http://ticketimage.interpark.com/Play/image/large/18/18005404_p.gif" /></a>
+					<div class="card">
+						<h5 class="card-header">
+							<b>Card title</b>
+						</h5>
+						<div class="card-body">
+							<p class="card-text">
+								Card content
+							</p>
+						</div>
+						<div class="card-footer">
+							Card footer
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<a href=""><img alt="Bootstrap Image Preview" src="http://ticketimage.interpark.com/Play/image/large/18/18007062_p.gif" /></a>
+					<div class="card">
+						<h5 class="card-header">
+						<b>Card title</b>
+						</h5>
+						<div class="card-body">
+							<p class="card-text">
+								Card content
+							</p>
+						</div>
+						<div class="card-footer">
+							Card footer
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<a href=""><img alt="Bootstrap Image Preview" src="http://ticketimage.interpark.com/Play/image/large/18/18008410_p.gif" /></a>
+					<div class="card">
+						<h5 class="card-header">
+							<b>Card title</b>
+						</h5>
+						<div class="card-body">
+							<p class="card-text">
+								Card content
+							</p>
+						</div>
+						<div class="card-footer">
+							Card footer
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<a href=""><img alt="Bootstrap Image Preview" src="http://ticketimage.interpark.com/Play/image/large/18/18004880_p.gif" /></a>
+					<div class="card">
+						<h5 class="card-header">
+							<b>Card title</b>
+						</h5>
+						<div class="card-body">
+							<p class="card-text">
+								Card content
+							</p>
+						</div>
+						<div class="card-footer">
+							Card footer
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+				<a href="">	<img alt="Bootstrap Image Preview" src="http://ticketimage.interpark.com/Play/image/large/18/18008485_p.gif" /></a>
+					<div class="card">
+						<h5 class="card-header">
+						<b>Card title</b>
+						</h5>
+						<div class="card-body">
+							<p class="card-text">
+								Card content
+							</p>
+						</div>
+						<div class="card-footer">
+							Card footer
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			
+			
+			
+			<br/>
+			<br/>
+			<nav>
+				<ul class="pagination">
+					<li class="page-item">
+						<a class="page-link" href="#">Previous</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#">1</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#">2</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#">3</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#">4</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#">5</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#">Next</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+</div>
+
+
+
+
+
+
+
+
  <!-- footer -->
 <footer class="container-fluid text-center">
   

@@ -13,7 +13,11 @@ import com.error404.pumpkinplace.service.ShowBoardService;
 public class ShowBoardController {
 	private static final Logger logger = LoggerFactory.getLogger(ShowBoardController.class);
 	
-	
+	@RequestMapping(value = "/showboard")
+	public void showBoard(){
+		
+		
+	}
 	
 	
 } // end class ShowBoardController
