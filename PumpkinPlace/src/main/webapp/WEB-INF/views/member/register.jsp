@@ -36,6 +36,9 @@
 		<br />
 
 		<button type="button" id="btnRegister">회원 가입</button>
+		<input type="reset" value="취소" onclick="history.back()">
+		
+		<!-- <input type="reset" value="취소" id="btnRegCancel" onclick="history.back()" /><a></a> -->
 
 	</form>
 
