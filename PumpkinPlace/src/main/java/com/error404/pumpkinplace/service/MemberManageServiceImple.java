@@ -13,7 +13,7 @@ private static final Logger logger = LoggerFactory.getLogger(MemberManageService
 	public Member read(String mem_id) {
 		logger.info("mem_id: {}", mem_id);
 		
-		logger.info("비즈니스 로직을 처리중...");
+		logger.info("비즈니스 로직을 처리중임..");
 		Member m = new Member(0, "test11", "test11234", "test11@naver.com", "02-111-2222", null);
 		
 		logger.info("Member(mem_id: {}, mem_pwd: {}, mem_email: {}, mem_tel: {}",
