@@ -179,7 +179,7 @@ body {
 		<div class="col-md-12">
 			<div class="row">
 				<div class="col-md-3">
-					<a href=""><img alt="Bootstrap Image Preview" src="http://ticketimage.interpark.com/Play/image/large/18/18008332_p.gif" /></a>
+					<a href="/pumpkinplace/showboard/showdetail"><img alt="Bootstrap Image Preview" src="http://ticketimage.interpark.com/Play/image/large/18/18008332_p.gif" /></a>
 					<div class="card">
 						<h5 class="card-header">
 							<b>Card title</b>
