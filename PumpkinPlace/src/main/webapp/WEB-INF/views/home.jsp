@@ -71,8 +71,8 @@ body {
     <div class="collapse navbar-collapse" id="myNavbar">
       
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Register </a></li>
+        <li><a href="/pumpkinplace/member/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="/pumpkinplace/member/register"><span class="glyphicon glyphicon-user"></span> Register </a></li>
       </ul>
     </div>
   </div>
@@ -103,7 +103,7 @@ body {
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">공연<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/pumpkinplace/showboard/showboard">공연</a></li>
+            <li><a href="/pumpkinplace/showboard/showboardmain">공연</a></li>
             <li><a href="#">공연 등록</a></li>
            </ul>
         </li>

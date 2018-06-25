@@ -101,7 +101,7 @@ body {
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">공연<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/pumpkinplace/showboard/showboard">공연</a></li>
+            <li><a href="/pumpkinplace/showboard/showboardmain">공연</a></li>
             <li><a href="#">공연 등록</a></li>
            </ul>
         </li>
@@ -160,21 +160,14 @@ body {
   <br/>
  <br/>
  <br/>
-  <br/>
+ <br/>
   
 
 <!-- 가운데 정렬 -->
 <div class="container text-center">    
 
 
-<!-- 카테고리 선택 (임시) -->
- <ul class="nav nav-tabs" style="margin-bottom: 50px;">
-    <li class="active"><a data-toggle="tab" href="#home">전체</a></li>
-    <li><a data-toggle="tab" href="#menu1">서울</a></li>
-    <li><a data-toggle="tab" href="#menu2">경기</a></li>
-    <li><a data-toggle="tab" href="#menu3">부산</a></li>
-     <li><a data-toggle="tab" href="#menu3">광주</a></li>
-   </ul>
+
    
 <div class="tab-content">
     
@@ -186,7 +179,7 @@ body {
 		<div class="col-md-12">
 			<div class="row">
 				<div class="col-md-3">
-					<a href=""><img alt="Bootstrap Image Preview" src="http://ticketimage.interpark.com/Play/image/large/18/18008332_p.gif" /></a>
+					<a href="/pumpkinplace/showboard/showdetail"><img alt="Bootstrap Image Preview" src="http://ticketimage.interpark.com/Play/image/large/18/18008332_p.gif" /></a>
 					<div class="card">
 						<h5 class="card-header">
 							<b>Card title</b>
