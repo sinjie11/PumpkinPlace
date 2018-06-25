@@ -5,33 +5,26 @@
 
 <mapper namespace="com.error404.pumpkinplace.mappers.MemberMapper">
 
-	<!--  member 테이블 sql 쿼리문 작성  -->
-	
-	<!-- insert into pumpkin_member (mem_id, mem_pwd, mem_email, mem_tel) values (?, ?, ?, ?) -->
+	<!-- member 테이블 sql 쿼리문 작성 -->
+
+<!-- insert into pumpkin_member (mem_id, mem_pwd, mem_email, mem_tel) values (?, ?, ?, ?) -->
 	<insert id="insertMember">
-		
-	
+		insert into ${tbl_member} (${col_mem_id}, ${col_mem_pwd}, ${col_mem_email}, ${col_mem_tel})
+		 values (#{mem_id}, #{mem_pwd}, #{mem_email}, #{mem_tel})
 	</insert>
-	
-	<!-- 회원 번호로 검색() (select * from pumpkin_member where mem_no = ?)-->
-	
-	<select id="memProfile" resultType="Member">
-		select * from ${tbl_member}
-		where ${col_mem_no} = #{mem_no}
-	</select>
-	
-	
-	<!-- 회원 id 체크 (select * from pumpkin_member where mem_id = ?) -->
+
+<!-- select * from pumpkin_member where mem_id = ? -->
 	<select id="checkMemid" resultType="Member">
 		select * from ${tbl_member}
 		where ${col_mem_id} = #{mem_id}
 	</select>
-	
-	<!-- 회원 로그인 일치 여부 검색 (select * from pumpkin_member where mem_id = ? and mem_pwd = ? -->
+
+<!-- select * from pumpkin_member where mem_id = ? and mem_pwd = ? -->
 	<select id="login" resultType="Member">
 		select * from ${tbl_member}
-		where ${col_mem_id} = #{mem_id} and ${col_mem_pwd} = #{mem_pwd}
+		where
+		${col_mem_id} = #{mem_id} and ${col_mem_pwd} = #{mem_pwd}
 	</select>
 	
-	
+
 </mapper>
