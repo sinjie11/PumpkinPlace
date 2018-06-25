@@ -51,7 +51,9 @@ public class MemberController {
 	@ResponseBody
 	public ResponseEntity<Boolean>checkUserid(String mem_id) { // 아이디 중복 검사
 		logger.info("checkMemid(Mem_id: {})", mem_id);
+		
 		Member m = memberService.read(mem_id);
+		
 		Boolean result = null;
 		if (m == null) {
 			result = true; // 사용할 수 있는 아이디
