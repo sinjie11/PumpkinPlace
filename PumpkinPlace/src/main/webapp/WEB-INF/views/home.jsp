@@ -103,7 +103,7 @@ body {
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">공연<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/pumpkinplace/showboard/showboard">공연</a></li>
+            <li><a href="/pumpkinplace/showboard/showboardmain">공연</a></li>
             <li><a href="#">공연 등록</a></li>
            </ul>
         </li>
