@@ -10,8 +10,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- 부트스트랩 -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
@@ -40,14 +44,21 @@
 
 
 
-
+body {
+  position: relative; /* For scrollyspy */
+  padding-top: 300px;   /*Account for fixed navbar */
+  background-color: #f8f8f8;
+}
+ 
 
 }
   </style>
 </head>
 <body>
 
-<nav class="navbar navbar-inverse">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -65,25 +76,16 @@
       </ul>
     </div>
   </div>
-</nav>
-
-
-   <div class="jumbotron" style="margin: 0%; background-color: white; ">
-				<h2>
-				로고 넣으샘
-				</h2>
-		
-			
-			</div>
-  <!-- End of JumboTron -->
-
+  
+     <h1 style="background-color: white; margin: 0%;">
+     
     
-
-
-
-    <!-- 상단바-->
-
-  <nav class="navbar navbar-inverse">
+    
+    	<img alt="이미지" src="${pageContext.request.contextPath}/resources/logo.png"
+    	style="background-color: white; width: 100%; height: 200px;"/>
+     </h1>
+			
+		<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menuNavbar">
@@ -97,11 +99,11 @@
     
     <div class="collapse navbar-collapse" id="menuNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li class="active"><a href="/pumpkinplace/">Home</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">공연<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">공연</a></li>
+            <li><a href="/pumpkinplace/showboard/showboard">공연</a></li>
             <li><a href="#">공연 등록</a></li>
            </ul>
         </li>
@@ -136,24 +138,22 @@
             <li><a href="#">Q&A</a></li>
          </ul>
         </li>
-        
-        
-        
-        
-        
-      </ul>
-
-   
-    </div>
+		 </ul>
+	</div>
   </div>
 </nav>
+</nav>
+
+<!-- end MenuBar -->
+
+
+
+
 <!-- 가운데 정렬해주는거 -->
 <div class="container text-center">    
 
   <h3></h3><br>
-  
-  
-  	<!-- 공연 소개  -->
+  <!-- 공연 소개  -->
  		<div class="row">
 				<div class="col-md-4">
 					<a href=""><img class="my-image" alt="Bootstrap Image Preview" src="http://ticketimage.interpark.com/Play/image/large/16/16013880_p.gif"
@@ -574,6 +574,9 @@
 <script>
 function myMap() {
 var myCenter = new google.maps.LatLng(37.499685, 127.031535);
+var map;
+zoom: 11
+ 
 var mapProp = {center:myCenter, zoom:12, scrollwheel:false, draggable:false, mapTypeId:google.maps.MapTypeId.ROADMAP};
 var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 var marker = new google.maps.Marker({position:myCenter});
@@ -589,8 +592,15 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
   
 </footer>
 
+
+
+
 </body>
 
 
+
+
 </html>
+
+
 
