@@ -72,7 +72,7 @@ body {
       
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/pumpkinplace/member/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Register </a></li>
+        <li><a href="/pumpkinplace/member/register"><span class="glyphicon glyphicon-user"></span> Register </a></li>
       </ul>
     </div>
   </div>
