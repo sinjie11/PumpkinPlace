@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- MyBatis 프레임워크에서 사용 될 여러가지 환경 설정 정보들을 설정! -->
+<configuration>
+
+	<!-- 테이블의 이름, 컬럼 이름들 상수를 정의 -->
+	<properties>
+	
+		<!-- member 테이블  -->
+		<property name="tbl_member" value="pumpkin_member" />
+		
+		<property name="col_mem_no" value="mem_no" />
+		<property name="col_mem_id" value="mem_id" />
+		<property name="col_mem_pwd" value="mem_pwd" />
+		<property name="col_mem_email" value="mem_email" />
+		<property name="col_mem_tel" value="mem_tel" />
+		<property name="col_mem_regdate" value="mem_regdate"/>
+		
+		
+		<!-- board 테이블  -->
+		<property name="tbl_board" value="pumpkin_board" />
+		
+		<property name="col_b_section" value="b_section" />
+		<property name="col_b_no" value="b_no" />
+		<property name="col_b_title" value="b_title" />
+		<property name="col_b_content" value="b_content" />
+		<property name="col_b_id" value="b_id" />
+		<property name="col_b_regdate" value="b_regdate" />
+		<property name="col_b_img" value="b_img" />
+		<property name="col_b_video" value="b_video" />
+		<property name="col_b_readcnt" value="b_readcnt" />
+		<property name="col_b_up" value="b_up" />
+		<property name="col_b_down" value="b_down" />
+		
+		
+		<!-- showboard 테이블  -->
+		<property name="tbl_show_board" value="pumpkin_show_board" />
+		
+		<property name="col_sb_no" value="sb_no" />
+		<property name="col_sb_nm" value="sb_nm" />
+		<property name="col_sb_title" value="sb_title" />
+		<property name="col_sb_content" value="sb_content" />
+		<property name="col_sb_city" value="sb_city" />
+		<property name="col_sb_price" value="sb_price" />
+		<property name="col_sb_tel" value="sb_tel" />
+		<property name="col_sb_locinfo" value="sb_locinfo" />
+		<property name="col_sb_regdate" value="sb_regdate" />
+		<property name="col_sb_img" value="sb_img"/>
+		<property name="col_sb_video" value="sb_video"/>
+		
+		
+		<!-- reply 테이블  -->
+		<property name="tbl_reply" value="pumpkin_reply" />
+		
+		<property name="col_r_no" value="r_no" />
+		<property name="col_r_section" value="r_section" />
+		<property name="col_r_content" value="r_content" />
+		<property name="col_r_id" value="r_id" />
+		<property name="col_r_regdate" value="r_regdate" />
+		<property name="col_r_like" value="r_like" />
+		<property name="col_r_hate" value="r_hate" />
+		
+		
+		<!-- message 테이블  -->
+		<property name="tbl_message" value="pumpkin_message" />
+		
+		<property name="col_msg_no" value="msg_no" />
+		<property name="col_msg_title" value="msg_title" />
+		<property name="col_msg_content" value="msg_content" />
+		<property name="col_msg_send" value="msg_send" />
+		<property name="col_msg_recieve" value="msg_recieve" />
+		<property name="col_msg_regdate" value="msg_regdate" />
+	
+		
+		<!-- game 테이블 -->
+		
+		<property name="tbl_game" value="pumpkin_game" />
+		<property name="col_mem_account" value="mem_account" />
+		<property name="col_mem_gamescore" value="mem_gamescore" />
+		
+	</properties>
+			
+	 
+	<!-- MyBatis 프레임워크에서 select의 결과를 저장할 Model 클래스(VO)를 찾기 위한 구문 -->
+	<typeAliases>
+		<package name="com.error404.pumpkinplace.domain"/>
+	</typeAliases>
+	
+	
+	
+</configuration>
