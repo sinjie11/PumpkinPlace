@@ -70,8 +70,11 @@ body {
 			<div class="collapse navbar-collapse" id="myNavbar">
 
 				<ul class="nav navbar-nav navbar-right">
+					<li id="loginYN" style=" display:block; color: white; font-style:italic;">${loginId} 님</li>
 					<li><a href="/pumpkinplace/member/login"><span
 							class="glyphicon glyphicon-log-in"></span> Login</a></li>
+					<li id="logoutYN" style=" display:none;"><a href="${targetUrl}"><span
+							class="glyphicon glyphicon-log-in"></span> Logout</a></li>
 					<li><a href="/pumpkinplace/member/register"><span
 							class="glyphicon glyphicon-user"></span> Register </a></li>
 				</ul>
@@ -423,7 +426,21 @@ body {
 				marker.setMap(map);
 
 			}
+			
 		</script>
+		<script>
+		$(document).ready(function () {
+			System.out.println(${loginId} + "어이");
+			if(${loginId} == null) {
+				$('#loginYN').show();
+				$('#logoutYN').hide();
+			} else {
+				$('#loginYN').hide();
+				$('#logoutYN').show();
+			}
+		});
+		</script>
+		
 		<script
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&callback=myMap"></script>
 		<!--
