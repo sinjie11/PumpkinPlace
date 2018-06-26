@@ -15,8 +15,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.error404.pumpkinplace.service.BoardService;
 
 import com.error404.pumpkinplace.domain.Board;
-//import com.error404.pumpkinplace.pageutil.PageLinkMaker;
-//import com.error404.pumpkinplace.pageutil.PaginationCriteria;
+import com.error404.pumpkinplace.pageutil.PageLinkMaker;
+import com.error404.pumpkinplace.pageutil.PaginationCriteria;
+
+// Update, Deletion 은 일단 주석처리 해놓았습니다.
 
 @Controller
 @RequestMapping(value = "/board")
@@ -30,29 +32,29 @@ public class BoardController {
 	public void list(Integer page, Integer numsPerPage, Model model) {
 		logger.info("list() 호출");
 		
-//		PaginationCriteria criteria = new PaginationCriteria();
-//		if (page != null) {
-//			criteria.setPage(page);
-//		}
-//		if (numsPerPage != null) {
-//			criteria.setNumsPerPage(numsPerPage);
-//		}
-//		
-//		List<Board> list = boardService.read(criteria);
-//		model.addAttribute("boardList", list);
-//		
-//		PageLinkMaker maker = new PageLinkMaker();
-//		maker.setCriteria(criteria);
-//		maker.setTotalCount(boardService.getNumOfRecords());
-//		maker.setPageLinkData();
-//		model.addAttribute("pageMaker", maker);
+		PaginationCriteria criteria = new PaginationCriteria();
+		if (page != null) {
+			criteria.setPage(page);
+		}
+		if (numsPerPage != null) {
+			criteria.setNumsPerPage(numsPerPage);
+		}
 		
-	} // end list()
+		List<Board> list = boardService.read(criteria);
+		model.addAttribute("boardList", list);
+		
+		PageLinkMaker maker = new PageLinkMaker();
+		maker.setCriteria(criteria);
+		maker.setTotalCount(boardService.getNumOfRecords());
+		maker.setPageLinkData();
+		model.addAttribute("pageMaker", maker);
+		
+	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void register() {
 		logger.info("register() GET 호출");
-	} // end register()
+	} 
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String register(Board board) {
@@ -60,18 +62,18 @@ public class BoardController {
 		boardService.create(board);
 		
 		return "redirect:/board/list";
-	} // end register()
+	} 
 	
-//	@RequestMapping(value = "/detail", method = RequestMethod.GET)
-//	public void detail(
-//			@ModelAttribute("criteria") PaginationCriteria criteria,
-//			int b_no, Model model) {
-//		logger.info("detail(bno: {}, page: {}, numsPerPage: {}) 호출", 
-//				b_no, criteria.getPage(), criteria.getNumsPerPage());
-//		Board board = boardService.read(b_no);
-//		model.addAttribute("board", board);
-//	} // end detail()
-//	
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
+	public void detail(
+			@ModelAttribute("criteria") PaginationCriteria criteria,
+			int b_no, Model model) {
+		logger.info("detail(bno: {}, page: {}, numsPerPage: {}) 호출", 
+				b_no, criteria.getPage(), criteria.getNumsPerPage());
+		Board board = boardService.read(b_no);
+		model.addAttribute("board", board);
+	} 
+	
 //	@RequestMapping(value = "/update", method = RequestMethod.GET)
 //	public void update(
 //			@ModelAttribute("criteria") PaginationCriteria criteria,
@@ -80,7 +82,7 @@ public class BoardController {
 //		Board board = boardService.read(b_no);
 //		model.addAttribute("board", board);
 //		
-//	} // end update()
+//	}
 //	
 //	@RequestMapping(value = "/update", method = RequestMethod.POST)
 //	public String update(
@@ -97,7 +99,7 @@ public class BoardController {
 //		// redirectAttributes.addFlashAttribute(이름, 값);
 //		
 //		return "redirect:detail?b_no=" + board.getB_no();
-//	} // end update()
+//	} 
 //	
 //	@RequestMapping(value = "delete", method = RequestMethod.GET)
 //	public String delete(int b_no, RedirectAttributes attr) {
@@ -109,7 +111,7 @@ public class BoardController {
 //		}
 //		
 //		return "redirect:list";
-//	} // end delete()
+//	}
 	
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public void search(int searchType, String searchKeyword,
@@ -120,5 +122,5 @@ public class BoardController {
 				boardService.read(searchType, searchKeyword);
 		model.addAttribute("boardList", list);
 		model.addAttribute("searchKeyword", searchKeyword);
-	} // end search()
+	} 
 }
