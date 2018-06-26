@@ -25,5 +25,11 @@ public class ShowBoardController {
 		
 	}
 	
+	@RequestMapping(value = "/showinsert")
+	public void showInsert() {
+		
+		
+	}
+	
 	
 } // end class ShowBoardController
