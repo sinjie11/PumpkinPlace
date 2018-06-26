@@ -25,7 +25,7 @@
 	padding: 30px;
 	border-radius: 10px;
 	width: 80%;
-	max-width: 500px; /* 최대 크기 지정 */ 
+	max-width: 800px; /* 최대 크기 지정 */ 
 	margin: auto;
 }
 
@@ -37,19 +37,21 @@
 	<div id="register">
 	<form id="regForm" action="register" method="post">
 
-		<input type="text" name="mem_id" id="mem_id" placeholder="아이디 입력" required  style="margin: 5px;"/>
+
+		<input type="text" name="mem_id" id="mem_id" placeholder="아이디 입력" required />
+		<br />
+		
+		<span id="valid-mem" style="color: green; display: none; height: 70%;">
+			사용가능한 아이디입니다.
+		</span>
+
+		<span id="invalid-mem" style="color: red; display: none; height: 70%;">
+			사용할 수 없는 아이디입니다.
+		</span>
 		<br />
 
-		<div id="valid-mem" style="color: green; display: none;">
-			<p>사용가능한 아이디입니다.</p>
-		</div>
-
-		<div id="invalid-mem" style="color: red; display: none;">
-			<p>사용할 수 없는 아이디입니다.</p>
-		</div>
-
 		<input type="password" name="mem_pwd" id="mem_pwd" placeholder="비밀번호 입력" required style="margin: 5px;"/>
-		<br /> 
+		<br />
 		
 		<input type="email" name="mem_email" id="mem_email" placeholder="이메일 입력" required style="margin: 5px;"/>
 		<br />

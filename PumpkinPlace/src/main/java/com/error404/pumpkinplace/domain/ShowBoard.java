@@ -12,15 +12,18 @@ public class ShowBoard {
 	private int sb_price; // 공연 가격
 	private String sb_tel; // 공연 담당자 연락처
 	private String sb_locinfo; // 공연 위치정보(GoogleMap 활용 시 사용)
-	private Date sb_regdate; // 공연 날짜
+	private Date sb_regdate; // 공연글 작성일자
 	private String sb_img; // 공연 이미지
 	private String sb_video; // 공연 동영상
+	private Date sb_startdate; // 공연 시작일자
+	private Date sb_enddate; // 공연 종료일자
 	
 	public ShowBoard() {}
 
 	public ShowBoard(long sb_no, int sb_nm, String sb_title, String sb_content, String sb_city, int sb_price,
-			String sb_tel, String sb_locinfo, Date sb_regdate, String sb_img, String sb_video) {
-		super();
+			String sb_tel, String sb_locinfo, Date sb_regdate, String sb_img, String sb_video, Date sb_startdate,
+			Date sb_enddate) {
+		
 		this.sb_no = sb_no;
 		this.sb_nm = sb_nm;
 		this.sb_title = sb_title;
@@ -32,6 +35,8 @@ public class ShowBoard {
 		this.sb_regdate = sb_regdate;
 		this.sb_img = sb_img;
 		this.sb_video = sb_video;
+		this.sb_startdate = sb_startdate;
+		this.sb_enddate = sb_enddate;
 	}
 
 	public long getSb_no() {
@@ -121,6 +126,23 @@ public class ShowBoard {
 	public void setSb_video(String sb_video) {
 		this.sb_video = sb_video;
 	}
-	
+
+	public Date getSb_startdate() {
+		return sb_startdate;
+	}
+
+	public void setSb_startdate(Date sb_startdate) {
+		this.sb_startdate = sb_startdate;
+	}
+
+	public Date getSb_enddate() {
+		return sb_enddate;
+	}
+
+	public void setSb_enddate(Date sb_enddate) {
+		this.sb_enddate = sb_enddate;
+	}
+
+		
 	
 } // end class ShowBoard

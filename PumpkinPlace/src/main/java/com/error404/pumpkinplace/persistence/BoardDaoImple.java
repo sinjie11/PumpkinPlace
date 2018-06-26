@@ -11,29 +11,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.error404.pumpkinplace.domain.Board;
-//import com.error404.pumpkinplace.pageutil.PaginationCriteria;
+import com.error404.pumpkinplace.pageutil.PaginationCriteria;
 
-// 스프링 프레임워크의 콤포넌트(Spring Framework Component)
-// 0) @Component
-// 1) @Controller
-// 2) @Service
-// 3) @Repository
-
-// 스프링 프레임워크에게 영속 계층(persistence/repository layer)의
-// 콤포넌트(bean)로 관리
 @Repository
 public class BoardDaoImple implements BoardDao {
 	private static final String NAMESPACE =
-			"com.error404.pumpkinplace.BoardMapper";
+			"com.error404.pumpkinplace.mappers.BoardMapper";
 	
 	private static final Logger logger =
 			LoggerFactory.getLogger(BoardDaoImple.class);
 	
-	// MyBatis 프레임워크의 SqlSession 객체를 주입(DI)받아서 사용
 	@Autowired
-	private SqlSession sqlSession; // 다형성
-	// SqlSession
-	// |__ SqlSessionTemplate
+	private SqlSession sqlSession; 
 
 	@Override
 	public List<Board> select() {
@@ -44,18 +33,21 @@ public class BoardDaoImple implements BoardDao {
 
 	@Override
 	public int insert(Board board) {
-		logger.info("insert({}, {}, {}) 호출",
-				board.getB_title(), board.getB_content(), board.getB_id());
+		logger.info("insert({}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}) 호출",
+				board.getB_section(), board.getB_no(),
+				board.getB_title(), board.getB_content(), board.getB_id(),
+				board.getB_regdate(), board.getB_img(), board.getB_video(),
+				board.getB_readcnt(), board.getB_up(), board.getB_down());
 		
 		return sqlSession.insert(NAMESPACE + ".insert", board);
-	} // end insert()
-
+	} 
 	@Override
 	public Board select(int b_section) {
 		logger.info("select({})", b_section);
 		
-		return sqlSession.selectOne(NAMESPACE + ".selectBoardInfoBySectionNo", b_section);
-	} // end select(bno)
+		return sqlSession.selectOne(NAMESPACE 
+				+ ".selectBoardInfoBySectionNo", b_section);
+	} 
 	
 	@Override
 	public int update(Board board) {
@@ -64,14 +56,14 @@ public class BoardDaoImple implements BoardDao {
 				board.getB_regdate(), board.getB_readcnt());
 		
 		return sqlSession.update(NAMESPACE + ".update", board);
-	} // end update()
+	} 
 	
 	@Override
 	public int delete(int bno) {
 		logger.info("delete(bno: {})", bno);
 		
 		return sqlSession.delete(NAMESPACE + ".delete", bno);
-	} // end delete()
+	} 
 	
 	@Override
 	public List<Board> search(int type, String keyword) {
@@ -83,22 +75,24 @@ public class BoardDaoImple implements BoardDao {
 				sqlSession.selectList(NAMESPACE + ".search", args);
 		
 		return list;
-	} // end search()
+	} 
+	
+	// ************* 페이지 처리 관련 Overridden Method *************
 	
 	@Override
 	public int getNumOfRecords() {
 		return sqlSession.selectOne(NAMESPACE + ".totalCount");
-	} // end getNumOfRecords()
+	}
 	
-//	@Override
-//	public List<Board> select(PaginationCriteria criteria) {
-//		logger.info("start: {}, end: {}",
-//				criteria.getStart(), criteria.getEnd());
-//		
-//		return sqlSession.selectList(NAMESPACE + ".listPage", criteria);
-//	}
+	@Override
+	public List<Board> select(PaginationCriteria criteria) {
+		logger.info("start: {}, end: {}",
+				criteria.getStart(), criteria.getEnd());
+		
+		return sqlSession.selectList(NAMESPACE + ".listPage", criteria);
+	}
 	
-} // end class BoardDaoImple
+} 
 
 
 

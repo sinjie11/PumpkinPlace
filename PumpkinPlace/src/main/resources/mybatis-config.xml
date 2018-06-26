@@ -48,8 +48,10 @@
 		<property name="col_sb_tel" value="sb_tel" />
 		<property name="col_sb_locinfo" value="sb_locinfo" />
 		<property name="col_sb_regdate" value="sb_regdate" />
-		<property name="col_sb_img" value="sb_img"/>
-		<property name="col_sb_video" value="sb_video"/>
+		<property name="col_sb_img" value="sb_img" />
+		<property name="col_sb_video" value="sb_video" />
+		<property name="col_sb_startdate" value="sb_startdate" />
+		<property name="col_sb_enddate" value="sb_enddate" />
 		
 		
 		<!-- reply 테이블  -->

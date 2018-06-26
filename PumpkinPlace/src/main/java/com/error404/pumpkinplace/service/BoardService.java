@@ -13,5 +13,5 @@ public interface BoardService {
 	int delete(int bno);
 	List<Board> read(int type, String keyword);
 	int getNumOfRecords();
-//	List<Board> read(PaginationCriteria criteria);
+	List<Board> read(PaginationCriteria criteria);
 }
