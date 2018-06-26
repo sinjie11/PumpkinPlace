@@ -29,7 +29,7 @@
 		<input type="password" name="mem_pwd" id="mem_pwd" placeholder="비밀번호 입력" required />
 		<br /> 
 		
-		<input type="email" name="mem_email" id="mem_email" placeholder="이메일 입력" required />
+		<input type="email" name="mem_email" id="mem_email" placeholder="이메일 입력" required />				
 		<br />
 
 		<input type="text" name="mem_tel" id="mem_tel" placeholder="전화번호 입력" required />
@@ -37,10 +37,9 @@
 
 		<button type="button" id="btnRegister">회원 가입</button>
 		<input type="reset" value="취소" onclick="history.back()">
-		
-		<!-- <input type="reset" value="취소" id="btnRegCancel" onclick="history.back()" /><a></a> -->
-
+	
 	</form>
+
 
 <script>
 $(document).ready(function () {

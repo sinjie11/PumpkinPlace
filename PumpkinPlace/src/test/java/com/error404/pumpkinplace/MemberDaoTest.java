@@ -39,7 +39,7 @@ public class MemberDaoTest {
 	private void selectByMemid() { // 아이디 중복 검색 테스트
 		Member m = memberDao.select("test");
 		if (m != null) {
-			logger.info("userid: {}, pwd: {}", 
+			logger.info("mem_id: {}, mem_pwd: {}", 
 					m.getMem_id(), m.getMem_pwd());
 		} else {
 			logger.info("사용할 수 있는 아이디");
