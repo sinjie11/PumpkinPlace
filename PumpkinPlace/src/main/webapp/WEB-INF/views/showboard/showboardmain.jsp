@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -61,10 +62,7 @@ body {
 </style>
 </head>
 <body>
-
-
 	<nav class="navbar navbar-inverse navbar-fixed-top">
-
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -103,7 +101,6 @@ body {
 
 				</div>
 
-
 				<div class="collapse navbar-collapse" id="menuNavbar">
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="/pumpkinplace/">Home</a></li>
@@ -140,28 +137,17 @@ body {
 							<ul class="dropdown-menu">
 								<li><a href="#">Q&A</a></li>
 							</ul></li>
-
-
-
-
 					</ul>
-
-
 				</div>
 			</div>
 		</nav>
 	</nav>
 
-
 	<br />
 	<br />
-
 
 	<!-- 가운데 정렬 -->
 	<div class="container text-center">
-
-
-
 		<div class="tab-content">
 			<form action="search" style="float: right; margin-right: 30px;">
 				<input type="text" id="startdate" placeholder="공연 날짜 선택"> <input
@@ -171,7 +157,6 @@ body {
 			<!-- 검색창 -->
 			<form action="search"
 				style="float: right; margin-right: 30px; margin-bottom: 50px;">
-
 				<input type="text" name="searchKeyword" placeholder="검색어 입력"
 					required /> <input type="submit" value="Search" />
 			</form>
@@ -293,8 +278,6 @@ body {
 						</div>
 					</div>
 
-
-
 					<br /> <br />
 					<nav>
 						<ul class="pagination">
@@ -314,7 +297,6 @@ body {
 		</div>
 	</div>
 
-
 	<script>
 		$(function() {
 			$("#startdate, #enddate").datepicker({
@@ -322,11 +304,6 @@ body {
 			});
 		});
 	</script>
-
-
-
-
-
 
 	<!-- footer -->
 	<footer class="container-fluid text-center">
@@ -360,8 +337,6 @@ body {
 				</div>
 			</div>
 		</div>
-
-
 
 		<script>
 			function myMap() {
@@ -423,17 +398,7 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 			</div>
 		</div>
 	</footer>
-
-
-
-
-
 </body>
-
-
-
-
 </html>
-
 
 
