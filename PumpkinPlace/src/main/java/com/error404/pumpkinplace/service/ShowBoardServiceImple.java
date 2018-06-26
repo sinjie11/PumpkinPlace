@@ -36,4 +36,16 @@ public class ShowBoardServiceImple implements ShowBoardService {
 		return showBoardDao.delete(sb_no);
 	}
 
+	@Override
+	public int getNumOfShowBoardRecords() {
+
+		return showBoardDao.getNumOfShowBoardRecords();
+	}
+
+	@Override
+	public List<ShowBoard> search(String keyword) {
+
+		return showBoardDao.searchShowBoard(keyword);
+	}
+
 }

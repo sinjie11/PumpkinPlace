@@ -15,4 +15,6 @@ public interface ShowBoardMapper {
 	
 	ShowBoard selectBySbNo(int sb_no);
 	
+	int totalCountShowBoard();
+	
 }

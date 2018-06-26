@@ -1,6 +1,8 @@
 package com.error404.pumpkinplace.persistence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
@@ -74,6 +76,21 @@ public class ShowBoardDaoImple implements ShowBoardDao {
 	public int delete(int sb_no) {
 		logger.info("delete(sb_no: {})", sb_no);
 		return showBoardMapper.deleteShowBoard(sb_no);
+	}
+
+	@Override
+	public int getNumOfShowBoardRecords() {
+
+		return showBoardMapper.totalCountShowBoard();
+	}
+
+	@Override
+	public List<ShowBoard> searchShowBoard(String keyword) {
+		logger.info("keyword: {}", keyword);
+		Map<String, Object> args = new HashMap<>();
+		args.put("searchKeyWord", "%" + keyword + "%");
+		
+		return sqlSession.selectList(NAMESPACE + ".searchShowBoard", args);
 	}
 
 }

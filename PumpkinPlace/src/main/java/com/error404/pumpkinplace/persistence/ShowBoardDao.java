@@ -12,5 +12,7 @@ public interface ShowBoardDao {
 	int update(ShowBoard showBoard); // update
 	int delete(int sb_no); // delete
 	ShowBoard select(int sb_no); // selectBysb_no
+	int getNumOfShowBoardRecords(); // 게시글 카운트
+	List<ShowBoard> searchShowBoard(String keyword); // search
 	
 }

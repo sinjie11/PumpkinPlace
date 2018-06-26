@@ -31,6 +31,8 @@ public class ShowBoardDaoTest {
 //		testSelectBySbNo();
 //		testUpdate();
 //		testDelete();
+//		testTotalCount();
+		testSearch();
 	}
 	
 	private void insertTest() {
@@ -75,5 +77,30 @@ public class ShowBoardDaoTest {
 	private void testDelete() {
 		int result = showboardDao.delete(4);
 		logger.info("delete result = {}", result);
+	}
+	
+	private void testTotalCount() {
+		int result = showboardDao.getNumOfShowBoardRecords();
+		logger.info("totalCount result = {}", result);
+	}
+	
+	private void testSearch() {
+		List<ShowBoard> list = showboardDao.searchShowBoard("5");
+		for (ShowBoard sb : list) {
+			logger.info("{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}",
+					sb.getSb_no(),
+					sb.getSb_nm(), 
+					sb.getSb_title(), 
+					sb.getSb_content(),
+					sb.getSb_city(),
+					sb.getSb_price(),
+					sb.getSb_tel(),
+					sb.getSb_locinfo(),
+					sb.getSb_regdate(),
+					sb.getSb_img(),
+					sb.getSb_video(),
+					sb.getSb_startdate(),
+					sb.getSb_enddate());
+		}
 	}
 }
