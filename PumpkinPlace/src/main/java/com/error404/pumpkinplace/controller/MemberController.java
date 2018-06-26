@@ -36,7 +36,8 @@ public class MemberController {
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String register(Member member, RedirectAttributes attr) { // 회원가입
-		logger.info("register(mem_id: {}, mem_pwd: {})", member.getMem_id(), member.getMem_pwd());
+		logger.info("register(mem_id: {}, mem_pwd: {}, mem_email: {}, mem_tel: {})",
+				member.getMem_id(), member.getMem_pwd(), member.getMem_email(), member.getMem_tel());
 		
 		int result = memberService.create(member);
 		if (result == 1) { // 회원 가입 성공

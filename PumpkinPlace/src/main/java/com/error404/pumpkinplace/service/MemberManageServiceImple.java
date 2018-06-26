@@ -19,6 +19,7 @@ private static final Logger logger = LoggerFactory.getLogger(MemberManageService
 		logger.info("Member(mem_id: {}, mem_pwd: {}, mem_email: {}, mem_tel: {}",
 				m.getMem_id(), m.getMem_pwd(), m.getMem_email(), m.getMem_tel());
 		return m;
+		
 	} // end read(userid)
 	
 	

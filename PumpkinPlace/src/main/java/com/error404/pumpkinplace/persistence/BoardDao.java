@@ -3,7 +3,7 @@ package com.error404.pumpkinplace.persistence;
 import java.util.List;
 
 import com.error404.pumpkinplace.domain.Board;
-//import com.error404.pumpkinplace.pageutil.PaginationCriteria;
+import com.error404.pumpkinplace.pageutil.PaginationCriteria;
 
 public interface BoardDao {
 
@@ -14,9 +14,9 @@ public interface BoardDao {
 	int delete(int bno);
 	List<Board> search(int type, String keyword);
 	int getNumOfRecords();
-//	List<Board> select(PaginationCriteria criteria);
+	List<Board> select(PaginationCriteria criteria);
 	
-} // end interface BoardDao
+} 
 
 
 

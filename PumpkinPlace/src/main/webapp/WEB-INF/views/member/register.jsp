@@ -1,46 +1,77 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8" %>
+   
+   
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Member Register</title>
+  <title>Pumk</title>
+  <meta charset="utf-8">
 
-<script
+  <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/assets/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/assets/css/form-elements.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/assets/css/style.css">
 
+<style>
+#register{
+	margin-top: 100px;
+	margin-bottom: 200px;
+	background-color: #f2f2f2;
+	padding: 30px;
+	border-radius: 10px;
+	width: 70%;
+	max-width: 800px; /* 최대 크기 지정 */ 
+	margin: auto;
+}
+
+</style>
 </head>
 <body>
-	<h1>회원 가입 페이지</h1>
+	<h1 style="margin-top: 100px; margin-bottom: 100px;">회원 가입 페이지</h1>
+
+
+	<div id="register">
+		<p>회원가입을 위해 필요한 정보를 아래와 같이 입력해 주십시오</p>
+		<br />
 
 	<form id="regForm" action="register" method="post">
 
-		<input type="text" name="mem_id" id="mem_id" placeholder="아이디 입력" required />
-	
-		<span id="valid-mem" style="color: green; display: none;">
+		<input type="text" name="mem_id" id="mem_id" placeholder="아이디 입력" required style="width: 50%;"/>
+		<br />
+		
+		<span id="valid-mem" style="color: green; display: none; height: 70%;">
 			사용가능한 아이디입니다.
 		</span>
 
-		<span id="invalid-mem" style="color: red; display: none;">
+		<span id="invalid-mem" style="color: red; display: none; height: 70%;">
 			사용할 수 없는 아이디입니다.
 		</span>
 		<br />
-		
-		<input type="password" name="mem_pwd" id="mem_pwd" placeholder="비밀번호 입력" required />
-		<br /> 
-		
-		<input type="email" name="mem_email" id="mem_email" placeholder="이메일 입력" required />
+
+
+		<input type="password" name="mem_pwd" id="mem_pwd" placeholder="비밀번호 입력" required style="margin: 5px; width: 50%;"/>
+		<br />
+		<br />
+				
+		<input type="email" name="mem_email" id="mem_email" placeholder="이메일 입력" required style="width: 50%;"/>				
+		<br />
 		<br />
 
-		<input type="text" name="mem_tel" id="mem_tel" placeholder="전화번호 입력" required />
+		<input type="text" name="mem_tel" id="mem_tel" placeholder="전화번호 입력" required style="margin: 5px; width: 50%;"/>
+		<br />
 		<br />
 
-		<button type="button" id="btnRegister">회원 가입</button>
-		<input type="reset" value="취소" onclick="history.back()">
-		
-		<!-- <input type="reset" value="취소" id="btnRegCancel" onclick="history.back()" /><a></a> -->
-
+		<button type="button" id="btnRegister" class="btn" style="margin-right: 10px; width: 30%;">회원 가입</button>
+		<input type="reset" value="취소" onclick="history.back()" class="btn btn-link-1 btn-link-1-google-plus" style="padding-top: 0px; width: 20%;">
+	
 	</form>
+	</div>
+
 
 <script>
 $(document).ready(function () {
@@ -96,4 +127,10 @@ $(document).ready(function () {
 </script>
 
 </body>
+  
+
+
+
 </html>
+
+

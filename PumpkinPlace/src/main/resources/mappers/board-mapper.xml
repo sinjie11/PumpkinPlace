@@ -9,21 +9,44 @@
 
 	<!-- Insert Statement -->
 	<insert id="insert">
-		insert into ${tbl_board} (${col_b_section}, ${col_b_title},
+		insert into ${tbl_board} (${col_b_section},
+		${col_b_title},
 		${col_b_content},
-		${col_b_id}, ${col_b_img}, ${col_b_video}, ${col_b_readcnt},
+		${col_b_id}, ${col_b_img},
+		${col_b_video}, ${col_b_readcnt},
 		${col_b_up}, ${col_b_down})
-		values (#{b_section}, #{b_title}, #{b_content}, #{b_id},
-		#{b_img}, #{b_video}, #{b_readcnt}, #{b_up}, #{b_down})
+		values
+		(#{b_section}, #{b_title}, #{b_content}, #{b_id},
+		#{b_img}, #{b_video},
+		#{b_readcnt}, #{b_up}, #{b_down})
 	</insert>
 
 	<!-- Section No를 이용해 Board의 종류를 가려낸 후 게시판 첫 화면에서 요구하는 데이터들을 뽑아내는 Select 
 		Statement -->
 	<select id="selectBoardInfoBySectionNo" resultType="Board">
-		select ${col_b_no}, ${col_b_title}, ${col_b_content}, ${col_b_id},
+		select
+		${col_b_no}, ${col_b_title}, ${col_b_content}, ${col_b_id},
 		${col_b_regdate}, ${col_b_readcnt}
 		from ${tbl_board}
-		where ${col_b_section} = #{b_section}
+		where
+		${col_b_section} = #{b_section}
+	</select>
 
+	<select id="totalCount" resultType="Integer">
+		select count(${col_b_no}) from
+		${tbl_board}
+	</select>
+
+	<select id="listPage" resultType="Board">
+		select b.bno, b.title,
+		b.content, b.userid, b.regdate, b.readcnt
+		from (
+		select rownum rn, a.*
+		from (
+		select * from test_board
+		order by bno desc
+		) a
+		) b
+		where rn between #{start} and #{end}
 	</select>
 </mapper>
