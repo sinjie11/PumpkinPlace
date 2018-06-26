@@ -72,7 +72,9 @@ public class MemberController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET) // 로그인
 	public void login(String target, Model model) {
 		logger.info("login(target: {}) 호출", target);
+		
 		model.addAttribute("targetUrl", target);
+		
 	} // end login(target)
 	
 	
@@ -83,7 +85,7 @@ public class MemberController {
 		Member loginResult = memberService.read(member);
 		
 		// loginResult Null 체크 여부 확인
-		// null이 아니면 session에 로그인 정보 저장,  target으로 redirect
+		// null이 아니면 session에 로그인 정보 저장, target으로 redirect
 		// -> 컨트롤러에서 직접 담당하지 않고, LoginInterceptor에서 담당.
 		model.addAttribute("loginResult", loginResult);
 		
