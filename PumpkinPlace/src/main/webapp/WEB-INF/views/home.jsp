@@ -242,7 +242,7 @@ body {
 			<div class="row">
 				<div class="col-md-4">
 					<p class="text-left" style="font-size: medium;">
-						<b>자유 게시판</b> <a href="" style="float:right">more</a>
+						<b>자유 게시판</b> <a href="/pumpkinplace/board/list" style="float:right">more</a>
 					</p>
 				
 					

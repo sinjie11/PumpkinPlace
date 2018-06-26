@@ -6,10 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.error404.pumpkinplace.domain.Board;
-//import com.error404.pumpkinplace.pageutil.PaginationCriteria;
+import com.error404.pumpkinplace.pageutil.PaginationCriteria;
 import com.error404.pumpkinplace.persistence.BoardDao;
 
-// root-context.xml 파일에서 bean으로 설정
 @Service
 public class BoardServiceImple implements BoardService {
 
@@ -50,19 +49,19 @@ public class BoardServiceImple implements BoardService {
 	public List<Board> read(int type, String keyword) {
 		
 		return boardDao.search(type, keyword);
-	} // end read()
+	} 
 	
 	@Override
 	public int getNumOfRecords() {
 		return boardDao.getNumOfRecords();
 	}
 	
-//	@Override
-//	public List<Board> read(PaginationCriteria criteria) {
-//		return boardDao.select(criteria);
-//	}
+	@Override
+	public List<Board> read(PaginationCriteria criteria) {
+		return boardDao.select(criteria);
+	}
 	
-} // end class BoardServiceImple
+} 
 
 
 
