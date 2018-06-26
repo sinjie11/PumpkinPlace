@@ -23,7 +23,7 @@
     <body>
 
         <!-- Top content -->
-        <div class="top-content" style="background-image: url('${pageContext.request.contextPath}/resources/assets/img/backgrounds/1.jpg');">
+        <div class="top-content">
 
             <div class="inner-bg">
                 <div class="container">
@@ -55,7 +55,6 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 social-login">
-                        	<h3>...or login with:</h3>
                         	<div class="social-login-buttons">
 	                        	<a class="btn btn-link-1 btn-link-1-facebook" href="#">
 	                        		<i class="fa fa-facebook"></i> Facebook
