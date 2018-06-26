@@ -31,8 +31,8 @@ public class ShowBoardDaoTest {
 //		testSelectBySbNo();
 //		testUpdate();
 //		testDelete();
-//		testTotalCount();
-		testSearch();
+		testTotalCount();
+//		testSearch();
 	}
 	
 	private void insertTest() {
