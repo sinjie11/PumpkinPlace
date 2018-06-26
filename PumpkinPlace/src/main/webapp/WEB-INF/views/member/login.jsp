@@ -41,11 +41,11 @@
 			                    <form role="form" action="/pumpkinplace/member/login-post" method="post" class="login-form">
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="form-username">Username</label>
-			                        	<input type="text" name="form-username" placeholder="Username..." class="form-username form-control" id="form-username">
+			                        	<input type="text" name="mem_id" placeholder="Username..." class="form-username form-control" id="form-username" required>
 			                        </div>
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="form-password">Password</label>
-			                        	<input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
+			                        	<input type="password" name="mem_pwd" placeholder="Password..." class="form-password form-control" id="form-password" required>
 			                        </div>
 			                        <button type="submit" class="btn">Sign in!</button>
 			                    </form>
