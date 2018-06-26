@@ -3,6 +3,7 @@
 	pageEncoding="UTF-8" %>
 	
 	
+	
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +16,10 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
   
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
@@ -57,6 +62,7 @@ body {
 <body>
 
 
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
 
   <div class="container-fluid">
@@ -71,23 +77,25 @@ body {
     <div class="collapse navbar-collapse" id="myNavbar">
       
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Register </a></li>
+        <li><a href="/pumpkinplace/member/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="/pumpkinplace/member/register"><span class="glyphicon glyphicon-user"></span> Register </a></li>
       </ul>
     </div>
   </div>
+  
      <h1 style="background-color: white; margin: 0%;">
-    	  
+     
+    
+    
     	<img alt="이미지" src="${pageContext.request.contextPath}/resources/logo.png"
     	style="background-color: white; width: 100%; height: 200px;"/>
-   
-    </h1>
+     </h1>
 			
 		<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menuNavbar">
-        <span class="icon-bar"></span>
+        <span class="icon-bar"> </span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
@@ -108,10 +116,10 @@ body {
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">게시판 <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">자유 게시판</a></li>
+            <li><a href="/pumpkinplace/board/list">자유 게시판</a></li>
           </ul>
         </li>
-        
+        <!--  -->
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">중고 거래<span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -136,23 +144,176 @@ body {
             <li><a href="#">Q&A</a></li>
          </ul>
         </li>
-        
-        
-        
-        
-     </ul>
-
-   
-    </div>
+		 </ul>
+	</div>
   </div>
 </nav>
 </nav>
-		
+
+<!-- end MenuBar -->
 
 
 
 
 
+  <div class="container text-center"> 
+     <h2 class="container text-center">New Event</h2>
+ <hr>
+ 
+ <form accept-charset="UTF-8" action="/events" class="new_event" enctype="multipart/form-data" id="event_form" method="post">
+ <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" />
+ <input name="authenticity_token" type="hidden" value="V/YmJsJD2LJVCi0HoeIknFutTxFudHJCyCNYLsakG/U=" /></div>
+<div>
+
+<p><label for="event_공연 포스터:">공연 포스터 <br/>
+				<img alt="이미지" src="">
+<input id="event_avatar" name="event[avatar]" type="file" /></label></p>
+<p>공연을 위한 포스터를 업로드해주세요. 그렇지 않을 경우 대체 이미지가 사용됩니다.</p>
+<br/>
+</div>
+
+<div id="en_title">
+ <p> 
+  <label for="event_공연 이름 :">공연 제목: <input id="show_name" name="event" type="text"  
+  style="text-align:center; width:200px;"/></label>
+ </p>
+ </div>
+ <br/>
+
+
+<div id="en_bands">
+  <p>
+    <label for="event_공연하는 밴드:">뮤지션명:  <input id="event_band_tokens" name="event[band_tokens]" type="text"  
+    style="text-align:center; width:200px;"/></label>
+  </p>
+</div>
+ <br/>
+
+<div id="en_city">
+<p>
+  <label for="event_도시:"> 도시: <select id="country" name="country"  style="text-align:center; width:100px; margin-left: 12px;">
+          <option value="seoul">서울</option>
+          <option value="kuyngki">경기</option>
+          <option value="kwangju">광주</option>
+          <option value="daegu">대구</option>
+          <option value="busan">부산</option>
+          <option value="jeju">제주</option>
+        </select></label>
+  </p>
+  </div>
+   <br/>
+
+<div id="en_venue">
+	<p>
+    <label for="event_공연장:"> 공연장:  <input id="event_venue_tokens" name="event[venue_tokens]" type="text"
+     style="text-align:center; width:200px;" /></label>
+    </p>
+ </div>
+ <br/>
+
+
+<div id="en_daytime">
+<label for="event_공연 날짜">공연 날짜 / 시간:  <input type="text" id="startdate" placeholder="공연 시작 날짜 선택">
+ <input type="text" name="time1" value="" placeholder="시간 입력"  id="time1" required size="8" maxlength="5"> ~ 
+ <input type="text" id="enddate" placeholder="공연 종료 날짜 선택">
+ <input type="text" name="time2" value="" placeholder="시간 입력"  id="time2" required size="8" maxlength="5"></label>
+ </div>
+<br/>
+
+<div id="en_phone">
+<label for="event_연락처:">연락처: <input id="event_contact" name="event[contact]" type="text" 
+ style="text-align:center; width:200px;"/> </label>
+ </div>
+<br/>
+
+<div id="en_price">
+<p>
+  <label for="event_현매:">가격: <input id="event_door_price" name="event[door_price]" type="number"
+   style="text-align:center; width:200px; margin-left: 12px;" />
+  </label>
+  </p>
+</div>
+<br/>
+
+
+<div id="en_description">
+<label for="event_공연 상세 정보 (한글)">공연 상세 정보 </label>
+<br/>
+<textarea id="event_info" name="event[info]" cols="100" rows="5">
+</textarea>
+</div>
+<script>
+//<![CDATA[
+if (typeof CKEDITOR != 'undefined') { CKEDITOR.replace('event_info_ko'); }
+//]]>
+</script><br />
+
+
+
+
+<input class="btn btn-primary" name="commit" type="submit" value="등록" style="margin-bottom: 50px;" />
+
+</form>
+<script type="text/javascript">
+  CKEDITOR.config.removePlugins = 'elementspath,print,newpage,preview,templates,save,sourcearea,htmlwriter,iframe,image,indent,filebrowser,find,fakeobjects,flash,floatingspace,listblock,richcombo';
+</script>
+        </div>     
+<script>
+    $(function() {
+        $("#startdate, #enddate").datepicker({
+            dateFormat: 'yy.mm.dd'
+        });
+    });
+
+</script>
+<script type="text/javascript">
+$("#time1,time2").timepicker({
+
+	step: 5,            //시간간격 : 5분
+
+	timeFormat: "H:i"    //시간:분 으로표시
+
+	
+
+});
+
+</script>
+
+
+  
+  
+  
+
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ ga('create', 'UA-4287177-24', 'doindie.co.kr');
+ ga('send', 'pageview');
+
+ // workaround of jQuery tokeninput for Korean characters
+setTimeout(function() {
+  $('input[id^="token-input"]').bind('input.autocomplete',function (){
+    $(this).trigger('keydown');
+  });
+},500);
+
+</script>    
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $.stratus({
+          links: 'https://soundcloud.com/do-indie/sets/2017-10-doindie-playlist-oct',
+          random: true,
+          buying: false,
+          stats: false
+        });
+        $("#stratus").attr("data-turbolinks-permanent", "");
+      });
+    </script> 
+</body>
+  
  <!-- footer -->
 <footer class="container-fluid text-center">
 
@@ -182,6 +343,7 @@ body {
   </div>
 </div>
 
+    
 <script>
 function myMap() {
 var myCenter = new google.maps.LatLng(37.499685, 127.031535);
@@ -226,13 +388,6 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
   </div>
 </footer>
   
-
-
-
-</body>
-
-
-
 
 </html>
 

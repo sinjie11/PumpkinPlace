@@ -104,7 +104,7 @@ body {
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">공연<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="/pumpkinplace/showboard/showboardmain">공연</a></li>
-            <li><a href="#">공연 등록</a></li>
+            <li><a href="/pumpkinplace/showboard/showinsert">공연 등록</a></li>
            </ul>
         </li>
         <li class="dropdown">
@@ -536,21 +536,19 @@ body {
 		</div>
 	
  
+
+  
  <!-- footer -->
 <footer class="container-fluid text-center">
-  
 
-  <!-- Container (Contact Section) -->
-<div id="contact" class="container-fluid bg-grey">
-  <h2 class="text-center">CONTACT</h2>
-  <div class="row">
-    <div class="col-sm-5">
-      <p>Contact us and we'll get back to you within 24 hours.</p>
-      <p><span class="glyphicon glyphicon-map-marker"></span> Team Error404, KOR</p>
-      <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
-      <p><span class="glyphicon glyphicon-envelope"></span> doojinzzang@something.com</p>
-    </div>
-    <div class="col-sm-7 slideanim">
+<div class="row">
+  <!-- Add Google Maps -->
+<div id="googleMap" style="height:400px;width:500px; float: right; margin-right: 200px;"></div>
+ <div class="col-sm-7 slideanim">
+  <h2 class="text-center" style="margin-left: 230px;">CONTACT</h2>
+      <br/>
+      <br/>
+     <div class="col-sm-7 slideanim" style="margin-left: 350px;">
       <div class="row">
         <div class="col-sm-6 form-group">
           <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
@@ -568,19 +566,18 @@ body {
     </div>
   </div>
 </div>
-  
-  <!-- Add Google Maps -->
-<div id="googleMap" style="height:400px;width:100%;"></div>
+
 <script>
 function myMap() {
 var myCenter = new google.maps.LatLng(37.499685, 127.031535);
 var map;
-zoom: 11
+
  
 var mapProp = {center:myCenter, zoom:12, scrollwheel:false, draggable:false, mapTypeId:google.maps.MapTypeId.ROADMAP};
 var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 var marker = new google.maps.Marker({position:myCenter});
 marker.setMap(map);
+
 }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&callback=myMap"></script>
@@ -588,9 +585,32 @@ marker.setMap(map);
 To use this code on your website, get a free API key from Google.
 Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 -->
-  
-  
+ 
 </footer>
+
+ <!-- footer -->
+<footer class="container-fluid text-center">
+
+
+  <!-- Container (Contact Section) -->
+<div id="contact" class="container-fluid bg-grey">
+ 
+ 
+  <div class="row">
+    <div class="col-sm-5">
+    <!-- 가운데 정렬해주는거 -->
+<div class="container text-center" style="margin-left: 370px;">    
+      <p>Contact us and we'll get back to you within 24 hours.</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span> Team Error404, KOR</p>
+      <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
+      <p><span class="glyphicon glyphicon-envelope"></span> doojinzzang@something.com</p>
+    </div>
+    
+  </div>
+</div>
+  </div>
+</footer>
+  
 
 
 
