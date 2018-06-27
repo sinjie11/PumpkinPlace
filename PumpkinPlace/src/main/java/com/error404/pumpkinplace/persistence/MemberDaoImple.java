@@ -46,5 +46,6 @@ public class MemberDaoImple implements MemberDao {
 		
 		return memberMapper.updateMember(member);
 	} // end update(member)
-
+	
+	
 } // end class MemberDaoImple

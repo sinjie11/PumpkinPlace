@@ -59,10 +59,10 @@ public class BoardDaoImple implements BoardDao {
 	} 
 	
 	@Override
-	public int delete(int bno) {
-		logger.info("delete(bno: {})", bno);
+	public int delete(int b_no) {
+		logger.info("delete(b_no: {})", b_no);
 		
-		return sqlSession.delete(NAMESPACE + ".delete", bno);
+		return sqlSession.delete(NAMESPACE + ".delete", b_no);
 	} 
 	
 	@Override

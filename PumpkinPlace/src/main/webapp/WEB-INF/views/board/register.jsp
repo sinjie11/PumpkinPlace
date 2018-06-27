@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
@@ -97,7 +97,7 @@ body {
     
     <div class="collapse navbar-collapse" id="menuNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/pumpkinplace/">Home</a></li>
+        <li class=""><a href="/pumpkinplace/">Home</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">공연<span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -105,7 +105,7 @@ body {
             <li><a href="#">공연 등록</a></li>
            </ul>
         </li>
-        <li class="dropdown">
+        <li class="active">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">게시판 <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="/pumpkinplace/board/list">자유 게시판</a></li>
@@ -214,11 +214,5 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
   
   
 </footer>
-
-
-
-
-
-
 
 

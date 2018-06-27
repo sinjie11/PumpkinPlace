@@ -54,9 +54,9 @@ body {
 </style>
 </head>
 <body>
-	
-	
+
 	<%@ include file="header.jspf"%>
+
 
 	<!-- 가운데 정렬해주는거 -->
 	<div class="container text-center">
@@ -278,7 +278,6 @@ body {
 			</div>
 		</div>
 	</div>
-
 
 	<!-- footer -->
 	<footer class="container-fluid text-center">

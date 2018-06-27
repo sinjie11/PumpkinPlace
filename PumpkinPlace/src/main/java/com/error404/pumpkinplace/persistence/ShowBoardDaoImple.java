@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.error404.pumpkinplace.domain.ShowBoard;
 import com.error404.pumpkinplace.mappers.ShowBoardMapper;
+import com.error404.pumpkinplace.pageutil.PaginationCriteria;
 
 @Repository
 public class ShowBoardDaoImple implements ShowBoardDao {
@@ -85,12 +86,23 @@ public class ShowBoardDaoImple implements ShowBoardDao {
 	}
 
 	@Override
+	public List<ShowBoard> select(PaginationCriteria criteria) {
+		logger.info("start: {}, end: {}",
+				criteria.getStart(), criteria.getEnd());
+		return sqlSession.selectList(NAMESPACE + ".listShowBoardPage", criteria);
+	}
+	
+	@Override
 	public List<ShowBoard> searchShowBoard(String keyword) {
 		logger.info("keyword: {}", keyword);
 		Map<String, Object> args = new HashMap<>();
 		args.put("searchKeyWord", "%" + keyword + "%");
 		
-		return sqlSession.selectList(NAMESPACE + ".searchShowBoard", args);
+		List<ShowBoard> list = sqlSession.selectList(NAMESPACE + ".searchShowBoard", args);
+		
+		return list;
 	}
+
+	
 
 }

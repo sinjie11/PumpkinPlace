@@ -26,8 +26,10 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		// 기존에 loginId 정보가 세션에 남아 있다면 제거
 		HttpSession session = request.getSession();
 		Object loginId = session.getAttribute("loginId");
+		
 		if (loginId != null) {
 			session.removeAttribute("loginId");
+			
 		}
 		
 		return true;

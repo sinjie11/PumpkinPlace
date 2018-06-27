@@ -3,15 +3,24 @@ package com.error404.pumpkinplace.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.error404.pumpkinplace.domain.ShowBoard;
+import com.error404.pumpkinplace.pageutil.PaginationCriteria;
 import com.error404.pumpkinplace.persistence.ShowBoardDao;
 
+@Service
 public class ShowBoardServiceImple implements ShowBoardService {
 	
 	@Autowired
 	private ShowBoardDao showBoardDao;
 
+	@Override
+	public List<ShowBoard> read() {
+
+		return showBoardDao.select();
+	}
+	
 	@Override
 	public int create(ShowBoard showBoard) {
 
@@ -47,5 +56,13 @@ public class ShowBoardServiceImple implements ShowBoardService {
 
 		return showBoardDao.searchShowBoard(keyword);
 	}
+
+	@Override
+	public List<ShowBoard> read(PaginationCriteria criteria) {
+
+		return showBoardDao.select(criteria);
+	}
+
+	
 
 }
