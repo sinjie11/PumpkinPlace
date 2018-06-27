@@ -383,7 +383,7 @@ body {
 				<textarea id="event_info" name="event[info]" cols="100" rows="5">
 </textarea>
 			</div>
-			<br/>
+			<br />
 
 			<div id="en_player">
 				<p>
@@ -398,9 +398,8 @@ body {
 
 			<!-- start 유투브 -->
 
-		<div style="margin-right: 50%;">
-				<iframe width="560" height="315" 
-				
+			<div style="margin-right: 50%;">
+				<iframe width="560" height="315"
 					src="https://www.youtube.com/embed/hcLPCxLdRjs" frameborder="0"
 					allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
@@ -416,7 +415,7 @@ body {
 				</script>
 			</div>
 			<!-- end 유투브 -->
-			
+
 			<script>
 				//<![CDATA[
 				if (typeof CKEDITOR != 'undefined') {
