@@ -35,5 +35,6 @@ public class MemberServiceImple implements MemberService {
 		
 		return memberDao.update(member);
 	} // end update(member)
-
+	
+	
 } // class end MemberServiceImple

@@ -11,6 +11,8 @@ public class Member {
 	private String mem_tel; // 회원 전화번호
 	private Date mem_regdate; // 회원 가입일자
 	
+	Date date = new Date();
+	
 	public Member() {}
 
 	public Member(int mem_no, String mem_id, String mem_pwd, String mem_email, String mem_tel, Date mem_regdate) {
@@ -69,8 +71,6 @@ public class Member {
 
 	public void setMem_regdate(Date mem_regdate) {
 		this.mem_regdate = mem_regdate;
-	}
-	
-	
+	}	
 
 } // end class Member

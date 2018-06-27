@@ -1,5 +1,7 @@
 package com.error404.pumpkinplace.controller;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -104,9 +106,18 @@ public class MemberController {
 	} // end logout()
 	
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
-	public void profile() {
-			
-				
+	public void profile(HttpSession session, Model model) {
+	
+//	Object memNo = session.getAttribute("memNo");
+//	Object loginId = session.getAttribute("loginId");
+//	Object loginPwd = session.getAttribute("loginPwd");
+//	Object loginEmail = session.getAttribute("loginEmail");
+//	Object loginTel = session.getAttribute("loginTel");
+//	Object loginDate = session.getAttribute("loginDate");
+//	
+//	Member profile = new Member((int)memNo, (String)loginId, (String)loginPwd, (String)loginEmail, (String)loginTel, (Date)loginDate);
+//	model.addAttribute("profile", profile);
+		
 	} // end profile()
 
 	
