@@ -170,7 +170,7 @@ body {
 						<div class="row">
 							<c:forEach var="showboard" items="${showboardList}">
 								<div class="col-md-3">
-									<a href="/pumpkinplace/showboard/showdetail${showboard.sb_no}">
+									<a href="/pumpkinplace/showboard/showdetail/${showboard.sb_no}">
 										<img alt="Bootstrap Image Preview"
 										src="http://ticketimage.interpark.com/Play/image/large/18/18008332_p.gif" />
 									</a>
