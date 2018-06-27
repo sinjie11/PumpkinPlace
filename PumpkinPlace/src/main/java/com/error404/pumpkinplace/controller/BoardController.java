@@ -74,44 +74,40 @@ public class BoardController {
 		model.addAttribute("board", board);
 	} 
 	
-//	@RequestMapping(value = "/update", method = RequestMethod.GET)
-//	public void update(
-//			@ModelAttribute("criteria") PaginationCriteria criteria,
-//			int b_no, Model model) {
-//		logger.info("update(bno: {})", b_no);
-//		Board board = boardService.read(b_no);
-//		model.addAttribute("board", board);
-//		
-//	}
-//	
-//	@RequestMapping(value = "/update", method = RequestMethod.POST)
-//	public String update(
-//			@ModelAttribute("criteria") PaginationCriteria criteria,
-//			Board board, RedirectAttributes attr) {
-//		logger.info("update(board: {})", board);
-//		int result = boardService.update(board);
-//		if (result == 1) {
-//			attr.addFlashAttribute("updateResult", "success");
-//		}
-//		// Model: forward 방식에서 View(JSP)에게 데이터를 전달할 때 사용하는 객체
-//		// model.addAttribute(이름, 값);
-//		// RedirectAttributes: redirect 방식에서 View(JSP)에게 데이터를 전달할 때 사용하는 객체
-//		// redirectAttributes.addFlashAttribute(이름, 값);
-//		
-//		return "redirect:detail?b_no=" + board.getB_no();
-//	} 
-//	
-//	@RequestMapping(value = "delete", method = RequestMethod.GET)
-//	public String delete(int b_no, RedirectAttributes attr) {
-//		logger.info("delete(bno: {})", b_no);
-//		int result = boardService.delete(b_no);
-//		if (result == 1) {
-//			attr.addFlashAttribute("bno", b_no);
-//			attr.addFlashAttribute("deleteResult", "success");
-//		}
-//		
-//		return "redirect:list";
-//	}
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	public void update(
+			@ModelAttribute("criteria") PaginationCriteria criteria,
+			int b_no, Model model) {
+		logger.info("update(bno: {})", b_no);
+		Board board = boardService.read(b_no);
+		model.addAttribute("board", board);
+		
+	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(
+			@ModelAttribute("criteria") PaginationCriteria criteria,
+			Board board, RedirectAttributes attr) {
+		logger.info("update(board: {})", board);
+		int result = boardService.update(board);
+		if (result == 1) {
+			attr.addFlashAttribute("updateResult", "success");
+		}
+		
+		return "redirect:detail?b_no=" + board.getB_no();
+	} 
+	
+	@RequestMapping(value = "delete", method = RequestMethod.GET)
+	public String delete(int b_no, RedirectAttributes attr) {
+		logger.info("delete(bno: {})", b_no);
+		int result = boardService.delete(b_no);
+		if (result == 1) {
+			attr.addFlashAttribute("bno", b_no);
+			attr.addFlashAttribute("deleteResult", "success");
+		}
+		
+		return "redirect:list";
+	}
 	
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public void search(int searchType, String searchKeyword,
