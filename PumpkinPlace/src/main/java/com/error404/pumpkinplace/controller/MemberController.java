@@ -102,6 +102,12 @@ public class MemberController {
 		
 		return "redirect:/member/login";
 	} // end logout()
+	
+	@RequestMapping(value = "/profile", method = RequestMethod.GET)
+	public void profile() {
+		logger.info("profile() 호출");
+		
+	}
 
 	
 } // end class MemberController
