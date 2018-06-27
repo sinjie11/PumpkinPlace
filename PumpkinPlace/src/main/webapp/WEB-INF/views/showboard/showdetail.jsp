@@ -51,17 +51,7 @@ body {
 	background-color: #f8f8f8;
 }
 
-.youtubeWrap {
-   position: relative;
-   width: 100%;
-   padding-bottom: 56.25%;
-}
 
-.youtubeWrap iframe {
-   position: absolute;
-   width: 100%;
-   height: 100%;
-}
 
 
 

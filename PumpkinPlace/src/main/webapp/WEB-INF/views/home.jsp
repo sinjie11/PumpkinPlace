@@ -410,7 +410,7 @@ body {
 
 				var mapProp = {
 					center : myCenter,
-					zoom : 12,
+					zoom : 16,
 					scrollwheel : false,
 					draggable : false,
 					mapTypeId : google.maps.MapTypeId.ROADMAP
