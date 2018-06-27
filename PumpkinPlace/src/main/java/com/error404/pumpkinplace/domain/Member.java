@@ -70,6 +70,13 @@ public class Member {
 	public void setMem_regdate(Date mem_regdate) {
 		this.mem_regdate = mem_regdate;
 	}
+
+	@Override
+	public String toString() {
+		return "Member [mem_no=" + mem_no + ", mem_id=" + mem_id + ", mem_pwd=" + mem_pwd + ", mem_email=" + mem_email
+				+ ", mem_tel=" + mem_tel + ", mem_regdate=" + mem_regdate + "]";
+	}
+	
 	
 	
 

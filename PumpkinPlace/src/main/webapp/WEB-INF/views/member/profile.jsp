@@ -1,8 +1,10 @@
 <%@page import="com.error404.pumpkinplace.domain.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 
 <!DOCTYPE html>
 <html>
@@ -11,10 +13,16 @@
 <title>My Page</title>
 </head>
 <body>
-<h1>Profile</h1>
+	<h1>Profile</h1>
+	<div>
+		<input />
+		아이디: ${member.mem_id} 비밀번호: ${member.mem_pwd} 이메일: ${member.mem_email}
 
-아이디: ${loginId}
+		tel: ${member.mem_tel}
 
-
+		<fmt:formatDate value="${member.mem_regdate}" pattern="yyyy-MM-dd"
+			var="regdate" />
+		가입일자: ${regdate}
+	</div>
 </body>
 </html>

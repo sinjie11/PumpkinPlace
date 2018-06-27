@@ -49,6 +49,10 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		
 		if (m != null) { // 로그인 성공,  null이 아니면 targetUrl로 리다이렉트
 			request.getSession().setAttribute("loginId", m.getMem_id());
+			request.getSession().setAttribute("loginPwd", m.getMem_pwd());
+			request.getSession().setAttribute("loginEmail", m.getMem_email());
+			request.getSession().setAttribute("loginPwd", m.getMem_tel());
+			request.getSession().setAttribute("loginPwd", m.getMem_regdate());
 			
 			if (targetUrl != null && !targetUrl.equals("")) {
 				response.sendRedirect(targetUrl);

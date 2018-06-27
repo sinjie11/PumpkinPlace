@@ -105,9 +105,12 @@ public class MemberController {
 	} // end logout()
 	
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
-	public void profile() {
-		logger.info("profile() 호출");	
+	public void profile(HttpSession session, Model model) {
+		logger.info("profile() 호출");
 				
+		Member m = memberService.read((String) session.getAttribute("loginId"));
+		
+		model.addAttribute("member", m);
 	} // end profile()
 
 

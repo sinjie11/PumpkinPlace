@@ -387,8 +387,6 @@ body {
 	</div>
 
 
-
-
 	<!-- footer -->
 	<footer class="container-fluid text-center">
 
@@ -443,10 +441,15 @@ body {
 
 			}
 			
+			$(document).ready (function () {
+				console.log('jhd');
+			});
+			
 		</script>
 		
-		<script
+		 <script
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&callback=myMap"></script>
+		
 		<!--
 To use this code on your website, get a free API key from Google.
 Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
