@@ -70,19 +70,24 @@ body {
 			<div class="collapse navbar-collapse" id="myNavbar">
 
 				<ul class="nav navbar-nav navbar-right">
-					<li id="loginYN" style=" display:block; color: white; font-style:italic;">${loginId} 님</li>
-					<li><a href="/pumpkinplace/member/login"><span
+				
+					<li style="color: white; font-style:italic;">${loginId} 님</li>
+					
+					<li id="login" style="display: block;"><a href="/pumpkinplace/member/login"><span
 							class="glyphicon glyphicon-log-in"></span> Login</a></li>
-					<li id="logoutYN" style=" display:none;"><a href="${targetUrl}"><span
+			
+					<li id="logout" style="display: none;"><a href="${targetUrl}"><span
 							class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+				
 					<li><a href="/pumpkinplace/member/register"><span
 							class="glyphicon glyphicon-user"></span> Register </a></li>
+				
 				</ul>
 			</div>
 		</div>
-
+	
+	
 		<h1 style="background-color: white; margin: 0%;">
-
 
 
 			<img alt="이미지"
@@ -426,21 +431,27 @@ body {
 				marker.setMap(map);
 
 			}
-			
-		</script>
-		<script>
-		$(document).ready(function () {
-			System.out.println(${loginId} + "어이");
-			if(${loginId} == null) {
-				$('#loginYN').show();
-				$('#logoutYN').hide();
-			} else {
-				$('#loginYN').hide();
-				$('#logoutYN').show();
-			}
-		});
+						
 		</script>
 		
+		<script>
+		$(document).ready(function () {
+			var loginInfo = ${loginId};
+			
+			if (loginInfo.equals('') || loginInfo == null) {
+				$('#login').show();
+				$('#logout').hide();
+				
+			} else {
+				$('#login').hide();
+				$('#logout').show();
+			}
+			
+		});
+					
+		</script>
+
+	
 		<script
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&callback=myMap"></script>
 		<!--
