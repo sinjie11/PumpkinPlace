@@ -4,9 +4,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>My Page</title>
 </head>
 <body>
+<h1>Profile</h1>
+
+아이디: ${loginId}
+<br/>
+
+이메일: 
+<br/>
+
+전화번호:
+<br/>
+
+가입일자:
+<br/>
 
 </body>
 </html>

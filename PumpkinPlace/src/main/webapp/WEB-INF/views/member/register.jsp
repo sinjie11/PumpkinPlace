@@ -44,24 +44,34 @@
 
 		<form id="regForm" action="register" method="post">
 
-			<input type="text" name="mem_id" id="mem_id" placeholder="아이디 입력"
-				required style="width: 50%;" /> <br /> <span id="valid-mem"
-				style="color: green; display: none; height: 70%;"> 사용가능한
-				아이디입니다. </span> <span id="invalid-mem"
-				style="color: red; display: none; height: 70%;"> 사용할 수 없는
-				아이디입니다. </span> <br /> <input type="password" name="mem_pwd" id="mem_pwd"
-				placeholder="비밀번호 입력" required style="margin: 5px; width: 50%;" /> <br />
-			<br /> <input type="email" name="mem_email" id="mem_email"
-				placeholder="이메일 입력" required style="width: 50%;" /> <br /> <br />
+			<input type="text" name="mem_id" id="mem_id" placeholder="아이디 입력"required style="width: 50%;" />
+			<br/>
+			 
+			<span id="valid-mem" style="color: green; display: none; height: 70%;">
+			 	사용가능한	아이디입니다. 
+			 </span> 
+			
+			<span id="invalid-mem" style="color: red; display: none; height: 70%;">
+			 	사용할 수 없는 아이디입니다. 
+			</span> 
+			<br/> 
+			
+			<input type="password" name="mem_pwd" id="mem_pwd" placeholder="비밀번호 입력" required 
+			style="margin: 5px; width: 50%;" /> 
+			<br/>
+			<br/>
+			
+			<input type="email" name="mem_email" id="mem_email" placeholder="이메일 입력" required 
+			style="width: 50%;" /> <br /> <br />
 
-			<input type="text" name="mem_tel" id="mem_tel" placeholder="전화번호 입력"
-				required style="margin: 5px; width: 50%;" /> <br /> <br />
+			<input type="text" name="mem_tel" id="mem_tel" placeholder="전화번호 입력" required 
+			style="margin: 5px; width: 50%;" /> <br /> <br />
 
-			<button type="button" id="btnRegister" class="btn"
-				style="margin-right: 10px; width: 30%;">회원 가입</button>
-			<input type="reset" value="취소" onclick="history.back()"
-				class="btn btn-link-1 btn-link-1-google-plus"
-				style="padding-top: 0px; width: 20%;">
+			<button type="button" id="btnRegister" class="btn" 
+			style="margin-right: 10px; width: 30%;">회원 가입</button>
+			
+			<input type="reset" value="취소" onclick="history.back()" 
+			class="btn btn-link-1 btn-link-1-google-plus" style="padding-top: 0px; width: 20%;">
 
 		</form>
 	</div>
