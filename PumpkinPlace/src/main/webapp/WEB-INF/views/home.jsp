@@ -84,7 +84,7 @@ body {
 					
 					<!-- 로그아웃 버튼 -->
 					<c:if test="${not empty loginId}">
-						<li><a href="${targetUrl}"><span
+						<li><a href="/pumpkinplace/member/logout"><span
 								class="glyphicon glyphicon-log-in"></span> Logout</a></li>
 					</c:if>
 					
