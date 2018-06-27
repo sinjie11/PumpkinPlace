@@ -1,5 +1,7 @@
 package com.error404.pumpkinplace.controller;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -25,7 +27,7 @@ public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
 	@Autowired
-	private MemberService memberService;
+	private MemberService memberService;	
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void register() {
@@ -72,7 +74,9 @@ public class MemberController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET) // 로그인
 	public void login(String target, Model model) {
 		logger.info("login(target: {}) 호출", target);
+		
 		model.addAttribute("targetUrl", target);
+		
 	} // end login(target)
 	
 	
@@ -83,7 +87,7 @@ public class MemberController {
 		Member loginResult = memberService.read(member);
 		
 		// loginResult Null 체크 여부 확인
-		// null이 아니면 session에 로그인 정보 저장,  target으로 redirect
+		// null이 아니면 session에 로그인 정보 저장, target으로 redirect
 		// -> 컨트롤러에서 직접 담당하지 않고, LoginInterceptor에서 담당.
 		model.addAttribute("loginResult", loginResult);
 		
@@ -98,8 +102,23 @@ public class MemberController {
 		// 해당 문장은 꼭 사용해야 로그아웃이 가능함
 		session.invalidate();
 		
-		return "redirect:/member/login";
+		return "redirect:/"; // 수정
 	} // end logout()
+	
+	@RequestMapping(value = "/profile", method = RequestMethod.GET)
+	public void profile(HttpSession session, Model model) {
+	
+//	Object memNo = session.getAttribute("memNo");
+//	Object loginId = session.getAttribute("loginId");
+//	Object loginPwd = session.getAttribute("loginPwd");
+//	Object loginEmail = session.getAttribute("loginEmail");
+//	Object loginTel = session.getAttribute("loginTel");
+//	Object loginDate = session.getAttribute("loginDate");
+//	
+//	Member profile = new Member((int)memNo, (String)loginId, (String)loginPwd, (String)loginEmail, (String)loginTel, (Date)loginDate);
+//	model.addAttribute("profile", profile);
+		
+	} // end profile()
 
 	
 } // end class MemberController

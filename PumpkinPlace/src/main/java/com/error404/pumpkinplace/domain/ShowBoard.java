@@ -5,7 +5,7 @@ import java.util.Date;
 public class ShowBoard {
 	
 	private long sb_no; // 공연 글 번호
-	private int sb_nm; // 공연자 이름
+	private String sb_nm; // 공연자 이름
 	private String sb_title; // 공연 제목
 	private String sb_content; // 공연 내용
 	private String sb_city; // 공연 지역
@@ -20,7 +20,7 @@ public class ShowBoard {
 	
 	public ShowBoard() {}
 
-	public ShowBoard(long sb_no, int sb_nm, String sb_title, String sb_content, String sb_city, int sb_price,
+	public ShowBoard(long sb_no, String sb_nm, String sb_title, String sb_content, String sb_city, int sb_price,
 			String sb_tel, String sb_locinfo, Date sb_regdate, String sb_img, String sb_video, Date sb_startdate,
 			Date sb_enddate) {
 		
@@ -47,11 +47,11 @@ public class ShowBoard {
 		this.sb_no = sb_no;
 	}
 
-	public int getSb_nm() {
+	public String getSb_nm() {
 		return sb_nm;
 	}
 
-	public void setSb_nm(int sb_nm) {
+	public void setSb_nm(String sb_nm) {
 		this.sb_nm = sb_nm;
 	}
 

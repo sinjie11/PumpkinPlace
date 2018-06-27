@@ -4,13 +4,16 @@ package com.error404.pumpkinplace.persistence;
 import java.util.List;
 
 import com.error404.pumpkinplace.domain.ShowBoard;
+import com.error404.pumpkinplace.pageutil.*;
 
 public interface ShowBoardDao {
 	
-	List<ShowBoard> select();
-	int insert(ShowBoard showboard);
-	ShowBoard select(int sb_no);
-	int update(ShowBoard showboard);
-	int delete(int sb_no);
-	
+	int insert(ShowBoard showBoard); // insert
+	List<ShowBoard> select(); // selectAll
+	int update(ShowBoard showBoard); // update
+	int delete(int sb_no); // delete
+	ShowBoard select(int sb_no); // selectBysb_no
+	int getNumOfShowBoardRecords(); // 게시글 카운트
+	List<ShowBoard> searchShowBoard(String keyword); // search
+	List<ShowBoard> select(PaginationCriteria criteria);
 }

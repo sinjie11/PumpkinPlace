@@ -8,7 +8,6 @@ body {
     text-align: center;
 }
 
-strong { font-weight: 500; }
 
 a, a:hover, a:focus {
 	color: #4aaf51;
@@ -149,7 +148,7 @@ img { max-width: 100%; }
 }
 
 .form-bottom form .input-error {
-	border-color: #4aaf51;
+	border-color: #c91610;
 }
 
 .social-login {

@@ -23,6 +23,28 @@
 	
 	<context:component-scan base-package="com.error404.pumpkinplace.controller" />
 	
+	<beans:bean id="LoginInterceptor"
+		class="com.error404.pumpkinplace.interceptor.LoginInterceptor">
+	</beans:bean>
 	
+	<beans:bean id="authInterceptor"
+		class="com.error404.pumpkinplace.interceptor.AuthInterceptor">
+	</beans:bean>
+	
+	
+	<!-- Interceptor 들이 어떤 요청 주소를 가로채서 처리할 지 설정 -->
+	<interceptors>
+	
+		<interceptor>
+			<mapping path="/board/register" />
+			<beans:ref bean="authInterceptor" />
+		</interceptor>
+	
+		<interceptor>
+			<mapping path="/member/login-post" />
+			<beans:ref bean="LoginInterceptor" />
+		</interceptor>
+			
+	</interceptors>
 	
 </beans:beans>
