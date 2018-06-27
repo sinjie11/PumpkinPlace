@@ -55,7 +55,6 @@ body {
 </head>
 <body>
 
-
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 
 		<div class="container-fluid">
@@ -385,10 +384,7 @@ body {
 			</div>
 		</div>
 	</div>
-
-
-
-
+	
 	<!-- footer -->
 	<footer class="container-fluid text-center">
 
