@@ -70,11 +70,17 @@ body {
 			<div class="collapse navbar-collapse" id="myNavbar">
 
 				<ul class="nav navbar-nav navbar-right">
-					<li style=" display:block; color: white; font-style:italic;"><a href="/pumpkinplace/member/profile">${loginId}님</a></li>
-					<li  id="loginYN"><a href="/pumpkinplace/member/login"><span
-							class="glyphicon glyphicon-log-in"></span> Login</a></li>
-					<li id="logoutYN" style=" display:none;"><a href="${targetUrl}"><span
-							class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+					<c:if test="${not empty loginId}">
+						<li style="color: white; font-style:italic;"><a href="/pumpkinplace/member/profile">${loginId}님</a></li>
+					</c:if>
+					<c:if test="${empty loginId}">
+						<li><a href="/pumpkinplace/member/login"><span
+								class="glyphicon glyphicon-log-in"></span> Login</a></li>
+					</c:if>
+					<c:if test="${not empty loginId}">
+						<li><a href="${targetUrl}"><span
+								class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+					</c:if>
 					<li><a href="/pumpkinplace/member/register"><span
 							class="glyphicon glyphicon-user"></span> Register </a></li>
 				</ul>
@@ -427,18 +433,6 @@ body {
 
 			}
 			
-		</script>
-		<script>
-		$(document).ready(function () {
-			System.out.println(${loginId} + "어이");
-			if(${loginId}.equals(null)) {
-				$('#loginYN').show();
-				$('#logoutYN').hide();
-			} else {
-				$('#loginYN').hide();
-				$('#logoutYN').show();
-			}
-		});
 		</script>
 		
 		<script
