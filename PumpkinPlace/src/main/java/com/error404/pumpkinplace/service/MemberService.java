@@ -10,4 +10,6 @@ public interface MemberService {
 	
 	Member read(Member member); // 로그인(아이디, 패스워드) 체크  서비스
 	
+	int update(Member member); // 회원정보 (패스워드, 이메일, 전화번호) 수정 서비스
+	
 } // end interface MemberService

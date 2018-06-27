@@ -39,5 +39,12 @@ public class MemberDaoImple implements MemberDao {
 				
 		return memberMapper.login(member);
 	} // end select(member)
+	
+	@Override
+	public int update(Member member) { // 회원정보 (패스워드, 이메일, 전화번호) 수정
+		logger.info("update(mem_pwd : {}, mem_email : {}, mem_tel : {}", member.getMem_pwd(), member.getMem_email(), member.getMem_tel());
+		
+		return memberMapper.updateMember(member);
+	} // end update(member)
 
 } // end class MemberDaoImple
