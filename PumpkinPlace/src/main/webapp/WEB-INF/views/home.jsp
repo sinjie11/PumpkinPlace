@@ -70,29 +70,29 @@ body {
 			<div class="collapse navbar-collapse" id="myNavbar">
 
 				<ul class="nav navbar-nav navbar-right">
-				
-				<!-- 접속 된 아이디 정보 -->
-					<li style="color: white; font-style:italic;">
-						<a href="/pumpkinplace/member/profile"> ${loginId}님</a>
-					</li>
+
+					<!-- 로그인 아이디 정보 -->
+					<c:if test="${not empty loginId}">
+						<li style="color: white; font-style:italic;"><a href="/pumpkinplace/member/profile">${loginId}님</a></li>
+					</c:if>
 					
-				<!-- 로그인 버튼  -->
-					<li id="loginYN" style="display: block;">
-						<a href="/pumpkinplace/member/login"><span></span> Login</a>
-					</li>
-						
-				<!-- 로그아웃 버튼 -->
-					<li id="logoutYN" style="display: none;">
-						<a href="${targetUrl}"><span class="glyphicon glyphicon-log-in"></span> Logout</a>
-					</li>
-				
-				<!-- 회원가입 버튼 -->
-					<li>
-						<a href="/pumpkinplace/member/register">
-						<span class="glyphicon glyphicon-user"></span> Register </a>
-					</li>
-				
-				</ul>
+					<!-- 로그인 버튼 -->
+					<c:if test="${empty loginId}">
+						<li><a href="/pumpkinplace/member/login"><span
+								class="glyphicon glyphicon-log-in"></span> Login</a></li>
+					</c:if>
+					
+					<!-- 로그아웃 버튼 -->
+					<c:if test="${not empty loginId}">
+						<li><a href="${targetUrl}"><span
+								class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+					</c:if>
+					
+					<!-- 회원가입 버튼 -->
+					<li><a href="/pumpkinplace/member/register"><span
+							class="glyphicon glyphicon-user"></span> Register </a></li>
+							
+					</ul>
 				
 			</div>
 		</div>
@@ -445,23 +445,6 @@ body {
 			
 		</script>
 		
-		<!-- 로그인 여부 스크립트 -->
-		<script>
-		$(document).ready(function () {
-			System.out.println(${loginId} + "어이");
-			if(${loginId}.equals(null)) {
-				$('#loginYN').show();
-				$('#logoutYN').hide();
-				
-			} else {
-				$('#loginYN').hide();
-				$('#logoutYN').show();
-			}
-		});
-					
-		</script>
-
-	
 		<script
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&callback=myMap"></script>
 		<!--
