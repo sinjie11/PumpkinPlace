@@ -151,7 +151,7 @@ body {
 						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#">Q&A<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Q&A</a></li>
+								<li><a href="/pumpkinplace/qnaboard/list">Q&A</a></li>
 							</ul></li>
 					</ul>
 				</div>
