@@ -106,7 +106,6 @@ public class MemberController {
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
 	public void profile() {
 		logger.info("profile() 호출");
-		
 	}
 
 	
