@@ -29,5 +29,11 @@ public class MemberServiceImple implements MemberService {
 	
 		return memberDao.select(member);
 	} // end read(member)
+	
+	@Override
+	public int update(Member member) {
+		
+		return memberDao.update(member);
+	} // end update(member)
 
 } // class end MemberServiceImple

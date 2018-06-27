@@ -10,6 +10,8 @@ public interface MemberMapper {
 	Member checkMemid(String mem_id);
 	
 	Member login(Member member);
+	
+	int updateMember(Member member);
 
 	
 } // end interface MemberMapper

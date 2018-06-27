@@ -55,7 +55,6 @@ body {
 </head>
 <body>
 
-
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 
 		<div class="container-fluid">
@@ -70,19 +69,35 @@ body {
 			<div class="collapse navbar-collapse" id="myNavbar">
 
 				<ul class="nav navbar-nav navbar-right">
-					<li style=" display:block; color: white; font-style:italic;"><a href="/pumpkinplace/member/profile">${loginId}님</a></li>
-					<li  id="loginYN"><a href="/pumpkinplace/member/login"><span
-							class="glyphicon glyphicon-log-in"></span> Login</a></li>
-					<li id="logoutYN" style=" display:none;"><a href="${targetUrl}"><span
-							class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+
+					<!-- 로그인 아이디 정보 -->
+					<c:if test="${not empty loginId}">
+						<li style="color: white; font-style:italic;"><a href="/pumpkinplace/member/profile">${loginId}님</a></li>
+					</c:if>
+					
+					<!-- 로그인 버튼 -->
+					<c:if test="${empty loginId}">
+						<li><a href="/pumpkinplace/member/login"><span
+								class="glyphicon glyphicon-log-in"></span> Login</a></li>
+					</c:if>
+					
+					<!-- 로그아웃 버튼 -->
+					<c:if test="${not empty loginId}">
+						<li><a href="/pumpkinplace/member/logout"><span
+								class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+					</c:if>
+					
+					<!-- 회원가입 버튼 -->
 					<li><a href="/pumpkinplace/member/register"><span
 							class="glyphicon glyphicon-user"></span> Register </a></li>
-				</ul>
+							
+					</ul>
+				
 			</div>
 		</div>
-
+	
+	
 		<h1 style="background-color: white; margin: 0%;">
-
 
 
 			<img alt="이미지"
@@ -369,10 +384,7 @@ body {
 			</div>
 		</div>
 	</div>
-
-
-
-
+	
 	<!-- footer -->
 	<footer class="container-fluid text-center">
 
@@ -427,18 +439,6 @@ body {
 
 			}
 			
-		</script>
-		<script>
-		$(document).ready(function () {
-			System.out.println(${loginId} + "어이");
-			if(${loginId}.equals(null)) {
-				$('#loginYN').show();
-				$('#logoutYN').hide();
-			} else {
-				$('#loginYN').hide();
-				$('#logoutYN').show();
-			}
-		});
 		</script>
 		
 		<script

@@ -25,7 +25,7 @@ public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
 	@Autowired
-	private MemberService memberService;
+	private MemberService memberService;	
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void register() {
@@ -100,14 +100,14 @@ public class MemberController {
 		// 해당 문장은 꼭 사용해야 로그아웃이 가능함
 		session.invalidate();
 		
-		return "redirect:/member/login";
+		return "redirect:/"; // 수정
 	} // end logout()
 	
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
 	public void profile() {
-		logger.info("profile() 호출");
-		
-	}
+			
+				
+	} // end profile()
 
 	
 } // end class MemberController
