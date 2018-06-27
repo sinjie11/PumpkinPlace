@@ -1,5 +1,9 @@
+<%@page import="com.error404.pumpkinplace.domain.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,16 +14,7 @@
 <h1>Profile</h1>
 
 아이디: ${loginId}
-<br/>
 
-이메일: 
-<br/>
-
-전화번호:
-<br/>
-
-가입일자:
-<br/>
 
 </body>
 </html>

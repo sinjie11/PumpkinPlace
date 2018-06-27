@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.error404.pumpkinplace.domain.Member;
@@ -107,7 +108,8 @@ public class MemberController {
 	public void profile() {
 		logger.info("profile() 호출");
 		
-	}
+				
+	} // end profile()
 
 	
 } // end class MemberController
