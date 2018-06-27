@@ -23,10 +23,11 @@ public class MemberDaoTest {
 	private MemberDao memberDao;
 	
 	@Test
-	public void doTest() {
+	public void doTest() { // 테스트 메소드 실행 부분
 //		insertTest();
 //		selectByMemid();
-		loginTest();
+//		loginTest();
+		updateTest();
 	} // end doTest()
 	
 	private void insertTest() { // 회원 추가 테스트
@@ -55,7 +56,13 @@ public class MemberDaoTest {
 		} else {
 			logger.info("로그인 실패");
 		}
-		
 	} // end loginTest()
+	
+	private void updateTest() { // 회원정보(패스워드, 이메일, 전화번호) 수정 테스트
+		Member m = new Member(0, "test", "1111", "king@lycos.co.kr", "02-2331-1111", null);
+		int result = memberDao.update(m);
+		
+		logger.info("Update result = {}", result);		
+	} // end updateTest()
 	
 } // end class MemberDaoTest

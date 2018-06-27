@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.error404.pumpkinplace.domain.Member;
@@ -100,14 +101,15 @@ public class MemberController {
 		// 해당 문장은 꼭 사용해야 로그아웃이 가능함
 		session.invalidate();
 		
-		return "redirect:/member/login";
+		return "redirect:/"; // 수정
 	} // end logout()
 	
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
 	public void profile() {
 		logger.info("profile() 호출");
 		
-	}
+				
+	} // end profile()
 
 	
 } // end class MemberController
