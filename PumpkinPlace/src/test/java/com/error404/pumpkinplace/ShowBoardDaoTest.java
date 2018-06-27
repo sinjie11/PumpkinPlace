@@ -25,14 +25,23 @@ public class ShowBoardDaoTest {
 	@Autowired private ShowBoardDao showboardDao;
 	
 	@Test
-	public void doTest() {
+	public void doTest() throws InterruptedException {
+		insertBulkData();
 //		insertTest();
 //		testSelectAll();
 //		testSelectBySbNo();
 //		testUpdate();
 //		testDelete();
-		testTotalCount();
+//		testTotalCount();
 //		testSearch();
+	}
+	
+	private void insertBulkData() throws InterruptedException {
+		for (int i = 1; i <= 100; i++) {
+			ShowBoard showBoard = new ShowBoard(0, "황총민", "밴드 컴백공연", "우리가 돌아왔다", "서울", 0, "02-234-4732", "서울시 강남구 00클럽", new Date(), "c://image", "c://video", new Date(), new Date());
+			showboardDao.insert(showBoard);
+			Thread.sleep(100);
+		}
 	}
 	
 	private void insertTest() {

@@ -4,6 +4,7 @@ package com.error404.pumpkinplace.persistence;
 import java.util.List;
 
 import com.error404.pumpkinplace.domain.ShowBoard;
+import com.error404.pumpkinplace.pageutil.*;
 
 public interface ShowBoardDao {
 	
@@ -14,5 +15,5 @@ public interface ShowBoardDao {
 	ShowBoard select(int sb_no); // selectBysb_no
 	int getNumOfShowBoardRecords(); // 게시글 카운트
 	List<ShowBoard> searchShowBoard(String keyword); // search
-	
+	List<ShowBoard> select(PaginationCriteria criteria);
 }

@@ -36,6 +36,18 @@
 		from ${tbl_show_board}
 	</select>
 	
+	<select id="listShowBoardPage" resultType="ShowBoard">
+		select b.sb_no, b.sb_nm, b.sb_title, b.sb_content, b.sb_city, b.sb_price, b.sb_tel, b.sb_locinfo, b.sb_regdate, b.sb_img, b.sb_video, b.sb_startdate, b.sb_enddate
+		from (
+		select rownum rn, a.*
+		from (
+		select * from pumpkin_show_board
+		order by sb_no desc
+		) a
+		) b
+		where rn between #{start} and #{end}
+	</select>
+	
 	<select id="searchShowBoard" resultType="ShowBoard">
 		select * from ${tbl_show_board}
 		where ${col_sb_nm} like #{searchKeyWord} or ${col_sb_title} like #{searchKeyWord} or ${col_sb_city} like #{searchKeyWord} or ${col_sb_content} like #{searchKeyWord} or ${col_sb_locinfo} like #{searchKeyWord}   
