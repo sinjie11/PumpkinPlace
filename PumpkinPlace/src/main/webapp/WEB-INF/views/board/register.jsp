@@ -65,9 +65,9 @@ body {
 			<input type="text" name="title" placeholder="글 제목" required /> <br />
 			<textarea rows="5" cols="50" name="content" placeholder="내용 작성"
 				required></textarea>
-			<br /> <input type="text" name="userid" value="${userId}"
-				readonly="readonly"><br /> <input type="submit"
-				value="작성 완료" />
+			<br />
+			<input type="text" name="userid" value="${loginId}" readonly><br />
+			<input type="submit" value="작성 완료" />
 		</form>
 
 
