@@ -107,10 +107,12 @@ body {
 <body>
 
 
-
 	<%@ include file="/WEB-INF/views/header.jspf"%>
 
 
+
+
+	<!-- end MenuBar -->
 
 	<div class="container text-center">
 		<h2 class="container text-center">New Event</h2>
@@ -198,8 +200,8 @@ body {
 
 			<div id="en_daytime">
 				<label for="event_공연 날짜">공연 날짜 / 시간: <input type="text"
-					id="startdate" placeholder="공연 시작 날짜 선택" required> 
-					<input type="text" name="time1" value="" placeholder="시간 입력" id="time1"
+					id="startdate" placeholder="공연 시작 날짜 선택" required> <input
+					type="text" name="time1" value="" placeholder="시간 입력" id="time1"
 					required size="8" maxlength="5"> ~ <input type="text"
 					id="enddate" placeholder="공연 종료 날짜 선택" required> <input
 					type="text" name="time2" value="" placeholder="시간 입력" id="time2"
@@ -233,7 +235,7 @@ body {
 			<div id="en_venue">
 
 
-			
+
 				<p>
 					<label for="event_공연장:"> 공연장: <input
 						id="event_venue_tokens" name="event[venue_tokens]" type="text"
@@ -406,37 +408,7 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 
 </footer>
 
-<!-- footer -->
-<footer class="container-fluid text-center">
-
-
-	<!-- Container (Contact Section) -->
-	<div id="contact" class="container-fluid bg-grey">
-
-
-		<div class="row">
-			<div class="col-sm-5">
-				<!-- 가운데 정렬해주는거 -->
-				<div class="container text-center" style="margin-left: 370px;">
-					<p>Contact us and we'll get back to you within 24 hours.</p>
-					<p>
-						<span class="glyphicon glyphicon-map-marker"></span> Team
-						Error404, KOR
-					</p>
-					<p>
-						<span class="glyphicon glyphicon-phone"></span> +00 1515151515
-					</p>
-					<p>
-						<span class="glyphicon glyphicon-envelope"></span>
-						doojinzzang@something.com
-					</p>
-				</div>
-
-			</div>
-		</div>
-	</div>
-</footer>
-
+<%@ include file="/WEB-INF/views/footer.jspf"%>
 
 </html>
 
