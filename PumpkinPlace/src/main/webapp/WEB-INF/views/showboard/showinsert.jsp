@@ -16,14 +16,12 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- jquery -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
+
 
 <style>
 /* Remove the navbar's default margin-bottom and rounded borders */
@@ -54,7 +52,6 @@ footer {
 body {
 	position: relative; /* For scrollyspy */
 	padding-top: 300px; /*Account for fixed navbar */
-	background-color: #f8f8f8;
 }
 
 .youtubeWrap {
@@ -68,45 +65,43 @@ body {
 	width: 100%;
 	height: 100%;
 }
- /* Always set the map height explicitly to define the size of the div
+/* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      
-      .controls {
-        background-color: #fff;
-        border-radius: 2px;
-        border: 1px solid transparent;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        box-sizing: border-box;
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-        height: 29px;
-        margin-left: 17px;
-        margin-top: 10px;
-        outline: none;
-        padding: 0 11px 0 13px;
-        text-overflow: ellipsis;
-        width: 400px;
-      }
 
-      .controls:focus {
-        border-color: #4d90fe;
-      }
-      .title {
-        font-weight: bold;
-      }
-      #infowindow-content {
-        display: none;
-      }
-      #map #infowindow-content {
-        display: inline;
-      }
+/* Optional: Makes the sample page fill the window. */
+.controls {
+	background-color: #fff;
+	border-radius: 2px;
+	border: 1px solid transparent;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+	box-sizing: border-box;
+	font-family: Roboto;
+	font-size: 15px;
+	font-weight: 300;
+	height: 29px;
+	margin-left: 17px;
+	margin-top: 10px;
+	outline: none;
+	padding: 0 11px 0 13px;
+	text-overflow: ellipsis;
+	width: 400px;
+}
 
+.controls:focus {
+	border-color: #4d90fe;
+}
 
+.title {
+	font-weight: bold;
+}
+
+#infowindow-content {
+	display: none;
+}
+
+#map #infowindow-content {
+	display: inline;
+}
 </style>
 </head>
 <body>
@@ -208,42 +203,99 @@ body {
 		<h2 class="container text-center">New Event</h2>
 		<hr>
 
-		<form accept-charset="UTF-8" action="/events" class="new_event"
-			enctype="multipart/form-data" id="event_form" method="post">
+
+		<form action="showinsert" method="post" enctype="multipart/form-data">
 			<div style="margin: 0; padding: 0; display: inline">
 				<input name="utf8" type="hidden" value="&#x2713;" /> <input
 					name="authenticity_token" type="hidden"
 					value="V/YmJsJD2LJVCi0HoeIknFutTxFudHJCyCNYLsakG/U=" />
 			</div>
-			<div>
 
+			<div>
 				<p>
-					<label for="event_공연 포스터:">공연 포스터 <br /> <img alt="이미지"
-						src=""> <input id="event_avatar" name="event[avatar]"
-						type="file" /></label>
+					<label for="event_공연 포스터:">공연 포스터 <br /> <br /> <img
+						id="blah" src="#" alt="your image" /> <br /> <input type='file'
+						id="imgInp" name="uploadFile" />
+					</label> <br />
+					<!-- <input type="file" name="uploadFile" id="imgInp" />   -->
+					<!-- 업로드 버튼(나중에 삭제) -->
+					<!-- 	<input type="submit" value="Upload" /></label> -->
+					<!-- end 업로드 -->
 				</p>
 				<p>공연을 위한 포스터를 업로드해주세요. 그렇지 않을 경우 대체 이미지가 사용됩니다.</p>
 				<br />
 			</div>
 
+
+			<!-- 사진 저장 -->
+			<script>
+				$(document).ready(function() {
+			if (${not empty saved}) {
+				alert('${saved}' + 'SAVED');
+			}
+				});
+			</script>
+			<!-- 사진저장 -->
+
+			<!-- 사진 미리보기 -->
+			<script type="text/javascript">
+        $(function() {
+            $("#imgInp").on('change', function(){
+                readURL(this);
+            });
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                    $('#blah').attr('src', e.target.result);
+                }
+
+              reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+
+    </script>
+			<!-- end 미리보기 -->
+
+
+
+
+			<!-- 제목 -->
 			<div id="en_title">
 				<p>
 					<label for="event_공연 이름 :">공연 제목: <input id="show_name"
-						name="event" type="text" style="text-align: center; width: 200px;" /></label>
+						name="event" type="text" style="text-align: center; width: 200px;"
+						required /></label>
 				</p>
 			</div>
-			<br />
 
 
+			<!-- 뮤지션이름 -->
 			<div id="en_bands">
 				<p>
 					<label for="event_공연하는 밴드:">뮤지션명: <input
 						id="event_band_tokens" name="event[band_tokens]" type="text"
-						style="text-align: center; width: 200px;" /></label>
+						style="text-align: center; width: 200px;" required /></label>
 				</p>
+			</div>
+
+			<div id="en_daytime">
+				<label for="event_공연 날짜">공연 날짜 / 시간: <input type="text"
+					id="startdate" placeholder="공연 시작 날짜 선택" required> <input
+					type="text" name="time1" value="" placeholder="시간 입력" id="time1"
+					required size="8" maxlength="5"> ~ <input type="text"
+					id="enddate" placeholder="공연 종료 날짜 선택" required> <input
+					type="text" name="time2" value="" placeholder="시간 입력" id="time2"
+					required size="8" maxlength="5"></label>
 			</div>
 			<br />
 
+
+			<!-- 지역 -->
 			<div id="en_city">
 				<p>
 					<label for="event_도시:"> 도시: <select id="country"
@@ -258,107 +310,28 @@ body {
 					</select></label>
 				</p>
 			</div>
-			<br />
-			
-				
-	  <input id="pac-input" class="controls" type="text"
-        placeholder="Enter a location">
-    <div id="map"></div>
-    <div id="infowindow-content">
-      <span id="place-name"  class="title"></span><br>
-      Place ID <span id="place-id"></span><br>
-      <span id="place-address"></span>
-    </div>
 
-    <script>
-      // This sample uses the Place Autocomplete widget to allow the user to search
-      // for and select a place. The sample then displays an info window containing
-      // the place ID and other information about the place that the user has
-      // selected.
 
-      // This example requires the Places library. Include the libraries=places
-      // parameter when you first load the API. For example:
-      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -33.8688, lng: 151.2195},
-          zoom: 13
-        });
 
-        var input = document.getElementById('pac-input');
+			<!-- 공연장 -->
 
-        var autocomplete = new google.maps.places.Autocomplete(input);
-        autocomplete.bindTo('bounds', map);
-
-        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-        var infowindow = new google.maps.InfoWindow();
-        var infowindowContent = document.getElementById('infowindow-content');
-        infowindow.setContent(infowindowContent);
-        var marker = new google.maps.Marker({
-          map: map
-        });
-        marker.addListener('click', function() {
-          infowindow.open(map, marker);
-        });
-
-        autocomplete.addListener('place_changed', function() {
-          infowindow.close();
-          var place = autocomplete.getPlace();
-          if (!place.geometry) {
-            return;
-          }
-
-          if (place.geometry.viewport) {
-            map.fitBounds(place.geometry.viewport);
-          } else {
-            map.setCenter(place.geometry.location);
-            map.setZoom(17);
-          }
-
-          // Set the position of the marker using the place ID and location.
-          marker.setPlace({
-            placeId: place.place_id,
-            location: place.geometry.location
-          });
-          marker.setVisible(true);
-
-          infowindowContent.children['place-name'].textContent = place.name;
-          infowindowContent.children['place-id'].textContent = place.place_id;
-          infowindowContent.children['place-address'].textContent =
-              place.formatted_address;
-          infowindow.open(map, marker);
-        });
-      }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&libraries=places&callback=initMap"
-        async defer></script>
-    
 
 			<div id="en_venue">
+
+
 			
-		
 				<p>
 					<label for="event_공연장:"> 공연장: <input
 						id="event_venue_tokens" name="event[venue_tokens]" type="text"
-						style="text-align: center; width: 200px;" /></label>
+						style="text-align: center; width: 200px;" required /></label>
 				</p>
 			</div>
 			<br />
 
 
-			<div id="en_daytime">
-				<label for="event_공연 날짜">공연 날짜 / 시간: <input type="text"
-					id="startdate" placeholder="공연 시작 날짜 선택"> <input
-					type="text" name="time1" value="" placeholder="시간 입력" id="time1"
-					required size="8" maxlength="5"> ~ <input type="text"
-					id="enddate" placeholder="공연 종료 날짜 선택"> <input type="text"
-					name="time2" value="" placeholder="시간 입력" id="time2" required
-					size="8" maxlength="5"></label>
-			</div>
-			<br />
 
+			<!-- 연락처 -->
 			<div id="en_phone">
 				<label for="event_연락처:">연락처: <input id="event_contact"
 					name="event[contact]" type="text"
@@ -367,70 +340,79 @@ body {
 			</div>
 			<br />
 
+			<!-- 가격 -->
 			<div id="en_price">
 				<p>
-					<label for="event_현매:">가격: <input id="event_door_price"
+					<label for="event_현매:"> 가격:<input id="event_door_price"
 						name="event[door_price]" type="number"
-						style="text-align: center; width: 200px; margin-left: 12px;" />
+						style="text-align: center; width: 200px; margin-left: 18px;" />
 					</label>
 				</p>
 			</div>
 			<br />
 
-
+			<!-- 상세정보 -->
 			<div id="en_description">
-				<label for="event_공연 상세 정보 (한글)">공연 상세 정보 </label> <br />
-				<textarea id="event_info" name="event[info]" cols="100" rows="5">
-</textarea>
+				<label>상세 정보</label>
+				<textarea name="description" rows="10" cols="20" id="text"
+					class="froalaeditor" style="width: 100%; text-align: left;"
+					required></textarea>
+				<br />
+
 			</div>
 			<br />
 
 			<div id="en_player">
+
+
+				<div class="links"></div>
 				<p>
-					<label for="event_영상:">영상: <input id="event_player"
-						name="event[player]" type="text"
-						style="text-align: center; width: 200px; margin-left: 12px;"
-						placeholder="유투브 링크를 입력해주세요" />
+
+					<label for="event_영상:">영상: <input id="youtube"
+						name="${youtube}" type="text"
+						style="text-align: center; width: 300px; margin-left: 12px;"
+						placeholder="YouTube 링크를 입력해주세요" />
 					</label>
 				</p>
 			</div>
 			<br />
 
+
 			<!-- start 유투브 -->
 
-			<div style="margin-right: 50%;">
-				<iframe width="560" height="315"
-					src="https://www.youtube.com/embed/hcLPCxLdRjs" frameborder="0"
-					allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
+
+			<div style="margin-right: 50%;">
+				<iframe width="560" height="315" src="${youtube}" frameborder="0"
+					allow="autoplay; encrypted-media" allowfullscreen></iframe>
 				<script>
-					jQuery(document)
-							.ready(
-									function($) {
-										$(
-												'iframe[src^="https://www.youtube.com/"]')
-												.wrap(
-														'<div class="youtubeWrap"></div>');
+					jQuery(document).ready(
+							function($) {
+										$('iframe[src^="https://www.youtube.com/"]').wrap(
+										'<div class="youtubeWrap"></div>');
 									});
 				</script>
+
+
+
+
 			</div>
 			<!-- end 유투브 -->
 
-			<script>
-				//<![CDATA[
-				if (typeof CKEDITOR != 'undefined') {
-					CKEDITOR.replace('event_info_ko');
-				}
-				//]]>
-			</script>
-			<br /> <input class="btn btn-primary" name="commit" type="submit"
-				value="등록" style="margin-bottom: 50px;" />
+
+
+			<br /> <input class="btn btn-primary" name="uploadFile"
+				type="submit" value="등록" style="margin-bottom: 50px;" />
 
 		</form>
-		<script type="text/javascript">
-			CKEDITOR.config.removePlugins = 'elementspath,print,newpage,preview,templates,save,sourcearea,htmlwriter,iframe,image,indent,filebrowser,find,fakeobjects,flash,floatingspace,listblock,richcombo';
-		</script>
+
+
+
+
+
 	</div>
+
+	<!-- 날짜 선택 -->
 	<script>
 		$(function() {
 			$("#startdate, #enddate").datepicker({
@@ -438,63 +420,13 @@ body {
 			});
 		});
 	</script>
-	<script type="text/javascript">
-		$("#time1,time2").timepicker({
-
-			step : 5, //시간간격 : 5분
-
-			timeFormat : "H:i" //시간:분 으로표시
-
-		});
-	</script>
 
 
 
 
 
 
-	<script>
-		(function(i, s, o, g, r, a, m) {
-			i['GoogleAnalyticsObject'] = r;
-			i[r] = i[r] || function() {
-				(i[r].q = i[r].q || []).push(arguments)
-			}, i[r].l = 1 * new Date();
-			a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-			a.async = 1;
-			a.src = g;
-			m.parentNode.insertBefore(a, m)
-		})(window, document, 'script',
-				'//www.google-analytics.com/analytics.js', 'ga');
 
-		ga('create', 'UA-4287177-24', 'doindie.co.kr');
-		ga('send', 'pageview');
-
-		// workaround of jQuery tokeninput for Korean characters
-		setTimeout(function() {
-			$('input[id^="token-input"]').bind('input.autocomplete',
-					function() {
-						$(this).trigger('keydown');
-					});
-		}, 500);
-	</script>
-	<script type="text/javascript">
-		$(document)
-				.ready(
-						function() {
-							$
-									.stratus({
-										links : 'https://soundcloud.com/do-indie/sets/2017-10-doindie-playlist-oct',
-										random : true,
-										buying : false,
-										stats : false
-									});
-							$("#stratus").attr("data-turbolinks-permanent", "");
-						});
-	</script>
-	
-	
-
-	
 </body>
 
 <!-- footer -->
@@ -538,7 +470,7 @@ body {
 
 			var mapProp = {
 				center : myCenter,
-				zoom : 12,
+				zoom : 16,
 				scrollwheel : false,
 				draggable : false,
 				mapTypeId : google.maps.MapTypeId.ROADMAP
