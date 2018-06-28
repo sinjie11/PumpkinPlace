@@ -61,9 +61,8 @@ body {
 </head>
 
 <body>
-
 	<%@ include file="/WEB-INF/views/header.jspf"%>
-<div class="container text-center">
+	<div class="container text-center">
 	<h1>수정 페이지</h1>
 
 	<form id="form-update" action="update" method="post">
