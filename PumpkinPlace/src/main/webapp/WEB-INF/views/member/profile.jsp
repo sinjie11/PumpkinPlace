@@ -65,7 +65,7 @@ body {
 <body>
 
 	<%@ include file="/WEB-INF/views/header.jspf"%>
-
+<div class="container text-center">
 	<h1>Profile</h1>
 
 	<form action="update">
@@ -97,7 +97,7 @@ body {
 		<button id=btnUpdate type="submit">수정</button>
 		
 	</form>
-
+</div>
 <script>
 
 $(document).ready(function () {
