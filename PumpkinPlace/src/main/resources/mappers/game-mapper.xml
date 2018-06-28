@@ -19,6 +19,7 @@
 	<!-- 2) 회원의 포인트와 최고점수를 갱신하는 SQL Statement -->
 	<update id="updatePointAndScore">
 		update ${tbl_game}
+		
 		set ${col_mem_account} =#{mem_account},
 		${col_mem_gamescore} = #{mem_gamescore}
 		where ${col_mem_no}=
