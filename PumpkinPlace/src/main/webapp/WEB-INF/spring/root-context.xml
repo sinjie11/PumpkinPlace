@@ -18,7 +18,7 @@
 	</bean>
 	  <bean id="uploadPath" class="java.lang.String">
         <constructor-arg 
-            value="C:\\Users\\stu\\git\\Pumpkinplace\\PumpkinPlace\\src\\main\\webapp\\resources\\assets\\img\\showboard" />
+            value="jdbc:oracle:thin:@192.168.11.4:1521:xe" />
     </bean>
 
 	<bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

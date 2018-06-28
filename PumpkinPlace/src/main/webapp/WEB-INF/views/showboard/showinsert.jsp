@@ -106,98 +106,9 @@ body {
 </head>
 <body>
 
-
-
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#myNavbar">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-
-			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/pumpkinplace/member/login"><span
-							class="glyphicon glyphicon-log-in"></span> Login</a></li>
-					<li><a href="/pumpkinplace/member/register"><span
-							class="glyphicon glyphicon-user"></span> Register </a></li>
-				</ul>
-			</div>
-		</div>
-
-		<h1 style="background-color: white; margin: 0%;">
-
-
-
-			<img alt="이미지"
-				src="${pageContext.request.contextPath}/resources/logo.png"
-				style="background-color: white; width: 100%; height: 200px;" />
-		</h1>
-
-		<nav class="navbar navbar-inverse">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target="#menuNavbar">
-						<span class="icon-bar"> </span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-
-				</div>
-
-
-				<div class="collapse navbar-collapse" id="menuNavbar">
-					<ul class="nav navbar-nav">
-						<li class=""><a href="/pumpkinplace/">Home</a></li>
-						<li class="active"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#">공연<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="/pumpkinplace/showboard/showboardmain">공연</a></li>
-								<li><a href="#">공연 등록</a></li>
-							</ul></li>
-						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#">게시판 <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="/pumpkinplace/board/list">자유 게시판</a></li>
-							</ul></li>
-						<!--  -->
-						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#">중고 거래<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">기타</a></li>
-								<li><a href="#">베이스</a></li>
-								<li><a href="#">드럼/퍼커션</a></li>
-								<li><a href="#">앰프</a></li>
-								<li><a href="#">음향장비</a></li>
-								<li><a href="#">etc</a></li>
-							</ul></li>
-						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#">구인 구직<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">구인</a></li>
-								<li><a href="#">구직</a></li>
-							</ul></li>
-						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#">Q&A<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Q&A</a></li>
-							</ul></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-	</nav>
+	<%@ include file="/WEB-INF/views/header.jspf"%>
 
 	<!-- end MenuBar -->
-
-
-
-
 
 	<div class="container text-center">
 		<h2 class="container text-center">New Event</h2>
@@ -285,8 +196,8 @@ body {
 
 			<div id="en_daytime">
 				<label for="event_공연 날짜">공연 날짜 / 시간: <input type="text"
-					id="startdate" placeholder="공연 시작 날짜 선택" required> 
-					<input type="text" name="time1" value="" placeholder="시간 입력" id="time1"
+					id="startdate" placeholder="공연 시작 날짜 선택" required> <input
+					type="text" name="time1" value="" placeholder="시간 입력" id="time1"
 					required size="8" maxlength="5"> ~ <input type="text"
 					id="enddate" placeholder="공연 종료 날짜 선택" required> <input
 					type="text" name="time2" value="" placeholder="시간 입력" id="time2"
@@ -320,7 +231,7 @@ body {
 			<div id="en_venue">
 
 
-			
+
 				<p>
 					<label for="event_공연장:"> 공연장: <input
 						id="event_venue_tokens" name="event[venue_tokens]" type="text"
@@ -493,37 +404,7 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 
 </footer>
 
-<!-- footer -->
-<footer class="container-fluid text-center">
-
-
-	<!-- Container (Contact Section) -->
-	<div id="contact" class="container-fluid bg-grey">
-
-
-		<div class="row">
-			<div class="col-sm-5">
-				<!-- 가운데 정렬해주는거 -->
-				<div class="container text-center" style="margin-left: 370px;">
-					<p>Contact us and we'll get back to you within 24 hours.</p>
-					<p>
-						<span class="glyphicon glyphicon-map-marker"></span> Team
-						Error404, KOR
-					</p>
-					<p>
-						<span class="glyphicon glyphicon-phone"></span> +00 1515151515
-					</p>
-					<p>
-						<span class="glyphicon glyphicon-envelope"></span>
-						doojinzzang@something.com
-					</p>
-				</div>
-
-			</div>
-		</div>
-	</div>
-</footer>
-
+<%@ include file="/WEB-INF/views/footer.jspf"%>
 
 </html>
 
