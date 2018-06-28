@@ -115,6 +115,32 @@ public class MemberController {
 		model.addAttribute("member", m);
 
 	} // end profile()
+	
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	public void update(String mem_id, Model model) {
+		logger.info("update(mem_id: {})", mem_id);
+		
+		Member m = memberService.read(mem_id);
+		
+		model.addAttribute("member", m);
+	
+	} // end update(mem_id, model)
+	
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(Member member, RedirectAttributes attr) {
+		logger.info("update(member: {})", member);
+		
+		// RedirectAttributes: redirect 방식에서 View(JSP)에게 데이터를 전달할 때 사용하는 객체
+		// redirectAttributes.addFlashAttribute(이름, 값);
+		int result = memberService.update(member);
+		if (result == 1) {
+			attr.addFlashAttribute("result", "s");
+			
+		}		
+		
+		return "redirect:profile?mem_id=" + member.getMem_id();
+		
+	} // end update(member,attr)
 
 
 	
