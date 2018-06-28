@@ -8,22 +8,19 @@
 	<!-- board 테이블 sql 쿼리문 작성 -->
 
 	<!-- Insert Statement -->
-	<insert id="insert">
+	<insert id="insert" parameterType="java.util.Map">
 		insert into ${tbl_board} (${col_b_section},
-		${col_b_title},
-		${col_b_content},
+		${col_b_title}, ${col_b_content},
 		${col_b_id}, ${col_b_img},
-		${col_b_video}, ${col_b_readcnt},
-		${col_b_up}, ${col_b_down})
+		${col_b_video})
 		values
-		(#{b_section}, #{b_title}, #{b_content}, #{b_id},
-		#{b_img}, #{b_video},
-		#{b_readcnt}, #{b_up}, #{b_down})
+		(#{b_section, jdbcType=INTEGER}, #{b_title, jdbcType=VARCHAR}, #{b_content, jdbcType=CLOB}, 
+		#{b_id, jdbcType=VARCHAR}, #{b_img,  jdbcType=VARCHAR}, #{b_video,  jdbcType=VARCHAR})
 	</insert>
 
-	<!-- Section No를 이용해 Board의 종류를 가려낸 후 게시판 첫 화면에서 요구하는 데이터들을 뽑아내는 Select 
-		Statement -->
-	<select id="selectBoardInfoBySectionNo" resultType="Board">
+	<!-- Section No를 이용해 Board의 종류를 가려낸 후 게시판 첫 화면에서 요구하는 
+	데이터들을 뽑아내는 Select Statement -->
+	<select id="selectBySectionNo" resultType="Board">
 		select
 		${col_b_no}, ${col_b_title}, ${col_b_content}, ${col_b_id},
 		${col_b_regdate}, ${col_b_readcnt}
@@ -33,7 +30,8 @@
 	</select>
 
 	<select id="totalCount" resultType="Integer">
-		select count(${col_b_no}) from
+		select count(${col_b_no})
+		from
 		${tbl_board}
 	</select>
 
@@ -47,6 +45,19 @@
 		order by bno desc
 		) a
 		) b
-		where rn between #{start} and #{end}
+		where rn between
+		#{start} and #{end}
 	</select>
+
+	<update id="update">
+		update ${tbl_board}
+		set ${col_b_title} = #{b_title}, ${col_b_content} = #{b_content},
+		${col_b_regdate} = sysdate
+		where ${col_b_bno} = #{b_no}
+	</update>
+
+	<delete id="delete">
+		delete from ${tbl_board} where ${col_b_no} = #{b_no}
+	</delete>
+	
 </mapper>

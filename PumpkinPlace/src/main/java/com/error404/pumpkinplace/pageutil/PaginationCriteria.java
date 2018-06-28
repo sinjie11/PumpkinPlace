@@ -10,7 +10,7 @@ public class PaginationCriteria {
 		numsPerPage = 10; // 한 페이지에 보여줄 글 갯수 = 10
 	}
 	
-	public PaginationCriteria(int page, int numsPerPage) {
+	public PaginationCriteria(int page, int numsPerPage) {  // 10/20/40개로 보여주려면 이 생성자를 호출
 		this.page = page;
 		this.numsPerPage = numsPerPage;
 	}

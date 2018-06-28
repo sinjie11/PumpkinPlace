@@ -1,5 +1,7 @@
 package com.error404.pumpkinplace.controller;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -12,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.error404.pumpkinplace.domain.Member;
@@ -26,7 +27,7 @@ public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
 	@Autowired
-	private MemberService memberService;
+	private MemberService memberService;	
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void register() {
@@ -105,11 +106,16 @@ public class MemberController {
 	} // end logout()
 	
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
-	public void profile() {
+	public void profile(HttpSession session, Model model) {
+
 		logger.info("profile() 호출");
-		
 				
+		Member m = memberService.read((String) session.getAttribute("loginId"));
+		
+		model.addAttribute("member", m);
+
 	} // end profile()
+
 
 	
 } // end class MemberController

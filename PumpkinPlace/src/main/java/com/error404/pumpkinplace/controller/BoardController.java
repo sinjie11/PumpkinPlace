@@ -18,8 +18,6 @@ import com.error404.pumpkinplace.domain.Board;
 import com.error404.pumpkinplace.pageutil.PageLinkMaker;
 import com.error404.pumpkinplace.pageutil.PaginationCriteria;
 
-// Update, Deletion 은 일단 주석처리 해놓았습니다.
-
 @Controller
 @RequestMapping(value = "/board")
 public class BoardController {
@@ -31,7 +29,7 @@ public class BoardController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void list(Integer page, Integer numsPerPage, Model model) {
 		logger.info("list() 호출");
-		
+		// numsPerPage에 들어갈 수는 10/20/40 중 하나 
 		PaginationCriteria criteria = new PaginationCriteria();
 		if (page != null) {
 			criteria.setPage(page);
@@ -60,7 +58,6 @@ public class BoardController {
 	public String register(Board board) {
 		logger.info("register({}) POST 호출", board);
 		boardService.create(board);
-		
 		return "redirect:/board/list";
 	} 
 	
@@ -74,53 +71,50 @@ public class BoardController {
 		model.addAttribute("board", board);
 	} 
 	
-//	@RequestMapping(value = "/update", method = RequestMethod.GET)
-//	public void update(
-//			@ModelAttribute("criteria") PaginationCriteria criteria,
-//			int b_no, Model model) {
-//		logger.info("update(bno: {})", b_no);
-//		Board board = boardService.read(b_no);
-//		model.addAttribute("board", board);
-//		
-//	}
-//	
-//	@RequestMapping(value = "/update", method = RequestMethod.POST)
-//	public String update(
-//			@ModelAttribute("criteria") PaginationCriteria criteria,
-//			Board board, RedirectAttributes attr) {
-//		logger.info("update(board: {})", board);
-//		int result = boardService.update(board);
-//		if (result == 1) {
-//			attr.addFlashAttribute("updateResult", "success");
-//		}
-//		// Model: forward 방식에서 View(JSP)에게 데이터를 전달할 때 사용하는 객체
-//		// model.addAttribute(이름, 값);
-//		// RedirectAttributes: redirect 방식에서 View(JSP)에게 데이터를 전달할 때 사용하는 객체
-//		// redirectAttributes.addFlashAttribute(이름, 값);
-//		
-//		return "redirect:detail?b_no=" + board.getB_no();
-//	} 
-//	
-//	@RequestMapping(value = "delete", method = RequestMethod.GET)
-//	public String delete(int b_no, RedirectAttributes attr) {
-//		logger.info("delete(bno: {})", b_no);
-//		int result = boardService.delete(b_no);
-//		if (result == 1) {
-//			attr.addFlashAttribute("bno", b_no);
-//			attr.addFlashAttribute("deleteResult", "success");
-//		}
-//		
-//		return "redirect:list";
-//	}
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	public void update(
+			@ModelAttribute("criteria") PaginationCriteria criteria,
+			int b_no, Model model) {
+		logger.info("update(b_no: {})", b_no);
+		Board board = boardService.read(b_no);
+		model.addAttribute("board", board);
+		
+	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(
+			@ModelAttribute("criteria") PaginationCriteria criteria,
+			Board board, RedirectAttributes attr) {
+		logger.info("update(board: {})", board);
+		int result = boardService.update(board);
+		if (result == 1) {
+			attr.addFlashAttribute("updateResult", "success");
+		}
+		
+		return "redirect:detail?b_no=" + board.getB_no();
+	} 
+	
+	@RequestMapping(value = "delete", method = RequestMethod.GET)
+	public String delete(int b_no, RedirectAttributes attr) {
+		logger.info("delete(bno: {})", b_no);
+		int result = boardService.delete(b_no);
+		if (result == 1) {
+			attr.addFlashAttribute("bno", b_no);
+			attr.addFlashAttribute("deleteResult", "success");
+		}
+		
+		return "redirect:list";
+	}
 	
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public void search(int searchType, String searchKeyword,
 			Model model) {
 		logger.info("search(type: {}, keyword: {})",
 				searchType, searchKeyword);
-		List<com.error404.pumpkinplace.domain.Board> list = 
+		List<Board> list = 
 				boardService.read(searchType, searchKeyword);
 		model.addAttribute("boardList", list);
-		model.addAttribute("searchKeyword", searchKeyword);
-	} 
+		model.addAttribute("searchKeyword", searchKeyword);  
+	} 	 
+	
 }

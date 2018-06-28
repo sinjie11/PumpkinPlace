@@ -59,10 +59,10 @@ public class BoardDaoImple implements BoardDao {
 	} 
 	
 	@Override
-	public int delete(int bno) {
-		logger.info("delete(bno: {})", bno);
+	public int delete(int b_no) {
+		logger.info("delete(b_no: {})", b_no);
 		
-		return sqlSession.delete(NAMESPACE + ".delete", bno);
+		return sqlSession.delete(NAMESPACE + ".delete", b_no);
 	} 
 	
 	@Override
@@ -73,9 +73,15 @@ public class BoardDaoImple implements BoardDao {
 		args.put("searchKeyword", "%" + keyword + "%");
 		List<Board> list =
 				sqlSession.selectList(NAMESPACE + ".search", args);
-		
+
 		return list;
 	} 
+	
+	@Override
+	public List<Board> selectBySectionNo(int sectionNo) {
+		logger.info("selectBySectionNo() 호출");
+		return sqlSession.selectList(NAMESPACE + ".selectBySectionNo");
+	}
 	
 	// ************* 페이지 처리 관련 Overridden Method *************
 	

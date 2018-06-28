@@ -1,10 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <title>Pumk</title>
 <meta charset="utf-8">
@@ -103,9 +103,9 @@ body {
 
 				<div class="collapse navbar-collapse" id="menuNavbar">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="/pumpkinplace/">Home</a></li>
-						<li class="dropdown"><a class="dropdown-toggle" style="color: white;
-							data-toggle="dropdown" href="#">공연<span class="caret"></span></a>
+						<li class=""><a href="/pumpkinplace/">Home</a></li>
+						<li class="active" ><a class="dropdown-toggle"
+							data-toggle="dropdown">공연<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="/pumpkinplace/showboard/showboardmain">공연</a></li>
 								<li><a href="/pumpkinplace/showboard/showinsert">공연 등록</a></li>
@@ -150,7 +150,7 @@ body {
 	<div class="container text-center">
 		<div class="tab-content">
 			<form action="search" style="float: right; margin-right: 30px;">
-				<input type="text" id="startdate" placeholder="공연 날짜 선택"> <input
+				<input type="text" id="startdate" placeholder="공연 날짜 선택" /> <input
 					type="submit" value="Search" />
 			</form>
 			<br /> <br />
@@ -168,113 +168,25 @@ body {
 				<div class="row">
 					<div class="col-md-12">
 						<div class="row">
-							<div class="col-md-3">
-								<a href="/pumpkinplace/showboard/showdetail"> <img
-									alt="Bootstrap Image Preview"
-									src="http://ticketimage.interpark.com/Play/image/large/18/18008332_p.gif" /></a>
-								<div class="card">
-									<h5 class="card-header">
-										<b>Card title</b>
-									</h5>
-									<div class="card-body">
-										<p class="card-text">Card content</p>
+							<c:forEach var="showboard" items="${showboardList}">
+								<div class="col-md-3">
+									<a href="/pumpkinplace/showboard/showdetail/${showboard.sb_no}">
+										<img alt="Bootstrap Image Preview"
+										src="http://ticketimage.interpark.com/Play/image/large/18/18008332_p.gif" />
+									</a>
+									<div class="card">
+										<h5 class="card-header">
+											<b>${showboard.sb_title}</b>
+										</h5>
+										<div class="card-body">
+											<p class="card-text">${showboard.sb_nm}</p>
+										</div>
+										<fmt:formatDate value="${showboard.sb_startdate}"
+											pattern="yyyy년 MM월 dd일 HH시 mm분" var="startdate" />
+										<div class="card-footer">${startdate}</div>
 									</div>
-									<div class="card-footer">Card footer</div>
 								</div>
-							</div>
-							<div class="col-md-3">
-								<a href=""><img alt="Bootstrap Image Preview"
-									src="http://ticketimage.interpark.com/Play/image/large/18/18007527_p.gif" /></a>
-								<div class="card">
-									<h5 class="card-header">
-										<b>Card title</b>
-									</h5>
-									<div class="card-body">
-										<p class="card-text">Card content</p>
-									</div>
-									<div class="card-footer">Card footer</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<a href=""><img alt="Bootstrap Image Preview"
-									src="http://ticketimage.interpark.com/Play/image/large/18/18008486_p.gif" /></a>
-								<div class="card">
-									<h5 class="card-header">
-										<b>Card title</b>
-									</h5>
-									<div class="card-body">
-										<p class="card-text">Card content</p>
-									</div>
-									<div class="card-footer">Card footer</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<a href=""><img alt="Bootstrap Image Preview"
-									src="http://ticketimage.interpark.com/Play/image/large/18/18005404_p.gif" /></a>
-								<div class="card">
-									<h5 class="card-header">
-										<b>Card title</b>
-									</h5>
-									<div class="card-body">
-										<p class="card-text">Card content</p>
-									</div>
-									<div class="card-footer">Card footer</div>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-3">
-								<a href=""><img alt="Bootstrap Image Preview"
-									src="http://ticketimage.interpark.com/Play/image/large/18/18007062_p.gif" /></a>
-								<div class="card">
-									<h5 class="card-header">
-										<b>Card title</b>
-									</h5>
-									<div class="card-body">
-										<p class="card-text">Card content</p>
-									</div>
-									<div class="card-footer">Card footer</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<a href=""><img alt="Bootstrap Image Preview"
-									src="http://ticketimage.interpark.com/Play/image/large/18/18008410_p.gif" /></a>
-								<div class="card">
-									<h5 class="card-header">
-										<b>Card title</b>
-									</h5>
-									<div class="card-body">
-										<p class="card-text">Card content</p>
-									</div>
-									<div class="card-footer">Card footer</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<a href=""><img alt="Bootstrap Image Preview"
-									src="http://ticketimage.interpark.com/Play/image/large/18/18004880_p.gif" /></a>
-								<div class="card">
-									<h5 class="card-header">
-										<b>Card title</b>
-									</h5>
-									<div class="card-body">
-										<p class="card-text">Card content</p>
-									</div>
-									<div class="card-footer">Card footer</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<a href=""> <img alt="Bootstrap Image Preview"
-									src="http://ticketimage.interpark.com/Play/image/large/18/18008485_p.gif" /></a>
-								<div class="card">
-									<h5 class="card-header">
-										<b>Card title</b>
-									</h5>
-									<div class="card-body">
-										<p class="card-text">Card content</p>
-									</div>
-									<div class="card-footer">Card footer</div>
-								</div>
-							</div>
+							</c:forEach>
 						</div>
 					</div>
 

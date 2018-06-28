@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
@@ -97,7 +97,7 @@ body {
     
     <div class="collapse navbar-collapse" id="menuNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/pumpkinplace/">Home</a></li>
+        <li class=""><a href="/pumpkinplace/">Home</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">공연<span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -105,7 +105,7 @@ body {
             <li><a href="#">공연 등록</a></li>
            </ul>
         </li>
-        <li class="dropdown">
+        <li class="active">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">게시판 <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="/pumpkinplace/board/list">자유 게시판</a></li>
@@ -144,6 +144,10 @@ body {
 
 <!-- end MenuBar --><title>Board</title>
 </head>
+
+<!-- Image, Video 경로 String 입력을 받지 않았기 때문에 
+       Submit버튼을 누르면 null값으로 인해 일시적으로
+       500error가 납니다.-->
 <body>
 <div class="container text-center">
 	<h2>새 글쓰기</h2>
@@ -159,6 +163,8 @@ body {
 </form>
 </body>
 </html>
+
+
 <!-- footer -->
 <footer class="container-fluid text-center">
   
@@ -214,11 +220,5 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
   
   
 </footer>
-
-
-
-
-
-
 
 

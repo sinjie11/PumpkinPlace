@@ -97,7 +97,7 @@ body {
     
     <div class="collapse navbar-collapse" id="menuNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/pumpkinplace/">Home</a></li>
+        <li class=""><a href="/pumpkinplace/">Home</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">공연<span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -105,7 +105,7 @@ body {
             <li><a href="#">공연 등록</a></li>
            </ul>
         </li>
-        <li class="dropdown">
+        <li class="active">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">게시판 <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="/pumpkinplace/board/list">자유 게시판</a></li>
@@ -142,7 +142,8 @@ body {
 </nav>
 </nav>
 
-<!-- end MenuBar --><title>Board</title>
+<!-- end MenuBar -->
+<title>Board</title>
 </head>
 <body>
 <div class="container text-center">
@@ -181,7 +182,7 @@ body {
 					<td><a class="table-title-link" href="${board.b_no}">${board.b_title}</a></td>
 					<td>${board.b_id}</td>
 					<fmt:formatDate value="${board.b_regdate}"
-						pattern="yyyy/MM/dd HH:mm:ss" var="regdate" />
+						pattern="yyyy/MM/dd HH:mm:ss" var="b_regdate" />
 					<td>${b_regdate}</td>
 					<td>${board.b_readcnt}</td>
 				</tr>
