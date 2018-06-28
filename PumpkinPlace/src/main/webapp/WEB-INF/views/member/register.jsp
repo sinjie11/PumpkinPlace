@@ -92,10 +92,12 @@ $(document).ready(function () {
 				{'mem_id': id},
 				function (data) {
 					console.log('data = ' + data);
+			
 					if (data) {
 						validId = true;
 						$('#valid-mem').show();
 						$('#invalid-mem').hide();
+						
 					} else {
 						validId = false;
 						$('#valid-mem').hide();
