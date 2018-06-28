@@ -20,7 +20,7 @@
 }
 </style>
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar-inverse navbar-fixed-top">
 
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -61,16 +61,13 @@
 			</div>
 		</div>
 	
-	
-		<h1 style="background-color: white; margin: 0%;">
 
-
-			<img alt="이미지"
+			<a href="/pumpkinplace/gameboard/game"><img alt="이미지"
 				src="${pageContext.request.contextPath}/resources/top_logo.png"
-				style="background-color: white; width: 100%; height: 220px;" />
-		</h1>
+				style="background-color: white; width: 100%; height: 220px;" /></a>
 
-		<nav class="navbar navbar-inverse">
+
+		<nav class="navbar-inverse">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -112,12 +109,6 @@
 							<ul class="dropdown-menu">
 								<li><a href="#">구인</a></li>
 								<li><a href="#">구직</a></li>
-							</ul></li>
-						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#">Game<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="/pumpkinplace/gameboard/game">게임</a></li>
-								<li><a href="/pumpkinplace/gameboard/shop">아이템 샵</a></li>
 							</ul></li>
 						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#">Q&A<span class="caret"></span></a>

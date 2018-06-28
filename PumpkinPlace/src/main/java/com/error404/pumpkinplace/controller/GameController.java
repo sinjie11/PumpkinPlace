@@ -6,19 +6,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value = "/gameboard")
+@RequestMapping(value = "/game")
 public class GameController {
 
 	private static final Logger logger = LoggerFactory.getLogger(GameController.class);
 	
-	@RequestMapping(value = "/game")
+	@RequestMapping(value = "/gamepage")
 	public void game() {
 		logger.info("game 페이지 호출");
 	}
 	
-	@RequestMapping(value = "/shop")
-	public void shop() {
-		logger.info("game 아이템샵 페이지 호출");
-	}
 	
 }
