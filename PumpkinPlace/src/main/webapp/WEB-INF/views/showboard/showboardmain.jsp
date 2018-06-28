@@ -55,7 +55,7 @@ footer {
 
 body {
 	position: relative; /* For scrollyspy */
-	padding-top: 300px; /*Account for fixed navbar */
+	padding-top: 350px; /*Account for fixed navbar */
 	background-color: #f8f8f8;
 }
 }
@@ -69,7 +69,7 @@ body {
 
 	<!-- 가운데 정렬 -->
 	<div class="container text-center">
-		<div class="tab-content">
+		
 			<form action="search" style="float: right; margin-right: 30px;">
 				<input type="text" id="startdate" placeholder="공연 날짜 선택" /> <input
 					type="submit" value="Search" />
@@ -82,13 +82,11 @@ body {
 					required /> <input type="submit" value="Search" />
 			</form>
 
-			<br /> <br />
+			
 			<!-- 바디부분 -->
-
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="row">
+		<div class="container-fluid">
+			
+					<div class="row" style="padding-top: 50px;">
 							<c:forEach var="showboard" items="${showboardList}">
 								<div class="col-md-3">
 									<a href="/pumpkinplace/showboard/showdetail/${showboard.sb_no}">
@@ -126,9 +124,9 @@ body {
 						</ul>
 					</nav>
 				</div>
-			</div>
-		</div>
-	</div>
+	
+		
+	
 
 	<script>
 		$(function() {
