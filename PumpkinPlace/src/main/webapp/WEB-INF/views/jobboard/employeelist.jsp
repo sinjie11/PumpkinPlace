@@ -152,7 +152,7 @@ body {
 <%@ include file="/WEB-INF/views/header.jspf"%>
 <div class="container text-center">
 	</br></br>
-	<h1>구인</h1>
+	<h1>구 인</h1>
 	<div class="container text-right"> 
 <form action="search">
 		<select name="searchType">
