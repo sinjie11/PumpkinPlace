@@ -1,4 +1,5 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <html>
 <head>
 <META http-equiv="Expires" content="-1">
@@ -32,7 +33,9 @@
 		var thermometerY = 650;
 		var thermometerSize = -90; //MAX = 400;
 		var thermometerSpeed = 0.25;
-	
+		var isPressed = false; 
+		var numberchk = 0;
+		 
 		var bg = new Image();
 		var title = new Image();
 		var player = new Image();
@@ -84,16 +87,35 @@
 		/*
 		FrameWork
 		*/
-		document.addEventListener("click", clickController);
-		cvs.onmousedown = function(event) {
-			console.log("down");
+		cvs.addEventListener('click', clickController);
+		cvs.addEventListener('onmouseup', upController);
+		window.addEventListener('onmousedown', downController);
+				 
+
+		window.onmousedown = function(event) {
+			isPressed = true;
+			doInterval('1', event);
 			downController(event);
-		};
-		cvs.onmouseup = function(event) {
-			console.log("up");
+		}; 
+		window.onmouseup = function(event) {
+			isPressed = false;
+			doInterval('-1', event);
 			upController(event);
+		} 
+
+		function doInterval(action, event){
+			if (isPressed) {
+			    var countEle = document.querySelector('#numberchk');
+			    numberchk.value = parseInt(numberchk.value) + parseInt(action);
+				
+			    downController(event);
+				
+			    setTimeout(function() {
+			      doInterval(action, event);
+			    }, 200);
+			  }
 		}
-	
+		
 		function downController(event) {
 			if (run == "run") {
 				if ((event.offsetX >= 50 && event.offsetX <= 330) && (event.offsetY >= 2620 && event.offsetY <= 2900)) {
@@ -104,13 +126,42 @@
 					console.log("run buff down");
 					buff.src = resources + "buff2" + png;
 				}
+				if (!shopRun && mouseDownChk) {
+					if (event.offsetX >= 840 && event.offsetX <= 1640 && event.offsetY >= 1900 && event.offsetY <= 2600) {
+						console.log("player click");
+						player.src = resources + "player2" + png; // Player Image
+						fan.src = resources + "fan2" + png;
+						fire.src = resources + "fire2" + png;
+						fanX = 1000;
+						//pickY = 1900;
+						scoreText += 100;
+						thermometerY -= 10;
+						thermometerSize -= 10;
+	
+						setTimeout(function() {
+							fire.src = resources + "fire3" + png;
+						}, 50);
+						setTimeout(function() {
+							fan.src = resources + "fan1" + png;
+							player.src = resources + "player1" + png; // Player Image
+							fire.src = resources + "fire1" + png;
+							fanX = 460;
+						}, 100);
+						if (thermometerY <= 360) {
+							run = "end";
+						}
+						thermometerSpeed += 0.00025;
+	
+					}
+				}
 			}
 		}
 		function upController(event) {
 			if (run == "run") {
-				console.log("run mouse up"); //asd
+				console.log("mouse up"); //asd
 				upgrade.src = resources + "upgrade1" + png;
 				buff.src = resources + "buff1" + png;
+				mouseDownChk = true;
 			}
 		}
 	
@@ -119,32 +170,11 @@
 				run = "run";
 				console.log("run start1? : " + run);
 			}
-			if (run == "run") {
-				if (event.offsetX >= 840 && event.offsetX <= 1640 && event.offsetY >= 1900 && event.offsetY <= 2600) {
-					console.log("player click");
-					player.src = resources + "player2" + png; // Player Image
-					fan.src = resources + "fan2" + png;
-					fire.src = resources + "fire2" + png;
-					fanX = 1000;
-					//pickY = 1900;
-					scoreText += 100;
-					thermometerY -= 10;
-					thermometerSize -= 10;
-					setTimeout(function() {
-						fire.src = resources + "fire3" + png;
-					}, 50);
-					setTimeout(function() {
-						fan.src = resources + "fan1" + png;
-						player.src = resources + "player1" + png; // Player Image
-						fire.src = resources + "fire1" + png;
-						fanX = 460;
-					}, 100);
-					if (thermometerY <= 360) {
-						run = "end";
-					}
-					thermometerSpeed += 0.00025;
-				//600 510
-				} else if (event.offsetX >= 120 && event.offsetX <= 570 && event.offsetY >= 2200 && event.offsetY <= 2400) {
+			if (run == "end") {
+				run = "main";
+			}
+			if (run == "run" && !shopRun) {
+				if (event.offsetX >= 120 && event.offsetX <= 570 && event.offsetY >= 2200 && event.offsetY <= 2400) {
 					console.log("shop click");
 					shopRun = true;
 				}
@@ -156,15 +186,13 @@
 					shopRun = false;
 				}
 			}
-			if (run == "end") {
-				run = "main";
-			}
 			console.log("event.offsetX : " + event.offsetX);
 			console.log("event.offsetY : " + event.offsetY);
-			document.addEventListener("click", action_coords(event));
+		//document.addEventListener("click", action_coords(event));
 		//console.log("click thermometerSpeed : " + thermometerSpeed);
 		//console.log("thermometerY : " + thermometerY);
 		}
+	
 	
 	
 		function action_coords(event) {
@@ -191,52 +219,56 @@
 				console.log("speedUp : " + thermometerSpeed);
 				thermometerSpeed += 0.00001;
 			}
-		}, 1000)
+		}, 1000);
 	
 		function draw() {
+			/* console.log("run : " + run); */
 			if (run == "main") {
 				ctx.clearRect(0, 0, 1440, 2960);
-				ctx.drawImage(bg, 0, 0); // Draw BackGround
+				ctx.drawImage(bg, 0, 0); // BackGround
 				ctx.drawImage(start, 520, 1780);
-			} else if (run == "run") {
-				/* 				speed += dir;
-								pickY += dir; */
-				ctx.clearRect(0, 0, 1440, 2960);
-				thermometerY += thermometerSpeed;
-				thermometerSize += thermometerSpeed;
-				ctx.drawImage(bg, 0, 0); // Draw BackGround
-				ctx.drawImage(frame, -230, -350);
-				ctx.drawImage(sot, 120, 150); // Draw Sot
-				ctx.drawImage(title, 0, 0);
-				ctx.drawImage(point, 0, 250);
-				ctx.drawImage(firewood, 465, 1860);
-				ctx.drawImage(fire, 610, 1640); // Draw Fire
-				ctx.drawImage(tent, -200, 1900, 900, 600); // Draw Tent
-				ctx.drawImage(shop, 120, 2200);
-				ctx.drawImage(upgrade, 20, 2610); // Draw updgrade
-				ctx.drawImage(buff, 330, 2610); // Draw Btn2
-				ctx.drawImage(gauge, -60, 820); // Draw Gauge
-				ctx.drawImage(pick, 100, pickY);
+			}
+			if (run == "run") {
+				if (!shopRun) {
+					/* 	speed += dir;
+						pickY += dir; */
+					ctx.clearRect(0, 0, 1440, 2960);
+					thermometerY += thermometerSpeed;
+					thermometerSize += thermometerSpeed;
+					ctx.drawImage(bg, 0, 0); // Draw BackGround
+					ctx.drawImage(frame, -230, -350);
+					ctx.drawImage(sot, 120, 150); // Draw Sot
+					ctx.drawImage(title, 0, 0);
+					ctx.drawImage(point, 0, 250);
+					ctx.drawImage(firewood, 465, 1860);
+					ctx.drawImage(fire, 610, 1640); // Draw Fire
+					ctx.drawImage(tent, -200, 1900, 900, 600); // Draw Tent
+					ctx.drawImage(shop, 120, 2200);
+					ctx.drawImage(upgrade, 20, 2610); // Draw updgrade
+					ctx.drawImage(buff, 330, 2610); // Draw Btn2
+					ctx.drawImage(gauge, -60, 820); // Draw Gauge
+					ctx.drawImage(pick, 100, pickY);
 	
-				ctx.drawImage(thermometercheck, 672.5, 520);
-				ctx.drawImage(thermometer3, 705, 790, 29, thermometerSize);
-				ctx.drawImage(thermometer2, 705, thermometerY);
-				ctx.drawImage(thermometer1, 632, 320);
-				ctx.drawImage(fan, fanX, 1890);
-				ctx.drawImage(player, 640, 1900); // Draw Player
-				//Point Text
-				ctx.font = "160px Gulim";
-				ctx.fillText(pointText, 320, 450);
-				ctx.font = "160px Gulim";
-				ctx.fillText(scoreText, 860, 2800);
-				/* 				if (pickY >= 1900) {
-									console.log("pickY Low = " + pickY);
-									dir = -1;
-								}
-								if (pickY <= 785) {
-									console.log("pickY Hight = " + pickY);
-									dir = 1;
-								} */
+					ctx.drawImage(thermometercheck, 672.5, 520);
+					ctx.drawImage(thermometer3, 705, 790, 29, thermometerSize);
+					ctx.drawImage(thermometer2, 705, thermometerY);
+					ctx.drawImage(thermometer1, 632, 320);
+					ctx.drawImage(fan, fanX, 1890);
+					ctx.drawImage(player, 640, 1900); // Draw Player
+					//Point Text
+					ctx.font = "160px Gulim";
+					ctx.fillText(pointText, 320, 450);
+					ctx.font = "160px Gulim";
+					ctx.fillText(scoreText, 860, 2800);
+				//if (pickY >= 1900) {
+				//	console.log("pickY Low = " + pickY);
+				//	dir = -1;
+				//}
+				//if (pickY <= 785) {
+				//	console.log("pickY Hight = " + pickY);
+				//	dir = 1;
+				//}
+				}
 				if (thermometerY >= 770) {
 					run = "end";
 				}
@@ -252,7 +284,8 @@
 				if (shopRun) {
 					ctx.drawImage(shopmenu, 245, 530);
 				}
-			} else {
+			}
+			if (run == "end") {
 				ctx.clearRect(0, 0, 1440, 2960);
 				ctx.drawImage(bg, 0, 0); // Draw BackGround
 				ctx.drawImage(end, 520, 1780);
