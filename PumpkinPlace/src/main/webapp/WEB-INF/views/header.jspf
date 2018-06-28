@@ -118,9 +118,11 @@
 							<ul class="dropdown-menu">
 								<li><a href="#">Q&A</a></li>
 							</ul></li>
-					</ul>
+							 
+					</ul> 
 				</div>
 			</div>
 		</nav>
+		
 	</nav>
 	<!-- end MenuBar -->
