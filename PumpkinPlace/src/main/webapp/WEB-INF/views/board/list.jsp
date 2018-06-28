@@ -61,8 +61,8 @@ body {
 	<%@ include file="/WEB-INF/views/header.jspf"%>
 
 	<div class="container text-center">
-
-		<h3>자유 게시판</h3>
+<br/><br/>
+		<h1>자유 게시판</h1>
 
 
 		<div class="container text-right">
