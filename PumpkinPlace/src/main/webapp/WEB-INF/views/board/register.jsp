@@ -60,13 +60,16 @@ body {
 
 	<!-- end MenuBar -->
 	<div class="text-center">
-		<h2>새 글쓰기</h2>
+	<br/><br/>
+		<h1>새 글쓰기</h1>
+		<br/>
 		<form action="register" method="post">
-			<input type="text" name="title" placeholder="글 제목" required /> <br />
+			<input type="text" name="title" style="width: 385px;" placeholder="글 제목" required /> <br />
+			<br/>
 			<textarea rows="5" cols="50" name="content" placeholder="내용 작성"
-				required></textarea>
-			<br /> <input type="text" name="userid" value="${userId}"
-				readonly="readonly"><br /> <input type="submit"
+				required></textarea><br/>
+			<br /> <input type="text"  style="width: 385px;" name="userid" value="${userId}"
+				readonly="readonly"><br/><br /> <input type="submit"
 				value="작성 완료" />
 		</form>
 
