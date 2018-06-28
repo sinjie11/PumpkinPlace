@@ -62,72 +62,80 @@ body {
 </style>
 </head>
 <body>
-	<%@ include file="/WEB-INF/views/header.jspf"%>
-
-	<br />
-	<br />
-
+<%@ include file="/WEB-INF/views/header.jspf"%>
+	<br/>
+	<br/>
 	<!-- 가운데 정렬 -->
 	<div class="container text-center">
-		
-			<form action="search" style="float: right; margin-right: 30px;">
+
+		<div class="tab-content">
+			<form action="search" style="float: right;">
 				<input type="text" id="startdate" placeholder="공연 날짜 선택" /> <input
 					type="submit" value="Search" />
 			</form>
 			<br /> <br />
 			<!-- 검색창 -->
 			<form action="search"
-				style="float: right; margin-right: 30px; margin-bottom: 50px;">
+				style="float: right; margin-bottom: 50px;">
 				<input type="text" name="searchKeyword" placeholder="검색어 입력"
 					required /> <input type="submit" value="Search" />
 			</form>
-<hr/>
-			
-			<!-- 바디부분 -->
-		<div class="container-fluid">
-			
-					<div class="row" style="padding-top: 50px;">
-							<c:forEach var="showboard" items="${showboardList}">
-								<div class="col-md-3">
-									<a href="/pumpkinplace/showboard/showdetail/${showboard.sb_no}">
-										<img alt="Bootstrap Image Preview"
-										src="http://ticketimage.interpark.com/Play/image/large/18/18008332_p.gif" />
-									</a>
-									<div class="card">
-										<h5 class="card-header">
-											<b>${showboard.sb_title}</b>
-										</h5>
-										<div class="card-body">
-											<p class="card-text">${showboard.sb_nm}</p>
-										</div>
-										<fmt:formatDate value="${showboard.sb_startdate}"
-											pattern="yyyy년 MM월 dd일 HH시 mm분" var="startdate" />
-										<div class="card-footer">${startdate}</div>
-									</div>
-								</div>
-							</c:forEach>
-								<hr/>
-						</div>
-					</div>
+		</div>
+		</div>
+	
+	<!-- 바디부분 -->
 
-					<br /> <br />
-					<nav>
-						<ul class="pagination">
-							<li class="page-item"><a class="page-link" href="#">Previous</a>
-							</li>
-							<li class="page-item"><a class="page-link" href="#">1</a></li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item"><a class="page-link" href="#">4</a></li>
-							<li class="page-item"><a class="page-link" href="#">5</a></li>
-							<li class="page-item"><a class="page-link" href="#">Next</a>
-							</li>
-						</ul>
-					</nav>
+	<div class="container text-center">
+		<div class=""></div>
+		<div class="row justify-content-md-center">
+			<div class="row align-items-start">
+				<div class="row align-items-start">
+
+					<c:forEach var="showboard" items="${showboardList}">
+						<div class="col-md-3">
+							<a href="/pumpkinplace/showboard/showdetail/${showboard.sb_no}">
+								<img alt="Bootstrap Image Preview"
+								src="http://ticketimage.interpark.com/Play/image/large/18/18008332_p.gif" />
+							</a>
+							<div class="card">
+								<h5 class="card-header">
+									<b>${showboard.sb_title}</b>
+								</h5>
+								<div class="card-body">
+									<p class="card-text">${showboard.sb_nm}</p>
+								</div>
+								<fmt:formatDate value="${showboard.sb_startdate}"
+									pattern="yyyy년 MM월 dd일 HH시 mm분" var="startdate" />
+								<div class="card-footer">${startdate}</div>
+							</div>
+						</div>
+					</c:forEach>
+
 				</div>
-	
-		
-	
+
+
+			</div>
+
+
+			<nav>
+				<ul class="pagination">
+					<li class="page-item"><a class="page-link" href="#">Previous</a>
+					</li>
+					<li class="page-item"><a class="page-link" href="#">1</a></li>
+					<li class="page-item"><a class="page-link" href="#">2</a></li>
+					<li class="page-item"><a class="page-link" href="#">3</a></li>
+					<li class="page-item"><a class="page-link" href="#">4</a></li>
+					<li class="page-item"><a class="page-link" href="#">5</a></li>
+					<li class="page-item"><a class="page-link" href="#">Next</a></li>
+				</ul>
+			</nav>
+
+		</div>
+
+
+	</div>
+	</div>
+
 
 	<script>
 		$(function() {
@@ -200,8 +208,36 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 
 	</footer>
 
-	<%@ include file="/WEB-INF/views/footer.jspf"%>
-	
+	<!-- footer -->
+	<footer class="container-fluid text-center">
+
+
+		<!-- Container (Contact Section) -->
+		<div id="contact" class="container-fluid bg-grey">
+
+
+			<div class="row">
+				<div class="col-sm-5">
+					<!-- 가운데 정렬해주는거 -->
+					<div class="container text-center" style="margin-left: 370px;">
+						<p>Contact us and we'll get back to you within 24 hours.</p>
+						<p>
+							<span class="glyphicon glyphicon-map-marker"></span> Team
+							Error404, KOR
+						</p>
+						<p>
+							<span class="glyphicon glyphicon-phone"></span> +00 1515151515
+						</p>
+						<p>
+							<span class="glyphicon glyphicon-envelope"></span>
+							doojinzzang@something.com
+						</p>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</footer>
 </body>
 </html>
 
