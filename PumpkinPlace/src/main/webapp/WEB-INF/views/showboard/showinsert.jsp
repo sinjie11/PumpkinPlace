@@ -106,7 +106,11 @@ body {
 </head>
 <body>
 
+
 	<%@ include file="/WEB-INF/views/header.jspf"%>
+
+
+
 
 	<!-- end MenuBar -->
 
