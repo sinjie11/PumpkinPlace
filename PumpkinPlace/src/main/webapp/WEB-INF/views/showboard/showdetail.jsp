@@ -100,7 +100,7 @@ body {
 				style="background-color: white; width: 100%; height: 200px;" />
 
 		</h1>
-
+ 
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
 				<div class="navbar-header">
