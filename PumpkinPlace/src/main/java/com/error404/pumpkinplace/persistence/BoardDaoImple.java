@@ -73,7 +73,7 @@ public class BoardDaoImple implements BoardDao {
 		args.put("searchKeyword", "%" + keyword + "%");
 		List<Board> list =
 				sqlSession.selectList(NAMESPACE + ".search", args);
-		
+
 		return list;
 	} 
 	

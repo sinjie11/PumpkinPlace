@@ -75,7 +75,7 @@ public class BoardController {
 	public void update(
 			@ModelAttribute("criteria") PaginationCriteria criteria,
 			int b_no, Model model) {
-		logger.info("update(bno: {})", b_no);
+		logger.info("update(b_no: {})", b_no);
 		Board board = boardService.read(b_no);
 		model.addAttribute("board", board);
 		
@@ -116,4 +116,5 @@ public class BoardController {
 		model.addAttribute("boardList", list);
 		model.addAttribute("searchKeyword", searchKeyword);  
 	} 	 
+	
 }

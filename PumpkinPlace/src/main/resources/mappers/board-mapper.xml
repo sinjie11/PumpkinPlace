@@ -18,9 +18,9 @@
 		#{b_id, jdbcType=VARCHAR}, #{b_img,  jdbcType=VARCHAR}, #{b_video,  jdbcType=VARCHAR})
 	</insert>
 
-	<!-- Section No를 이용해 Board의 종류를 가려낸 후 게시판 첫 화면에서 요구하는 데이터들을 뽑아내는 Select 
-		Statement -->
-	<select id="selectBySectionNo" resultType="Board"> 
+	<!-- Section No를 이용해 Board의 종류를 가려낸 후 게시판 첫 화면에서 요구하는 
+	데이터들을 뽑아내는 Select Statement -->
+	<select id="selectBySectionNo" resultType="Board">
 		select
 		${col_b_no}, ${col_b_title}, ${col_b_content}, ${col_b_id},
 		${col_b_regdate}, ${col_b_readcnt}
