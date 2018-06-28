@@ -1,138 +1,145 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
- <!-- 부트스트랩 -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <!-- jquery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  
-  <style>
-    /* Remove the navbar's default margin-bottom and rounded borders */ 
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
-    }
-    
-    /* Add a gray background color and some padding to the footer */
-    footer {
-      background-color: #f2f2f2;
-      padding: 25px;
-    }
-    
-  .carousel-inner img {
-      width: 100%; /* Set width to 100% */
-      margin: auto;
-      min-height:200px;
-  }
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- 부트스트랩 -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- jquery -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-  /* Hide the carousel text when the screen is less than 600 pixels wide */
-  @media (max-width: 600px) {
-    .carousel-caption {
-      display: none; 
-    }
-  }
+<style>
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+	margin-bottom: 0;
+	border-radius: 0;
+}
+
+/* Add a gray background color and some padding to the footer */
+footer {
+	background-color: #f2f2f2;
+	padding: 25px;
+}
+
+.carousel-inner img {
+	width: 100%; /* Set width to 100% */
+	margin: auto;
+	min-height: 200px;
+}
+
+/* Hide the carousel text when the screen is less than 600 pixels wide */
+@media ( max-width : 600px) {
+	.carousel-caption {
+		display: none;
+	}
+}
 
 body {
-  position: relative; /* For scrollyspy */
-  padding-top: 350px;   /*Account for fixed navbar */
-  background-color: #f8f8f8;
+	position: relative; /* For scrollyspy */
+	padding-top: 350px; /*Account for fixed navbar */
+	background-color: #f8f8f8;
 }
 </style>
 </head>
 <body>
 
-<%@ include file="/WEB-INF/views/header.jspf"%>
+	<%@ include file="/WEB-INF/views/header.jspf"%>
 
-<div class="container text-center">
-	<h3>자유 게시판</h3>
-	<div class="container text-right"> 
-<form action="search">
-		<select name="searchType">
-			<option value="1">10개씩 보기</option>
-			<option value="2">20개씩 보기</option>
-			<option value="3">40개씩 보기</option>
-		</select>
-
-    </ul>
-   <a href="register" ><button type="button" >글쓰기</button></a>
-</div>
-		
-		
-	</ul>
-
-	
-<div class="container text-center">
-	<table class="table">
-		<thead>
-			<tr>
-				<th>글번호</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>작성시간</th>
-				<th>조회수</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="board" items="${boardList}">
-				<tr>
-					<td>${board.b_no}</td>
-					<td><a class="table-title-link" href="${board.b_no}">${board.b_title}</a></td>
-					<td>${board.b_id}</td>
-					<fmt:formatDate value="${board.b_regdate}"
-						pattern="yyyy/MM/dd HH:mm:ss" var="b_regdate" />
-					<td>${b_regdate}</td>
-					<td>${board.b_readcnt}</td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-	</div>
 	<div class="container text-center">
-	<ul class="pagination">
-	<c:if test="${pageMaker.hasPrev}">
-		<li><a class="page-link" href="${pageMaker.startPageNo - 1}">이전</a></li>
-	</c:if>
-	<c:forEach begin="${pageMaker.startPageNo}"
-		end="${pageMaker.endPageNo}" var="num" >
-		<li><a class="page-link" href="${num}">${num}</a></li>
-	</c:forEach>
-	<c:if test="${pageMaker.hasNext}">
-		<li><a class="page-link" href="${pageMaker.endPageNo + 1}">다음</a></li>
-	</c:if>
-</ul>
-</div>
-	<form action="search">
-		<select name="searchType">
-			<option value="1">작성자</option>
-			<option value="2">글 제목</option>
-			<option value="3">제목 + 내용</option>
-		</select> <input type="text" name="searchKeyword" placeholder="검색어 입력" required />
-		<input type="submit" value="검색" />
-	</form>
-	
-	</div>
-	
 
-<form id="page-form">
-	<input type="hidden" name="page" id="page"
-		value="${pageMaker.criteria.page}" />
-	<input type="hidden" name="numsPerPage" id="numsPerPage"
-		value="${pageMaker.criteria.numsPerPage}" />
-	<input type="hidden" name="bno" id="page-form-bno" />
-</form>
+		<h3>자유 게시판</h3>
+
+
+		<div class="container text-right">
+			<form action="search">
+				<ul>
+					<select name="searchType">
+						<option value="1">10개씩 보기</option>
+						<option value="2">20개씩 보기</option>
+						<option value="3">40개씩 보기</option>
+					</select>
+
+				</ul>
+				<a href="register"><button type="button">글쓰기</button></a>
+			</form>
+		</div>
+
+
+
+		<div class="container text-center">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>글번호</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>작성시간</th>
+						<th>조회수</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="board" items="${boardList}">
+						<tr>
+							<td>${board.b_no}</td>
+							<td><a class="table-title-link" href="${board.b_no}">${board.b_title}</a></td>
+							<td>${board.b_id}</td>
+							<fmt:formatDate value="${board.b_regdate}"
+								pattern="yyyy/MM/dd HH:mm:ss" var="b_regdate" />
+							<td>${b_regdate}</td>
+							<td>${board.b_readcnt}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+		<div class="container text-center">
+			<ul class="pagination">
+				<c:if test="${pageMaker.hasPrev}">
+					<li><a class="page-link" href="${pageMaker.startPageNo - 1}">이전</a></li>
+				</c:if>
+				<c:forEach begin="${pageMaker.startPageNo}"
+					end="${pageMaker.endPageNo}" var="num">
+					<li><a class="page-link" href="${num}">${num}</a></li>
+				</c:forEach>
+				<c:if test="${pageMaker.hasNext}">
+					<li><a class="page-link" href="${pageMaker.endPageNo + 1}">다음</a></li>
+				</c:if>
+			</ul>
+		</div>
+		<form action="search">
+			<select name="searchType">
+				<option value="1">작성자</option>
+				<option value="2">글 제목</option>
+				<option value="3">제목 + 내용</option>
+			</select> <input type="text" name="searchKeyword" placeholder="검색어 입력"
+				required /> <input type="submit" value="검색" />
+		</form>
+
+	</div>
+
+
+	<form id="page-form">
+		<input type="hidden" name="page" id="page"
+			value="${pageMaker.criteria.page}" /> <input type="hidden"
+			name="numsPerPage" id="numsPerPage"
+			value="${pageMaker.criteria.numsPerPage}" /> <input type="hidden"
+			name="bno" id="page-form-bno" />
+	</form>
 
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script>
-$(document).ready(function () {
+	$(document).ready(function () {
 	if (${not empty deleteResult and deleteResult == 'success'}) {
 		alert('${b_no} 삭제 성공');
 	}
@@ -157,8 +164,8 @@ $(document).ready(function () {
 		frm.submit();
 	});
 	
-});
-</script>
+	});
+	</script>
 
 </body>
 <!-- footer -->
