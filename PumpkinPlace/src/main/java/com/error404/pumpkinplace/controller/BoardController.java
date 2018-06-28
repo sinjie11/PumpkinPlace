@@ -119,4 +119,5 @@ public class BoardController {
 		model.addAttribute("boardList", list);
 		model.addAttribute("searchKeyword", searchKeyword);
 	} 
+	
 }
