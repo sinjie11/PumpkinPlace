@@ -55,7 +55,7 @@ footer {
 
 body {
 	position: relative; /* For scrollyspy */
-	padding-top: 350px; /*Account for fixed navbar */
+	padding-top: 300px; /*Account for fixed navbar */
 	background-color: #f8f8f8;
 }
 }
@@ -81,7 +81,7 @@ body {
 				<input type="text" name="searchKeyword" placeholder="검색어 입력"
 					required /> <input type="submit" value="Search" />
 			</form>
-
+<hr/>
 			
 			<!-- 바디부분 -->
 		<div class="container-fluid">
@@ -106,6 +106,7 @@ body {
 									</div>
 								</div>
 							</c:forEach>
+								<hr/>
 						</div>
 					</div>
 

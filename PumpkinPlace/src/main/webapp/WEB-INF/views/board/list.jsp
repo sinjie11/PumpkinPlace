@@ -45,9 +45,14 @@ footer {
 }
 
 body {
+
 	position: relative; /* For scrollyspy */
 	padding-top: 350px; /*Account for fixed navbar */
 	background-color: #f8f8f8;
+
+  position: relative; /* For scrollyspy */
+  padding-top: 300px;   /*Account for fixed navbar */
+  background-color: #f8f8f8;
 }
 </style>
 </head>
