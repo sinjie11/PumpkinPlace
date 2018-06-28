@@ -115,5 +115,5 @@ public class BoardController {
 				boardService.read(searchType, searchKeyword);
 		model.addAttribute("boardList", list);
 		model.addAttribute("searchKeyword", searchKeyword);
-	} 	
+	} 	 
 }
