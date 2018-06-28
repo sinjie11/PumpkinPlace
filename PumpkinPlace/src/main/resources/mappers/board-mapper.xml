@@ -31,8 +31,7 @@
 
 	<select id="totalCount" resultType="Integer">
 		select count(${col_b_no})
-		from
-		${tbl_board}
+		from ${tbl_board}
 	</select>
 
 	<select id="listPage" resultType="Board">
