@@ -51,7 +51,7 @@ footer {
 
 body {
 	position: relative; /* For scrollyspy */
-	padding-top: 350px; /*Account for fixed navbar */
+	padding-top: 300px; /*Account for fixed navbar */
 }
 
 .youtubeWrap {
