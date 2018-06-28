@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Pumk</title>
+<title>회원가입</title>
 <meta charset="utf-8">
 
 <script
@@ -35,7 +35,7 @@
 </style>
 </head>
 <body>
-	<h1 style="margin-top: 100px; margin-bottom: 100px;">회원 가입 페이지</h1>
+	<h1 style="margin-top: 100px; margin-bottom: 100px;">회원 가입</h1>
 
 
 	<div id="register">
