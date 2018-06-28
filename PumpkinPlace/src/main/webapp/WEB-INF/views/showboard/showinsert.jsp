@@ -285,12 +285,62 @@ body {
 
 			<div id="en_daytime">
 				<label for="event_공연 날짜">공연 날짜 / 시간: <input type="text"
-					id="startdate" placeholder="공연 시작 날짜 선택" required> <input
-					type="text" name="time1" value="" placeholder="시간 입력" id="time1"
-					required size="8" maxlength="5"> ~ <input type="text"
-					id="enddate" placeholder="공연 종료 날짜 선택" required> <input
-					type="text" name="time2" value="" placeholder="시간 입력" id="time2"
-					required size="8" maxlength="5"></label>
+					id="startdate" placeholder="공연 시작 날짜 선택" required>
+					<select style="height: 26px;" >
+						<option>00:00</option>
+						<option>01:00</option>
+						<option>02:00</option>
+						<option>03:00</option>
+						<option>04:00</option>
+						<option>05:00</option>
+						<option>06:00</option>
+						<option>07:00</option>
+						<option>08:00</option>
+						<option>09:00</option>
+						<option>10:00</option>
+						<option>11:00</option>
+						<option>12:00</option>
+						<option>13:00</option>
+						<option>14:00</option>
+						<option>15:00</option>
+						<option>16:00</option>
+						<option>17:00</option>
+						<option>18:00</option>
+						<option>19:00</option>
+						<option>20:00</option>
+						<option>21:00</option>
+						<option>22:00</option>
+						<option>23:00</option>
+						<option>24:00</option>
+					</select>
+					  ~ <input type="text" id="enddate" placeholder="공연 종료 날짜 선택" required>
+					<select style="height: 26px;" >
+						<option>00:00</option>
+						<option>01:00</option>
+						<option>02:00</option>
+						<option>03:00</option>
+						<option>04:00</option>
+						<option>05:00</option>
+						<option>06:00</option>
+						<option>07:00</option>
+						<option>08:00</option>
+						<option>09:00</option>
+						<option>10:00</option>
+						<option>11:00</option>
+						<option>12:00</option>
+						<option>13:00</option>
+						<option>14:00</option>
+						<option>15:00</option>
+						<option>16:00</option>
+						<option>17:00</option>
+						<option>18:00</option>
+						<option>19:00</option>
+						<option>20:00</option>
+						<option>21:00</option>
+						<option>22:00</option>
+						<option>23:00</option>
+						<option>24:00</option>
+					</select></label>
 			</div>
 			<br />
 
