@@ -70,6 +70,8 @@ body {
 </style>
 </head>
 <body>
+	
+	<%@ include file="/WEB-INF/views/header.jspf"%>
 
 
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -290,6 +292,9 @@ body {
 			<!-- end 유투브 -->
 
 
+
+	<!-- end menubar -->
+	
 	<!-- footer -->
 	<footer class="container-fluid text-center">
 
@@ -353,48 +358,9 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 
 	</footer>
 
-	<!-- footer -->
-	<footer class="container-fluid text-center">
-
-
-		<!-- Container (Contact Section) -->
-		<div id="contact" class="container-fluid bg-grey">
-
-
-			<div class="row">
-				<div class="col-sm-5">
-					<!-- 가운데 정렬해주는거 -->
-					<div class="container text-center" style="margin-left: 370px;">
-						<p>Contact us and we'll get back to you within 24 hours.</p>
-						<p>
-							<span class="glyphicon glyphicon-map-marker"></span> Team
-							Error404, KOR
-						</p>
-						<p>
-							<span class="glyphicon glyphicon-phone"></span> +00 1515151515
-						</p>
-						<p>
-							<span class="glyphicon glyphicon-envelope"></span>
-							doojinzzang@something.com
-						</p>
-					</div>
-
-
-
-				</div>
-			</div>
-		</div>
-	</footer>
-
-
-
+	<%@ include file="/WEB-INF/views/footer.jspf"%>
 
 </body>
 
-
-
-
 </html>
-
-
 
