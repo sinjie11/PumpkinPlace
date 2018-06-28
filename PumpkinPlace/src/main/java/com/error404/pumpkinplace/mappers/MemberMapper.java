@@ -11,7 +11,7 @@ public interface MemberMapper {
 	
 	Member login(Member member);
 	
-	int updateMember(Member member);
+	int update(Member member);
 
 	
 } // end interface MemberMapper
