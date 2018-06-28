@@ -63,7 +63,7 @@ body {
 <body>
 
 	<%@ include file="/WEB-INF/views/header.jspf"%>
-
+<div class="container text-center">
 	<h1>수정 페이지</h1>
 
 	<form id="form-update" action="update" method="post">
@@ -100,7 +100,7 @@ body {
 		<button>수정 완료</button>
 		
 	</form>
-
+<div class="container text-center">
 	<%@ include file="/WEB-INF/views/footer.jspf"%>
 
 </body>
