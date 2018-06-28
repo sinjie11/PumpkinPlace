@@ -144,6 +144,10 @@ body {
 
 <!-- end MenuBar --><title>Board</title>
 </head>
+
+<!-- Image, Video 경로 String 입력을 받지 않았기 때문에 
+       Submit버튼을 누르면 null값으로 인해 일시적으로
+       500error가 납니다.-->
 <body>
 <div class="container text-center">
 	<h2>새 글쓰기</h2>
@@ -159,6 +163,8 @@ body {
 </form>
 </body>
 </html>
+
+
 <!-- footer -->
 <footer class="container-fluid text-center">
   

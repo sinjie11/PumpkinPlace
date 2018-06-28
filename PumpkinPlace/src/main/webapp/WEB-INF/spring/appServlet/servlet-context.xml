@@ -30,7 +30,21 @@
 	<beans:bean id="authInterceptor"
 		class="com.error404.pumpkinplace.interceptor.AuthInterceptor">
 	</beans:bean>
-	
+	  <!-- MultipartResolover: multipart/form-data를 처리 -->
+    <!-- id는 반드시 multipartResolver로 할 것!!! 
+    DispatcherServlet이 특정 이름으로 등록된 CommonsMultipartResolver 객체만 인식 -->
+    <beans:bean id="multipartResolver"
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <beans:property name="maxUploadSize" value="10485760" />
+        <!-- 10MB = 1024 * 1024 * 10 -->
+    </beans:bean>
+    
+		<context:component-scan base-package="com.error404.pumpkinplace">
+        <context:exclude-filter type="annotation" 
+            expression="org.springframework.stereotype.Service"/>
+        <context:exclude-filter type="annotation" 
+            expression="org.springframework.stereotype.Repository"/>
+    </context:component-scan>
 	
 	<!-- Interceptor 들이 어떤 요청 주소를 가로채서 처리할 지 설정 -->
 	<interceptors>

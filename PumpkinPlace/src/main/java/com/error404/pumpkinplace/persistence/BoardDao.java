@@ -15,6 +15,7 @@ public interface BoardDao {
 	List<Board> search(int type, String keyword);
 	int getNumOfRecords();
 	List<Board> select(PaginationCriteria criteria);
+	List<Board> selectBySectionNo(int sectionNo);
 	
 } 
 
