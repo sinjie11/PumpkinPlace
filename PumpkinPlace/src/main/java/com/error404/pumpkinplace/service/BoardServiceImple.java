@@ -49,7 +49,7 @@ public class BoardServiceImple implements BoardService {
 	public List<Board> read(int type, String keyword) {
 		
 		return boardDao.search(type, keyword);
-	} 
+	}  
 	
 	@Override
 	public int getNumOfRecords() {
@@ -59,6 +59,11 @@ public class BoardServiceImple implements BoardService {
 	@Override
 	public List<Board> read(PaginationCriteria criteria) {
 		return boardDao.select(criteria);
+	}
+	
+	@Override
+	public List<Board> readSection(int b_section) {
+		return boardDao.selectBySectionNo(b_section);
 	}
 	
 } 
