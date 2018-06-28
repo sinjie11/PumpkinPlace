@@ -165,7 +165,7 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 					</p>
 				</div>
 
-			</div>
+			</div> 
 		</div>
 	</div>
 </footer>
