@@ -29,7 +29,7 @@ public class BoardController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void list(Integer page, Integer numsPerPage, Model model) {
 		logger.info("list() 호출");
-		
+		// numsPerPage에 들어갈 수는 10/20/40 중 하나 
 		PaginationCriteria criteria = new PaginationCriteria();
 		if (page != null) {
 			criteria.setPage(page);
@@ -58,7 +58,6 @@ public class BoardController {
 	public String register(Board board) {
 		logger.info("register({}) POST 호출", board);
 		boardService.create(board);
-		
 		return "redirect:/board/list";
 	} 
 	
@@ -116,6 +115,5 @@ public class BoardController {
 				boardService.read(searchType, searchKeyword);
 		model.addAttribute("boardList", list);
 		model.addAttribute("searchKeyword", searchKeyword);
-	} 
-	
+	} 	
 }
