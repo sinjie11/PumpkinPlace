@@ -59,7 +59,7 @@
 		var fan = new Image();
 		var end = new Image();
 	
-		/*
+		/*ㅁㄴㅇㅁㄴㅇ
 		Setting Images
 		*/
 		bg.src = resources + "bg" + png; // BackGround Image
