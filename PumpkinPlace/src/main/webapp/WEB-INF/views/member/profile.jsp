@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>My Page</title>
+
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- 부트스트랩 -->
@@ -21,6 +21,8 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+<title>마이 페이지</title>
+</head>
 
 <style>
 /* Remove the navbar's default margin-bottom and rounded borders */
@@ -57,26 +59,35 @@ body {
 </head>
 <body>
 
-	<%@ include file="/WEB-INF/views/header.jspf"%>
+
+<%@ include file="/WEB-INF/views/header.jspf"%>
+
+	<div>
 	
 
 		<h1>Profile</h1>
-		<div>
-			<script>
-				console.log('fdfdsf');
-			</script>
-			<p>아이디: ${member.mem_id} 비밀번호: ${member.mem_pwd} 이메일:
-				${member.mem_email}</p>
-
-			tel: ${member.mem_tel}
-
+					
+			<span>아이디: ${member.mem_id}</span>
+			<br/>
+			
+			<span>비밀번호: ${member.mem_pwd}</span>
+			<br/>
+			
+			<span>이메일: ${member.mem_email}</span>
+			<br/>
+			
+            <span>전화번호: ${member.mem_tel}</span>
+            <br/>
+            
 			<fmt:formatDate value="${member.mem_regdate}" pattern="yyyy-MM-dd"
 				var="regdate" />
-			가입일자: ${regdate}
+
+			<span>가입일자: ${regdate}</span>
 		</div>
 
 
 <%@ include file="/WEB-INF/views/footer.jspf"%>
 
 </body>
+
 </html>

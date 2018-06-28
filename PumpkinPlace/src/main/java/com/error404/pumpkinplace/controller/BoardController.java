@@ -18,8 +18,6 @@ import com.error404.pumpkinplace.domain.Board;
 import com.error404.pumpkinplace.pageutil.PageLinkMaker;
 import com.error404.pumpkinplace.pageutil.PaginationCriteria;
 
-// Update, Deletion 은 일단 주석처리 해놓았습니다.
-
 @Controller
 @RequestMapping(value = "/board")
 public class BoardController {
@@ -31,7 +29,7 @@ public class BoardController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void list(Integer page, Integer numsPerPage, Model model) {
 		logger.info("list() 호출");
-		
+		// numsPerPage에 들어갈 수는 10/20/40 중 하나 
 		PaginationCriteria criteria = new PaginationCriteria();
 		if (page != null) {
 			criteria.setPage(page);
@@ -60,7 +58,6 @@ public class BoardController {
 	public String register(Board board) {
 		logger.info("register({}) POST 호출", board);
 		boardService.create(board);
-		
 		return "redirect:/board/list";
 	} 
 	
@@ -78,7 +75,7 @@ public class BoardController {
 	public void update(
 			@ModelAttribute("criteria") PaginationCriteria criteria,
 			int b_no, Model model) {
-		logger.info("update(bno: {})", b_no);
+		logger.info("update(b_no: {})", b_no);
 		Board board = boardService.read(b_no);
 		model.addAttribute("board", board);
 		
@@ -114,9 +111,10 @@ public class BoardController {
 			Model model) {
 		logger.info("search(type: {}, keyword: {})",
 				searchType, searchKeyword);
-		List<com.error404.pumpkinplace.domain.Board> list = 
+		List<Board> list = 
 				boardService.read(searchType, searchKeyword);
 		model.addAttribute("boardList", list);
-		model.addAttribute("searchKeyword", searchKeyword);
-	} 
+		model.addAttribute("searchKeyword", searchKeyword);  
+	} 	 
+	
 }

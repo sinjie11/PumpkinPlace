@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Pumk</title>
+<title>PumpkinPlace</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -56,7 +56,7 @@ body {
 <body>
 
 	<%@ include file="header.jspf"%>
-
+	
 
 	<!-- 가운데 정렬해주는거 -->
 	<div class="container text-center">
@@ -350,10 +350,6 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 	</footer>
 	
 	<%@ include file="footer.jspf"%>
-
-
-
-
 
 
 </body>

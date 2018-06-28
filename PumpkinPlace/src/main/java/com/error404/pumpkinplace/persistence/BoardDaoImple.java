@@ -73,9 +73,15 @@ public class BoardDaoImple implements BoardDao {
 		args.put("searchKeyword", "%" + keyword + "%");
 		List<Board> list =
 				sqlSession.selectList(NAMESPACE + ".search", args);
-		
+
 		return list;
 	} 
+	
+	@Override
+	public List<Board> selectBySectionNo(int sectionNo) {
+		logger.info("selectBySectionNo() 호출");
+		return sqlSession.selectList(NAMESPACE + ".selectBySectionNo");
+	}
 	
 	// ************* 페이지 처리 관련 Overridden Method *************
 	
