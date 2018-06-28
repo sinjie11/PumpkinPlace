@@ -26,6 +26,7 @@ public class MemberController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
+	
 	@Autowired
 	private MemberService memberService;	
 	
