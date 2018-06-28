@@ -23,4 +23,4 @@ private static final Logger logger = LoggerFactory.getLogger(MemberManageService
 	} // end read(userid)
 	
 	
-} // end class MemberManageServiceImple
+} // end class MemberManageServiceImple,,,
