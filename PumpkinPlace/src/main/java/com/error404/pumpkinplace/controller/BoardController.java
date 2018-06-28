@@ -18,8 +18,6 @@ import com.error404.pumpkinplace.domain.Board;
 import com.error404.pumpkinplace.pageutil.PageLinkMaker;
 import com.error404.pumpkinplace.pageutil.PaginationCriteria;
 
-// Update, Deletion 은 일단 주석처리 해놓았습니다.
-
 @Controller
 @RequestMapping(value = "/board")
 public class BoardController {
@@ -114,7 +112,7 @@ public class BoardController {
 			Model model) {
 		logger.info("search(type: {}, keyword: {})",
 				searchType, searchKeyword);
-		List<com.error404.pumpkinplace.domain.Board> list = 
+		List<Board> list = 
 				boardService.read(searchType, searchKeyword);
 		model.addAttribute("boardList", list);
 		model.addAttribute("searchKeyword", searchKeyword);
