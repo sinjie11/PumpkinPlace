@@ -57,7 +57,8 @@ body {
 
 	<%@ include file="/WEB-INF/views/header.jspf"%>
 
-
+	<br/>
+<h5><b> 카테고리: 게시판 > 자유게시판 > 새 글쓰기</b></h5>
 	<!-- end MenuBar -->
 	<div class="text-center">
 	<br/><br/>
