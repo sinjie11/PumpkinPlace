@@ -69,7 +69,6 @@ public class ShowBoardController {
 				criteria.getNumsPerPage());
 		ShowBoard showboard = showBoardService.read(sb_no);
 		model.addAttribute("showboard", showboard);
-
 	}
 
 	@RequestMapping(value = "/showinsert")
