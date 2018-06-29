@@ -138,7 +138,7 @@ body {
 						</div>
 						<div class="row">
 							<div class="col-md-6">
-								<div class="col align-self-end" style="margin-left: 30%;">
+								<div class="col align-self-end" style="margin-left: 5%;">
 									<div style="font-size: 15px; margin-left: 25%;">
 
 										<b>공연 포스터</b> <input type='file' id="imgInp" name="uploadFile" />
@@ -236,7 +236,7 @@ body {
 									</div>
 
 									<div id="en_daytime">
-										<label for="event_공연 날짜">공연 날짜 / 시간: <input
+										<label for="event_공연 날짜">공연 날짜 / 시간:<br/><input
 											type="text" id="startdate" placeholder="공연 시작 날짜 선택" /> <input
 											type="text" name="starttime" value="" placeholder="시간 입력"
 											id="time1" required size="8" maxlength="5"> ~ <input
