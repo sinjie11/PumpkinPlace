@@ -103,7 +103,7 @@ td, h5 {
 					<div class="col-md-6">
 
 						<img alt="포스터"
-							src="https://i.pinimg.com/originals/3f/34/5b/3f345b5415c304de51b13901198ff712.jpg"
+							src="${pageContext.request.contextPath}/resources/images/showboard/${showboard.sb_img}"
 							
 							style="margin-left: 30%; width: 570px; height: 796px; " />
 
@@ -192,7 +192,7 @@ td, h5 {
 	<br />
 	<div class="container text-center">
 		<iframe width="560" height="315"
-			src="https://www.youtube.com/embed/3qrOvBuWJ-c" frameborder="0"
+			src="https://www.youtube.com/embed/${showboard.sb_video}" frameborder="0"
 			allow="autoplay; encrypted-media" allowfullscreen></iframe>
 	</div>
 	<br />
