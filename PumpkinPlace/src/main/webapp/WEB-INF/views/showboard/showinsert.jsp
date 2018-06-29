@@ -144,26 +144,28 @@ body {
 										<b>공연 포스터</b> <input type='file' id="imgInp" name="uploadFile" />
 
 										<div></div>
-										
-									<p><small>공연을 위한 포스터를 업로드해주세요. 그렇지 않을 경우 대체 이미지가 사용됩니다.</small></p>
+
+										<p>
+											<small>공연을 위한 포스터를 업로드해주세요. 그렇지 않을 경우 대체 이미지가 사용됩니다.</small>
+										</p>
 
 
 										<br /> <img id="blah" src="#" alt="" width="570px;"
-											height="796px;" /> <br /> <br />
-									</div>
+											height="796px;" />
+										<br/><br/>
 
-									<!-- 사진 저장 -->
-									<script>
+										<!-- 사진 저장 -->
+										<script>
 				$(document).ready(function() {
 			if (${not empty saved}) {
 				alert('${saved}' + 'SAVED');
 			}
 				});
 			</script>
-									<!-- 사진저장 -->
+										<!-- 사진저장 -->
 
-									<!-- 사진 미리보기 -->
-									<script type="text/javascript">
+										<!-- 사진 미리보기 -->
+										<script type="text/javascript">
         $(function() {
             $("#imgInp").on('change', function(){
                 readURL(this);
@@ -184,9 +186,16 @@ body {
 
 
     </script>
-									<!-- end 미리보기 -->
+										<!-- end 미리보기 -->
 
 
+										<!-- 유튜브 -->
+										<label for="event_영상:">영상: <input id="youtube"
+											name="${youtube}" type="text"
+											style="text-align: center; width: 300px; margin-left: 12px;"
+											placeholder="YouTube 링크를 입력해주세요" />
+										</label> <br /> <br />
+									</div>
 									<div style="width: 570px; margin-left: 25%;">
 										<iframe width="560" height="315"
 											src="https://www.youtube.com/embed/mp17vqua5MU"
@@ -389,14 +398,7 @@ body {
 
 
 										<div class="links"></div>
-										<p>
-
-											<label for="event_영상:">영상: <input id="youtube"
-												name="${youtube}" type="text"
-												style="text-align: center; width: 300px; margin-left: 12px;"
-												placeholder="YouTube 링크를 입력해주세요" />
-											</label>
-										</p>
+										<p></p>
 									</div>
 									<br />
 
@@ -417,8 +419,8 @@ body {
 
 		<br /> <input class="btn btn-primary" name="uploadFile" type="submit"
 			value="등록" style="margin-bottom: 50px; margin-left: 50%;" />
-                         
- 
+
+
 	</form>
 
 
