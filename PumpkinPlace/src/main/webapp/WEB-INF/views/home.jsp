@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -54,231 +55,194 @@ body {
 </style>
 </head>
 <body>
-
+	<br/>
+<h5><b> 카테고리: 홈 </b></h5>
 	<%@ include file="header.jspf"%>
-	
+
 
 	<!-- 가운데 정렬해주는거 -->
 	<div class="container text-center">
 
-		<h3></h3>
+		<h4><b>공연</b></h4>
+		
 		<br>
 		<!-- 공연 소개  -->
-		<div class="row">
-			<div class="col-md-4">
-				<a href=""><img class="my-image" alt="Bootstrap Image Preview"
-					src="http://ticketimage.interpark.com/Play/image/large/16/16013880_p.gif" /></a>
-				<h3>공연 제목</h3>
-
-				<p>내용</p>
+		<div class="row justify-content-md-center">
+			<div class="row">
+				<c:forEach var="showboard" items="${showboardList}" begin="1"
+					end="6" varStatus="vs">
+					<div class="col-md-4" style="height: 400px">
+						<a class="showboard-table-title-link"
+							href="${showboard.sb_no}"><img
+							class="my-image" alt="Bootstrap Image Preview"
+							src="http://ticketimage.interpark.com/Play/image/large/16/16013880_p.gif" /></a>
+						<label class="showboard-table-title-link" href="showboard/showdetail?page=1&numsPerPage=12&sb_no=${showboard.sb_no}">
+							<h4>${showboard.sb_title}</h3>
+								<fmt:formatDate value="${showboard.sb_startdate}"
+									pattern="yyyy년 MM월 dd일 " var="startdate" />
+								<p>${showboard.sb_city}/${startdate}</p>
+						</label>
+					</div>
+				</c:forEach>
 			</div>
-
-			<div class="col-md-4">
-				<a href=""><img class="my-image" alt="Bootstrap Image Preview"
-					src="http://ticketimage.interpark.com/Play/image/large/09/09007147_p.gif" /></a>
-				<h3>공연 제목</h3>
-
-				<p>내용</p>
-			</div>
-
-
-			<div class="col-md-4">
-				<a href=""><img class="my-image" alt="Bootstrap Image Preview"
-					src="http://ticketimage.interpark.com/Play/image/large/18/18007614_p.gif" />
-				</a>
-				<h3>공연 제목</h3>
-
-				<p>내용</p>
-			</div>
-		</div>
-
-
-		<div class="col-md-4">
-			<a href=""> <img alt="Bootstrap Image Preview"
-				src="http://ticketimage.interpark.com/Play/image/large/18/18008332_p.gif" />
-			</a>
-			<h3>공연 제목</h3>
-
-			<p>내용</p>
-		</div>
-
-		<div class="col-md-4">
-			<a href=""> <img alt="Bootstrap Image Preview"
-				src="http://ticketimage.interpark.com/Play/image/large/18/18007527_p.gif" />
-			</a>
-			<h3>공연 제목</h3>
-
-			<p>내용</p>
-		</div>
-
-		<div class="col-md-4">
-			<a href=""> <img alt="Bootstrap Image Preview"
-				src="http://ticketimage.interpark.com/Play/image/large/18/18008486_p.gif" />
-			</a>
-			<h3>공연 제목</h3>
-
-			<p>내용</p>
-		</div>
-
-		<!-- end 공연 소개  -->
+			<!-- end 공연 소개  -->
 
 
 
-
-		<!-- 자유 게시판 -->
-		<div class="row">
-			<div class="col-md-4">
-				<p class="text-left" style="font-size: medium;">
-					<b>자유 게시판</b> <a href="/pumpkinplace/board/list"
-						style="float: right">more</a>
-				</p>
-
+			<!-- 자유 게시판 -->
+			<div class="row">
+				<div class="col-md-4">
+					<p class="text-left" style="font-size: medium;">
+						<b>자유 게시판</b> <a href="/pumpkinplace/board/list"
+							style="float: right">more</a>
+					</p>
 
 
-				<table class="table">
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>Product</th>
-							<th>Payment Taken</th>
-							<th>Status</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>1</td>
-							<td>TB - Monthly</td>
-							<td>01/04/2012</td>
-							<td>Default</td>
-						</tr>
-						<tr class="table-active">
-							<td>1</td>
-							<td>TB - Monthly</td>
-							<td>01/04/2012</td>
-							<td>Approved</td>
-						</tr>
-						<tr class="table-success">
-							<td>2</td>
-							<td>TB - Monthly</td>
-							<td>02/04/2012</td>
-							<td>Declined</td>
-						</tr>
-						<tr class="table-warning">
-							<td>3</td>
-							<td>TB - Monthly</td>
-							<td>03/04/2012</td>
-							<td>Pending</td>
-						</tr>
-						<tr class="table-danger">
-							<td>4</td>
-							<td>TB - Monthly</td>
-							<td>04/04/2012</td>
-							<td>Call in to confirm</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
 
-			<!-- 구인구직 -->
-			<div class="col-md-4">
-				<p class="text-left" style="font-size: medium;">
-					<b>구인구직</b> <a href="" style="float: right">more</a>
-				</p>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>Product</th>
-							<th>Payment Taken</th>
-							<th>Status</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>1</td>
-							<td>TB - Monthly</td>
-							<td>01/04/2012</td>
-							<td>Default</td>
-						</tr>
-						<tr class="table-active">
-							<td>1</td>
-							<td>TB - Monthly</td>
-							<td>01/04/2012</td>
-							<td>Approved</td>
-						</tr>
-						<tr class="table-success">
-							<td>2</td>
-							<td>TB - Monthly</td>
-							<td>02/04/2012</td>
-							<td>Declined</td>
-						</tr>
-						<tr class="table-warning">
-							<td>3</td>
-							<td>TB - Monthly</td>
-							<td>03/04/2012</td>
-							<td>Pending</td>
-						</tr>
-						<tr class="table-danger">
-							<td>4</td>
-							<td>TB - Monthly</td>
-							<td>04/04/2012</td>
-							<td>Call in to confirm</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Product</th>
+								<th>Payment Taken</th>
+								<th>Status</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>TB - Monthly</td>
+								<td>01/04/2012</td>
+								<td>Default</td>
+							</tr>
+							<tr class="table-active">
+								<td>1</td>
+								<td>TB - Monthly</td>
+								<td>01/04/2012</td>
+								<td>Approved</td>
+							</tr>
+							<tr class="table-success">
+								<td>2</td>
+								<td>TB - Monthly</td>
+								<td>02/04/2012</td>
+								<td>Declined</td>
+							</tr>
+							<tr class="table-warning">
+								<td>3</td>
+								<td>TB - Monthly</td>
+								<td>03/04/2012</td>
+								<td>Pending</td>
+							</tr>
+							<tr class="table-danger">
+								<td>4</td>
+								<td>TB - Monthly</td>
+								<td>04/04/2012</td>
+								<td>Call in to confirm</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 
-			<!-- 중고거래 -->
-			<div class="col-md-4">
-				<p class="text-left" style="font-size: medium;">
-					<b>중고 거래</b> <a href="" style="float: right">more</a>
-				</p>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>Product</th>
-							<th>Payment Taken</th>
-							<th>Status</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>1</td>
-							<td>TB - Monthly</td>
-							<td>01/04/2012</td>
-							<td>Default</td>
-						</tr>
-						<tr class="table-active">
-							<td>1</td>
-							<td>TB - Monthly</td>
-							<td>01/04/2012</td>
-							<td>Approved</td>
-						</tr>
-						<tr class="table-success">
-							<td>2</td>
-							<td>TB - Monthly</td>
-							<td>02/04/2012</td>
-							<td>Declined</td>
-						</tr>
-						<tr class="table-warning">
-							<td>3</td>
-							<td>TB - Monthly</td>
-							<td>03/04/2012</td>
-							<td>Pending</td>
-						</tr>
-						<tr class="table-danger">
-							<td>4</td>
-							<td>TB - Monthly</td>
-							<td>04/04/2012</td>
-							<td>Call in to confirm</td>
-						</tr>
-					</tbody>
-				</table>
+				<!-- 구인구직 -->
+				<div class="col-md-4">
+					<p class="text-left" style="font-size: medium;">
+						<b>구인구직</b> <a href="" style="float: right">more</a>
+					</p>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Product</th>
+								<th>Payment Taken</th>
+								<th>Status</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>TB - Monthly</td>
+								<td>01/04/2012</td>
+								<td>Default</td>
+							</tr>
+							<tr class="table-active">
+								<td>1</td>
+								<td>TB - Monthly</td>
+								<td>01/04/2012</td>
+								<td>Approved</td>
+							</tr>
+							<tr class="table-success">
+								<td>2</td>
+								<td>TB - Monthly</td>
+								<td>02/04/2012</td>
+								<td>Declined</td>
+							</tr>
+							<tr class="table-warning">
+								<td>3</td>
+								<td>TB - Monthly</td>
+								<td>03/04/2012</td>
+								<td>Pending</td>
+							</tr>
+							<tr class="table-danger">
+								<td>4</td>
+								<td>TB - Monthly</td>
+								<td>04/04/2012</td>
+								<td>Call in to confirm</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<!-- 중고거래 -->
+				<div class="col-md-4">
+					<p class="text-left" style="font-size: medium;">
+						<b>중고 거래</b> <a href="" style="float: right">more</a>
+					</p>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Product</th>
+								<th>Payment Taken</th>
+								<th>Status</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>TB - Monthly</td>
+								<td>01/04/2012</td>
+								<td>Default</td>
+							</tr>
+							<tr class="table-active">
+								<td>1</td>
+								<td>TB - Monthly</td>
+								<td>01/04/2012</td>
+								<td>Approved</td>
+							</tr>
+							<tr class="table-success">
+								<td>2</td>
+								<td>TB - Monthly</td>
+								<td>02/04/2012</td>
+								<td>Declined</td>
+							</tr>
+							<tr class="table-warning">
+								<td>3</td>
+								<td>TB - Monthly</td>
+								<td>03/04/2012</td>
+								<td>Pending</td>
+							</tr>
+							<tr class="table-danger">
+								<td>4</td>
+								<td>TB - Monthly</td>
+								<td>04/04/2012</td>
+								<td>Call in to confirm</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
-
 	<!-- footer -->
 	<footer class="container-fluid text-center">
 
@@ -312,6 +276,21 @@ body {
 			</div>
 		</div>
 
+
+		<script>
+			$(document).ready(function() {
+				$('.showboard-table-title-link').click(function() {
+					event.preventDefault();
+					var sb_no = $(this).attr('href');
+					$('#page-form-sb_no').val(sb_no);
+					var frm = $('#page-form');
+					frm.attr('action', 'showdetail');
+					frm.attr('method', 'get');
+					frm.submit();
+				});
+			});
+		</script>
+
 		<script>
 			function myMap() {
 				var myCenter = new google.maps.LatLng(37.499685, 127.031535);
@@ -332,26 +311,23 @@ body {
 				marker.setMap(map);
 
 			}
-			
-			$(document).ready (function () {
+
+			$(document).ready(function() {
 				console.log('jhd');
 			});
-			
 		</script>
-		
-		 <script
+
+		<script
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&callback=myMap"></script>
-		
+
 		<!--
 To use this code on your website, get a free API key from Google.
 Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 -->
 
 	</footer>
-	
+
 	<%@ include file="footer.jspf"%>
-
-
 </body>
 
 

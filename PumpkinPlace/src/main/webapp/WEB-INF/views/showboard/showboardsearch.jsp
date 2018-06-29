@@ -67,7 +67,7 @@ body {
 	<br />
 	<!-- 가운데 정렬 -->
 	<div class="container text-center">
-		<h1>공 연</h1>
+		<h1>공 연 검색 결과</h1>
 		<div class="tab-content">
 			<form action="search" style="float: right;">
 				<input type="text" id="startdate" placeholder="공연 날짜 선택" /> <input
