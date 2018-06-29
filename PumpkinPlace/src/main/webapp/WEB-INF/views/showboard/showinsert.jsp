@@ -117,7 +117,8 @@ body {
 	<!-- end MenuBar -->
 
 	<div class="container text-center">
-		<h2 class="container text-center">New Event</h2>
+	<br/><br/>
+		<h1 class="container text-center">공연 등록</h1>
 		<hr>
 
 
