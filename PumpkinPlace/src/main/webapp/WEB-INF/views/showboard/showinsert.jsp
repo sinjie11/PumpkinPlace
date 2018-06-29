@@ -22,7 +22,9 @@
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 
 
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style>
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
@@ -110,7 +112,7 @@ body {
 	<%@ include file="/WEB-INF/views/header.jspf"%>
 
 
-
+	<br />
 
 	<!-- end MenuBar -->
 
@@ -200,14 +202,27 @@ body {
 
 			<div id="en_daytime">
 				<label for="event_공연 날짜">공연 날짜 / 시간: <input type="text"
-					id="startdate" placeholder="공연 시작 날짜 선택" required> <input
-					type="text" name="time1" value="" placeholder="시간 입력" id="time1"
-					required size="8" maxlength="5"> ~ <input type="text"
-					id="enddate" placeholder="공연 종료 날짜 선택" required> <input
-					type="text" name="time2" value="" placeholder="시간 입력" id="time2"
-					required size="8" maxlength="5"></label>
+					id="startdate" placeholder="공연 시작 날짜 선택"/> <input type="text"
+					name="time1" value="" placeholder="시간 입력" id="time1" required
+					size="8" maxlength="5"> ~ <input type="text" id="enddate"
+					placeholder="공연 종료 날짜 선택" required /> <input type="text"
+					name="time2" value="" placeholder="시간 입력" id="time2" required
+					size="8" maxlength="5"></label>
 			</div>
 			<br />
+			
+			
+
+			<!-- 날짜 선택 -->
+			<script>
+		$(function() {
+			$("#startdate, #enddate").datepicker({
+				dateFormat : 'yy.mm.dd'
+			});
+		});
+	</script>
+
+
 
 
 			<!-- 지역 -->
@@ -326,17 +341,6 @@ body {
 
 
 	</div>
-
-	<!-- 날짜 선택 -->
-	<script>
-		$(function() {
-			$("#startdate, #enddate").datepicker({
-				dateFormat : 'yy.mm.dd'
-			});
-		});
-	</script>
-
-
 
 
 
