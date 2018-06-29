@@ -135,18 +135,33 @@
 							
 						</c:choose>
 												
-						
-						<!-- TODO: active 적용 해야 할것!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#">중고 거래<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="/pumpkinplace/tradeboard/list">거래</a></li>
-								<li><a href="#">베이스</a></li>
-								<li><a href="#">드럼/퍼커션</a></li>
-								<li><a href="#">앰프</a></li>
-								<li><a href="#">음향장비</a></li>
-								<li><a href="#">etc</a></li>
-							</ul></li>
+						<c:choose>
+							<c:when test="${url eq 'trade'}">
+								<li class="active"><a class="dropdown-toggle"
+								data-toggle="dropdown" href="#">중고 거래<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="/pumpkinplace/tradeboard/list">거래</a></li>
+									<li><a href="#">베이스</a></li>
+									<li><a href="#">드럼/퍼커션</a></li>
+									<li><a href="#">앰프</a></li>
+									<li><a href="#">음향장비</a></li>
+									<li><a href="#">etc</a></li>
+								</ul></li>
+							</c:when>
+							
+							<c:when test="${url ne 'trade'}">
+								<li class="dropdown"><a class="dropdown-toggle"
+								data-toggle="dropdown" href="#">중고 거래<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="/pumpkinplace/tradeboard/list">거래</a></li>
+									<li><a href="#">베이스</a></li>
+									<li><a href="#">드럼/퍼커션</a></li>
+									<li><a href="#">앰프</a></li>
+									<li><a href="#">음향장비</a></li>
+									<li><a href="#">etc</a></li>
+								</ul></li>
+							</c:when>
+						</c:choose>
 								
 						<c:choose>
 							<c:when test="${url eq 'job'}">
