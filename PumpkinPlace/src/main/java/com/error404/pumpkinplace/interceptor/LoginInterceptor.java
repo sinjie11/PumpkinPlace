@@ -29,7 +29,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		
 		if (loginId != null) {
 			session.removeAttribute("loginId");
-			
+		
 		}
 		
 		return true;

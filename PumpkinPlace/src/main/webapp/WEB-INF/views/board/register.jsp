@@ -1,16 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<!-- Image, Video 경로 String 입력을 받지 않았기 때문에 
-       Submit버튼을 누르면 null값으로 인해 일시적으로
-       500error가 납니다.-->
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
+<title>PumpkinPlace</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- 부트스트랩 -->
@@ -50,125 +47,105 @@ footer {
 
 body {
 	position: relative; /* For scrollyspy */
-	padding-top: 350px; /*Account for fixed navbar */
-	background-color: #f8f8f8;
-	position: relative; /* For scrollyspy */
 	padding-top: 300px; /*Account for fixed navbar */
 	background-color: #f8f8f8;
 }
+}
 </style>
-<title>Board</title>
 </head>
 <body>
 
 	<%@ include file="/WEB-INF/views/header.jspf"%>
 
+
 	<!-- end MenuBar -->
-	<div class="container text-center">
-		<h2>새 글쓰기</h2>
+	<div class="text-center">
+	<br/><br/>
+		<h1>새 글쓰기</h1>
+		<br/>
 		<form action="register" method="post">
-			<input type="text" name="title" placeholder="글 제목" required /> <br />
+			<input type="text" name="title" style="width: 385px;" placeholder="글 제목" required /> <br />
+			<br/>
 			<textarea rows="5" cols="50" name="content" placeholder="내용 작성"
-				required></textarea>
-			<br /> <input type="text" name="userid" value="${userId}"
-				readonly="readonly"><br /> <input type="submit"
+			required></textarea><br/>
+			<br /> <input type="text"  style="width: 385px;" name="userid" value="${loginId}"
+				readonly="readonly"><br/><br /> <input type="submit"
 				value="작성 완료" />
 		</form>
+
+
+
+		<!-- footer -->
+		<footer class="container-fluid text-center">
+
+			<div class="row">
+				<!-- Add Google Maps -->
+				<div id="googleMap"
+					style="height: 400px; width: 500px; float: right; margin-right: 200px;"></div>
+				<div class="col-sm-7 slideanim">
+					<h2 class="text-center" style="margin-left: 230px;">CONTACT</h2>
+					<br /> <br />
+					<div class="col-sm-7 slideanim" style="margin-left: 350px;">
+						<div class="row">
+							<div class="col-sm-6 form-group">
+								<input class="form-control" id="name" name="name"
+									placeholder="Name" type="text" required>
+							</div>
+							<div class="col-sm-6 form-group">
+								<input class="form-control" id="email" name="email"
+									placeholder="Email" type="email" required>
+							</div>
+						</div>
+						<textarea class="form-control" id="comments" name="comments"
+							placeholder="Comment" rows="5"></textarea>
+						<br>
+						<div class="row">
+							<div class="col-sm-12 form-group">
+								<button class="btn btn-default pull-right" type="submit">Send</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<script>
+				function myMap() {
+					var myCenter = new google.maps.LatLng(37.499685, 127.031535);
+					var map;
+
+					var mapProp = {
+						center : myCenter,
+						zoom : 16,
+						scrollwheel : false,
+						draggable : false,
+						mapTypeId : google.maps.MapTypeId.ROADMAP
+					};
+					var map = new google.maps.Map(document
+							.getElementById("googleMap"), mapProp);
+					var marker = new google.maps.Marker({
+						position : myCenter
+					});
+					marker.setMap(map);
+
+				}
+
+				$(document).ready(function() {
+					console.log('jhd');
+				});
+			</script>
+
+			<script
+				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&callback=myMap"></script>
+
+			<!--
+		To use this code on your website, get a free API key from Google.
+		Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+		-->
+
+		</footer>
+
+		<%@ include file="/WEB-INF/views/footer.jspf"%>
+		
 </body>
-<!-- footer -->
-<footer class="container-fluid text-center">
-
-	<div class="row">
-		<!-- Add Google Maps -->
-		<div id="googleMap"
-			style="height: 400px; width: 500px; float: right; margin-right: 200px;"></div>
-		<div class="col-sm-7 slideanim">
-			<h2 class="text-center" style="margin-left: 230px;">CONTACT</h2>
-			<br /> <br />
-			<div class="col-sm-7 slideanim" style="margin-left: 350px;">
-				<div class="row">
-					<div class="col-sm-6 form-group">
-						<input class="form-control" id="name" name="name"
-							placeholder="Name" type="text" required>
-					</div>
-					<div class="col-sm-6 form-group">
-						<input class="form-control" id="email" name="email"
-							placeholder="Email" type="email" required>
-					</div>
-				</div>
-				<textarea class="form-control" id="comments" name="comments"
-					placeholder="Comment" rows="5"></textarea>
-				<br>
-				<div class="row">
-					<div class="col-sm-12 form-group">
-						<button class="btn btn-default pull-right" type="submit">Send</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<script>
-		function myMap() {
-			var myCenter = new google.maps.LatLng(37.499685, 127.031535);
-			var map;
-
-			var mapProp = {
-				center : myCenter,
-				zoom : 16,
-				scrollwheel : false,
-				draggable : false,
-				mapTypeId : google.maps.MapTypeId.ROADMAP
-			};
-			var map = new google.maps.Map(document.getElementById("googleMap"),
-					mapProp);
-			var marker = new google.maps.Marker({
-				position : myCenter
-			});
-			marker.setMap(map);
-
-		}
-	</script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&callback=myMap"></script>
-	<!--
-To use this code on your website, get a free API key from Google.
-Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
--->
-
-</footer>
-
-<!-- footer -->
-<footer class="container-fluid text-center">
-
-
-	<!-- Container (Contact Section) -->
-	<div id="contact" class="container-fluid bg-grey">
-
-
-		<div class="row">
-			<div class="col-sm-5">
-				<!-- 가운데 정렬해주는거 -->
-				<div class="container text-center" style="margin-left: 370px;">
-					<p>Contact us and we'll get back to you within 24 hours.</p>
-					<p>
-						<span class="glyphicon glyphicon-map-marker"></span> Team
-						Error404, KOR
-					</p>
-					<p>
-						<span class="glyphicon glyphicon-phone"></span> +00 1515151515
-					</p>
-					<p>
-						<span class="glyphicon glyphicon-envelope"></span>
-						doojinzzang@something.com
-					</p>
-				</div>
-
-			</div>
-		</div>
-	</div>
-</footer>
-
 </html>
 

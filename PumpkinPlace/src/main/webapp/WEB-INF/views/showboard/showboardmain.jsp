@@ -69,17 +69,23 @@ body {
 
 	<!-- 가운데 정렬 -->
 	<div class="container text-center">
+<<<<<<< HEAD
 		
 			<form action="search" style="float: right; margin-right: 30px;">
+=======
+	<h1>공 연</h1>
+		<div class="tab-content">
+			<form action="search" style="float: right;">
+>>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
 				<input type="text" id="startdate" placeholder="공연 날짜 선택" /> <input
-					type="submit" value="Search" />
+					type="submit" value="선택" />
 			</form>
 			<br /> <br />
 			<!-- 검색창 -->
 			<form action="search"
 				style="float: right; margin-right: 30px; margin-bottom: 50px;">
 				<input type="text" name="searchKeyword" placeholder="검색어 입력"
-					required /> <input type="submit" value="Search" />
+					required /> <input type="submit" value="검색" />
 			</form>
 <hr/>
 			
@@ -201,7 +207,6 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 	</footer>
 
 	<%@ include file="/WEB-INF/views/footer.jspf"%>
-	
 </body>
 </html>
 
