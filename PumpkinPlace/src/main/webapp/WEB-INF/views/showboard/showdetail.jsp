@@ -172,7 +172,8 @@ td, h5 {
 
 						</div>
 						<br/>
-						<button style="size: small; margin-left: 50%;">수정하기(작성자만 보이기 위치 ㅇㄷ?)</button>
+						<button style="size: small; margin-left: 50%;">수정하기(작성
+						자만 보이기 위치는 어디로 할까요?)</button>
 					</div>
 				</div>
 			</div>
