@@ -59,6 +59,8 @@ public class ShowBoardController {
 		maker.setTotalCount(showBoardService.getNumOfShowBoardRecords());
 		maker.setPageLinkData();
 		model.addAttribute("pageMaker", maker);
+		
+		model.addAttribute("url", "showboard"); // action 설정을 위한 url 값 넘겨주기
 	}
 
 	@RequestMapping(value = "/showdetail", method = RequestMethod.GET)
@@ -67,11 +69,14 @@ public class ShowBoardController {
 				criteria.getNumsPerPage());
 		ShowBoard showboard = showBoardService.read(sb_no);
 		model.addAttribute("showboard", showboard);
+
 	}
 
 	@RequestMapping(value = "/showinsert")
-	public void showInsert() {
+	public void showInsert(Model model) {
 		logger.info("showInsert() 호출");
+
+		model.addAttribute("url", "showboard"); // active 설정을 위한 url 값 넘겨주기
 
 	}
 
