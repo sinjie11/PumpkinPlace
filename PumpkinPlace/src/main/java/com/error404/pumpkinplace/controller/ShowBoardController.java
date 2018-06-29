@@ -39,10 +39,10 @@ public class ShowBoardController {
 	@Autowired
 	ShowBoardService showBoardService;
 
-	@RequestMapping(value = "/showboardmain")
+	@RequestMapping(value = "/showboardmain", method = RequestMethod.GET)
 	public void showBoard(Integer page, Integer numsPerPage, Model model) {
 		logger.info("showboard() 호출");
-
+		Integer numsPerpage = 12;
 		PaginationCriteria criteria = new PaginationCriteria();
 		if (page != null) {
 			criteria.setPage(page);
@@ -116,5 +116,12 @@ public class ShowBoardController {
 
 			return null;
 		}
+	}
+	@RequestMapping(value = "/showboardsearch", method = RequestMethod.GET)
+	public void searchShowBoard(String searchKeyword, Model model) {
+		logger.info("showboardsearch(keyword: {})", searchKeyword);
+		List<ShowBoard> list = showBoardService.search(searchKeyword);
+		model.addAttribute("showboardList", list);
+		model.addAttribute("searchKeyword", searchKeyword);
 	}
 } // end class ShowBoardController

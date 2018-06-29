@@ -83,7 +83,7 @@
 
 				<div class="collapse navbar-collapse" id="menuNavbar">
 					<ul class="nav navbar-nav">
-					
+		
 						<c:choose>
 							<c:when test="${url eq '/'}">
 								<li class="active"><a href="/pumpkinplace/">Home</a></li>
