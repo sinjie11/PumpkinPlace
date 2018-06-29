@@ -108,7 +108,9 @@ body {
 						<div class="col-md-3">
 							<a class="table-title-link" href="${showboard.sb_no}"> <img
 								alt="Bootstrap Image Preview"
-								src="http://ticketimage.interpark.com/Play/image/large/18/18008332_p.gif" />
+								src="${pageContext.request.contextPath}/resources/images/showboard/${showboard.sb_img}" 
+								 style="width: 228px; height: 280px;"
+								 />
 							</a> <label class="table-title-link" href="${showboard.sb_no}">
 								<div class="card">
 									<h5 class="card-header">
