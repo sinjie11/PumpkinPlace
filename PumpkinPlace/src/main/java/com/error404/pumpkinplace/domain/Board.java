@@ -14,7 +14,7 @@ public class Board {
 	private int b_readcnt; // 게시글 조회 수
 	private int b_up; // 게시글 추천 수
 	private int b_down; // 게시글 비추천 수
-	
+		
 	public Board() {}//
 
 	public Board(int b_section, long b_no, String b_title, String b_content, String b_id, Date b_regdate, String b_img,
