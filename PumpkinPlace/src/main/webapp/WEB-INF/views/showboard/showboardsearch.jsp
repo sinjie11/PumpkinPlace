@@ -85,23 +85,24 @@ body {
 	<!-- 바디부분 -->
 
 	<div class="container text-center">
+		<div class=""></div>
 		<div class="row justify-content-md-center">
 			<div class="row align-items-start">
 				<div class="row align-items-start">
-					<c:forEach var="showboard" items="${showboardList}">
+					<c:forEach var="showboardsearch" items="${showboardList}">
 						<div class="col-md-3">
-							<a class="table-title-link" href="${showboard.sb_no}"> <img
+							<a class="table-title-link" href="${showboardsearch.sb_no}"> <img
 								alt="Bootstrap Image Preview"
 								src="http://ticketimage.interpark.com/Play/image/large/18/18008332_p.gif" />
-							</a> <label class="table-title-link" href="${showboard.sb_no}">
+							</a> <label class="table-title-link" href="${showboardsearch.sb_no}">
 								<div class="card">
 									<h5 class="card-header">
-										<b>${showboard.sb_title}</b>
+										<b>${showboardsearch.sb_title}</b>
 									</h5>
 									<div class="card-body">
-										<p class="card-text">${showboard.sb_nm}</p>
+										<p class="card-text">${showboardsearch.sb_nm}</p>
 									</div>
-									<fmt:formatDate value="${showboard.sb_startdate}"
+									<fmt:formatDate value="${showboardsearch.sb_startdate}"
 										pattern="yyyy년 MM월 dd일 HH시 mm분" var="startdate" />
 									<div class="card-footer">${startdate}</div>
 								</div>

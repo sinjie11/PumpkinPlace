@@ -112,4 +112,11 @@ public class ShowBoardController {
 			return null;
 		}
 	}
+	@RequestMapping(value = "/showboardsearch", method = RequestMethod.GET)
+	public void searchShowBoard(String searchKeyword, Model model) {
+		logger.info("showboardsearch(keyword: {})", searchKeyword);
+		List<ShowBoard> list = showBoardService.search(searchKeyword);
+		model.addAttribute("showboardList", list);
+		model.addAttribute("searchKeyword", searchKeyword);
+	}
 } // end class ShowBoardController
