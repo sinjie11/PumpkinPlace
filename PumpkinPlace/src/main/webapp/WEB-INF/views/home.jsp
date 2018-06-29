@@ -69,15 +69,14 @@ body {
 		<!-- 공연 소개  -->
 		<div class="row justify-content-md-center">
 			<div class="row">
-				<c:forEach var="showboard" items="${showboardList}" begin="1"
-					end="6" varStatus="vs">
+				<c:forEach var="showboard" items="${showboardList}" begin="0"
+					end="5" varStatus="vs">
 					<div class="col-md-4" style="height: 400px">
-						<a class="showboard-table-title-link"
-							href="${showboard.sb_no}"><img
+						<a href="showboard/showdetail?page=1&numsPerPage=12&sb_no=${showboard.sb_no}"><img
 							class="my-image" alt="Bootstrap Image Preview" width="220px;" height="280px;"
 							src="${pageContext.request.contextPath}/resources/images/showboard/${showboard.sb_img}" /></a>
-						<label class="showboard-table-title-link" href="showboard/showdetail?page=1&numsPerPage=12&sb_no=${showboard.sb_no}">
-							<h4>${showboard.sb_title}</h3>
+						<label href="showboard/showdetail?page=1&numsPerPage=12&sb_no=${showboard.sb_no}">
+							<h4>${showboard.sb_title}</h4>
 								<fmt:formatDate value="${showboard.sb_startdate}"
 									pattern="yyyy년 MM월 dd일 " var="startdate" />
 								<p>${showboard.sb_city}/${startdate}</p>
@@ -275,21 +274,6 @@ body {
 				</div>
 			</div>
 		</div>
-
-
-		<script>
-			$(document).ready(function() {
-				$('.showboard-table-title-link').click(function() {
-					event.preventDefault();
-					var sb_no = $(this).attr('href');
-					$('#page-form-sb_no').val(sb_no);
-					var frm = $('#page-form');
-					frm.attr('action', 'showdetail');
-					frm.attr('method', 'get');
-					frm.submit();
-				});
-			});
-		</script>
 
 		<script>
 			function myMap() {
