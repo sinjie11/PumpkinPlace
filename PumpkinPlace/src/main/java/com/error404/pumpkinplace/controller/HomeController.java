@@ -31,9 +31,8 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		////추가//////////////
+		// active 설정을 위해 추가
 		model.addAttribute("url", "/");
-		
 		
 		return "home";
 	}

@@ -66,7 +66,7 @@ body {
 		<form action="register" method="post">
 			<input type="text" name="title" style="width: 385px;" placeholder="글 제목" required /> <br />
 			<br/>
-			<textarea rows="5" cols="50" name="content" placeholder="내용 작성"
+			<textarea rows="5" cols="50" style="width: 385px;" name="content" placeholder="내용 작성"
 			required></textarea><br/>
 			<br /> <input type="text"  style="width: 385px;" name="userid" value="${loginId}"
 				readonly="readonly"><br/><br /> <input type="submit"

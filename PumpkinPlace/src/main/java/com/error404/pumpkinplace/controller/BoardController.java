@@ -51,17 +51,23 @@ public class BoardController {
 		maker.setPageLinkData();
 		model.addAttribute("pageMaker", maker);
 		
+		model.addAttribute("url", "board"); // active 설정을 위한 model
+		
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public void register() {
+	public void register(Model model) {
 		logger.info("register() GET 호출");
+		
+		model.addAttribute("url", "board"); // active 설정을 위한 model
+		
 	} 
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String register(Board board) {
 		logger.info("register({}) POST 호출", board);
 		boardService.create(board);
+				
 		return "redirect:/board/list";
 	} 
 	

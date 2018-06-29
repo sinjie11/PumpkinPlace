@@ -75,6 +75,7 @@
 		<property name="col_msg_send" value="msg_send" />
 		<property name="col_msg_recieve" value="msg_recieve" />
 		<property name="col_msg_regdate" value="msg_regdate" />
+		<property name="col_msg_section" value="msg_section" />
 	
 		
 		<!-- game 테이블 -->
