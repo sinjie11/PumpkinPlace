@@ -73,6 +73,7 @@ body {
 				readonly="readonly"><br/><br /> <input type="submit"
 				value="작성 완료" />
 		</form>
+	</div>
 
 
 

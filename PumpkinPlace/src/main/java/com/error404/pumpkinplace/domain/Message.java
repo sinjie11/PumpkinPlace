@@ -5,27 +5,25 @@ import java.util.Date;
 public class Message {
 	
 	private int msg_no; // 쪽지 번호
-	private String msg_confirm; // 쪽지 확인 여부
-	private String mem_id; // 회원 아이디(sender)
-	private String msg_recvid; // 회원 아이디(receiver)
+	private String mem_id; // 쪽지 발신 아이디
+	private String mem_id2; // 쪽지 수신 아이디
 	private String msg_title; // 쪽지 제목
-	private String msg_sendcontent; // 보낸 쪽지 내용
-	private String msg_recvcontent; // 받은 쪽지 내용
-	private Date msg_regdate; // 쪽지 작성일자
+	private String msg_content; // 쪽지 내용
+	private Date msg_regdate; // 쪽지 작성 일자
+	private Boolean msg_confirm; // 쪽지 수신 여부
 	
 	public Message() {}
 
-	public Message(int msg_no, String msg_confirm, String mem_id, String msg_recvid, String msg_title,
-			String msg_sendcontent, String msg_recvcontent, Date msg_regdate) {
-
+	public Message(int msg_no, String mem_id, String mem_id2, String msg_title, String msg_content, Date msg_regdate,
+			Boolean msg_confirm) {
+		
 		this.msg_no = msg_no;
-		this.msg_confirm = msg_confirm;
 		this.mem_id = mem_id;
-		this.msg_recvid = msg_recvid;
+		this.mem_id2 = mem_id2;
 		this.msg_title = msg_title;
-		this.msg_sendcontent = msg_sendcontent;
-		this.msg_recvcontent = msg_recvcontent;
+		this.msg_content = msg_content;
 		this.msg_regdate = msg_regdate;
+		this.msg_confirm = msg_confirm;
 	}
 
 	public int getMsg_no() {
@@ -36,14 +34,6 @@ public class Message {
 		this.msg_no = msg_no;
 	}
 
-	public String getMsg_confirm() {
-		return msg_confirm;
-	}
-
-	public void setMsg_confirm(String msg_confirm) {
-		this.msg_confirm = msg_confirm;
-	}
-
 	public String getMem_id() {
 		return mem_id;
 	}
@@ -52,12 +42,12 @@ public class Message {
 		this.mem_id = mem_id;
 	}
 
-	public String getMsg_recvid() {
-		return msg_recvid;
+	public String getMem_id2() {
+		return mem_id2;
 	}
 
-	public void setMsg_recvid(String msg_recvid) {
-		this.msg_recvid = msg_recvid;
+	public void setMem_id2(String mem_id2) {
+		this.mem_id2 = mem_id2;
 	}
 
 	public String getMsg_title() {
@@ -68,20 +58,12 @@ public class Message {
 		this.msg_title = msg_title;
 	}
 
-	public String getMsg_sendcontent() {
-		return msg_sendcontent;
+	public String getMsg_content() {
+		return msg_content;
 	}
 
-	public void setMsg_sendcontent(String msg_sendcontent) {
-		this.msg_sendcontent = msg_sendcontent;
-	}
-
-	public String getMsg_recvcontent() {
-		return msg_recvcontent;
-	}
-
-	public void setMsg_recvcontent(String msg_recvcontent) {
-		this.msg_recvcontent = msg_recvcontent;
+	public void setMsg_content(String msg_content) {
+		this.msg_content = msg_content;
 	}
 
 	public Date getMsg_regdate() {
@@ -91,6 +73,14 @@ public class Message {
 	public void setMsg_regdate(Date msg_regdate) {
 		this.msg_regdate = msg_regdate;
 	}
-	
+
+	public Boolean getMsg_confirm() {
+		return msg_confirm;
+	}
+
+	public void setMsg_confirm(Boolean msg_confirm) {
+		this.msg_confirm = msg_confirm;
+	}
+		
 	
 } // end class Message
