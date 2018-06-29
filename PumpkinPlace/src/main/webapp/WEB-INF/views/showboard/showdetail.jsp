@@ -108,8 +108,9 @@ td, h5 {
 
 
 					<div class="col-md-6" style="padding-left: 5%;">
-
+						<h3>공연 정보</h3>
 						<table class="table table-hover" style="width: 50%;">
+						
 							<tr>
 								<td width="40%">시간:</td>
 								<td>20:00</td>
@@ -131,7 +132,7 @@ td, h5 {
 						</table>
 						<div class="">
 							<h5>상세 정보</h5>
-							<textarea rows="5" cols="50" readonly="readonly"></textarea>
+							<textarea rows="5" cols="50" readonly="readonly">David Bowie Show</textarea>
 						</div>
 
 						<br />
@@ -172,8 +173,7 @@ td, h5 {
 
 						</div>
 						<br/>
-						<button style="size: small; margin-left: 50%;">수정하기(작성
-						자만 보이기 위치는 어디로 할까요?)</button>
+						<button style="size: small; margin-left: 50%;">수정하기(작성자만 보이기 위치는 어디로 할까요?)</button>
 					</div>
 				</div>
 			</div>

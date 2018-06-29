@@ -108,58 +108,55 @@ body {
 </style>
 </head>
 <body>
-	<br/>
-<h5><b> 카테고리: 공연 > 공연등록 </b></h5>
+	<br />
+	<h5>
+		<b> 카테고리: 공연 > 공연등록 </b>
+	</h5>
 
 	<%@ include file="/WEB-INF/views/header.jspf"%>
 
 
 	<br />
 
-	<!-- end MenuBar -->
 
 	<div class="container text-center">
-		<br />
-		<br />
-		<h1 class="container text-center">공연 등록</h1>
+
+		<h1>공연 등록</h1>
 		<hr>
 
+		<div class="col align-self-start">
+			<form action="showinsert" method="post" enctype="multipart/form-data">
+				<div style="margin: 0; padding: 0; display: inline">
+					<input name="utf8" type="hidden" value="&#x2713;" /> <input
+						name="authenticity_token" type="hidden"
+						value="V/YmJsJD2LJVCi0HoeIknFutTxFudHJCyCNYLsakG/U=" />
+				</div>
 
-		<form action="showinsert" method="post" enctype="multipart/form-data">
-			<div style="margin: 0; padding: 0; display: inline">
-				<input name="utf8" type="hidden" value="&#x2713;" /> <input
-					name="authenticity_token" type="hidden"
-					value="V/YmJsJD2LJVCi0HoeIknFutTxFudHJCyCNYLsakG/U=" />
-			</div>
+				<div>
+					<p>
+						<label for="event_공연 포스터:">공연 포스터 <br /> <br /> <img
+							id="blah" src="#" alt="your image" height="330px" width="250px;" />
+							<br /> <input type='file' id="imgInp" name="uploadFile" />
+						</label> <br />
 
-			<div>
-				<p>
-					<label for="event_공연 포스터:">공연 포스터 <br /> <br /> <img
-						id="blah" src="#" alt="your image" height="330px" width="250px;" />
-						<br /> <input type='file' id="imgInp" name="uploadFile" />
-					</label> <br />
-					<!-- <input type="file" name="uploadFile" id="imgInp" />   -->
-					<!-- 업로드 버튼(나중에 삭제) -->
-					<!-- 	<input type="submit" value="Upload" /></label> -->
-					<!-- end 업로드 -->
-				</p>
-				<p>공연을 위한 포스터를 업로드해주세요. 그렇지 않을 경우 대체 이미지가 사용됩니다.</p>
-				<br />
-			</div>
+					</p>
+					<p>공연을 위한 포스터를 업로드해주세요. 그렇지 않을 경우 대체 이미지가 사용됩니다.</p>
+					<br />
+				</div>
 
 
-			<!-- 사진 저장 -->
-			<script>
+				<!-- 사진 저장 -->
+				<script>
 				$(document).ready(function() {
 			if (${not empty saved}) {
 				alert('${saved}' + 'SAVED');
 			}
 				});
 			</script>
-			<!-- 사진저장 -->
+				<!-- 사진저장 -->
 
-			<!-- 사진 미리보기 -->
-			<script type="text/javascript">
+				<!-- 사진 미리보기 -->
+				<script type="text/javascript">
         $(function() {
             $("#imgInp").on('change', function(){
                 readURL(this);
@@ -180,45 +177,45 @@ body {
 
 
     </script>
-			<!-- end 미리보기 -->
+				<!-- end 미리보기 -->
 
 
 
 
-			<!-- 제목 -->
-			<div id="en_title">
-				<p>
-					<label for="event_공연 이름 :">공연 제목: <input id="show_name"
-						name="event" type="text" style="text-align: center; width: 200px;"
-						required /></label>
-				</p>
-			</div>
+				<!-- 제목 -->
+				<div id="en_title">
+					<p>
+						<label for="event_공연 이름 :">공연 제목: <input id="show_name"
+							name="event" type="text"
+							style="text-align: center; width: 200px;" required /></label>
+					</p>
+				</div>
 
 
-			<!-- 뮤지션이름 -->
-			<div id="en_bands">
-				<p>
-					<label for="event_공연하는 밴드:">뮤지션명: <input
-						id="event_band_tokens" name="event[band_tokens]" type="text"
-						style="text-align: center; width: 200px;" required /></label>
-				</p>
-			</div>
+				<!-- 뮤지션이름 -->
+				<div id="en_bands">
+					<p>
+						<label for="event_공연하는 밴드:">뮤지션명: <input
+							id="event_band_tokens" name="event[band_tokens]" type="text"
+							style="text-align: center; width: 200px;" required /></label>
+					</p>
+				</div>
 
-			<div id="en_daytime">
-				<label for="event_공연 날짜">공연 날짜 / 시간: <input type="text"
-					id="startdate" placeholder="공연 시작 날짜 선택" /> <input type="text"
-					name="starttime" value="" placeholder="시간 입력" id="time1" required
-					size="8" maxlength="5"> ~ <input type="text" id="enddate"
-					placeholder="공연 종료 날짜 선택" required /> <input type="text"
-					name="time2" value="" placeholder="시간 입력" id="endtime" required
-					size="8" maxlength="5"></label>
-			</div>
-			<br />
+				<div id="en_daytime">
+					<label for="event_공연 날짜">공연 날짜 / 시간: <input type="text"
+						id="startdate" placeholder="공연 시작 날짜 선택" /> <input type="text"
+						name="starttime" value="" placeholder="시간 입력" id="time1" required
+						size="8" maxlength="5"> ~ <input type="text" id="enddate"
+						placeholder="공연 종료 날짜 선택" required /> <input type="text"
+						name="time2" value="" placeholder="시간 입력" id="endtime" required
+						size="8" maxlength="5"></label>
+				</div>
+				<br />
 
 
 
-			<!-- 날짜 선택 -->
-			<script>
+				<!-- 날짜 선택 -->
+				<script>
 		$(function() {
 			$("#startdate, #enddate").datepicker({
 				dateFormat : 'yy.mm.dd'
@@ -229,97 +226,97 @@ body {
 
 
 
-			<!-- 지역 -->
-			<div id="en_city">
-				<p>
-					<label for="event_도시:"> 도시: <select id="country"
-						name="country"
-						style="text-align: center; width: 100px; margin-left: 12px;">
-							<option value="seoul">서울</option>
-							<option value="kuyngki">경기</option>
-							<option value="kwangju">광주</option>
-							<option value="daegu">대구</option>
-							<option value="busan">부산</option>
-							<option value="jeju">제주</option>
-					</select></label>
-				</p>
-			</div>
+				<!-- 지역 -->
+				<div id="en_city">
+					<p>
+						<label for="event_도시:"> 도시: <select id="country"
+							name="country"
+							style="text-align: center; width: 100px; margin-left: 12px;">
+								<option value="seoul">서울</option>
+								<option value="kuyngki">경기</option>
+								<option value="kwangju">광주</option>
+								<option value="daegu">대구</option>
+								<option value="busan">부산</option>
+								<option value="jeju">제주</option>
+						</select></label>
+					</p>
+				</div>
 
 
 
 
-			<!-- 공연장 -->
+				<!-- 공연장 -->
 
 
-			<div id="en_venue">
-
-
-
-				<p>
-					<label for="event_공연장:"> 공연장: <input
-						id="event_venue_tokens" name="event[venue_tokens]" type="text"
-						style="text-align: center; width: 200px;" required /></label>
-				</p>
-			</div>
-			<br />
+				<div id="en_venue">
 
 
 
-			<!-- 연락처 -->
-			<div id="en_phone">
-				<label for="event_연락처:">연락처: <input id="event_contact"
-					name="event[contact]" type="text"
-					style="text-align: center; width: 200px;" />
-				</label>
-			</div>
-			<br />
-
-			<!-- 가격 -->
-			<div id="en_price">
-				<p>
-					<label for="event_현매:"> 가격:<input id="event_door_price"
-						name="event[door_price]" type="number"
-						style="text-align: center; width: 200px; margin-left: 18px;" />
-					</label>
-				</p>
-			</div>
-		
-
-			<!-- 상세정보 -->
-			<div id="en_description">
-				<label>상세 정보</label>
-				<p>
-					<textarea name="description" rows="5" cols="50" id="text" required></textarea>
-				</p>
+					<p>
+						<label for="event_공연장:"> 공연장: <input
+							id="event_venue_tokens" name="event[venue_tokens]" type="text"
+							style="text-align: center; width: 200px;" required /></label>
+					</p>
+				</div>
 				<br />
 
-			</div>
-			<br />
-
-			<div id="en_player">
 
 
-				<div class="links"></div>
-				<p>
-
-					<label for="event_영상:">영상: <input id="youtube"
-						name="${youtube}" type="text"
-						style="text-align: center; width: 300px; margin-left: 12px;"
-						placeholder="YouTube 링크를 입력해주세요" />
+				<!-- 연락처 -->
+				<div id="en_phone">
+					<label for="event_연락처:">연락처: <input id="event_contact"
+						name="event[contact]" type="text"
+						style="text-align: center; width: 200px;" />
 					</label>
-				</p>
-			</div>
-			<br />
+				</div>
+				<br />
+
+				<!-- 가격 -->
+				<div id="en_price">
+					<p>
+						<label for="event_현매:"> 가격:<input id="event_door_price"
+							name="event[door_price]" type="number"
+							style="text-align: center; width: 200px; margin-left: 18px;" />
+						</label>
+					</p>
+				</div>
 
 
-			<!-- start 유투브 -->
+				<!-- 상세정보 -->
+				<div id="en_description">
+					<label>상세 정보</label>
+					<p>
+						<textarea name="description" rows="5" cols="50" id="text" required></textarea>
+					</p>
+					<br />
+
+				</div>
+				<br />
+
+				<div id="en_player">
+
+
+					<div class="links"></div>
+					<p>
+
+						<label for="event_영상:">영상: <input id="youtube"
+							name="${youtube}" type="text"
+							style="text-align: center; width: 300px; margin-left: 12px;"
+							placeholder="YouTube 링크를 입력해주세요" />
+						</label>
+					</p>
+				</div>
+				<br />
+
+
+				<!-- start 유투브 -->
 
 
 
-			<div style="margin-right: 50%;">
-				<iframe width="560" height="315" src="${youtube}" frameborder="0"
-					allow="autoplay; encrypted-media" allowfullscreen></iframe>
-				<script>
+				<div style="margin-right: 50%;">
+					<iframe width="560" height="315" src="${youtube}" frameborder="0"
+						allow="autoplay; encrypted-media" allowfullscreen></iframe>
+					<script>
 					jQuery(document).ready(
 							function($) {
 										$('iframe[src^="https://www.youtube.com/"]').wrap(
@@ -330,19 +327,19 @@ body {
 
 
 
-			</div>
-			<!-- end 유투브 -->
+				</div>
+				<!-- end 유투브 -->
 
 
 
-			<br /> <input class="btn btn-primary" name="uploadFile"
-				type="submit" value="등록" style="margin-bottom: 50px;" />
+				<br /> <input class="btn btn-primary" name="uploadFile"
+					type="submit" value="등록" style="margin-bottom: 50px;" />
 
-		</form>
-
-
+			</form>
 
 
+
+		</div>
 
 	</div>
 
@@ -352,69 +349,7 @@ body {
 
 </body>
 
-<!-- footer -->
-<footer class="container-fluid text-center">
 
-	<div class="row">
-		<!-- Add Google Maps -->
-		<div id="googleMap"
-			style="height: 400px; width: 500px; float: right; margin-right: 200px;"></div>
-		<div class="col-sm-7 slideanim">
-			<h2 class="text-center" style="margin-left: 230px;">CONTACT</h2>
-			<br /> <br />
-			<div class="col-sm-7 slideanim" style="margin-left: 350px;">
-				<div class="row">
-					<div class="col-sm-6 form-group">
-						<input class="form-control" id="name" name="name"
-							placeholder="Name" type="text" required>
-					</div>
-					<div class="col-sm-6 form-group">
-						<input class="form-control" id="email" name="email"
-							placeholder="Email" type="email" required>
-					</div>
-				</div>
-				<textarea class="form-control" id="comments" name="comments"
-					placeholder="Comment" rows="5"></textarea>
-				<br>
-				<div class="row">
-					<div class="col-sm-12 form-group">
-						<button class="btn btn-default pull-right" type="submit">Send</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<script>
-		function myMap() {
-			var myCenter = new google.maps.LatLng(37.499685, 127.031535);
-			var map;
-
-			var mapProp = {
-				center : myCenter,
-				zoom : 16,
-				scrollwheel : false,
-				draggable : false,
-				mapTypeId : google.maps.MapTypeId.ROADMAP
-			};
-			var map = new google.maps.Map(document.getElementById("googleMap"),
-					mapProp);
-			var marker = new google.maps.Marker({
-				position : myCenter
-			});
-			marker.setMap(map);
-
-		}
-	</script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&callback=myMap"></script>
-	<!--
-To use this code on your website, get a free API key from Google.
-Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
--->
-
-</footer>
 
 <%@ include file="/WEB-INF/views/footer.jspf"%>
 
