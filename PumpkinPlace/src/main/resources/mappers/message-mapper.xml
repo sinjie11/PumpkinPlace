@@ -6,5 +6,10 @@
 <mapper namespace="com.error404.pumpkinplace.mappers.MessageMapper">
 
 	<!--  message 테이블 sql 쿼리문 작성  -->
+	
+	<!--insert into pumpkin_message (mem_id, msg_title, msg_content, msg_send, msg_recieve, msg_section) 
+		values (?, ?, ?, ?, ?, ?)
+	 -->
+
 
 </mapper>
