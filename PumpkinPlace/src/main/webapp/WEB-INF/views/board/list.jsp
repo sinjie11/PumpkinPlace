@@ -59,7 +59,8 @@ body {
 <body>
 
 	<%@ include file="/WEB-INF/views/header.jspf"%>
-
+	<br/>
+<h5><b> 카테고리: 게시판 > 자유게시판 </b></h5>
 	<div class="container text-center">
 <br/><br/>
 		<h1>자유 게시판</h1>

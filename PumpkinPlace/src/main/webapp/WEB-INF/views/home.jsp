@@ -54,14 +54,16 @@ body {
 </style>
 </head>
 <body>
-
+	<br/>
+<h5><b> 카테고리: 홈 </b></h5>
 	<%@ include file="header.jspf"%>
 	
 
 	<!-- 가운데 정렬해주는거 -->
 	<div class="container text-center">
 
-		<h3></h3>
+		<h4><b>공연</b></h4>
+		
 		<br>
 		<!-- 공연 소개  -->
 		<div class="row">

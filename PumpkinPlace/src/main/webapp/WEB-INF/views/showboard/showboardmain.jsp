@@ -62,6 +62,8 @@ body {
 </style>
 </head>
 <body>
+	<br/>
+<h5><b> 카테고리: 공연 </b></h5>
 	<%@ include file="/WEB-INF/views/header.jspf"%>
 	<br />
 	<br />
