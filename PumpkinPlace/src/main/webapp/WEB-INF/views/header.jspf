@@ -100,7 +100,7 @@
 						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#">중고 거래<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">기타</a></li>
+								<li><a href="/pumpkinplace/tradeboard/list">거래</a></li>
 								<li><a href="#">베이스</a></li>
 								<li><a href="#">드럼/퍼커션</a></li>
 								<li><a href="#">앰프</a></li>
