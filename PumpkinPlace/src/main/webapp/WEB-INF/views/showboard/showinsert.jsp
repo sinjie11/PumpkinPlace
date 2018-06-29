@@ -151,8 +151,8 @@ body {
 
 
 										<br /> <img id="blah" src="#" alt="" width="570px;"
-											height="796px;" />
-										<br/><br/>
+											height="796px;" /> <br />
+										<br />
 
 										<!-- 사진 저장 -->
 										<script>
@@ -236,13 +236,13 @@ body {
 									</div>
 
 									<div id="en_daytime">
-										<label for="event_공연 날짜">공연 날짜 / 시간:<br/><input
-											type="text" id="startdate" placeholder="공연 시작 날짜 선택" /> <input
-											type="text" name="starttime" value="" placeholder="시간 입력"
-											id="time1" required size="8" maxlength="5"> ~ <input
-											type="text" id="enddate" placeholder="공연 종료 날짜 선택" required />
-											<input type="text" name="time2" value="" placeholder="시간 입력"
-											id="endtime" required size="8" maxlength="5"></label>
+										<label for="event_공연 날짜">공연 날짜 / 시간:<br /> <input type="text" id="startdate" placeholder="공연 시작 날짜 선택" />
+											<input type="text" name="starttime" value=""
+											placeholder="시간 입력" id="time1" required size="8"
+											maxlength="5"> ~ <input type="text" id="enddate"
+											placeholder="공연 종료 날짜 선택" required /> <input type="text"
+											name="time2" value="" placeholder="시간 입력" id="endtime"
+											required size="8" maxlength="5"></label>
 									</div>
 									<br />
 

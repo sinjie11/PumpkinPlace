@@ -130,7 +130,7 @@ td, h5 {
 							</tr>
 							<tr>
 								<td>도시:</td>
-								<td>London | ${showboard.sb_city}</td>
+								<td>${showboard.sb_city}</td>
 							</tr>
 
 							<tr>
@@ -140,7 +140,7 @@ td, h5 {
 						</table>
 						<div class="">
 							<h5>상세 정보</h5>
-							<textarea rows="5" cols="50" readonly="readonly">${showboard.sb_content}</textarea>
+							<textarea rows="6" cols="68" readonly="readonly">${showboard.sb_content}</textarea>
 						</div>
 
 						<br />
