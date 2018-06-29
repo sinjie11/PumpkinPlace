@@ -212,7 +212,7 @@ body {
 								<!-- 뮤지션이름 -->
 								<div id="en_bands">
 									<p>
-										<label for="event_공연하는 밴드:">뮤지션명: <input
+										<label for="event_공연하는 밴드:">뮤지션명:&nbsp <input
 											id="event_band_tokens" name="event[band_tokens]" type="text"
 											style="text-align: center; width: 200px;" required /></label>
 									</p>
@@ -273,6 +273,7 @@ body {
 										<span id="place-name" class="title"></span><br> Place ID
 										<span id="place-id"></span><br> <span id="place-address"></span>
 									</div>
+									<br/>
 
 									<script>
       function initMap() {
