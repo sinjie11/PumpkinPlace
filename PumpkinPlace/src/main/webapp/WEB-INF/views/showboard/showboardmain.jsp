@@ -72,14 +72,10 @@ body {
 <h5><b> 카테고리: 공연 </b></h5>
 	<%@ include file="/WEB-INF/views/header.jspf"%>
 	<br />
-	<br />
 	<!-- 가운데 정렬 -->
-
-
-
 	<div class="container text-center">
-		<h1>공 연</h1>
 		<div class="tab-content">
+			
 			<form action="showboardsearch"
 				style="float: right; margin-bottom: 50px;">
 				<div id="datetimepicker4" class="input-append date">
