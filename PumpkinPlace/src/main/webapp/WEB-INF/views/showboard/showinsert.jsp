@@ -417,8 +417,8 @@ body {
 
 		<br /> <input class="btn btn-primary" name="uploadFile" type="submit"
 			value="등록" style="margin-bottom: 50px; margin-left: 50%;" />
-
-
+                         
+ 
 	</form>
 
 
