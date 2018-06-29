@@ -27,6 +27,12 @@
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 
+<!-- datepicker -->
+<link
+	href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css"
+	rel="stylesheet">
+<link rel="stylesheet" type="text/css" media="screen"
+	href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
 <style>
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
@@ -66,19 +72,31 @@ body {
 	<br />
 	<br />
 	<!-- 가운데 정렬 -->
+
+
+
 	<div class="container text-center">
 		<h1>공 연</h1>
 		<div class="tab-content">
-			<form action="search" style="float: right;">
-				<input type="text" id="startdate" placeholder="공연 날짜 선택" /> <input
-					type="submit" value="선택" />
+			<form action="showboardsearch"
+				style="float: right; margin-bottom: 50px;">
+				<div id="datetimepicker4" class="input-append date">
+					<input type="text" placeholder="공연 날짜 선택"></input> <span
+						class="add-on"> <i data-time-icon="icon-time"
+						data-date-icon="icon-calendar"></i>
+					</span>
+					<input type="submit" value="선택" />
+				</div>
+				
 			</form>
-			<br /> <br />
+
 			<!-- 검색창 -->
-			<form action="showboardsearch" style="float: right; margin-bottom: 50px;">
+			<form action="showboardsearch"
+				style="float: right; margin-bottom: 50px;">
 				<input type="text" name="searchKeyword" placeholder="검색어 입력"
 					required /> <input type="submit" value="검색" />
 			</form>
+
 		</div>
 	</div>
 
@@ -169,6 +187,27 @@ body {
 				frm.attr('method', 'get');
 				frm.submit();
 			});
+		});
+	</script>
+
+
+	<!-- datepicker -->
+	<script type="text/javascript"
+		src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+		
+	</script>
+	<script type="text/javascript"
+		src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+		
+	</script>
+	<script type="text/javascript"
+		src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+		
+	</script>
+	<script type="text/javascript">
+		$('#datetimepicker4').datetimepicker({
+			format : 'yyyy/MM/dd',
+			pickTime : false
 		});
 	</script>
 
