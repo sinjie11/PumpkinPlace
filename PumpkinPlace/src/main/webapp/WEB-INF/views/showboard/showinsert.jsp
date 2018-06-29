@@ -148,7 +148,7 @@ body {
 										<p>
 											<small>공연을 위한 포스터를 업로드해주세요. 그렇지 않을 경우 대체 이미지가 사용됩니다.</small>
 										</p>
-
+ 
 
 										<br /> <img id="blah" src="#" alt="" width="570px;"
 											height="796px;" /> <br />
