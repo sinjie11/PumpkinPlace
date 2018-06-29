@@ -93,7 +93,8 @@ td, h5 {
 					</div>
 
 				</div>
-
+		
+	
 				<div class="row">
 
 					<div class="col-md-6">
@@ -170,10 +171,13 @@ td, h5 {
 								src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&callback=myMap"></script>
 
 						</div>
+						<br/>
+						<button style="size: small; margin-left: 50%;">수정하기(작성자만 보이기 위치 ㅇㄷ?)</button>
 					</div>
 				</div>
 			</div>
 		</div>
+
 	</div>
 
 	<br />
