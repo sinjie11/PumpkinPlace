@@ -79,8 +79,6 @@ body {
 			</form>
 		</div>
 
-
-
 		<div class="container text-center">
 			<table class="table">
 				<thead>
@@ -168,6 +166,8 @@ body {
 		frm.attr('method', 'get');
 		frm.submit();
 	});
+	
+	console.log('boardSectionNo: ${boarSectionNo}'); // 보드 구분번호
 	
 	});
 	</script>

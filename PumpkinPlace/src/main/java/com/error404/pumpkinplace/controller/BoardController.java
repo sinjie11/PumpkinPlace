@@ -53,6 +53,8 @@ public class BoardController {
 		
 		model.addAttribute("url", "board"); // active 설정을 위한 model
 		
+		model.addAttribute("boarSectionNo", 1); // 보드구분 번호
+		
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
@@ -60,6 +62,8 @@ public class BoardController {
 		logger.info("register() GET 호출");
 		
 		model.addAttribute("url", "board"); // active 설정을 위한 model
+		
+		model.addAttribute("boarSectionNo", 1); // 보드구분 번호
 		
 	} 
 	
