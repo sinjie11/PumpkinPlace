@@ -25,8 +25,7 @@ public class ShowBoardDaoImple implements ShowBoardDao {
 	
 	@Override
 	public int insert(ShowBoard showBoard) {
-		logger.info("insert({}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}) 호출", 
-				showBoard.getSb_no(),
+		logger.info("insert({}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}) 호출", 
 				showBoard.getSb_nm(), 
 				showBoard.getSb_title(), 
 				showBoard.getSb_content(),
@@ -34,7 +33,6 @@ public class ShowBoardDaoImple implements ShowBoardDao {
 				showBoard.getSb_price(),
 				showBoard.getSb_tel(),
 				showBoard.getSb_locinfo(),
-				showBoard.getSb_regdate(),
 				showBoard.getSb_img(),
 				showBoard.getSb_video(),
 				showBoard.getSb_startdate(),

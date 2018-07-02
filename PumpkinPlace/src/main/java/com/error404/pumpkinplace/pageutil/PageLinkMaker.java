@@ -10,8 +10,12 @@ public class PageLinkMaker {
 	private boolean hasPrev; // 이전 페이지 링크가 있는 지 결정
 	private boolean hasNext; // 다음 페이지 링크가 있는 지 결정
 	
-	public PageLinkMaker() {
+	public PageLinkMaker() { // 디폴트 생성자로 사용 X
 		this.numsOfPageLinks = 10;
+	}
+	
+	public PageLinkMaker(int numsOfPageLinks) { // Parameter가 있는 생성자를 사용
+		this.numsOfPageLinks = numsOfPageLinks;
 	}
 
 	public PaginationCriteria getCriteria() {
@@ -78,9 +82,9 @@ public class PageLinkMaker {
 			hasNext = true;
 		}
 		
-	} // end setPageLinkData()
+	} 
 	
-} // end class PageLinkMaker
+} 
 
 
 

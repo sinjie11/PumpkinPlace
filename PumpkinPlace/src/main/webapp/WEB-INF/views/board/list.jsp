@@ -59,11 +59,37 @@ body {
 <body>
 
 	<%@ include file="/WEB-INF/views/header.jspf"%>
+	<br/>
+
 
 	<div class="container text-center">
-
-		<h3>자유 게시판</h3>
-
+		<c:if test="${urlNo eq 1}">
+			<h5 style="text-align: left;"><b> 카테고리: 게시판 > 자유게시판 </b></h5>
+			<br/>
+			<br/>
+			<h1>자유 게시판</h1>
+		</c:if>
+		
+		<c:if test="${urlNo eq 8}">
+			<h5 style="text-align: left;"><b> 카테고리: 구인구직 > 구인 </b></h5>
+			<br/>
+			<br/>
+			<h1>구 인</h1>
+		</c:if>
+		
+		<c:if test="${urlNo eq 9}">
+			<h5 style="text-align: left;"><b> 카테고리: 구인구직 > 구직 </b></h5>
+			<br/>
+			<br/>
+			<h1>구 직</h1>
+		</c:if>
+		
+		<c:if test="${urlNo eq 20}">
+			<h5 style="text-align: left;"><b> 카테고리: Q & A </b></h5>
+			<br/>
+			<br/>
+			<h1>Q & A</h1>
+		</c:if>
 
 		<div class="container text-right">
 			<form action="search">
@@ -75,11 +101,9 @@ body {
 					</select>
 
 				</ul>
-				<a href="register"><button type="button">글쓰기</button></a>
+				<a id="register" href="register"><button type="button">글쓰기</button></a>
 			</form>
 		</div>
-
-
 
 		<div class="container text-center">
 			<table class="table">
@@ -167,6 +191,17 @@ body {
 		frm.attr('action', 'detail');
 		frm.attr('method', 'get');
 		frm.submit();
+	});
+	
+	console.log('boardSectionNo: ${boarSectionNo}'); // 보드 구분번호
+	
+	$('#register').click(function () { // qna
+		event.preventDefault();
+		$('#url-no').val(${urlNo});
+		var fb = $('#url-form');
+		fb.attr('action', '/pumpkinplace/board/register');
+		fb.attr('method', 'get');
+		fb.submit();
 	});
 	
 	});

@@ -4,7 +4,7 @@ import com.error404.pumpkinplace.domain.Member;
 
 public interface MemberMapper {
 	
-	// com.error404.pumpkinplace.mappers.MemberMapper.insertMember
+	// com.error404.pumpkinplace.mappers.MemberMapper.~
 	int insertMember(Member member);
 	
 	Member checkMemid(String mem_id);
