@@ -11,6 +11,6 @@ public interface MessageDao {
 	int update(Message message);
 	
 	int delete(int msg_no);
-	
+
 
 } // end interface MessageDao
