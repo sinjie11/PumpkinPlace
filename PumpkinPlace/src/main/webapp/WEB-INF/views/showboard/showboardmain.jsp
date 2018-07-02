@@ -108,7 +108,7 @@ body {
 						<div class="col-md-3">
 							<a class="table-title-link" href="${showboard.sb_no}"> <img
 								alt="Bootstrap Image Preview"
-								src="${pageContext.request.contextPath}/resources/images/showboard/${showboard.sb_img}" 
+								src="${pageContext.request.contextPath}/resources/assets/img/showboard/${showboard.sb_img}" 
 								 style="width: 228px; height: 280px;"
 								 />
 							 <label class="table-title-link" href="${showboard.sb_no}">
