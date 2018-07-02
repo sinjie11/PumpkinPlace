@@ -61,7 +61,8 @@ body {
 
 
 <%@ include file="/WEB-INF/views/header.jspf"%>
-
+	<br/>
+<h5><b> 카테고리: 구인구직 > 구인 </b></h5>
 <div class="container text-center">
 	</br></br>
 	<h1>구 인</h1>
