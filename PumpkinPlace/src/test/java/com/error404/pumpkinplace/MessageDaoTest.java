@@ -26,6 +26,8 @@ public class MessageDaoTest {
 	public void doTest() {
 //		insertTest();
 		selectById();
+//		updateTest();
+//		deleteTest();
 		
 	} // end doTest()
 	
@@ -38,10 +40,24 @@ public class MessageDaoTest {
 	} // end insertTest()
 	
 	private void selectById() {
-		Boolean test = false;
-		Message message = messageDao.select("admin", false);
+		Message message = new Message(0, "admin", null, null, null, null, false);
 		
 		logger.info("selectById : {} ", message.getMem_id());
 	} // end selectById()
+	
+	private void updateTest() {
+		Message message = new Message(3, null, null, "J 제목변경", "내용변경", null, false);
+		
+		int result = messageDao.update(message);
+		
+		logger.info("Update result : {} ", result);
+		
+	} // end updateTest()
 
+	private void deleteTest() {
+		int result = messageDao.delete(3);
+		
+		logger.info("Delete result = {} ", result);
+	} // end deleteTest()
+	
 } // end class MessageDaoTest

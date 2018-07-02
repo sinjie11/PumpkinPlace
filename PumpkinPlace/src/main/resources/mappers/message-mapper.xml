@@ -21,7 +21,7 @@
 		select * from pumpkin_message where mem_id = ?
  	-->
  	<select id="selectById" resultType="Message">
- 		select * from ${tbl_message} where ${col_mem_id} = #{mem_id} and #{col_msg_confirm} = #{msg_confirm}
+ 		select * from ${tbl_message} where ${col_mem_id} = #{mem_id}
  	</select>
 
 
