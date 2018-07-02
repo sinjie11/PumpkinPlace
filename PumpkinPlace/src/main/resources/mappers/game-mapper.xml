@@ -13,20 +13,31 @@
 		values((
 		select ${col_mem_no}
 		from ${tbl_member}
-		where ${col_mem_id} = #{mem_id}));
+		where ${col_mem_id} =
+		#{mem_id}));
 	</insert>
 
 	<!-- 2) 회원의 포인트와 최고점수를 갱신하는 SQL Statement -->
 	<update id="updatePointAndScore">
 		update ${tbl_game}
-		
+
 		set ${col_mem_account} =#{mem_account},
-		${col_mem_gamescore} = #{mem_gamescore}
+		${col_mem_gamescore} =
+		#{mem_gamescore}
 		where ${col_mem_no}=
 		(select ${col_mem_no}
 		from
 		${tbl_member}
 		where ${mem_id} = #{mem_id});
 	</update>
+
+	<!-- 3) DB에 저장된 회원들의 아이디와 게임점수를 내림차순으로 보여주는 SQL Statement -->
+	<select id="selectGameAll" resultType="Game">
+		select a.mem_id, b.mem_gamescore
+		from pumpkin_member a left outer join pumpkin_game b 
+		on a.mem_no = b.mem_no
+		where mem_gamescore is not null
+		order by mem_gamescore desc;
+	</select>
 
 </mapper>

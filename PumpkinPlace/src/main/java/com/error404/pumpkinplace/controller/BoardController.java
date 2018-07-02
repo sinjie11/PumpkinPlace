@@ -1,10 +1,6 @@
 package com.error404.pumpkinplace.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
-
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,12 +26,20 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
+	/* 
+	페이지 10/20/40개 동적처리는 한 줄짜리 주석으로 따로 빼놨습니다. 아직 jsp와 연동 전이기 때문에
+	 PageLinkMaker와 PaginationCriteria 클래스의 디폴트 생성자가 아닌 매개변수 생성자를 호출하게
+	되면 NullPointerException이 발생합니다. 일단 임시로 디폴트 생성자로 두겠습니다.
+	 */
+	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
+//	public void list(Integer page, Integer numsOfPageLinks, Integer numsPerPage, Model model) {
 	public void list(Integer page, Integer numsPerPage, Model model) {
 		logger.info("list() 호출");
-		// numsPerPage에 들어갈 수는 10/20/40 중 하나 
+		// numsPerPage에 들어갈 수는 10/20/40 중 하나
+//		PaginationCriteria criteria = new PaginationCriteria(page, numsPerPage);
 		PaginationCriteria criteria = new PaginationCriteria();
-		if (page != null) {
+		if (page != null) {//수형아 왜코딩이 멈춤??일해라 핫산!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			criteria.setPage(page);
 		}
 		if (numsPerPage != null) {
@@ -45,6 +49,7 @@ public class BoardController {
 		List<Board> list = boardService.read(criteria);
 		model.addAttribute("boardList", list);
 		
+//		PageLinkMaker maker = new PageLinkMaker(numsOfPageLinks);
 		PageLinkMaker maker = new PageLinkMaker();
 		maker.setCriteria(criteria);
 		maker.setTotalCount(boardService.getNumOfRecords());
