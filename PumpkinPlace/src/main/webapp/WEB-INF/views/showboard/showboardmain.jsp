@@ -68,34 +68,40 @@ body {
 </style>
 </head>
 <body>
-	<br/>
-<h5><b> 카테고리: 공연 </b></h5>
+	<br />
+	<h5>
+		<b> 카테고리: 공연 </b>
+	</h5>
 	<%@ include file="/WEB-INF/views/header.jspf"%>
 	<br />
 	<!-- 가운데 정렬 -->
 	<div class="container text-center">
 		<div class="tab-content">
-			
+			<div>
 			<form action="showboardsearch"
 				style="float: right; margin-bottom: 50px;">
 				<div id="datetimepicker4" class="input-append date">
 					<input type="text" placeholder="공연 날짜 선택"></input> <span
 						class="add-on"> <i data-time-icon="icon-time"
 						data-date-icon="icon-calendar"></i>
-					</span>
-					<input type="submit" value="선택" />
+					</span> <input type="submit" value="검색" />
 				</div>
-				
+				<div class="tab-content">
+			<input type="submit" value="검색" />
+			</div>
 			</form>
-
+			</div>
+		</div>
+		
+		<div>
 			<!-- 검색창 -->
 			<form action="showboardsearch"
 				style="float: right; margin-bottom: 50px;">
 				<input type="text" name="searchKeyword" placeholder="검색어 입력"
 					required /> <input type="submit" value="검색" />
 			</form>
-
 		</div>
+		
 	</div>
 
 	<!-- 바디부분 -->
@@ -108,9 +114,8 @@ body {
 						<div class="col-md-3">
 							<a class="table-title-link" href="${showboard.sb_no}"> <img
 								alt="Bootstrap Image Preview"
-								src="${pageContext.request.contextPath}/resources/images/showboard/${showboard.sb_img}" 
-								 style="width: 228px; height: 280px;"
-								 />
+								src="${pageContext.request.contextPath}/resources/images/showboard/${showboard.sb_img}"
+								style="width: 228px; height: 280px;" />
 							</a> <label class="table-title-link" href="${showboard.sb_no}">
 								<div class="card">
 									<h5 class="card-header">
@@ -202,7 +207,7 @@ body {
 		src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
 		
 	</script>
-		
+
 	<script type="text/javascript"
 		src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
 		
@@ -218,66 +223,6 @@ body {
 		});
 	</script>
 
-	<!-- footer -->
-	<footer class="container-fluid text-center">
-
-		<div class="row">
-			<!-- Add Google Maps -->
-			<div id="googleMap"
-				style="height: 400px; width: 500px; float: right; margin-right: 200px;"></div>
-			<div class="col-sm-7 slideanim">
-				<h2 class="text-center" style="margin-left: 230px;">CONTACT</h2>
-				<br /> <br />
-				<div class="col-sm-7 slideanim" style="margin-left: 350px;">
-					<div class="row">
-						<div class="col-sm-6 form-group">
-							<input class="form-control" id="name" name="name"
-								placeholder="Name" type="text" required>
-						</div>
-						<div class="col-sm-6 form-group">
-							<input class="form-control" id="email" name="email"
-								placeholder="Email" type="email" required>
-						</div>
-					</div>
-					<textarea class="form-control" id="comments" name="comments"
-						placeholder="Comment" rows="5"></textarea>
-					<br>
-					<div class="row">
-						<div class="col-sm-12 form-group">
-							<button class="btn btn-default pull-right" type="submit">Send</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<script>
-			function myMap() {
-				var myCenter = new google.maps.LatLng(37.499685, 127.031535);
-				var map;
-
-				var mapProp = {
-					center : myCenter,
-					zoom : 12,
-					scrollwheel : false,
-					draggable : false,
-					mapTypeId : google.maps.MapTypeId.ROADMAP
-				};
-				var map = new google.maps.Map(document
-						.getElementById("googleMap"), mapProp);
-				var marker = new google.maps.Marker({
-					position : myCenter
-				});
-				marker.setMap(map);
-
-			}
-		</script>
-		<script
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&callback=myMap"></script>
-		<!--
-To use this code on your website, get a free API key from Google.
-Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
--->
 
 	</footer>
 
