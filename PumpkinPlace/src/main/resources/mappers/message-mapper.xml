@@ -7,5 +7,39 @@
 
 	<!--  message 테이블 sql 쿼리문 작성  -->
 	
+	<!--
+		insert into pumpkin_message (mem_id, mem_id2, msg_title, msg_content) 
+		values (?, ?, ?, ?)
+	  -->
+	<insert id="insertMessage">
+		insert into ${tbl_message} (${col_mem_id}, ${col_mem_id2}, ${col_msg_title}, ${col_msg_content}) 
+		values (#{mem_id}, #{mem_id2}, #{msg_title}, #{msg_content})
+	</insert>
+	
+
+	<!-- 
+		select * from pumpkin_message where mem_id = ?
+ 	-->
+ 	<select id="selectById" resultType="Message">
+ 		select * from ${tbl_message} where ${col_mem_id} = #{mem_id} and #{col_msg_confirm} = #{msg_confirm}
+ 	</select>
+
+
+	<!-- 
+		update pumpkin_message set msg_title = ?, msg_content = ? 
+		where msg_no = ?
+	 -->
+	<update id="update">
+		update ${tbl_message} set ${col_msg_title} = #{msg_title}, ${col_msg_content} = #{msg_content} 
+		where ${col_msg_no} = #{msg_no}
+	</update>
+
+
+	<!-- 
+		delete pumpkin_message where msg_no = ?
+	 -->
+	 <delete id="delete">
+	 	delete ${tbl_message} where ${col_msg_no} = #{msg_no}
+	 </delete>
 		 
 </mapper>
