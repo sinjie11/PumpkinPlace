@@ -99,7 +99,7 @@
 							<c:when test="${url eq 'showboard'}">
 								<li class="active"><a class="dropdown-toggle"data-toggle="dropdown" href="#">공연<span class="caret"></span></a>
 									<ul class="dropdown-menu">
-										<li><a href="/pumpkinplace/showboard/showboardmain?page=1&numsPerPage=12&sb_no=">공연</a></li>
+										<li><a href="/pumpkinplace/showboard/showboardmain">공연</a></li>
 										<li><a href="/pumpkinplace/showboard/showinsert">공연 등록</a></li>
 									</ul>
 								</li>
@@ -108,7 +108,7 @@
 							<c:when test="${url ne 'showboard'}">
 								<li class="dropdown"><a class="dropdown-toggle"data-toggle="dropdown" href="#">공연<span class="caret"></span></a>
 									<ul class="dropdown-menu">
-										<li><a href="/pumpkinplace/showboard/showboardmain?page=1&numsPerPage=12&sb_no=">공연</a></li>
+										<li><a href="/pumpkinplace/showboard/showboardmain">공연</a></li>
 										<li><a href="/pumpkinplace/showboard/showinsert">공연 등록</a></li>
 									</ul>
 								</li>
@@ -117,18 +117,18 @@
 						</c:choose>
 						
 						<c:choose>
-							<c:when test="${url eq 'board'}">
+							<c:when test="${urlNo eq 1}">
 								<li class="active"><a class="dropdown-toggle" data-toggle="dropdown" href="#">게시판 <span class="caret"></span></a>
 									<ul class="dropdown-menu">
-										<li><a href="/pumpkinplace/board/list">자유 게시판</a></li>
+										<li><a id="free-board" href="/pumpkinplace/board/list">자유 게시판</a></li>
 									</ul>
 								</li>
 							</c:when>
 							
-							<c:when test="${url ne 'board'}">
+							<c:when test="${urlNo ne 1}">
 								<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">게시판 <span class="caret"></span></a>
 									<ul class="dropdown-menu">
-										<li><a href="/pumpkinplace/board/list">자유 게시판</a></li>
+										<li><a id="free-board" href="">자유 게시판</a></li>
 									</ul>
 								</li>
 							</c:when>
@@ -153,7 +153,7 @@
 								<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown" href="#">중고 거래<span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a href="/pumpkinplace/tradeboard/list">거래</a></li>
+									<li><a href="#">거래</a></li>
 									<li><a href="#">베이스</a></li>
 									<li><a href="#">드럼/퍼커션</a></li>
 									<li><a href="#">앰프</a></li>
@@ -164,38 +164,38 @@
 						</c:choose>
 								
 						<c:choose>
-							<c:when test="${url eq 'job'}">
+							<c:when test="${urlNo eq 8 or urlNo eq 9}">
 								<li class="active"><a class="dropdown-toggle" data-toggle="dropdown" href="#">구인 구직<span class="caret"></span></a>
 									<ul class="dropdown-menu">
-										<li><a href="/pumpkinplace/jobboard/employeelist">구인</a></li>
-										<li><a href="/pumpkinplace/jobboard/joblist">구직</a></li>
+										<li><a id="job-offer" href="/pumpkinplace/jobboard/employeelist">구인</a></li>
+										<li><a id="job-search" href="/pumpkinplace/jobboard/joblist">구직</a></li>
 									</ul>
 								</li>
 							</c:when>
 							
-							<c:when test="${url ne 'job'}">
+							<c:when test="${urlNo ne 8 or urlNo ne 9}">
 								<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">구인 구직<span class="caret"></span></a>
 									<ul class="dropdown-menu">
-										<li><a href="/pumpkinplace/jobboard/employeelist">구인</a></li>
-										<li><a href="/pumpkinplace/jobboard/joblist">구직</a></li>
+										<li><a id="job-offer" href="/pumpkinplace/jobboard/employeelist">구인</a></li>
+										<li><a id="job-search" href="/pumpkinplace/jobboard/joblist">구직</a></li>
 									</ul>
 								</li>
 							</c:when>
 						</c:choose>	
 						
 						<c:choose>
-							<c:when test="${url eq 'qna'}">
+							<c:when test="${urlNo eq 20}">
 								<li class="active"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Q&A<span class="caret"></span></a>
 									<ul class="dropdown-menu">
-										<li><a href="/pumpkinplace/qnaboard/list">Q&A</a></li>
+										<li><a id="qna-board" href="/pumpkinplace/qnaboard/list">Q&A</a></li>
 									</ul>
 								</li>
 							</c:when>
 						
-							<c:when test="${url ne 'qna'}">
+							<c:when test="${urlNo ne 20}">
 								<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Q&A<span class="caret"></span></a>
 									<ul class="dropdown-menu">
-										<li><a href="/pumpkinplace/qnaboard/list">Q&A</a></li>
+										<li><a id="qna-board" href="/pumpkinplace/qnaboard/list">Q&A</a></li>
 									</ul>
 								</li>
 							</c:when>
@@ -208,4 +208,45 @@
 		</nav>
 		
 	</nav>
+	
+	<form id="url-form">
+		<input id="url-no" type="hidden" name="urlNo"/>
+	</form>
+	
+	<script>
+		$(document).ready(function () {
+			
+			$('#free-board').click(function () { // 자유게시판
+				event.preventDefault();
+				$('#url-no').val(1);	
+				sendUrlNo();
+			});
+			
+			$('#job-offer').click(function () { // 구인
+				event.preventDefault();
+				$('#url-no').val(8);
+				sendUrlNo();
+			});
+			
+			$('#job-search').click(function () { // 구직
+				event.preventDefault();
+				$('#url-no').val(9);
+				sendUrlNo();
+			});
+			
+			$('#qna-board').click(function () { // qna
+				event.preventDefault();
+				$('#url-no').val(20);
+				sendUrlNo();
+			});
+			
+			function sendUrlNo() {
+				var fb = $('#url-form');
+				fb.attr('action', '/pumpkinplace/board/list');
+				fb.attr('method', 'get');
+				fb.submit();	
+			}
+			
+		});
+	</script>
 	<!-- end MenuBar -->

@@ -58,10 +58,25 @@ body {
 	<%@ include file="/WEB-INF/views/header.jspf"%>
 
 	<br/>
-<h5><b> 카테고리: 게시판 > 자유게시판 > 새 글쓰기</b></h5>
+
 	<!-- end MenuBar -->
-	<div class="text-center">
-	<br/><br/>
+	<div class="container text-center">
+	<c:if test="${urlNo eq 1}">
+		<h5 style="text-align: left;"><b> 카테고리: 게시판 > 자유게시판 > 새 글쓰기</b></h5>
+	</c:if>
+	<c:if test="${urlNo eq 8}">
+		<h5 style="text-align: left;"><b> 카테고리: 구인구직 > 구인 > 새 글쓰기</b></h5>
+	</c:if>
+	<c:if test="${urlNo eq 9}">
+		<h5 style="text-align: left;"><b> 카테고리: 구인구직 > 구직 > 새 글쓰기</b></h5>
+	</c:if>
+	<c:if test="${urlNo eq 20}">
+		<h5 style="text-align: left;"><b> 카테고리: Q & A > 새 글쓰기</b></h5>
+	</c:if>
+	
+	
+	<br/>
+	<br/>
 		<h1>새 글쓰기</h1>
 		<br/>
 		<form action="register" method="post">
