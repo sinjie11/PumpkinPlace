@@ -69,15 +69,14 @@ body {
 		<!-- 공연 소개  -->
 		<div class="row justify-content-md-center">
 			<div class="row">
-				<c:forEach var="showboard" items="${showboardList}" begin="1"
-					end="6" varStatus="vs">
+				<c:forEach var="showboard" items="${showboardList}" begin="0"
+					end="5" varStatus="vs">
 					<div class="col-md-4" style="height: 400px">
-						<a class="showboard-table-title-link"
-							href="${showboard.sb_no}"><img
+						<a href="showboard/showdetail?page=1&numsPerPage=12&sb_no=${showboard.sb_no}"><img
 							class="my-image" alt="Bootstrap Image Preview" width="220px;" height="280px;"
-							src="${pageContext.request.contextPath}/resources/images/showboard/${showboard.sb_img}" /></a>
-						<label class="showboard-table-title-link" href="showboard/showdetail?page=1&numsPerPage=12&sb_no=${showboard.sb_no}">
-							<h4>${showboard.sb_title}</h3>
+							src="${pageContext.request.contextPath}/resources/assets/img/showboard/${showboard.sb_img}" /></a>
+						<label href="showboard/showdetail?page=1&numsPerPage=12&sb_no=${showboard.sb_no}">
+							<h4>${showboard.sb_title}</h4>
 								<fmt:formatDate value="${showboard.sb_startdate}"
 									pattern="yyyy년 MM월 dd일 " var="startdate" />
 								<p>${showboard.sb_city}/${startdate}</p>
@@ -244,6 +243,72 @@ body {
 		</div>
 	</div>
 
+
+		<div class="row">
+			<!-- Add Google Maps -->
+			<div id="googleMap"
+				style="height: 400px; width: 500px; float: right; margin-right: 200px;"></div>
+			<div class="col-sm-7 slideanim">
+				<h2 class="text-center" style="margin-left: 230px;">CONTACT</h2>
+				<br /> <br />
+				<div class="col-sm-7 slideanim" style="margin-left: 350px;">
+					<div class="row">
+						<div class="col-sm-6 form-group">
+							<input class="form-control" id="name" name="name"
+								placeholder="Name" type="text" required>
+						</div>
+						<div class="col-sm-6 form-group">
+							<input class="form-control" id="email" name="email"
+								placeholder="Email" type="email" required>
+						</div>
+					</div>
+					<textarea class="form-control" id="comments" name="comments"
+						placeholder="Comment" rows="5"></textarea>
+					<br>
+					<div class="row">
+						<div class="col-sm-12 form-group">
+							<button class="btn btn-default pull-right" type="submit">Send</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			function myMap() {
+				var myCenter = new google.maps.LatLng(37.499685, 127.031535);
+				var map;
+
+				var mapProp = {
+					center : myCenter,
+					zoom : 16,
+					scrollwheel : false,
+					draggable : false,
+					mapTypeId : google.maps.MapTypeId.ROADMAP
+				};
+				var map = new google.maps.Map(document
+						.getElementById("googleMap"), mapProp);
+				var marker = new google.maps.Marker({
+					position : myCenter
+				});
+				marker.setMap(map);
+
+			}
+
+			$(document).ready(function() {
+				console.log('jhd');
+			});
+		</script>
+
+		<script
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&callback=myMap"></script>
+
+		<!--
+To use this code on your website, get a free API key from Google.
+Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+-->
+
+	
 
 	<%@ include file="footer.jspf"%>
 </body>

@@ -50,13 +50,7 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "/showdetail", method = RequestMethod.GET)
-	public void showBoardDetail(@ModelAttribute("criteria") PaginationCriteria criteria, int sb_no, Model model) {
-		logger.info("showBoardDetail(sb_no: {}, page: {}, numsPerPage: {}) 호출", sb_no, criteria.getPage(),
-				criteria.getNumsPerPage());
-		ShowBoard showboard = showBoardService.read(sb_no);
-		model.addAttribute("showboard", showboard);
-	}
+	
 	
 	
 }

@@ -114,9 +114,16 @@ body {
 						<div class="col-md-3">
 							<a class="table-title-link" href="${showboard.sb_no}"> <img
 								alt="Bootstrap Image Preview"
+
 								src="${pageContext.request.contextPath}/resources/images/showboard/${showboard.sb_img}"
 								style="width: 228px; height: 280px;" />
 							</a> <label class="table-title-link" href="${showboard.sb_no}">
+
+								src="${pageContext.request.contextPath}/resources/assets/img/showboard/${showboard.sb_img}" 
+								 style="width: 228px; height: 280px;"
+								 />
+							 <label class="table-title-link" href="${showboard.sb_no}">
+
 								<div class="card">
 									<h5 class="card-header">
 										<b>${showboard.sb_title}</b>
@@ -129,6 +136,7 @@ body {
 									<div class="card-footer">${startdate}</div>
 								</div>
 							</label>
+							</a>
 						</div>
 					</c:forEach>
 				</div>
@@ -224,7 +232,7 @@ body {
 	</script>
 
 
-	</footer>
+
 
 	<%@ include file="/WEB-INF/views/footer.jspf"%>
 

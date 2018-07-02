@@ -103,7 +103,7 @@ td, h5 {
 					<div class="col-md-6">
 
 						<img alt="포스터"
-							src="${pageContext.request.contextPath}/resources/images/showboard/${showboard.sb_img}"
+							src="${pageContext.request.contextPath}/resources/assets/img/showboard/${showboard.sb_img}"
 							
 							style="margin-left: 30%; width: 570px; height: 796px; " />
 
