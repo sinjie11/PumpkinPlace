@@ -96,5 +96,38 @@ public class BoardDaoImple implements BoardDao {
 
 		return sqlSession.selectList(NAMESPACE + ".listPage", criteria);
 	}
+	
+	//보드 디테일 
+	@Override
+	public Board boardSelect(int bno) {//보드샐랙트
+		
+		return sqlSession.selectOne(NAMESPACE + ".boardSelect", bno);
+	}
 
+	@Override
+	public int pulsReadcnt(int bno) {//조회수 1+
+		System.out.println("씨발 조회수 +1");
+		Map<String, Object> args =  new HashMap<>();
+		args.put("type", 1);
+		args.put("b_no" ,bno);
+		return sqlSession.update(NAMESPACE + ".puls1",args);
+	}
+
+	@Override
+	public int pulsUp(int bno) {//조아요 1+
+		Map<String, Object> args =  new HashMap<>();
+		args.put("type", 2);
+		args.put("b_no" ,bno);
+		return sqlSession.update(NAMESPACE + ".puls1",args);
+	}
+
+	@Override
+	public int pulsDown(int bno) {//비추 +1
+		Map<String, Object> args =  new HashMap<>();
+		args.put("type", 3);
+		args.put("b_no" ,bno);
+		return sqlSession.update(NAMESPACE + ".puls1",args);
+	}
+	
+	
 }

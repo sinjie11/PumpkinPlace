@@ -65,6 +65,8 @@ body {
 
 	<div class="container text-center">
 		<c:if test="${urlNo eq 1}">
+			<br />
+			<br />
 			<h5 style="text-align: left;"><b> 카테고리: 게시판 > 자유게시판 </b></h5>
 			<br/><br/>
 			<img alt="이미지"
@@ -72,6 +74,7 @@ body {
 				style="background-color: white; width: 110px; height: 110px;" />
 			<h1>자유 게시판</h1>
 		</c:if>
+
 
 		
 		<c:if test="${urlNo eq 2}">
@@ -127,9 +130,14 @@ body {
 				style="background-color: white; width: 110px; height: 110px;" />
 			<h1>ect</h1>
 		</c:if>
-		
 
 		<c:if test="${urlNo eq 8}">
+			<h5 style="text-align: left;">
+				<b> 카테고리: 구인구직 > 구인 </b>
+			</h5>
+			<br />
+			<br />
+
 			<h5 style="text-align: left;"><b> 카테고리: 구인구직 > 구인 </b></h5>
 			<br /><br />
 			<img alt="이미지"
@@ -227,10 +235,14 @@ ${board.b_no}
 
 
 	<form id="page-form">
-		<input type="hidden" name="page" id="page" value="${pageMaker.criteria.page}" /> 
-		<input type="hidden" name="numsPerPage" id="numsPerPage" value="${pageMaker.criteria.numsPerPage}" />
-		<input type="hidden" name="b_no" id="page-form-bno" />
+		<input type="hidden" name="page" id="page"
+			value="${pageMaker.criteria.page}" /> <input type="hidden"
+			name="numsPerPage" id="numsPerPage"
+			value="${pageMaker.criteria.numsPerPage}" /> <input type="hidden"
+			name="b_no" id="page-form-bno" />
+			<input type="hidden" name="urlNo" value="${urlNo}" />
 	</form>
+
 
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

@@ -17,7 +17,10 @@ public interface BoardDao {
 	int getNumOfRecords();
 	List<Board> select(PaginationCriteria criteria);
 	List<Board> selectBySectionNo(int sectionNo);
-	
+	Board boardSelect(int bno);
+	int pulsReadcnt(int bno);
+	int pulsUp(int bno);
+	int pulsDown(int bno);
 } 
 
 

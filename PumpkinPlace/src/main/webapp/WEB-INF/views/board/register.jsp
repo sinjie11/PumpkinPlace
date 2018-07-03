@@ -74,6 +74,9 @@ body {
 	<c:if test="${urlNo eq 20}">
 		<h5 style="text-align: left;"><b> 카테고리: Q & A > 새 글쓰기</b></h5>
 	</c:if>
+	<br/>
+	<br/>
+
 
 		<div class="container text-center">
 			<br />
@@ -92,7 +95,6 @@ body {
 	<br />
 	<br />
 	<br />
-
 
 			<script>
 				function myMap() {
