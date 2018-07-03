@@ -149,5 +149,11 @@ public class BoardController {
 		return entity;
 
 	}
+	@RequestMapping(value = "/testdetail" ,method = RequestMethod.GET)
+	public void testdetail(int bno ,Model model) {
+		Board board = boardService.readDetail(bno);
+		model.addAttribute("board",board);
+	}
+
 	
 }

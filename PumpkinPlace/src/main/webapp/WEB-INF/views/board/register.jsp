@@ -92,20 +92,6 @@ body {
 	
 	<br/>
 	<br/>
-		<h1>새 글쓰기</h1>
-		<br/>
-		<form action="register" method="post">
-			<input type="text" name="title" style="width: 385px;" placeholder="글 제목" required /> <br />
-			<br/>
-			<textarea rows="5" cols="50" style="width: 385px;" name="content" placeholder="내용 작성"
-			required></textarea><br/>
-			<br /> <input type="text"  style="width: 385px;" name="userid" value="${loginId}"
-				readonly="readonly"><br/><br /> <input type="submit"
-				value="작성 완료" />
-		</form>
-	</div>
-
-
 			<script>
 				function myMap() {
 					var myCenter = new google.maps.LatLng(37.499685, 127.031535);
