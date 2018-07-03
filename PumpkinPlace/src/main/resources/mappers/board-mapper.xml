@@ -13,7 +13,7 @@
 		${col_b_title}, ${col_b_content},
 		${col_b_id})
 		values
-		(1, #{b_title, jdbcType=VARCHAR}, #{b_content, jdbcType=CLOB}, 
+		(#{b_section, jdbcType=INTEGER}, #{b_title, jdbcType=VARCHAR}, #{b_content, jdbcType=CLOB}, 
 		#{b_id, jdbcType=VARCHAR})
 	</insert>
 

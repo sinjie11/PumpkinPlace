@@ -1,19 +1,24 @@
 package com.error404.pumpkinplace.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.error404.pumpkinplace.service.BoardService;
-
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.error404.pumpkinplace.domain.Board;
 import com.error404.pumpkinplace.pageutil.PageLinkMaker;
 import com.error404.pumpkinplace.pageutil.PaginationCriteria;
@@ -130,6 +135,19 @@ public class BoardController {
 				boardService.read(searchType, searchKeyword);
 		model.addAttribute("boardList", list);
 		model.addAttribute("searchKeyword", searchKeyword);  
-	} 	 
+	} 	
+	@RequestMapping(value = "/insert" , method = RequestMethod.POST)
+	public ResponseEntity<Integer> insert(@RequestBody Board board) {
+		logger.info("===== {}, {}, {}, {} ",
+				board.getB_section(),
+				board.getB_title(),
+				board.getB_id(),
+				board.getB_content());
+		int result = boardService.create(board);
+		ResponseEntity<Integer> entity =
+				new ResponseEntity<Integer>(result, HttpStatus.OK);
+		return entity;
+
+	}
 	
 }
