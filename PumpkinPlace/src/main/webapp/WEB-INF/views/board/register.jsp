@@ -160,7 +160,7 @@ body {
 							'b_content' :jsonContents
 						}), //서버로 보낼 JSON 객체문자열
 						success : function(result) {
-							location = '/pumpkinplace/board/list?urlNo=${urlNo}';
+							location = '/pumpkinplace/board/list?urlNo=' +  ${urlNo};
 						} 
 					});
 				
