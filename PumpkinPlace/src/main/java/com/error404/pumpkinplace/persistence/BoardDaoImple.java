@@ -33,11 +33,10 @@ public class BoardDaoImple implements BoardDao {
 
 	@Override
 	public int insert(Board board) {
-		logger.info("insert({}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}) 호출",
+		logger.info("insert({}, {}, {}, {}, {}) 호출",
 				board.getB_section(), board.getB_no(),
-				board.getB_title(), board.getB_content(), board.getB_id(),
-				board.getB_regdate(), board.getB_img(), board.getB_video(),
-				board.getB_readcnt(), board.getB_up(), board.getB_down());
+				board.getB_title(), board.getB_content(), 
+				board.getB_id());
 		
 		return sqlSession.insert(NAMESPACE + ".insert", board);
 	} 

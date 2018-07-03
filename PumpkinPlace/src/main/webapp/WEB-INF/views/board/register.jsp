@@ -18,7 +18,11 @@
 <!-- jquery -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+<!-- Quill -->
+<script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+<script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
+<link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
 <style>
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
@@ -57,24 +61,27 @@ body {
 
 	<%@ include file="/WEB-INF/views/header.jspf"%>
 
-	<br/>
-<h5><b> 카테고리: 게시판 > 자유게시판 > 새 글쓰기</b></h5>
+	<br />
+	<h5>
+		<b> 카테고리: 게시판 > 자유게시판 > 새 글쓰기</b>
+	</h5>
 	<!-- end MenuBar -->
-	<div class="text-center">
-	<br/><br/>
-		<h1>새 글쓰기</h1>
-		<br/>
-		<form action="register" method="post">
-			<input type="text" name="title" style="width: 385px;" placeholder="글 제목" required /> <br />
-			<br/>
-			<textarea rows="5" cols="50" style="width: 385px;" name="content" placeholder="내용 작성"
-			required></textarea><br/>
-			<br /> <input type="text"  style="width: 385px;" name="userid" value="${loginId}"
-				readonly="readonly"><br/><br /> <input type="submit"
-				value="작성 완료" />
-		</form>
-
-
+	
+		
+		<div class="text-center">
+			<br />
+			<br />
+			<h1>새 글쓰기</h1>
+			<br />
+			<form>
+				<input type="text" id="title" style="width: 385px;"
+					placeholder="글 제목" required name= "title"/> <br /> <br />
+			</form>
+		</div>
+		<div id="quillContents"></div>
+				<div class="text-center"><button id="submit" >작성완료</button></div>
+				
+		
 
 		<!-- footer -->
 		<footer class="container-fluid text-center">
@@ -130,11 +137,55 @@ body {
 
 				}
 
-				$(document).ready(function() {
-					console.log('jhd');
+			</script>
+			<script type="text/javascript">
+			var options = {
+					  debug: 'info',
+					  modules: {
+					    toolbar: 
+					    [['bold','italic','underline','strike' ]
+					    ,[{'color':[]},{'background':[]}]
+					    ,['blockquote','code-block']			//코드 적기
+					    ,[{'header':[1,2,3,4,5,6]}]		//해드 
+					    ,[{'list':'ordered'},{'list':'bullet'}]	//표정리
+					    ,[{'script':'sub'},{'script':'super'}]	//제곱 위치 
+					    ,[{'indent':'-1'},{'indent':'+1'}]		//들여 쓰기
+					    ,[{'direction':'rtl'}]					//오른쪽 정렬 
+					    ,[{'size':['small',false,'large','huge']}]
+					    ,['image','formula','link','video']		//첨부
+					    ,[{'font':[]}],[{'align':[]}]			//글정렬
+					    ]},
+					  placeholder: '입력하고 싶은 글을 입력하세요',
+					  readOnly: false,
+					  theme: 'snow'
+					};
+			var quillContents = new Quill('#quillContents', options);
+			
+
+				$('#submit').click(function() {
+					var contents = quillContents.getContents();
+					var jsonContents =JSON.stringify(contents);
+					
+					$.ajax({
+						type : 'post',
+						url : '/pumpkinplace/board/insert/',
+						headers : {
+							'Content-Type' : 'application/json',
+							'X-HTTP-Method-Override' : 'post'
+						},//요청해더
+						data : JSON.stringify({//오브 잭트를 문자열로 변환
+							'b_section' : 1, // 제형이가 전달할 섹션 넘버 
+							'b_title' : $('#title').val(),
+							'b_id' : "${loginId}",
+							'b_content' :jsonContents
+						}), //서버로 보낼 JSON 객체문자열
+						success : function(result) {
+							location = '/pumpkinplace/board/list';
+						} 
+					});
+				
 				});
 			</script>
-
 			<script
 				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&callback=myMap"></script>
 
@@ -146,7 +197,6 @@ body {
 		</footer>
 
 		<%@ include file="/WEB-INF/views/footer.jspf"%>
-		
 </body>
 </html>
 
