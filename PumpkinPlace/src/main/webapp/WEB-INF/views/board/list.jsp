@@ -166,7 +166,11 @@ body {
 					</select>
 
 				</ul>
-				<a id="register" href="register"><button type="button">글쓰기</button></a>
+				<ul>
+					<a id="register" href="register">
+					<button type="button" style="color: black;">글쓰기</button></a>
+				</ul>
+				
 			</form>
 		</div>
 ${board.b_no}
@@ -223,11 +227,9 @@ ${board.b_no}
 
 
 	<form id="page-form">
-		<input type="hidden" name="page" id="page"
-			value="${pageMaker.criteria.page}" /> <input type="hidden"
-			name="numsPerPage" id="numsPerPage"
-			value="${pageMaker.criteria.numsPerPage}" /> <input type="hidden"
-			name="b_no" id="page-form-bno" />
+		<input type="hidden" name="page" id="page" value="${pageMaker.criteria.page}" /> 
+		<input type="hidden" name="numsPerPage" id="numsPerPage" value="${pageMaker.criteria.numsPerPage}" />
+		<input type="hidden" name="b_no" id="page-form-bno" />
 	</form>
 
 	<script
