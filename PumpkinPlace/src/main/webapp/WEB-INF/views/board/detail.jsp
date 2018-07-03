@@ -7,13 +7,18 @@
 <head>
 <meta charset="UTF-8">
 <title>#Board</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Quill -->
+<script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+<script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
+<link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
 </head>
 <body>
 
 <h1>#글 상세 보기 페이지</h1>
-
+<div id="quillContents"></div>
 <form action="update">
-	<input type="hidden" name="urlNo" value="${urlNo}"/>
 	<input type="number" name="b_no" value="${board.b_no}" readonly />
 	<br/>
 	<input type="text" value="${board.b_title}" readonly />
@@ -27,27 +32,31 @@
 		var="b_regdate" />
 	<input type="text" value="${b_regdate}" readonly />
 	<br/>
-	<!-- <input type="submit" value="수정" /> -->
 	<button type="submit">수정</button>
 	<button type="button" id="btnList">메인 페이지로 돌아가기</button>
 </form>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
 <script>
+	var options = {
+		  debug: 'info',
+		  readOnly: true,
+		  theme: 'bubble'
+		};
+	var editor= new Quill('#quillContents', options);
+
 $(document).ready(function () {
+	
 	if (${not empty updateResult and updateResult == 'success'}) {
 		alert('${board.b_no} 게시글이 수정됐습니다!');
 	}
+	editor.updateContents(${board.getB_content()});
 	
 	
 	$('#btnList').click(function () {
-/* 		location = 'list?page=' + ${criteria.page}
-			+ "&numsPerPage=" + ${criteria.numsPerPage}; */
-			
+		
 			location =  '/pumpkinplace/board/list?urlNo=' + ${urlNo};
 	});
 });
+
 </script>
 
 </body>
