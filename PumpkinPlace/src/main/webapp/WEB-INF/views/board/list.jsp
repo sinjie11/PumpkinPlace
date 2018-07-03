@@ -62,24 +62,23 @@ body {
 
 	<div class="container text-center">
 		<c:if test="${urlNo eq 1}">
-<<<<<<< HEAD
+
 			<h5 style="text-align: left;">
-				<b> 카테고리: 게시판 > 자유게시판 </b>
+
 			</h5>
 			<br />
 			<br />
-=======
 			<h5 style="text-align: left;"><b> 카테고리: 게시판 > 자유게시판 </b></h5>
 			<br/><br/>
 			<img alt="이미지"
 				src="${pageContext.request.contextPath}/resources/presentation.png"
 				style="background-color: white; width: 110px; height: 110px;" />
->>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
+
 			<h1>자유 게시판</h1>
 		</c:if>
-<<<<<<< HEAD
 
-=======
+
+
 		
 		<c:if test="${urlNo eq 2}">
 			<h5 style="text-align: left;"><b> 카테고리: 중고거래 > 기타 </b></h5>
@@ -135,55 +134,45 @@ body {
 			<h1>ect</h1>
 		</c:if>
 		
->>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
 		<c:if test="${urlNo eq 8}">
-<<<<<<< HEAD
 			<h5 style="text-align: left;">
 				<b> 카테고리: 구인구직 > 구인 </b>
 			</h5>
 			<br />
 			<br />
-=======
 			<h5 style="text-align: left;"><b> 카테고리: 구인구직 > 구인 </b></h5>
 			<br/><br/>
 			<img alt="이미지"
 				src="${pageContext.request.contextPath}/resources/businessman.png"
 				style="background-color: white; width: 110px; height: 110px;" />
->>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
 			<h1>구 인</h1>
 		</c:if>
 
 		<c:if test="${urlNo eq 9}">
-<<<<<<< HEAD
 			<h5 style="text-align: left;">
 				<b> 카테고리: 구인구직 > 구직 </b>
 			</h5>
 			<br />
 			<br />
-=======
 			<h5 style="text-align: left;"><b> 카테고리: 구인구직 > 구직 </b></h5>
 			<br/><br/>
 			<img alt="이미지"
 				src="${pageContext.request.contextPath}/resources/resume.png"
 				style="background-color: white; width: 110px; height: 110px; margin-left: 15px;" />			
->>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
 			<h1>구 직</h1>
 		</c:if>
 
 		<c:if test="${urlNo eq 20}">
-<<<<<<< HEAD
 			<h5 style="text-align: left;">
 				<b> 카테고리: Q & A </b>
 			</h5>
 			<br />
 			<br />
-=======
 			<h5 style="text-align: left;"><b> 카테고리: Q & A </b></h5>
 			<br/><br/>
 			<img alt="이미지"
 				src="${pageContext.request.contextPath}/resources/question-mark.png"
 				style="background-color: white; width: 110px; height: 110px;" />
->>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
 			<h1>Q & A</h1>
 		</c:if>
 
@@ -259,6 +248,7 @@ ${board.b_no}
 			name="numsPerPage" id="numsPerPage"
 			value="${pageMaker.criteria.numsPerPage}" /> <input type="hidden"
 			name="b_no" id="page-form-bno" />
+			<input type="hidden" name="urlNo" value="${urlNo}" />
 	</form>
 
 	<script

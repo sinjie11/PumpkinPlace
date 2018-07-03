@@ -13,6 +13,7 @@
 <h1>#글 상세 보기 페이지</h1>
 
 <form action="update">
+	<input type="hidden" name="urlNo" value="${urlNo}"/>
 	<input type="number" name="b_no" value="${board.b_no}" readonly />
 	<br/>
 	<input type="text" value="${board.b_title}" readonly />
@@ -39,8 +40,10 @@ $(document).ready(function () {
 	}
 	
 	$('#btnList').click(function () {
-		location = 'list?page=' + ${criteria.page}
-			+ "&numsPerPage=" + ${criteria.numsPerPage};
+/* 		location = 'list?page=' + ${criteria.page}
+			+ "&numsPerPage=" + ${criteria.numsPerPage}; */
+			
+			location =  '/pumpkinplace/board/list?urlNo=1';
 	});
 });
 </script>

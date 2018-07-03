@@ -13,6 +13,7 @@
 <h1>글 수정 페이지</h1>
 
 <form id="form-update" action="update" method="post">
+	<input type="hidden" name="urlNo" value="${urlNo}" />
 	<input type="number" name="b_no" value="${board.b_no}" readonly />
 	<br/>
 	<input type="text" name="b_title" value="${board.b_title}" />
@@ -42,17 +43,19 @@ $(document).ready(function () {
 		if (result) {
 			// 웹 서버로 form 데이터를 submit
 			$('#form-update').submit();
+			
 		}
 	});
 	
 	$('#btnList').click(function () {
-		location = 'list';
+		location =  '/pumpkinplace/board/list?urlNo=1';
 	});
 	
 	$('#btnDelete').click(function () {
 		var result = confirm('${board.b_no} 정말 삭제?');
 		if (result) {
-			location = 'delete?b_no=' + ${board.b_no};
+ 			location = 'delete?b_no=' + ${board.b_no} + '&urlNo=' + ${urlNo}; 
+
 		}
 	});
 	
