@@ -1,78 +1,138 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>#Board</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- 부트스트랩 -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!-- Quill -->
-<script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
-<script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
-<link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-<link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- jquery -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<style>
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+	margin-bottom: 0;
+	border-radius: 0;
+}
+
+/* Add a gray background color and some padding to the footer */
+footer {
+	background-color: #f2f2f2;
+	padding: 25px;
+}
+
+.carousel-inner img {
+	width: 100%; /* Set width to 100% */
+	margin: auto;
+	min-height: 200px;
+}
+
+/* Hide the carousel text when the screen is less than 600 pixels wide */
+@media ( max-width : 600px) {
+	.carousel-caption {
+		display: none;
+	}
+}
+
+body {
+	position: relative; /* For scrollyspy */
+	padding-top: 350px; /*Account for fixed navbar */
+	background-color: #f8f8f8;
+}
+
+</style>
 </head>
 <body>
 
-<h1>#글 상세 보기 페이지</h1>
+	<%@ include file="/WEB-INF/views/header.jspf"%>
 
-<div id="quillContents"></div>
-<form action="update">
-	
-	<input type="hidden" name="urlNo" value="${urlNo}" />
-	<input type="number" name="b_no" value="${board.b_no}" readonly />
-	<br/>
-	<input type="text" value="${board.b_title}" readonly />
-	<br/>
-	<textarea rows="5" cols="50" readonly>${board.b_content}</textarea>
-	<br/>
-	<input type="text" value="${board.b_id}" readonly />
-	<br/>
-	<fmt:formatDate value="${board.b_regdate}"
-		pattern="yyyy/MM/dd HH:mm:ss"
-		var="b_regdate" />
-	<input type="text" value="${b_regdate}" readonly />
-	<br/>
-	<button type="submit">수정</button>
-	<button type="button" id="btnList">메인 페이지로 돌아가기</button>
-</form>
-
-<img alt="이미지"
-	src="${pageContext.request.contextPath}/resources/if_thumbs-up.png"
-	style=" width: 40px; height: 50px;" />
-
-
-<script>
-
-	var options = {
-		  debug: 'info',
-		  readOnly: true,
-		  theme: 'bubble'
-		};
-	
-	var editor= new Quill('#quillContents', options);
-
-$(document).ready(function () {
-	
-	if (${not empty updateResult and updateResult == 'success'}) {
-		alert('${board.b_no} 게시글이 수정됐습니다!');
-	}
 
 	
-	
-	$('#btnList').click(function () {
-		
-		location =  '/pumpkinplace/board/list?urlNo=' + ${urlNo};
-		});
-});
 
-</script>
+
+
 
 </body>
+<!-- footer -->
+<footer class="container-fluid text-center">
+
+	<div class="row">
+		<!-- Add Google Maps -->
+		<div id="googleMap"
+			style="height: 400px; width: 500px; float: right; margin-right: 200px;"></div>
+		<div class="col-sm-7 slideanim">
+			<h2 class="text-center" style="margin-left: 230px;">CONTACT</h2>
+			<br /> <br />
+			<div class="col-sm-7 slideanim" style="margin-left: 350px;">
+				<div class="row">
+					<div class="col-sm-6 form-group">
+						<input class="form-control" id="name" name="name"
+							placeholder="Name" type="text" required>
+					</div>
+					<div class="col-sm-6 form-group">
+						<input class="form-control" id="email" name="email"
+							placeholder="Email" type="email" required>
+					</div>
+				</div>
+				<textarea class="form-control" id="comments" name="comments"
+					placeholder="Comment" rows="5"></textarea>
+				<br>
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<button class="btn btn-default pull-right" type="submit">Send</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script>
+		function myMap() {
+			var myCenter = new google.maps.LatLng(37.499685, 127.031535);
+			var map;
+	
+			var mapProp = {
+				center : myCenter,
+				zoom : 12,
+				scrollwheel : false,
+				draggable : false,
+				
+				mapTypeId : google.maps.MapTypeId.ROADMAP
+			};
+			var map = new google.maps.Map(document.getElementById("googleMap"),
+				mapProp);
+			var marker = new google.maps.Marker({
+				position : myCenter
+			});
+			marker.setMap(map);
+	
+		}
+	</script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&callback=myMap"></script>
+	<!--
+To use this code on your website, get a free API key from Google.
+Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+-->
+
+</footer>
+
+<!-- footer -->
+<%@ include file="/WEB-INF/views/footer.jspf"%>
+
 </html>
+
 
 
 
