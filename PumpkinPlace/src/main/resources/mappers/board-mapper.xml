@@ -24,8 +24,6 @@
 		order by ${col_b_no} desc
 	</select>
 
-	<!-- Section No를 이용해 Board의 종류를 가려낸 후 게시판 첫 화면에서 요구하는 데이터들을 뽑아내는 Select 
-		Statement -->
 	<select id="selectBySectionNo" resultType="Board">
 		select
 		${col_b_no},
@@ -80,14 +78,56 @@
 		#{start} and #{end}
 	</select>
 
-	<update id="update">
+	<!-- bno 로 글검색 -->
+	<select id="boardSelect" resultType="Board">
+		select * from ${tbl_board}
+		where ${col_b_no} = #{b_no}
+	</select>
+
+	<update id="puls1">
 		update ${tbl_board}
+
+		<if test="type == 1">
+			set ${col_b_readcnt} = ${col_b_readcnt} + 1
+		</if>
+		<if test="type == 2">
+			set ${col_b_up} = ${col_b_up} + 1
+		</if>
+		<if test="type == 3">
+			set ${col_b_down} = ${col_b_down} + 1
+		</if>
+		where ${col_b_no} = #{b_no}
+	</update>
+
+<!-- 	<update id="updateCount">
+		update ${tbl_board}
+		<if test="type == 1">
+			set ${col_readcnt} = ${col_readcnt} + 1
+		</if>
+		<if test="type == 2">
+			set ${col_b_up} = ${col_b_up} + 1
+		</if>
+		<if test="type == 3">
+			set ${col_b_down} = ${col_b_down} + 1
+		</if>
+		where ${col_b_bno} = #{b_no}
 		set ${col_b_title} = #{b_title},
 		${col_b_content} = #{b_content},
 		${col_b_regdate} = sysdate
 		where
 		${col_b_no} = #{b_no}
 	</update>
+ -->
+	<update id="update">
+		update ${tbl_board}
+		set ${col_b_title} = #{b_title},
+		${col_b_content} = #{b_content},
+		${col_b_regdate} = sysdate
+		where
+		${col_b_bno} = #{b_no}
+	</update>
+
+
 
 	<delete id="delete">
 		delete from ${tbl_board} where ${col_b_no} = #{b_no}

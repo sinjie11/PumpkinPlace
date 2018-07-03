@@ -74,6 +74,8 @@ body {
 	<c:if test="${urlNo eq 20}">
 		<h5 style="text-align: left;"><b> 카테고리: Q & A > 새 글쓰기</b></h5>
 	</c:if>
+	<br/>
+	<br/>
 
 		<div class="text-center">
 			<br />
@@ -94,6 +96,7 @@ body {
 	<br />
 
 
+>>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
 			<script>
 				function myMap() {
 					var myCenter = new google.maps.LatLng(37.499685, 127.031535);
