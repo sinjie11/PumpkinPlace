@@ -28,9 +28,9 @@
 
 
 			
-			
+
 					<!-- 가운데 정렬해주는거 -->
-					<div class="container text-center" style="margin-left: 370px;">
+					<div class="container text-center">
 						<p>Contact us and we'll get back to you within 24 hours.</p>
 						<p>
 							<span class="glyphicon glyphicon-map-marker"></span> Team
