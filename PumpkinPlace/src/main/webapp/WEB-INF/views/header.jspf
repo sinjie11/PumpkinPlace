@@ -33,8 +33,8 @@
 			<div class="collapse navbar-collapse" id="myNavbar">
 
 				<ul class="nav navbar-nav navbar-right">
-
-					<!-- 쪽지 보내기 버튼 -->
+				
+					<!-- 쪽지함 버튼 -->
 					<c:if test="${not empty loginId}">
 						<li style="color: white; font-style:italic;"><a href="/pumpkinplace/message/list">* 쪽지함</a></li>
 					</c:if>
