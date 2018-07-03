@@ -36,7 +36,7 @@
 
 					<!-- 쪽지 보내기 버튼 -->
 					<c:if test="${not empty loginId}">
-						<li style="color: white; font-style:italic;"><a href="/pumpkinplace/message/message">* 쪽지함</a></li>
+						<li style="color: white; font-style:italic;"><a href="/pumpkinplace/message/list">* 쪽지함</a></li>
 					</c:if>
 
 					<!-- 로그인 아이디 정보 -->

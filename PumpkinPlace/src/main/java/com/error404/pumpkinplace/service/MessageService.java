@@ -6,7 +6,9 @@ public interface MessageService {
 	
 	int create(Message message); // 쪽지 보내기 서비스
 	
-	Message read(String mem_id, Boolean msg_confirm); // 아이디 검색 서비스
+	Message read(String mem_id); // 아이디 검색 서비스
+	
+	Message read2(String mem_id2); // 아이디2 검색 서비스
 	
 	int update(Message message); // 쪽지 수정 서비스
 	

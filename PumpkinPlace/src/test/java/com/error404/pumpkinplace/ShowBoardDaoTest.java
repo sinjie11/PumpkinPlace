@@ -38,7 +38,7 @@ public class ShowBoardDaoTest {
 	}
 
 	private void insertBulkData() throws InterruptedException {
-		for (int i = 1; i <= 100; i++) {
+		for (int i = 1; i <= 1; i++) {
 			ShowBoard showBoard = new ShowBoard(0, "황총민", "밴드 컴백공연", "우리가 돌아왔다", "서울", 0, "02-234-4732", "서울시 강남구 00클럽",
 					new Date(), "c://image", "c://video", new Date(), new Date());
 			showboardDao.insert(showBoard);
@@ -58,20 +58,23 @@ public class ShowBoardDaoTest {
 		ShowBoard showBoard9 = new ShowBoard(8, "DMZ", "DMZ 피스트레인 뮤직페스티벌 2018", "현재 일반 구매가 가능한 티켓은 모두 매진되었지만, 강원도민 혹은 강원도 내에서 현재 군복무 중인 군인은 사전 예약 없이 현장에서 무료로 입장할 수 있어요! ", "서울 강원도", 0, "02-1234-5678", "서울 플랫폼창동61, 철원 고석정, 월정리역, 노동당사 ", new Date(), "", "6L5RY7V7-W0", new Date(), new Date());
 		ShowBoard showBoard10 = new ShowBoard(9, "폭스바겐", "레인보우 페스티벌", "자라섬에서 펼쳐지는 레인보우 캠핑 &뮤직페스티벌은 오토캠핑, 카라반, 캠핑패키지 2,000동이 모두 사전매진 될 정도로 인기가 많은 축제에요! 낮부터 밤까지 All night 스테이지로 운영되는 레인보우 축제에서는 특별하고 로맨틱한 일탈을 즐길 수 있어요! 스테이지가 나뉘어져 있는 레인보우 뮤직페스티벌에서는 다이나믹 듀오, 윤하, 10CM등 다양한 장르의 뮤지션의 공연을 관람할 수 있습니다. 해가 지면 시작되는 미드나잇 라운지는 페스티벌을 방문했다면 놓치지 말아야 하는 필수 코스! 몽환적이고 환상적인 디제잉 공연 즐기며 그 동안 잠들어 있던 흥을 불태울 시간이에요! 뮤직페스티벌 한 켠에서는 플리마켓과 캠핑 레크리에이션, 스탠드 업 코미디 쇼 등 관객이 함께 참여할 수 있는 부스도 마련되어 있습니다. 가족과 친구들과 함께 방문했다면 이 곳에서 잊지 못할 추억을 만들어 보세요.", "경기도", 66000, "010-3360-7846", "경기도 가평군 자라섬", new Date(), "", "cd1gXaJMAwQ", new Date(), new Date());
 		ShowBoard showBoard11 = new ShowBoard(10, "울트라", "울트라 코리아 2018", "울트라 뮤직페스티벌은 1999년 미국 마이애미에서 시작된 일렉트로닉 댄스 뮤직 축제로, 전세계에서 매년 10만명 이상이 참가할 정도로 규모가 큰 글로벌 축제에요. 매년 우리나라에서는 아시아 최대 규모로 울트라 뮤직페스티벌이 열리고 있지요. 특히 올해에는 빌보드 연속 1위의 기록을 가지고 있는 뮤지션 체인스 모커스, 스티브 안젤로, 아이스 큐브 등 유명 뮤지션들이 참여하며, K-pop 가수로는 씨엘, 도끼, 드렁큰타이거와 윤미래, 비지 등이 총 출동 한다는 소식이 전해져 많은 음악 팬들의 시선이 집중되고 있어요.  예쁘게 꾸며 입는 것도 좋겠지만, 장시간 뛰어 놀기 위해서는 편안한 신발과, 소지품을 넣을 수 있는 작은 가방은 필수! 만 19세 이상 출입 가능한 뮤직페스티벌이기 때문에 신분증을 꼭 챙기셔야 해요!", "서울", 140000, "02-2240-8800", "서울특별시 송파구 올림픽로 25 잠실 종합운동장", new Date(), "", "qF-aQHNiR4w", new Date(), new Date());
+		ShowBoard showBoard12 = new ShowBoard(6, "황총민", "밴드 리턴", "우리가 돌아왔다", "서울", 0, "02-234-4732", "서울시 강남구 00클럽", new Date(), "162.png", "asdasfewr", new Date(), new Date());
+		
 		
 //		int result1 = showboardDao.insert(showBoard1);
-		int result2 = showboardDao.insert(showBoard2);
-		int result3 = showboardDao.insert(showBoard3);
-		int result4 = showboardDao.insert(showBoard4);
-		int result5 = showboardDao.insert(showBoard5);
-		int result6 = showboardDao.insert(showBoard6);
-		int result7 = showboardDao.insert(showBoard7);
-		int result8 = showboardDao.insert(showBoard8);
-		int result9 = showboardDao.insert(showBoard9);
-		int result10 = showboardDao.insert(showBoard10);
-		int result11 = showboardDao.insert(showBoard11);
+//		int result2 = showboardDao.insert(showBoard2);
+//		int result3 = showboardDao.insert(showBoard3);
+//		int result4 = showboardDao.insert(showBoard4);
+//		int result5 = showboardDao.insert(showBoard5);
+//		int result6 = showboardDao.insert(showBoard6);
+//		int result7 = showboardDao.insert(showBoard7);
+//		int result8 = showboardDao.insert(showBoard8);
+//		int result9 = showboardDao.insert(showBoard9);
+//		int result10 = showboardDao.insert(showBoard10);
+//		int result11 = showboardDao.insert(showBoard11);
+		int result12 = showboardDao.insert(showBoard12);
 		
-		logger.info("Insert result = {}", result2);
+		logger.info("Insert result = {}", result12);
 	}
 
 	private void testSelectAll() {
