@@ -16,16 +16,9 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery.min.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 
 
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery-1.12.4.js"></script>
-<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <style>
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
@@ -118,8 +111,7 @@ body {
 		<b> 카테고리: 공연 > 공연등록 </b>
 	</h5>
 
-	<%@ include file="/WEB-INF/views/header.jspf"%>
-
+<%@ include file="/WEB-INF/views/header.jspf"%>
 
 	<br />
 
@@ -440,7 +432,7 @@ body {
 
 
 
-<%@ include file="/WEB-INF/views/footer.jspf"%>
+
 
 </html>
 
