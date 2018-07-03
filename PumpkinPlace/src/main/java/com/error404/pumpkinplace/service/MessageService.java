@@ -1,8 +1,14 @@
 package com.error404.pumpkinplace.service;
 
+import java.util.List;
+
 import com.error404.pumpkinplace.domain.Message;
 
 public interface MessageService {
+	
+	List<Message> send(String mem_id); // 보낸 쪽지함 서비스
+	
+	List<Message> recieve(String mem_id2); // 받은 쪽지함 서비스
 	
 	int create(Message message); // 쪽지 보내기 서비스
 	

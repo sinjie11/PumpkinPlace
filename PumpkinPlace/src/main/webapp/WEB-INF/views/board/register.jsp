@@ -51,7 +51,7 @@ footer {
 
 body {
 	position: relative; /* For scrollyspy */
-	padding-top: 300px; /*Account for fixed navbar */
+	padding-top: 350px; /*Account for fixed navbar */
 	background-color: #f8f8f8;
 }
 }
@@ -78,7 +78,7 @@ body {
 	<br/>
 
 
-		<div class="text-center">
+		<div class="container text-center">
 			<br />
 			<br />
 			<h1>새 글쓰기</h1>
@@ -117,6 +117,8 @@ body {
 
 				}
 
+				
+				
 			</script>
 			<script type="text/javascript">
 			var options = {
@@ -160,7 +162,7 @@ body {
 							'b_content' :jsonContents
 						}), //서버로 보낼 JSON 객체문자열
 						success : function(result) {
-							location = '/pumpkinplace/board/list?urlNo=${urlNo}';
+							location = '/pumpkinplace/board/list?urlNo=' +  ${urlNo};
 						} 
 					});
 				
