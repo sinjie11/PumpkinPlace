@@ -90,7 +90,7 @@ public class BoardController {
 			int b_no, int urlNo, Model model) {
 		logger.info("detail(bno: {}, urlNo: {},  page: {}, numsPerPage: {}) 호출", 
 				b_no, urlNo, criteria.getPage(), criteria.getNumsPerPage());
-		Board board = boardService.readByBno(b_no);
+		Board board = boardService.readDetail(b_no);
 		model.addAttribute("board", board);
 		model.addAttribute("urlNo", urlNo);
 
