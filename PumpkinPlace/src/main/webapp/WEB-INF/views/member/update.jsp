@@ -67,18 +67,18 @@ body {
 	<br/>
 	<img alt="이미지"
 				src="${pageContext.request.contextPath}/resources/profile.png"
-				style="background-color: white; width: 110px; height: 110px;" /></a>
-	<h1><b>수정 페이지	</b></h1>
+				style="background-color: white; width: 110px; height: 110px;" />
+	<h1><b>회원정보 수정</b></h1>
 
 	<form id="form-update" action="update" method="post">
 	
 	<br/>
 		<span style="font-size:18px; margin-right: 15px;"><b>회원번호</b> </span>
-		<input type="number" name="mem_no" value="${member.mem_no}" readonly />
+		<input type="number" name="mem_no" style="background-color: lightgray;" value="${member.mem_no}" readonly />
 		<br/>
 		<br/>
 		<span style="font-size:18px; margin-right: 30px;"><b>아이디</b></span>
-		<input type="text" name="mem_id" value="${member.mem_id}" readonly />
+		<input type="text" name="mem_id" style="background-color: lightgray;" value="${member.mem_id}" readonly />
 		<br/>
 		<br/>
 		<span style="font-size:18px; margin-right: 15px;"><b>비밀번호</b> </span>
@@ -95,19 +95,20 @@ body {
 		<br/>
 		<span style="font-size:18px; margin-right: 15px;"><b>가입일자</b></span>		
 		<fmt:formatDate value="${member.mem_regdate}"
-			pattern="yyyy-MM-dd" var="regdate" />
+			pattern="yyyy-MM-dd"   var="regdate"  />
 
-		<input type="text" value="${regdate}" readonly />
+		<input type="text" style="background-color: lightgray;" value="${regdate}" readonly  />
 		<br/>
 		<br/>
 		
 		<button>수정 완료</button>
+
 		<br /><br />
+
 	</form>
 	</div>
 
 	<%@ include file="/WEB-INF/views/footer.jspf"%>
-
 </body>
 
 </html>

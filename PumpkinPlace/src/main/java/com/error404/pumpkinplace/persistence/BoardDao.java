@@ -9,7 +9,8 @@ public interface BoardDao {
 
 	List<Board> select();
 	int insert(Board board);
-	Board select(int b_section);
+//	Board select(int b_section);
+	Board selectByBno(int b_no);
 	int update(Board board);
 	int delete(int bno);
 	List<Board> search(int type, String keyword);

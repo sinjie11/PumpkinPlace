@@ -53,6 +53,10 @@ public class BoardController {
 		
 		List<Board> list = boardService.read(criteria);
 		model.addAttribute("boardList", list);
+		logger.info("***** board list size {}", list.size());
+//		logger.info("{} {} {} {}",
+//				list.get(0).getB_no(), list.get(0).getB_title(), list.get(0).getB_id(), list.get(0).getB_regdate());
+//		logger.info("boardList : " + model.addAttribute("boardList", list)); 
 		
 //		PageLinkMaker maker = new PageLinkMaker(numsOfPageLinks);
 		PageLinkMaker maker = new PageLinkMaker();
@@ -87,7 +91,7 @@ public class BoardController {
 			int b_no, Model model) {
 		logger.info("detail(bno: {}, page: {}, numsPerPage: {}) 호출", 
 				b_no, criteria.getPage(), criteria.getNumsPerPage());
-		Board board = boardService.read(b_no);
+		Board board = boardService.readByBno(b_no);
 		model.addAttribute("board", board);
 	} 
 	
@@ -96,7 +100,7 @@ public class BoardController {
 			@ModelAttribute("criteria") PaginationCriteria criteria,
 			int b_no, Model model) {
 		logger.info("update(b_no: {})", b_no);
-		Board board = boardService.read(b_no);
+		Board board = boardService.readByBno(b_no);
 		model.addAttribute("board", board);
 		
 	}
@@ -136,6 +140,7 @@ public class BoardController {
 		model.addAttribute("boardList", list);
 		model.addAttribute("searchKeyword", searchKeyword);  
 	} 	
+	
 	@RequestMapping(value = "/insert" , method = RequestMethod.POST)
 	public ResponseEntity<Integer> insert(@RequestBody Board board) {
 		logger.info("===== {}, {}, {}, {} ",
