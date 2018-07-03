@@ -143,7 +143,6 @@ body {
 					};
 			var quillContents = new Quill('#quillContents', options);
 			
-
 				$('#submit').click(function() {
 					var contents = quillContents.getContents();
 					var jsonContents =JSON.stringify(contents);
@@ -170,11 +169,6 @@ body {
 			</script>
 			<script
 				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&callback=myMap"></script>
-
-			<!--
-		To use this code on your website, get a free API key from Google.
-		Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
-		-->
 
 		</footer>
 
