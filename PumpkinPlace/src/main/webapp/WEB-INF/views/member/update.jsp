@@ -67,8 +67,8 @@ body {
 	<br/>
 	<img alt="이미지"
 				src="${pageContext.request.contextPath}/resources/profile.png"
-				style="background-color: white; width: 110px; height: 110px;" /></a>
-	<h1><b>수정 페이지	</b></h1>
+				style="background-color: white; width: 110px; height: 110px;" />
+	<h1><b>회원정보 수정</b></h1>
 
 	<form id="form-update" action="update" method="post">
 	
