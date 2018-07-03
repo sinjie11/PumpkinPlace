@@ -27,8 +27,8 @@
 	
 	
 	$(document).ready(function () {
-		console.log("${board.getB_title()}");
-		console.log(${board.getB_content()});
+		editor.updateContents(${board.getB_content()});
+		
 	});
 </script>
 </body>

@@ -39,7 +39,7 @@ public class BoardController {
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 //	public void list(Integer page, Integer numsOfPageLinks, Integer numsPerPage, Model model) {
-	public void list(Integer page, Integer numsPerPage, Model model, int urlNo) {
+	public void list(Integer page, Integer numsPerPage, int urlNo, Model model) {
 		logger.info("list(urlNo: {}) 호출", urlNo);
 		// numsPerPage에 들어갈 수는 10/20/40 중 하나
 //		PaginationCriteria criteria = new PaginationCriteria(page, numsPerPage);
@@ -64,7 +64,6 @@ public class BoardController {
 		maker.setTotalCount(boardService.getNumOfRecords());
 		maker.setPageLinkData();
 		model.addAttribute("pageMaker", maker);
-		
 		model.addAttribute("urlNo", urlNo);
 		
 	}
@@ -88,46 +87,52 @@ public class BoardController {
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public void detail(
 			@ModelAttribute("criteria") PaginationCriteria criteria,
-			int b_no, Model model) {
-		logger.info("detail(bno: {}, page: {}, numsPerPage: {}) 호출", 
-				b_no, criteria.getPage(), criteria.getNumsPerPage());
-		Board board = boardService.readByBno(b_no);
+			int b_no, int urlNo, Model model) {
+		logger.info("detail(bno: {}, urlNo: {},  page: {}, numsPerPage: {}) 호출", 
+				b_no, urlNo, criteria.getPage(), criteria.getNumsPerPage());
+		Board board = boardService.readDetail(b_no);
 		model.addAttribute("board", board);
+		model.addAttribute("urlNo", urlNo);
+
 	} 
 	
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public void update(
 			@ModelAttribute("criteria") PaginationCriteria criteria,
-			int b_no, Model model) {
-		logger.info("update(b_no: {})", b_no);
+			int b_no, int urlNo, Model model) {
+		logger.info("update(b_no: {}, urlNo: {})", b_no, urlNo);
 		Board board = boardService.readByBno(b_no);
 		model.addAttribute("board", board);
-		
+		model.addAttribute("urlNo", urlNo);
 	}
 	
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String update(
 			@ModelAttribute("criteria") PaginationCriteria criteria,
-			Board board, RedirectAttributes attr) {
+			Board board, RedirectAttributes attr,  int urlNo) {
 		logger.info("update(board: {})", board);
 		int result = boardService.update(board);
 		if (result == 1) {
 			attr.addFlashAttribute("updateResult", "success");
 		}
 		
-		return "redirect:detail?b_no=" + board.getB_no();
+		
+		return "redirect:detail?b_no=" + board.getB_no() + "&urlNo=" + urlNo;
 	} 
 	
 	@RequestMapping(value = "delete", method = RequestMethod.GET)
-	public String delete(int b_no, RedirectAttributes attr) {
+	public String delete(int b_no, RedirectAttributes attr, int urlNo) {
 		logger.info("delete(bno: {})", b_no);
+		logger.info("delete(urlNo: {}) 호출", urlNo);
+
 		int result = boardService.delete(b_no);
 		if (result == 1) {
 			attr.addFlashAttribute("bno", b_no);
 			attr.addFlashAttribute("deleteResult", "success");
+			
 		}
 		
-		return "redirect:list";
+		return "redirect:/board/list?urlNo=" + urlNo;
 	}
 	
 	@RequestMapping(value = "/search", method = RequestMethod.GET)

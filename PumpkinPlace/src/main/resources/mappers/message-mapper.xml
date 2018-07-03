@@ -12,11 +12,21 @@
 		values (?, ?, ?, ?)
 	  -->
 	<insert id="insertMessage">
-		insert into ${tbl_message} (${col_mem_id}, ${col_mem_id2}, ${col_msg_title}, ${col_msg_content}) 
-		values (#{mem_id}, #{mem_id2}, #{msg_title}, #{msg_content})
+		insert into ${tbl_message} (${col_mem_id}, ${col_mem_id2}, ${col_msg_content}) 
+		values (#{mem_id}, #{mem_id2}, #{msg_content})
 	</insert>
 	
-
+	
+	<select id="send" resultType="Message">
+		select * from ${tbl_message} where ${col_mem_id} = #{mem_id} order by ${col_msg_no} desc 
+	</select>
+	
+	
+	<select id="recieve" resultType="Message">
+		select * from ${tbl_message} where ${col_mem_id2} = #{mem_id2} order by ${col_msg_no} desc 
+	</select>
+	
+	
 	<!-- 
 		select * from pumpkin_message where mem_id = ?
  	-->
@@ -24,20 +34,20 @@
  		select * from ${tbl_message} where ${col_mem_id} = #{mem_id}
  	</select>
  	
- 	<!-- 
+	<!-- 	 
 		select * from pumpkin_message where mem_id2 = ?
  	-->
  	<select id="selectById2" resultType="Message">
  		select * from ${tbl_message} where ${col_mem_id2} = #{mem_id2}
  	</select>
-
+	
 
 	<!-- 
 		update pumpkin_message set msg_title = ?, msg_content = ? 
 		where msg_no = ?
 	 -->
 	<update id="update">
-		update ${tbl_message} set ${col_msg_title} = #{msg_title}, ${col_msg_content} = #{msg_content} 
+		update ${tbl_message} set ${col_msg_content} = #{msg_content} 
 		where ${col_msg_no} = #{msg_no}
 	</update>
 

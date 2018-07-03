@@ -51,7 +51,7 @@ footer {
 
 body {
 	position: relative; /* For scrollyspy */
-	padding-top: 300px; /*Account for fixed navbar */
+	padding-top: 350px; /*Account for fixed navbar */
 	background-color: #f8f8f8;
 }
 }
@@ -74,14 +74,11 @@ body {
 	<c:if test="${urlNo eq 20}">
 		<h5 style="text-align: left;"><b> 카테고리: Q & A > 새 글쓰기</b></h5>
 	</c:if>
-<<<<<<< HEAD
-	
-	
 	<br/>
 	<br/>
-=======
 
-		<div class="text-center">
+
+		<div class="container text-center">
 			<br />
 			<br />
 			<h1>새 글쓰기</h1>
@@ -99,8 +96,6 @@ body {
 	<br />
 	<br />
 
-
->>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
 			<script>
 				function myMap() {
 					var myCenter = new google.maps.LatLng(37.499685, 127.031535);
@@ -122,6 +117,8 @@ body {
 
 				}
 
+				
+				
 			</script>
 			<script type="text/javascript">
 			var options = {
@@ -146,7 +143,6 @@ body {
 					};
 			var quillContents = new Quill('#quillContents', options);
 			
-
 				$('#submit').click(function() {
 					var contents = quillContents.getContents();
 					var jsonContents =JSON.stringify(contents);
@@ -165,7 +161,7 @@ body {
 							'b_content' :jsonContents
 						}), //서버로 보낼 JSON 객체문자열
 						success : function(result) {
-							location = '/pumpkinplace/board/list?urlNo=${urlNo}';
+							location = '/pumpkinplace/board/list?urlNo=' +  ${urlNo};
 						} 
 					});
 				
@@ -173,11 +169,6 @@ body {
 			</script>
 			<script
 				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&callback=myMap"></script>
-
-			<!--
-		To use this code on your website, get a free API key from Google.
-		Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
-		-->
 
 		</footer>
 

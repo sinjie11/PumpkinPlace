@@ -48,38 +48,28 @@ body {
 	position: relative; /* For scrollyspy */
 	padding-top: 350px; /*Account for fixed navbar */
 	background-color: #f8f8f8;
-	position: relative; /* For scrollyspy */
-	padding-top: 300px; /*Account for fixed navbar */
-	background-color: #f8f8f8;
 }
+
 </style>
 </head>
 <body>
 
 	<%@ include file="/WEB-INF/views/header.jspf"%>
-	<br />
 
 
 	<div class="container text-center">
 		<c:if test="${urlNo eq 1}">
-<<<<<<< HEAD
-			<h5 style="text-align: left;">
-				<b> 카테고리: 게시판 > 자유게시판 </b>
-			</h5>
 			<br />
 			<br />
-=======
 			<h5 style="text-align: left;"><b> 카테고리: 게시판 > 자유게시판 </b></h5>
 			<br/><br/>
 			<img alt="이미지"
 				src="${pageContext.request.contextPath}/resources/presentation.png"
 				style="background-color: white; width: 110px; height: 110px;" />
->>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
 			<h1>자유 게시판</h1>
 		</c:if>
-<<<<<<< HEAD
 
-=======
+
 		
 		<c:if test="${urlNo eq 2}">
 			<h5 style="text-align: left;"><b> 카테고리: 중고거래 > 기타 </b></h5>
@@ -134,56 +124,37 @@ body {
 				style="background-color: white; width: 110px; height: 110px;" />
 			<h1>ect</h1>
 		</c:if>
-		
->>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
+
 		<c:if test="${urlNo eq 8}">
-<<<<<<< HEAD
 			<h5 style="text-align: left;">
 				<b> 카테고리: 구인구직 > 구인 </b>
 			</h5>
 			<br />
 			<br />
-=======
+
 			<h5 style="text-align: left;"><b> 카테고리: 구인구직 > 구인 </b></h5>
-			<br/><br/>
+			<br /><br />
 			<img alt="이미지"
 				src="${pageContext.request.contextPath}/resources/businessman.png"
 				style="background-color: white; width: 110px; height: 110px;" />
->>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
 			<h1>구 인</h1>
 		</c:if>
 
 		<c:if test="${urlNo eq 9}">
-<<<<<<< HEAD
-			<h5 style="text-align: left;">
-				<b> 카테고리: 구인구직 > 구직 </b>
-			</h5>
-			<br />
-			<br />
-=======
 			<h5 style="text-align: left;"><b> 카테고리: 구인구직 > 구직 </b></h5>
 			<br/><br/>
 			<img alt="이미지"
 				src="${pageContext.request.contextPath}/resources/resume.png"
 				style="background-color: white; width: 110px; height: 110px; margin-left: 15px;" />			
->>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
 			<h1>구 직</h1>
 		</c:if>
 
 		<c:if test="${urlNo eq 20}">
-<<<<<<< HEAD
-			<h5 style="text-align: left;">
-				<b> 카테고리: Q & A </b>
-			</h5>
-			<br />
-			<br />
-=======
 			<h5 style="text-align: left;"><b> 카테고리: Q & A </b></h5>
 			<br/><br/>
 			<img alt="이미지"
 				src="${pageContext.request.contextPath}/resources/question-mark.png"
 				style="background-color: white; width: 110px; height: 110px;" />
->>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
 			<h1>Q & A</h1>
 		</c:if>
 
@@ -197,7 +168,11 @@ body {
 					</select>
 
 				</ul>
-				<a id="register" href="register"><button type="button">글쓰기</button></a>
+				<ul>
+					<a id="register" href="register">
+					<button type="button" style="color: black;">글쓰기</button></a>
+				</ul>
+				
 			</form>
 		</div>
 ${board.b_no}
@@ -249,8 +224,8 @@ ${board.b_no}
 			</select> <input type="text" name="searchKeyword" placeholder="검색어 입력"
 				required /> <input type="submit" value="검색" />
 		</form>
-
 	</div>
+	<br />
 
 
 	<form id="page-form">
@@ -259,7 +234,9 @@ ${board.b_no}
 			name="numsPerPage" id="numsPerPage"
 			value="${pageMaker.criteria.numsPerPage}" /> <input type="hidden"
 			name="b_no" id="page-form-bno" />
+			<input type="hidden" name="urlNo" value="${urlNo}" />
 	</form>
+
 
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -289,7 +266,6 @@ ${board.b_no}
 		frm.submit();
 	});
 	
-	console.log('boardSectionNo: ${boarSectionNo}'); // 보드 구분번호
 	
 	$('#register').click(function () { // qna
 		event.preventDefault();
@@ -348,6 +324,7 @@ ${board.b_no}
 				zoom : 12,
 				scrollwheel : false,
 				draggable : false,
+				
 				mapTypeId : google.maps.MapTypeId.ROADMAP
 			};
 			var map = new google.maps.Map(document.getElementById("googleMap"),

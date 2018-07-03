@@ -1,55 +1,97 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>#Board</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- 부트스트랩 -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- jquery -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<style>
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+	margin-bottom: 0;
+	border-radius: 0;
+}
+
+/* Add a gray background color and some padding to the footer */
+footer {
+	background-color: #f2f2f2;
+	padding: 25px;
+}
+
+.carousel-inner img {
+	width: 100%; /* Set width to 100% */
+	margin: auto;
+	min-height: 200px;
+}
+
+/* Hide the carousel text when the screen is less than 600 pixels wide */
+@media ( max-width : 600px) {
+	.carousel-caption {
+		display: none;
+	}
+}
+
+body {
+	position: relative; /* For scrollyspy */
+	padding-top: 350px; /*Account for fixed navbar */
+	background-color: #f8f8f8;
+}
+
+</style>
 </head>
 <body>
 
-<h1>#글 상세 보기 페이지</h1>
-
-<form action="update">
-	<input type="number" name="b_no" value="${board.b_no}" readonly />
-	<br/>
-	<input type="text" value="${board.b_title}" readonly />
-	<br/>
-	<textarea rows="5" cols="50" readonly>${board.b_content}</textarea>
-	<br/>
-	<input type="text" value="${board.b_id}" readonly />
-	<br/>
-	<fmt:formatDate value="${board.b_regdate}"
-		pattern="yyyy/MM/dd HH:mm:ss"
-		var="b_regdate" />
-	<input type="text" value="${b_regdate}" readonly />
-	<br/>
-	<!-- <input type="submit" value="수정" /> -->
-	<button type="submit">수정</button>
-	<button type="button" id="btnList">메인 페이지로 돌아가기</button>
-</form>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-$(document).ready(function () {
-	if (${not empty updateResult and updateResult == 'success'}) {
-		alert('${board.b_no} 게시글이 수정됐습니다!');
-	}
+	<%@ include file="/WEB-INF/views/header.jspf"%>
+		
+		
+	<div class="container text-center">
+		<h1>${board.b_title}</h1>
+		<form action="#">
+			
+				
+		</form>
+		<button>수정</button>
+		<button>메인 페이지</button>
+		<button>본문 up</button>
+		<button>본문 down</button>
+		
+		
+		
+		<form action="#">
+		
+		</form>
+		
+		<br><br><br><br>
+		<button>댓글 입력</button>
+		<button>댓글 up</button>
+		<button>댓글 down</button>
+	</div>
 	
-	$('#btnList').click(function () {
-		location = 'list?page=' + ${criteria.page}
-			+ "&numsPerPage=" + ${criteria.numsPerPage};
-	});
-});
+	
+	<br />
+
+<script type="text/javascript">
+
+
 </script>
 
+
 </body>
+
+<!-- footer -->
+<%@ include file="/WEB-INF/views/footer.jspf"%>
+
 </html>
-
-
-
-
-
-

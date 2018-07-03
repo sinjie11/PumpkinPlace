@@ -74,9 +74,11 @@ public class BoardServiceImple implements BoardService {
 
 	@Override
 	public Board readDetail(int bno) {
-		boardDao.pulsReadcnt(bno);//조회수 +1
+		int result = boardDao.pulsReadcnt(bno);//조회수 +1
+		System.out.println("검색 리저트"+result);
 		return boardDao.boardSelect(bno);//보드 불러오기 
 	}
 	
 } 
+
 
