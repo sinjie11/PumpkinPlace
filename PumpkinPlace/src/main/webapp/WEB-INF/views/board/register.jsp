@@ -75,7 +75,6 @@ body {
 				<div class="text-center"><button id="submit" >작성완료</button></div>
 				
 		
-=======
 	<div class="container text-center">
 	<c:if test="${urlNo eq 1}">
 		<h5 style="text-align: left;"><b> 카테고리: 게시판 > 자유게시판 > 새 글쓰기</b></h5>
