@@ -18,7 +18,7 @@ public class MessageController {
 	@Autowired
 	private MemberService memberService;
 	
-	@RequestMapping(value = "/message", method = RequestMethod.GET)
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void insertMessage() {
 		logger.info("insertMessage() GET 호출");
 		

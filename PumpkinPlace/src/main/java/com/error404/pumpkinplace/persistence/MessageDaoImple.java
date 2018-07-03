@@ -26,10 +26,16 @@ public class MessageDaoImple implements MessageDao {
 	} // end insert(message)
 
 	@Override
-	public Message select(String mem_id, Boolean msg_confirm) {
+	public Message select(String mem_id) {
 	
-		return messageMapper.selectById(mem_id, msg_confirm);
+		return messageMapper.selectById(mem_id);
 	} // end select(mem_id)
+	
+	@Override
+	public Message select2(String mem_id2) {
+		
+		return messageMapper.selectById2(mem_id2);
+	} // end select2(mem_id2)
 
 	@Override
 	public int update(Message message) {
