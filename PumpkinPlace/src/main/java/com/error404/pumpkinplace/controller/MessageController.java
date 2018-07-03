@@ -61,14 +61,7 @@ public class MessageController {
 		
 		model.addAttribute("recieveList", list);
 		
-	} // end recieve()
-	
-	@RequestMapping(value = "/recievedetail", method = RequestMethod.GET)
-	public void recieve() {
-		logger.info("recievedetail() GET 호출");
+	} // end recieve(mem_id2, model, session)
 		
-	} // end recieve()
-	
-	
 
 } // end class MessageController
