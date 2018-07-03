@@ -40,6 +40,7 @@ $(document).ready(function () {
 		alert('${board.b_no} 게시글이 수정됐습니다!');
 	}
 	
+	
 	$('#btnList').click(function () {
 /* 		location = 'list?page=' + ${criteria.page}
 			+ "&numsPerPage=" + ${criteria.numsPerPage}; */

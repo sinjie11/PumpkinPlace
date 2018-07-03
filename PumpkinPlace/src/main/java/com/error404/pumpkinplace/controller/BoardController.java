@@ -116,6 +116,7 @@ public class BoardController {
 			attr.addFlashAttribute("updateResult", "success");
 		}
 		
+		
 		return "redirect:detail?b_no=" + board.getB_no() + "&urlNo=" + urlNo;
 	} 
 	

@@ -44,8 +44,10 @@ $(document).ready(function () {
 			// 웹 서버로 form 데이터를 submit
 			$('#form-update').submit();
 			
+			
 		}
 	});
+	
 	
 	$('#btnList').click(function () {
 		location =  '/pumpkinplace/board/list?urlNo=' + ${urlNo};
