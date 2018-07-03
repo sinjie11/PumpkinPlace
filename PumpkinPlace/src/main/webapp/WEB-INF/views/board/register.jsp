@@ -60,21 +60,7 @@ body {
 <body>
 
 	<%@ include file="/WEB-INF/views/header.jspf"%>
-
-		<div class="text-center">
-			<br />
-			<br />
-			<h1>새 글쓰기</h1>
-			<br />
-			<form>
-				<input type="text" id="title" style="width: 385px;"
-					placeholder="글 제목" required name= "title"/> <br /> <br />
-			</form>
-		</div>
-		<div id="quillContents"></div>
-				<div class="text-center"><button id="submit" >작성완료</button></div>
-				
-		
+	
 	<div class="container text-center">
 	<c:if test="${urlNo eq 1}">
 		<h5 style="text-align: left;"><b> 카테고리: 게시판 > 자유게시판 > 새 글쓰기</b></h5>
@@ -88,10 +74,33 @@ body {
 	<c:if test="${urlNo eq 20}">
 		<h5 style="text-align: left;"><b> 카테고리: Q & A > 새 글쓰기</b></h5>
 	</c:if>
+<<<<<<< HEAD
 	
 	
 	<br/>
 	<br/>
+=======
+
+		<div class="text-center">
+			<br />
+			<br />
+			<h1>새 글쓰기</h1>
+			<br />
+			<form>
+				<input type="text" id="title" style="width: 385px;"
+					placeholder="글 제목" required name= "title"/> <br /> <br />
+			</form>
+		</div>
+		<div id="quillContents"></div>
+				<br />
+				<div class="text-center"><button id="submit" >작성완료</button></div>
+	</div>
+	<br />
+	<br />
+	<br />
+
+
+>>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
 			<script>
 				function myMap() {
 					var myCenter = new google.maps.LatLng(37.499685, 127.031535);
@@ -172,7 +181,9 @@ body {
 
 		</footer>
 
+
 		<%@ include file="/WEB-INF/views/footer.jspf"%>
+		
 </body>
 </html>
 

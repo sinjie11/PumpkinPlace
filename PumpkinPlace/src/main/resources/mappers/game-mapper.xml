@@ -38,6 +38,6 @@
 		on a.mem_no = b.mem_no
 		where mem_gamescore is not null
 		order by mem_gamescore desc;
-	</select>
+	</select> 
 
 </mapper>

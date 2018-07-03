@@ -6,7 +6,9 @@ public interface MessageDao {
 	
 	int insert(Message message);
 	
-	Message select(String mem_id, Boolean msg_confirm);
+	Message select(String mem_id);
+	
+	Message select2(String mem_id2);
 	
 	int update(Message message);
 	

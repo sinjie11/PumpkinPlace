@@ -19,10 +19,16 @@ public class MessageServiceImple implements MessageService {
 	} // end create(message)
 
 	@Override
-	public Message read(String mem_id, Boolean msg_confirm) {
+	public Message read(String mem_id) {
 		
-		return messageDao.select(mem_id, msg_confirm);
+		return messageDao.select(mem_id);
 	} // end read(mem_id)
+	
+	@Override
+	public Message read2(String mem_id2) {
+		
+		return messageDao.select2(mem_id2);
+	} // end read2(mem_id2)
 
 	@Override
 	public int update(Message message) {
