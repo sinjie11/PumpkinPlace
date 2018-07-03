@@ -62,38 +62,128 @@ body {
 
 	<div class="container text-center">
 		<c:if test="${urlNo eq 1}">
+<<<<<<< HEAD
 			<h5 style="text-align: left;">
 				<b> 카테고리: 게시판 > 자유게시판 </b>
 			</h5>
 			<br />
 			<br />
+=======
+			<h5 style="text-align: left;"><b> 카테고리: 게시판 > 자유게시판 </b></h5>
+			<br/><br/>
+			<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/presentation.png"
+				style="background-color: white; width: 110px; height: 110px;" />
+>>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
 			<h1>자유 게시판</h1>
 		</c:if>
+<<<<<<< HEAD
 
+=======
+		
+		<c:if test="${urlNo eq 2}">
+			<h5 style="text-align: left;"><b> 카테고리: 중고거래 > 기타 </b></h5>
+			<br/><br/>
+			<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/guitar.png"
+				style="background-color: white; width: 110px; height: 110px;" />
+			<h1>기 타</h1>
+		</c:if>
+		
+		<c:if test="${urlNo eq 3}">
+			<h5 style="text-align: left;"><b> 카테고리: 중고거래 > 베이스 </b></h5>
+			<br/><br/>
+			<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/bass-guitar.png"
+				style="background-color: white; width: 110px; height: 110px;" />
+			<h1>베이스</h1>
+		</c:if>
+		
+		<c:if test="${urlNo eq 4}">
+			<h5 style="text-align: left;"><b> 카테고리: 중고거래 > 드럼/퍼커션 </b></h5>
+			<br/><br/>
+			<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/drummer-set.png"
+				style="background-color: white; width: 110px; height: 110px;" />
+			<h1>드럼/퍼커션</h1>
+		</c:if>
+		
+		<c:if test="${urlNo eq 5}">
+			<h5 style="text-align: left;"><b> 카테고리: 중고거래 > 앰프 </b></h5>
+			<br/><br/>
+			<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/music-woofer-with-sound.png"
+				style="background-color: white; width: 110px; height: 110px;" />
+			<h1>앰 프</h1>
+		</c:if>
+		
+		<c:if test="${urlNo eq 6}">
+			<h5 style="text-align: left;"><b> 카테고리: 중고거래 > 음향장비 </b></h5>
+			<br/><br/>
+			<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/audio-equipment.png"
+				style="background-color: white; width: 110px; height: 110px;" />
+			<h1>음향장비</h1>
+		</c:if>
+		
+		<c:if test="${urlNo eq 7}">
+			<h5 style="text-align: left;"><b> 카테고리: 중고거래 > ect </b></h5>
+			<br/><br/>
+			<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/three-dots-punctuation-sign.png"
+				style="background-color: white; width: 110px; height: 110px;" />
+			<h1>ect</h1>
+		</c:if>
+		
+>>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
 		<c:if test="${urlNo eq 8}">
+<<<<<<< HEAD
 			<h5 style="text-align: left;">
 				<b> 카테고리: 구인구직 > 구인 </b>
 			</h5>
 			<br />
 			<br />
+=======
+			<h5 style="text-align: left;"><b> 카테고리: 구인구직 > 구인 </b></h5>
+			<br/><br/>
+			<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/businessman.png"
+				style="background-color: white; width: 110px; height: 110px;" />
+>>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
 			<h1>구 인</h1>
 		</c:if>
 
 		<c:if test="${urlNo eq 9}">
+<<<<<<< HEAD
 			<h5 style="text-align: left;">
 				<b> 카테고리: 구인구직 > 구직 </b>
 			</h5>
 			<br />
 			<br />
+=======
+			<h5 style="text-align: left;"><b> 카테고리: 구인구직 > 구직 </b></h5>
+			<br/><br/>
+			<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/resume.png"
+				style="background-color: white; width: 110px; height: 110px; margin-left: 15px;" />			
+>>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
 			<h1>구 직</h1>
 		</c:if>
 
 		<c:if test="${urlNo eq 20}">
+<<<<<<< HEAD
 			<h5 style="text-align: left;">
 				<b> 카테고리: Q & A </b>
 			</h5>
 			<br />
 			<br />
+=======
+			<h5 style="text-align: left;"><b> 카테고리: Q & A </b></h5>
+			<br/><br/>
+			<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/question-mark.png"
+				style="background-color: white; width: 110px; height: 110px;" />
+>>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
 			<h1>Q & A</h1>
 		</c:if>
 

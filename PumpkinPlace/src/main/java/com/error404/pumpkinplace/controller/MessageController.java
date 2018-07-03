@@ -19,10 +19,28 @@ public class MessageController {
 	private MemberService memberService;
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public void messageList() {
+		logger.info("messageList() GET 호출");
+		
+	} // end messageList()
+	
+	@RequestMapping(value = "/insert", method = RequestMethod.GET)
 	public void insertMessage() {
 		logger.info("insertMessage() GET 호출");
 		
 	} // end insertMessage()
+	
+	@RequestMapping(value = "/send", method = RequestMethod.GET)
+	public void selectById() {
+		logger.info("selectById() GET 호출");
+		
+	} // end selectById()
+	
+	@RequestMapping(value = "/recieve", method = RequestMethod.GET)
+	public void selectById2() {
+		logger.info("selectById()2 GET 호출");
+		
+	} // end selectById()
 	
 	
 
