@@ -222,8 +222,8 @@ ${board.b_no}
 			</select> <input type="text" name="searchKeyword" placeholder="검색어 입력"
 				required /> <input type="submit" value="검색" />
 		</form>
-
 	</div>
+	<br />
 
 
 	<form id="page-form">
