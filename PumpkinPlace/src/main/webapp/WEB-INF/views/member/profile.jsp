@@ -103,7 +103,7 @@ body {
 		<br/>
 
 		<button id=btnUpdate type="submit">수정</button>
-		
+		<br /><br />
 	</form>
 </div>
 <script>
