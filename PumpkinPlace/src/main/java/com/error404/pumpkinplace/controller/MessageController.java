@@ -51,7 +51,6 @@ public class MessageController {
 		List<Message> list = messageService.send(message.getMem_id());
 		model.addAttribute("sendList", list);
 		
-		
 	} // end send(mem_id, model)
 	
 	@RequestMapping(value = "/recieve", method = RequestMethod.GET)
