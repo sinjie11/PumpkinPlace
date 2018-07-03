@@ -330,6 +330,7 @@ ${board.b_no}
 				zoom : 12,
 				scrollwheel : false,
 				draggable : false,
+				
 				mapTypeId : google.maps.MapTypeId.ROADMAP
 			};
 			var map = new google.maps.Map(document.getElementById("googleMap"),

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.error404.pumpkinplace.domain.Message;
-import com.error404.pumpkinplace.service.MemberService;
 import com.error404.pumpkinplace.service.MessageService;
 
 @Controller
@@ -50,14 +49,20 @@ public class MessageController {
 	public void send(String mem_id, Model model, HttpSession session) {
 		
 		List<Message> list = messageService.send((String) session.getAttribute("loginId"));
+		
 		model.addAttribute("sendList", list);
 		
 	} // end send(mem_id, model)
 	
 	@RequestMapping(value = "/recieve", method = RequestMethod.GET)
-	public void recieve() {
-
-	} // end recieve()	
+	public void recieve(String mem_id2, Model model, HttpSession session) {
+		
+		List<Message> list = messageService.recieve((String) session.getAttribute("loginId"));
+		
+		model.addAttribute("recieveList", list);
+		
+	} // end recieve()
+	
 	
 
 } // end class MessageController
