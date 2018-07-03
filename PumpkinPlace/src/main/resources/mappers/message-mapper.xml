@@ -23,6 +23,13 @@
  	<select id="selectById" resultType="Message">
  		select * from ${tbl_message} where ${col_mem_id} = #{mem_id}
  	</select>
+ 	
+ 	<!-- 
+		select * from pumpkin_message where mem_id2 = ?
+ 	-->
+ 	<select id="selectById2" resultType="Message">
+ 		select * from ${tbl_message} where ${col_mem_id2} = #{mem_id2}
+ 	</select>
 
 
 	<!-- 

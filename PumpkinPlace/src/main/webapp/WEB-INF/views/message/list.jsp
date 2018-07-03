@@ -65,6 +65,18 @@ body {
 	
 	<!-- 본문 작성 -->
 	<h1>쪽지함</h1>
+	
+	<a href="/pumpkinplace/message/insert">쪽지 보내기</a>
+	<br/>
+	<br/>
+	
+	<a href="/pumpkinplace/message/send">보낸 쪽지함</a>
+	<br/>
+	<br/>
+	
+	<a href="/pumpkinplace/message/recieve">받은 쪽지함</a>
+	<br/>
+	<br/>
 
 
 

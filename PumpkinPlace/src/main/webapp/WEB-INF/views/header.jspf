@@ -40,10 +40,10 @@
 			<div class="collapse navbar-collapse" id="myNavbar">
 
 				<ul class="nav navbar-nav navbar-right">
-
-					<!-- 쪽지 보내기 버튼 -->
+				
+					<!-- 쪽지함 버튼 -->
 					<c:if test="${not empty loginId}">
-						<li style="color: white; font-style:italic;"><a href="/pumpkinplace/message/message">* 쪽지함</a></li>
+						<li style="color: white; font-style:italic;"><a href="/pumpkinplace/message/list">* 쪽지함</a></li>
 					</c:if>
 
 					<!-- 로그인 아이디 정보 -->
@@ -143,29 +143,29 @@
 						</c:choose>
 												
 						<c:choose>
-							<c:when test="${url eq 'trade'}">
+							<c:when test="${urlNo eq 2 or urlNo eq 3 or urlNo eq 4 or urlNo eq 5 or urlNo eq 6 or urlNo eq 7}">
 								<li class="active"><a class="dropdown-toggle"
 								data-toggle="dropdown" href="#">중고 거래<span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a href="/pumpkinplace/tradeboard/list">거래</a></li>
-									<li><a href="#">베이스</a></li>
-									<li><a href="#">드럼/퍼커션</a></li>
-									<li><a href="#">앰프</a></li>
-									<li><a href="#">음향장비</a></li>
-									<li><a href="#">etc</a></li>
+									<li><a id="guitar" href="#">기타</a></li>
+									<li><a id="base" href="#">베이스</a></li>
+									<li><a id="drum" href="#">드럼/퍼커션</a></li>
+									<li><a id="amp" href="#">앰프</a></li>
+									<li><a id="sound-equipment" href="#">음향장비</a></li>
+									<li><a id="ect" href="#">etc</a></li>
 								</ul></li>
 							</c:when>
 							
-							<c:when test="${url ne 'trade'}">
+							<c:when test="${urlNo ne 2 or urlNo ne 3 or urlNo ne 4 or urlNo ne 5 or urlNo ne 6 or urlNo ne 7}">
 								<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown" href="#">중고 거래<span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a href="#">거래</a></li>
-									<li><a href="#">베이스</a></li>
-									<li><a href="#">드럼/퍼커션</a></li>
-									<li><a href="#">앰프</a></li>
-									<li><a href="#">음향장비</a></li>
-									<li><a href="#">etc</a></li>
+									<li><a id="guitar" href="#">기타</a></li>
+									<li><a id="base" href="#">베이스</a></li>
+									<li><a id="drum" href="#">드럼/퍼커션</a></li>
+									<li><a id="amp" href="#">앰프</a></li>
+									<li><a id="sound-equipment" href="#">음향장비</a></li>
+									<li><a id="ect" href="#">etc</a></li>
 								</ul></li>
 							</c:when>
 						</c:choose>
@@ -226,6 +226,42 @@
 			$('#free-board').click(function () { // 자유게시판
 				event.preventDefault();
 				$('#url-no').val(1);	
+				sendUrlNo();
+			});
+			
+			$('#guitar').click(function () { // 기타(악기)
+				event.preventDefault();
+				$('#url-no').val(2);	
+				sendUrlNo();
+			});
+			
+			$('#base').click(function () { // 베이스
+				event.preventDefault();
+				$('#url-no').val(3);	
+				sendUrlNo();
+			});
+			
+			$('#drum').click(function () { // 베이스
+				event.preventDefault();
+				$('#url-no').val(4);	
+				sendUrlNo();
+			});
+			
+			$('#amp').click(function () { // 앰프
+				event.preventDefault();
+				$('#url-no').val(5);	
+				sendUrlNo();
+			});
+			
+			$('#sound-equipment').click(function () { // 음향장비
+				event.preventDefault();
+				$('#url-no').val(6);	
+				sendUrlNo();
+			});
+			
+			$('#ect').click(function () { // ect
+				event.preventDefault();
+				$('#url-no').val(7);	
 				sendUrlNo();
 			});
 			

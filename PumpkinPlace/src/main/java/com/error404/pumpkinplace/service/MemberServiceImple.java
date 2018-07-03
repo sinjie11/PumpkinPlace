@@ -23,7 +23,7 @@ public class MemberServiceImple implements MemberService {
 		
 		return memberDao.select(mem_id);
 	} // end read(mem_id)
-
+	
 	@Override
 	public Member read(Member member) {
 	

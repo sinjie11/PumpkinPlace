@@ -65,30 +65,52 @@ body {
 	<div class="container text-center">
 		<c:if test="${urlNo eq 1}">
 			<h5 style="text-align: left;"><b> 카테고리: 게시판 > 자유게시판 </b></h5>
-			<br/>
-			<br/>
-			<h1>자유 게시판</h1>
+			<br/><br/><h1>자유 게시판</h1>
+		</c:if>
+		
+		<c:if test="${urlNo eq 2}">
+			<h5 style="text-align: left;"><b> 카테고리: 중고거래 > 기타 </b></h5>
+			<br/><br/><h1>기타</h1>
+		</c:if>
+		
+		<c:if test="${urlNo eq 3}">
+			<h5 style="text-align: left;"><b> 카테고리: 중고거래 > 베이스 </b></h5>
+			<br/><br/><h1>베이스</h1>
+		</c:if>
+		
+		<c:if test="${urlNo eq 4}">
+			<h5 style="text-align: left;"><b> 카테고리: 중고거래 > 드럼/퍼커션 </b></h5>
+			<br/><br/><h1>드럼/퍼커션</h1>
+		</c:if>
+		
+		<c:if test="${urlNo eq 5}">
+			<h5 style="text-align: left;"><b> 카테고리: 중고거래 > 앰프 </b></h5>
+			<br/><br/><h1>앰프</h1>
+		</c:if>
+		
+		<c:if test="${urlNo eq 6}">
+			<h5 style="text-align: left;"><b> 카테고리: 중고거래 > 음향장비 </b></h5>
+			<br/><br/><h1>음향장비</h1>
+		</c:if>
+		
+		<c:if test="${urlNo eq 7}">
+			<h5 style="text-align: left;"><b> 카테고리: 중고거래 > ect </b></h5>
+			<br/><br/><h1>ect</h1>
 		</c:if>
 		
 		<c:if test="${urlNo eq 8}">
 			<h5 style="text-align: left;"><b> 카테고리: 구인구직 > 구인 </b></h5>
-			<br/>
-			<br/>
-			<h1>구 인</h1>
+			<br/><br/><h1>구 인</h1>
 		</c:if>
 		
 		<c:if test="${urlNo eq 9}">
 			<h5 style="text-align: left;"><b> 카테고리: 구인구직 > 구직 </b></h5>
-			<br/>
-			<br/>
-			<h1>구 직</h1>
+			<br/><br/><h1>구 직</h1>
 		</c:if>
 		
 		<c:if test="${urlNo eq 20}">
 			<h5 style="text-align: left;"><b> 카테고리: Q & A </b></h5>
-			<br/>
-			<br/>
-			<h1>Q & A</h1>
+			<br/><br/><h1>Q & A</h1>
 		</c:if>
 
 		<div class="container text-right">

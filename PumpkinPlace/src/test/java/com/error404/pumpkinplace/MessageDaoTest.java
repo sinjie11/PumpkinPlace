@@ -25,7 +25,8 @@ public class MessageDaoTest {
 	@Test
 	public void doTest() {
 //		insertTest();
-		selectById();
+//		selectById();
+		selectById2();
 //		updateTest();
 //		deleteTest();
 		
@@ -44,6 +45,14 @@ public class MessageDaoTest {
 		
 		logger.info("selectById : {} ", message.getMem_id());
 	} // end selectById()
+	
+	private void selectById2() {
+		Message message = new Message(0, null, "test", null, null, null, false);
+		
+		logger.info("selectById2 : {}", message.getMem_id2());
+	} // end selectById2()
+	
+	
 	
 	private void updateTest() {
 		Message message = new Message(3, null, null, "J 제목변경", "내용변경", null, false);
