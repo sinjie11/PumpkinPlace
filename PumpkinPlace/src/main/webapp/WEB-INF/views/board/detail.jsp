@@ -37,6 +37,12 @@
 	<button type="submit">수정</button>
 	<button type="button" id="btnList">메인 페이지로 돌아가기</button>
 </form>
+
+<img alt="이미지"
+	src="${pageContext.request.contextPath}/resources/if_thumbs-up.png"
+	style=" width: 40px; height: 50px;" />
+
+
 <script>
 
 	var options = {
