@@ -187,9 +187,15 @@ body {
 											placeholder="YouTube 링크를 입력해주세요" />
 										</label> <br /> <br />
 									</div>
+									<script>
+										$(document).ready(function (){
+											var youtube = $('#sb_video').val();
+											console.log('youtube :' + youtube);
+										});
+									</script>
 									<div style="width: 570px; margin-left: 25%;">
 										<iframe width="560" height="315"
-											src="https://www.youtube.com/embed/mp17vqua5MU"
+											src="https://www.youtube.com/embed/+${youtube}"
 											frameborder="0" allow="autoplay; encrypted-media"
 											allowfullscreen></iframe>
 									</div>
@@ -228,14 +234,13 @@ body {
 									</div>
 
 									<div id="en_daytime">
-										<label for="event_공연 날짜">공연 날짜 / 시간:<br /> <input
-											type="text" id="startdate" placeholder="공연 시작 날짜 선택" /> <input
-											type="text" name="sb_startdate" value="" placeholder="시간 입력"
-											id="time1" required size="8" maxlength="5"> ~ <input
-											type="text" id="enddate" placeholder="공연 종료 날짜 선택" required />
-											<input type="text" name="sb_enddate" value=""
-											placeholder="시간 입력" id="endtime" required size="8"
-											maxlength="5"></label>
+										<label for="event_공연 날짜">공연 날짜 / 시간:<br /> 
+										<input type="text" id="startdate" placeholder="공연 시작 날짜 선택" /> 
+										<input type="text" name="sb_startdate" placeholder="시간 입력" id="time1" required size="8" maxlength="5"> 
+										~ 
+										<input type="text" id="enddate" placeholder="공연 종료 날짜 선택" required />
+										<input type="text" name="sb_enddate" placeholder="시간 입력" id="endtime" required size="8" maxlength="5">
+										</label>
 									</div>
 									<br />
 
@@ -271,7 +276,10 @@ body {
 											</select></label>
 										</p>
 									</div>
-
+							<script>
+							var city = $('#country').val;
+							
+							</script>
 
 
 
