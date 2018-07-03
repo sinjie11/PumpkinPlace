@@ -2,6 +2,8 @@ package com.error404.pumpkinplace.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,10 +47,9 @@ public class MessageController {
 	} // end insertMessage()
 	
 	@RequestMapping(value = "/send", method = RequestMethod.GET)
-	public void send(String mem_id, Model model) {
-		Message message = new Message(0, "${loginId}", null, null, null, null, false);
+	public void send(String mem_id, Model model, HttpSession session) {
 		
-		List<Message> list = messageService.send(message.getMem_id());
+		List<Message> list = messageService.send((String) session.getAttribute("loginId"));
 		model.addAttribute("sendList", list);
 		
 	} // end send(mem_id, model)
