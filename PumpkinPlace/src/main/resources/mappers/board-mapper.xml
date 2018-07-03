@@ -11,11 +11,10 @@
 	<insert id="insert" parameterType="java.util.Map">
 		insert into ${tbl_board} (${col_b_section},
 		${col_b_title}, ${col_b_content},
-		${col_b_id}, ${col_b_img},
-		${col_b_video})
+		${col_b_id})
 		values
-		(#{b_section, jdbcType=INTEGER}, #{b_title, jdbcType=VARCHAR}, #{b_content, jdbcType=CLOB}, 
-		#{b_id, jdbcType=VARCHAR}, #{b_img,  jdbcType=VARCHAR}, #{b_video,  jdbcType=VARCHAR})
+		(1, #{b_title, jdbcType=VARCHAR}, #{b_content, jdbcType=CLOB}, 
+		#{b_id, jdbcType=VARCHAR})
 	</insert>
 
 	<!-- Section No를 이용해 Board의 종류를 가려낸 후 게시판 첫 화면에서 요구하는 
