@@ -48,7 +48,7 @@ $(document).ready(function () {
 	});
 	
 	$('#btnList').click(function () {
-		location =  '/pumpkinplace/board/list?urlNo=1';
+		location =  '/pumpkinplace/board/list?urlNo=' + ${urlNo};
 	});
 	
 	$('#btnDelete').click(function () {

@@ -44,7 +44,7 @@ $(document).ready(function () {
 /* 		location = 'list?page=' + ${criteria.page}
 			+ "&numsPerPage=" + ${criteria.numsPerPage}; */
 			
-			location =  '/pumpkinplace/board/list?urlNo=1';
+			location =  '/pumpkinplace/board/list?urlNo=' + ${urlNo};
 	});
 });
 </script>
