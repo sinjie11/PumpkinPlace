@@ -37,6 +37,7 @@
 		  readOnly: true,
 		  theme: 'bubble'
 		};
+	
 	var editor= new Quill('#quillContents', options);
 
 $(document).ready(function () {
