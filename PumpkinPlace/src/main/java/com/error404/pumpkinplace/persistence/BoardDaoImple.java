@@ -96,8 +96,6 @@ public class BoardDaoImple implements BoardDao {
 
 		return sqlSession.selectList(NAMESPACE + ".listPage", criteria);
 	}
-<<<<<<< HEAD
-
 	
 	
 	//보드 디테일 
@@ -133,7 +131,4 @@ public class BoardDaoImple implements BoardDao {
 	
 	
 } 
-=======
->>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
 
-}

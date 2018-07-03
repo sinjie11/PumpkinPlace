@@ -71,7 +71,6 @@ public class BoardServiceImple implements BoardService {
 	public List<Board> readSection(int b_section) {
 		return boardDao.selectBySectionNo(b_section);
 	}
-<<<<<<< HEAD
 
 	@Override
 	public Board readDetail(int bno) {
@@ -80,7 +79,4 @@ public class BoardServiceImple implements BoardService {
 	}
 	
 } 
-=======
->>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
 
-}
