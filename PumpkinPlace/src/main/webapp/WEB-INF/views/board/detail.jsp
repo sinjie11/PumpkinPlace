@@ -55,78 +55,36 @@ body {
 <body>
 
 	<%@ include file="/WEB-INF/views/header.jspf"%>
-
-
+		
+		
+	<div class="container text-center">
+		<h1>${board.b_title}</h1>
+		<form action="#">
+			
+				
+		</form>
+		<button>수정</button>
+		<button>메인 페이지</button>
+		
+		
+		
+		<form action="#">
+		
+		</form>
+		
+		<br><br><br><br>
+		<button>댓글 입력</button>
+		<button>댓글 up</button>
+		<button>댓글 down</button>
+	</div>
 	
+	
+	<br />
 
 
 
 
 </body>
-<!-- footer -->
-<footer class="container-fluid text-center">
-
-	<div class="row">
-		<!-- Add Google Maps -->
-		<div id="googleMap"
-			style="height: 400px; width: 500px; float: right; margin-right: 200px;"></div>
-		<div class="col-sm-7 slideanim">
-			<h2 class="text-center" style="margin-left: 230px;">CONTACT</h2>
-			<br /> <br />
-			<div class="col-sm-7 slideanim" style="margin-left: 350px;">
-				<div class="row">
-					<div class="col-sm-6 form-group">
-						<input class="form-control" id="name" name="name"
-							placeholder="Name" type="text" required>
-					</div>
-					<div class="col-sm-6 form-group">
-						<input class="form-control" id="email" name="email"
-							placeholder="Email" type="email" required>
-					</div>
-				</div>
-				<textarea class="form-control" id="comments" name="comments"
-					placeholder="Comment" rows="5"></textarea>
-				<br>
-				<div class="row">
-					<div class="col-sm-12 form-group">
-						<button class="btn btn-default pull-right" type="submit">Send</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<script>
-		function myMap() {
-			var myCenter = new google.maps.LatLng(37.499685, 127.031535);
-			var map;
-	
-			var mapProp = {
-				center : myCenter,
-				zoom : 12,
-				scrollwheel : false,
-				draggable : false,
-				
-				mapTypeId : google.maps.MapTypeId.ROADMAP
-			};
-			var map = new google.maps.Map(document.getElementById("googleMap"),
-				mapProp);
-			var marker = new google.maps.Marker({
-				position : myCenter
-			});
-			marker.setMap(map);
-	
-		}
-	</script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&callback=myMap"></script>
-	<!--
-To use this code on your website, get a free API key from Google.
-Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
--->
-
-</footer>
 
 <!-- footer -->
 <%@ include file="/WEB-INF/views/footer.jspf"%>
