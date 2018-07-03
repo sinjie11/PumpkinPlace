@@ -96,9 +96,6 @@ public class BoardDaoImple implements BoardDao {
 
 		return sqlSession.selectList(NAMESPACE + ".listPage", criteria);
 	}
-<<<<<<< HEAD
-
-	
 	
 	//보드 디테일 
 	@Override
@@ -109,6 +106,7 @@ public class BoardDaoImple implements BoardDao {
 
 	@Override
 	public int pulsReadcnt(int bno) {//조회수 1+
+		System.out.println("씨발 조회수 +1");
 		Map<String, Object> args =  new HashMap<>();
 		args.put("type", 1);
 		args.put("b_no" ,bno);
@@ -132,8 +130,4 @@ public class BoardDaoImple implements BoardDao {
 	}
 	
 	
-} 
-=======
->>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
-
 }

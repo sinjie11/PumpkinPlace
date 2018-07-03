@@ -74,12 +74,8 @@ body {
 	<c:if test="${urlNo eq 20}">
 		<h5 style="text-align: left;"><b> 카테고리: Q & A > 새 글쓰기</b></h5>
 	</c:if>
-<<<<<<< HEAD
-	
-	
 	<br/>
 	<br/>
-=======
 
 		<div class="text-center">
 			<br />
