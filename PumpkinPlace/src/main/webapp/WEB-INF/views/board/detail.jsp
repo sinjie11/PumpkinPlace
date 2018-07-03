@@ -65,6 +65,8 @@ body {
 		</form>
 		<button>수정</button>
 		<button>메인 페이지</button>
+		<button>본문 up</button>
+		<button>본문 down</button>
 		
 		
 		
@@ -90,10 +92,3 @@ body {
 <%@ include file="/WEB-INF/views/footer.jspf"%>
 
 </html>
-
-
-
-
-
-
-
