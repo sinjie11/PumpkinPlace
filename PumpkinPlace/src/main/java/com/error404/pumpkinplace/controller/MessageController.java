@@ -57,9 +57,7 @@ public class MessageController {
 	@RequestMapping(value = "/recieve", method = RequestMethod.GET)
 	public void recieve() {
 
-		
-	} // end recieve()
-	
+	} // end recieve()	
 	
 
 } // end class MessageController
