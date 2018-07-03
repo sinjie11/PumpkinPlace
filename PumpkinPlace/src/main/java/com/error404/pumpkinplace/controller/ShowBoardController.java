@@ -69,54 +69,61 @@ public class ShowBoardController {
 				criteria.getNumsPerPage());
 		ShowBoard showboard = showBoardService.read(sb_no);
 		model.addAttribute("showboard", showboard);
-
 	}
 
-	@RequestMapping(value = "/showinsert")
+	@RequestMapping(value = "/showinsert", method = RequestMethod.GET)
 	public void showInsert(Model model) {
-		logger.info("showInsert() 호출");
+		logger.info("showInsert() GET 호출");
 
 		model.addAttribute("url", "showboard"); // active 설정을 위한 url 값 넘겨주기
 
 	}
 
-	@Resource(name = "uploadPath")
-	private String uploadPath;
-
-	// 업로드
 	@RequestMapping(value = "/showinsert", method = RequestMethod.POST)
-	public void uploadPost(Member user, MultipartFile uploadFile, Model model) {
-		logger.info("uploadPost() called");
-		// logger.info("{} | {} | {}",
-		// user.getUserid(), user.getPwd(), user.getEmail());
-
-		logger.info("Name: {}", uploadFile.getName()); // request param name
-		logger.info("Original File Name: {}", uploadFile.getOriginalFilename());
-		logger.info("Size: {}", uploadFile.getSize());
-
-		String savedName = saveUploadedFile(uploadFile);
-		model.addAttribute("saved", savedName);
+	public String showInsert(ShowBoard showboard) {
+		logger.info("showInsert({}) POST 호출", showboard);
+		showBoardService.create(showboard);
+		
+		return "redirect:/showboard/showboardmain?page=1&numsPerPage=12&sb_no=";
 	}
+	
+//	@Resource(name = "uploadPath")
+//	private String uploadPath;
 
-	private String saveUploadedFile(MultipartFile uploadedFile) {
-		// UUID: Universally Unique Identifier
-		// 업로드 파일 이름의 중복 문제를 해결하기 위해서
-		UUID uuid = UUID.randomUUID();
-		String savedName = uuid + "_" + uploadedFile.getOriginalFilename();
-		File file = new File(uploadPath, savedName);
-		try {
-			// uploadedFile.transferTo(file);
-			// org.springframework.util.FileCopyUtils
-			FileCopyUtils.copy(uploadedFile.getBytes(), file);
-			logger.info("FILE SAVED: " + savedName);
-
-			return savedName;
-		} catch (IOException e) {
-			logger.error("FILE NOT SAVED: " + e.getMessage());
-
-			return null;
-		}
-	}
+//	// 업로드
+//	@RequestMapping(value = "/showinsert", method = RequestMethod.POST)
+//	public void uploadPost(ShowBoard showboard, MultipartFile uploadFile, Model model) {
+//		logger.info("uploadPost({}) POST 호출", showboard);
+//		logger.info("Name: {}", uploadFile.getName()); // request param name
+//		logger.info("Original File Name: {}", uploadFile.getOriginalFilename());
+//		logger.info("Size: {}", uploadFile.getSize());
+//
+//		showBoardService.create(showboard);
+//		String savedName = saveUploadedFile(uploadFile);
+//		model.addAttribute("saved", savedName);
+//		
+//		return "redirect:/showboardmain";
+//	}
+//
+//	private String saveUploadedFile(MultipartFile uploadedFile) {
+//		// UUID: Universally Unique Identifier
+//		// 업로드 파일 이름의 중복 문제를 해결하기 위해서
+//		UUID uuid = UUID.randomUUID();
+//		String savedName = uuid + "_" + uploadedFile.getOriginalFilename();
+//		File file = new File(uploadPath, savedName);
+//		try {
+//			// uploadedFile.transferTo(file);
+//			// org.springframework.util.FileCopyUtils
+//			FileCopyUtils.copy(uploadedFile.getBytes(), file);
+//			logger.info("FILE SAVED: " + savedName);
+//
+//			return savedName;
+//		} catch (IOException e) {
+//			logger.error("FILE NOT SAVED: " + e.getMessage());
+//
+//			return null;
+//		}
+//	}
 	@RequestMapping(value = "/showboardsearch", method = RequestMethod.GET)
 	public void searchShowBoard(String searchKeyword, Model model) {
 		logger.info("showboardsearch(keyword: {})", searchKeyword);

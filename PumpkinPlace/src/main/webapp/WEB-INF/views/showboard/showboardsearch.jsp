@@ -67,7 +67,7 @@ body {
 	<br />
 	<!-- 가운데 정렬 -->
 	<div class="container text-center">
-		<h1>공 연</h1>
+		<h1>공 연 검색 결과</h1>
 		<div class="tab-content">
 			<form action="search" style="float: right;">
 				<input type="text" id="startdate" placeholder="공연 날짜 선택" /> <input
@@ -93,7 +93,7 @@ body {
 						<div class="col-md-3">
 							<a class="table-title-link" href="${showboardsearch.sb_no}"> <img
 								alt="Bootstrap Image Preview"
-								src="http://ticketimage.interpark.com/Play/image/large/18/18008332_p.gif" />
+								src="${pageContext.request.contextPath}/resources/assets/img/showboard/${showboardsearch.sb_img}" style="width: 228px; height: 280px;"/>
 							</a> <label class="table-title-link" href="${showboardsearch.sb_no}">
 								<div class="card">
 									<h5 class="card-header">

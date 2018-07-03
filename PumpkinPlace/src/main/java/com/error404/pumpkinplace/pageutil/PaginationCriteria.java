@@ -5,7 +5,7 @@ public class PaginationCriteria {
 	private int page; // 브라우저에서 보고 있는 현재 페이지 번호
 	private int numsPerPage; // 한 페이지에 보여줄 글 목록의 갯수
 	
-	public PaginationCriteria() {
+	public PaginationCriteria() { // 기본 생성자이지만 사용 X
 		page = 1; // 현재 페이지 = 1
 		numsPerPage = 10; // 한 페이지에 보여줄 글 갯수 = 10
 	}
@@ -41,7 +41,7 @@ public class PaginationCriteria {
 		return page * numsPerPage;
 	}
 	
-} // end class PaginationCriteria
+} 
 
 
 

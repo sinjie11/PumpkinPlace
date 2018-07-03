@@ -70,13 +70,12 @@
 		<property name="tbl_message" value="pumpkin_message" />
 		
 		<property name="col_msg_no" value="msg_no" />
+		<property name="col_mem_id2" value="mem_id2"/>
 		<property name="col_msg_title" value="msg_title" />
 		<property name="col_msg_content" value="msg_content" />
-		<property name="col_msg_send" value="msg_send" />
-		<property name="col_msg_recieve" value="msg_recieve" />
 		<property name="col_msg_regdate" value="msg_regdate" />
-		<property name="col_msg_section" value="msg_section" />
-	
+		<property name="col_msg_connfirm" value="msg_confirm" />
+
 		
 		<!-- game 테이블 -->
 		

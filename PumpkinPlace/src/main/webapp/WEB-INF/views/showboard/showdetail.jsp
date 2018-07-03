@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -86,10 +87,12 @@ td, h5 {
 					<div class="container text-center">
 						<h1 style="font-size: 50px;">
 							<!-- 공연 제목 -->
-							<b>David Bowie Ziggy StarDust</b>
+							<b>${showboard.sb_title}</b>
 						</h1>
 						<!-- 날짜 -->
-						<h2>1973-07-03</h2>
+						<fmt:formatDate value="${showboard.sb_startdate}"
+						pattern="yyyy-MM-dd" var="startdate" />
+						<h2>${startdate}</h2>
 					</div>
 
 				</div>
@@ -100,8 +103,9 @@ td, h5 {
 					<div class="col-md-6">
 
 						<img alt="포스터"
-							src="https://i.pinimg.com/originals/3f/34/5b/3f345b5415c304de51b13901198ff712.jpg"
-							style="margin-left: 30%;" />
+							src="${pageContext.request.contextPath}/resources/assets/img/showboard/${showboard.sb_img}"
+							
+							style="margin-left: 30%; width: 570px; height: 796px; " />
 
 					</div>
 
@@ -113,32 +117,36 @@ td, h5 {
 						
 							<tr>
 								<td width="40%">시간:</td>
-								<td>20:00</td>
+								<fmt:formatDate value="${showboard.sb_startdate}"
+										pattern="HH:mm" var="starttime" />
+								<td>${starttime}</td>
 							</tr>
 
 							<tr>
 								<td>입장료:</td>
-								<td><i class="price"></i>20,000</td>
+								<td><i class="price"></i>
+								<fmt:formatNumber value="${showboard.sb_price}" pattern="#,### 원"></fmt:formatNumber>
+								</td>
 							</tr>
 							<tr>
 								<td>도시:</td>
-								<td>London | 런던</td>
+								<td>${showboard.sb_city}</td>
 							</tr>
 
 							<tr>
 								<td>연락처:</td>
-								<td>xxx-xxxx-xxxx</td>
+								<td>${showboard.sb_tel}</td>
 							</tr>
 						</table>
 						<div class="">
 							<h5>상세 정보</h5>
-							<textarea rows="5" cols="50" readonly="readonly">David Bowie Show</textarea>
+							<textarea rows="6" cols="68" readonly="readonly">${showboard.sb_content}</textarea>
 						</div>
 
 						<br />
 
 						<div>
-							<h3>공연장: 45 Queen Caroline St</h3>
+							<h3>공연장: ${showboard.sb_locinfo}</h3>
 							<br />
 
 
@@ -184,7 +192,7 @@ td, h5 {
 	<br />
 	<div class="container text-center">
 		<iframe width="560" height="315"
-			src="https://www.youtube.com/embed/3qrOvBuWJ-c" frameborder="0"
+			src="https://www.youtube.com/embed/${showboard.sb_video}" frameborder="0"
 			allow="autoplay; encrypted-media" allowfullscreen></iframe>
 	</div>
 	<br />

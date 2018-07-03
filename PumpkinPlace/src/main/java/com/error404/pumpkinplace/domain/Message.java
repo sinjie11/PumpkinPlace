@@ -5,27 +5,25 @@ import java.util.Date;
 public class Message {
 	
 	private int msg_no; // 쪽지 번호
-	private String mem_id; // 회원 아이디
+	private String mem_id; // 쪽지 발신 아이디
+	private String mem_id2; // 쪽지 수신 아이디
 	private String msg_title; // 쪽지 제목
 	private String msg_content; // 쪽지 내용
-	private String msg_send; // 쪽지 보낸 사람
-	private String msg_recieve; // 쪽지 받는 사람
-	private Date msg_regdate; // 쪽지 작성일자
-	private int msg_section; // 쪽지 구분(1: 보낸편지함, 2: 받은편지함)
+	private Date msg_regdate; // 쪽지 작성 일자
+	private Boolean msg_confirm; // 쪽지 수신 여부
 	
 	public Message() {}
 
-	public Message(int msg_no, String mem_id, String msg_title, String msg_content, String msg_send, String msg_recieve,
-			Date msg_regdate, int msg_section) {
-		super();
+	public Message(int msg_no, String mem_id, String mem_id2, String msg_title, String msg_content, Date msg_regdate,
+			Boolean msg_confirm) {
+		
 		this.msg_no = msg_no;
 		this.mem_id = mem_id;
+		this.mem_id2 = mem_id2;
 		this.msg_title = msg_title;
 		this.msg_content = msg_content;
-		this.msg_send = msg_send;
-		this.msg_recieve = msg_recieve;
 		this.msg_regdate = msg_regdate;
-		this.msg_section = msg_section;
+		this.msg_confirm = msg_confirm;
 	}
 
 	public int getMsg_no() {
@@ -44,6 +42,14 @@ public class Message {
 		this.mem_id = mem_id;
 	}
 
+	public String getMem_id2() {
+		return mem_id2;
+	}
+
+	public void setMem_id2(String mem_id2) {
+		this.mem_id2 = mem_id2;
+	}
+
 	public String getMsg_title() {
 		return msg_title;
 	}
@@ -60,22 +66,6 @@ public class Message {
 		this.msg_content = msg_content;
 	}
 
-	public String getMsg_send() {
-		return msg_send;
-	}
-
-	public void setMsg_send(String msg_send) {
-		this.msg_send = msg_send;
-	}
-
-	public String getMsg_recieve() {
-		return msg_recieve;
-	}
-
-	public void setMsg_recieve(String msg_recieve) {
-		this.msg_recieve = msg_recieve;
-	}
-
 	public Date getMsg_regdate() {
 		return msg_regdate;
 	}
@@ -84,13 +74,13 @@ public class Message {
 		this.msg_regdate = msg_regdate;
 	}
 
-	public int getMsg_section() {
-		return msg_section;
+	public Boolean getMsg_confirm() {
+		return msg_confirm;
 	}
 
-	public void setMsg_section(int msg_section) {
-		this.msg_section = msg_section;
+	public void setMsg_confirm(Boolean msg_confirm) {
+		this.msg_confirm = msg_confirm;
 	}
-
+		
 	
 } // end class Message

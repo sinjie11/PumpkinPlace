@@ -72,14 +72,10 @@ body {
 <h5><b> 카테고리: 공연 </b></h5>
 	<%@ include file="/WEB-INF/views/header.jspf"%>
 	<br />
-	<br />
 	<!-- 가운데 정렬 -->
-
-
-
 	<div class="container text-center">
-		<h1>공 연</h1>
 		<div class="tab-content">
+			
 			<form action="showboardsearch"
 				style="float: right; margin-bottom: 50px;">
 				<div id="datetimepicker4" class="input-append date">
@@ -112,8 +108,10 @@ body {
 						<div class="col-md-3">
 							<a class="table-title-link" href="${showboard.sb_no}"> <img
 								alt="Bootstrap Image Preview"
-								src="http://ticketimage.interpark.com/Play/image/large/18/18008332_p.gif" />
-							</a> <label class="table-title-link" href="${showboard.sb_no}">
+								src="${pageContext.request.contextPath}/resources/assets/img/showboard/${showboard.sb_img}" 
+								 style="width: 228px; height: 280px;"
+								 />
+							 <label class="table-title-link" href="${showboard.sb_no}">
 								<div class="card">
 									<h5 class="card-header">
 										<b>${showboard.sb_title}</b>
@@ -126,6 +124,7 @@ body {
 									<div class="card-footer">${startdate}</div>
 								</div>
 							</label>
+							</a>
 						</div>
 					</c:forEach>
 				</div>
@@ -204,6 +203,7 @@ body {
 		src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
 		
 	</script>
+		
 	<script type="text/javascript"
 		src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
 		

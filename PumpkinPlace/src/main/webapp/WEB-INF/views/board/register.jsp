@@ -61,13 +61,6 @@ body {
 
 	<%@ include file="/WEB-INF/views/header.jspf"%>
 
-	<br />
-	<h5>
-		<b> 카테고리: 게시판 > 자유게시판 > 새 글쓰기</b>
-	</h5>
-	<!-- end MenuBar -->
-	
-		
 		<div class="text-center">
 			<br />
 			<br />
@@ -82,39 +75,37 @@ body {
 				<div class="text-center"><button id="submit" >작성완료</button></div>
 				
 		
+=======
+	<div class="container text-center">
+	<c:if test="${urlNo eq 1}">
+		<h5 style="text-align: left;"><b> 카테고리: 게시판 > 자유게시판 > 새 글쓰기</b></h5>
+	</c:if>
+	<c:if test="${urlNo eq 8}">
+		<h5 style="text-align: left;"><b> 카테고리: 구인구직 > 구인 > 새 글쓰기</b></h5>
+	</c:if>
+	<c:if test="${urlNo eq 9}">
+		<h5 style="text-align: left;"><b> 카테고리: 구인구직 > 구직 > 새 글쓰기</b></h5>
+	</c:if>
+	<c:if test="${urlNo eq 20}">
+		<h5 style="text-align: left;"><b> 카테고리: Q & A > 새 글쓰기</b></h5>
+	</c:if>
+	
+	
+	<br/>
+	<br/>
+		<h1>새 글쓰기</h1>
+		<br/>
+		<form action="register" method="post">
+			<input type="text" name="title" style="width: 385px;" placeholder="글 제목" required /> <br />
+			<br/>
+			<textarea rows="5" cols="50" style="width: 385px;" name="content" placeholder="내용 작성"
+			required></textarea><br/>
+			<br /> <input type="text"  style="width: 385px;" name="userid" value="${loginId}"
+				readonly="readonly"><br/><br /> <input type="submit"
+				value="작성 완료" />
+		</form>
+	</div>
 
-		<!-- footer -->
-		<footer class="container-fluid text-center">
-
-			<div class="row">
-				<!-- Add Google Maps -->
-				<div id="googleMap"
-					style="height: 400px; width: 500px; float: right; margin-right: 200px;"></div>
-				<div class="col-sm-7 slideanim">
-					<h2 class="text-center" style="margin-left: 230px;">CONTACT</h2>
-					<br /> <br />
-					<div class="col-sm-7 slideanim" style="margin-left: 350px;">
-						<div class="row">
-							<div class="col-sm-6 form-group">
-								<input class="form-control" id="name" name="name"
-									placeholder="Name" type="text" required>
-							</div>
-							<div class="col-sm-6 form-group">
-								<input class="form-control" id="email" name="email"
-									placeholder="Email" type="email" required>
-							</div>
-						</div>
-						<textarea class="form-control" id="comments" name="comments"
-							placeholder="Comment" rows="5"></textarea>
-						<br>
-						<div class="row">
-							<div class="col-sm-12 form-group">
-								<button class="btn btn-default pull-right" type="submit">Send</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 
 			<script>
 				function myMap() {
