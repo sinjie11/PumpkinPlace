@@ -164,13 +164,13 @@ body {
 							'X-HTTP-Method-Override' : 'post'
 						},//요청해더
 						data : JSON.stringify({//오브 잭트를 문자열로 변환
-							'b_section' : 1, // 제형이가 전달할 섹션 넘버 
+							'b_section' : "${urlNo}", // 제형이가 전달할 섹션 넘버 
 							'b_title' : $('#title').val(),
 							'b_id' : "${loginId}",
 							'b_content' :jsonContents
 						}), //서버로 보낼 JSON 객체문자열
 						success : function(result) {
-							location = '/pumpkinplace/board/list';
+							location = '/pumpkinplace/board/list?urlNo=${urlNo}';
 						} 
 					});
 				
