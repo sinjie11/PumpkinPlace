@@ -66,14 +66,14 @@ public class BoardDaoTest {
 //		logger.info("Insert result = {}", result10);
 	} // end intertTest()
 	
-	private void selectByMemid() {
-		Board b = boardDao.select(1);
-		if (b != null) {
-			logger.info("Section No : {}", b.getB_section());
-		} else {
-			logger.info("사용할 수 있는 아이디");
-		}
-	} // selectByMemid()
+//	private void selectByMemid() {
+//		Board b = boardDao.select(1);
+//		if (b != null) {
+//			logger.info("Section No : {}", b.getB_section());
+//		} else {
+//			logger.info("사용할 수 있는 아이디");
+//		}
+//	} // selectByMemid()
 	
 	
 } // end class MemberDaoTest

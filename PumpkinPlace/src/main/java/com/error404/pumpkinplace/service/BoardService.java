@@ -13,7 +13,9 @@ public interface BoardService {
 	int create(Board board);
 	
 	// 게시판DB에서 해당 b_section에 속하는 게시글 하나를 보여주는 서비스
-	Board read(int b_section);
+//	Board read(int b_section);
+	
+	Board readByBno(int bno);
 	
 	// 게시판DB에서 해당 b_section에 속하는 게시글 모두를 보여주는 서비스
 	List<Board> readSection(int b_section);

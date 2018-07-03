@@ -45,49 +45,55 @@ footer {
 }
 
 body {
-
 	position: relative; /* For scrollyspy */
 	padding-top: 350px; /*Account for fixed navbar */
 	background-color: #f8f8f8;
-
-  position: relative; /* For scrollyspy */
-  padding-top: 300px;   /*Account for fixed navbar */
-  background-color: #f8f8f8;
+	position: relative; /* For scrollyspy */
+	padding-top: 300px; /*Account for fixed navbar */
+	background-color: #f8f8f8;
 }
 </style>
 </head>
 <body>
 
 	<%@ include file="/WEB-INF/views/header.jspf"%>
-	<br/>
+	<br />
 
 
 	<div class="container text-center">
 		<c:if test="${urlNo eq 1}">
-			<h5 style="text-align: left;"><b> 카테고리: 게시판 > 자유게시판 </b></h5>
-			<br/>
-			<br/>
+			<h5 style="text-align: left;">
+				<b> 카테고리: 게시판 > 자유게시판 </b>
+			</h5>
+			<br />
+			<br />
 			<h1>자유 게시판</h1>
 		</c:if>
-		
+
 		<c:if test="${urlNo eq 8}">
-			<h5 style="text-align: left;"><b> 카테고리: 구인구직 > 구인 </b></h5>
-			<br/>
-			<br/>
+			<h5 style="text-align: left;">
+				<b> 카테고리: 구인구직 > 구인 </b>
+			</h5>
+			<br />
+			<br />
 			<h1>구 인</h1>
 		</c:if>
-		
+
 		<c:if test="${urlNo eq 9}">
-			<h5 style="text-align: left;"><b> 카테고리: 구인구직 > 구직 </b></h5>
-			<br/>
-			<br/>
+			<h5 style="text-align: left;">
+				<b> 카테고리: 구인구직 > 구직 </b>
+			</h5>
+			<br />
+			<br />
 			<h1>구 직</h1>
 		</c:if>
-		
+
 		<c:if test="${urlNo eq 20}">
-			<h5 style="text-align: left;"><b> 카테고리: Q & A </b></h5>
-			<br/>
-			<br/>
+			<h5 style="text-align: left;">
+				<b> 카테고리: Q & A </b>
+			</h5>
+			<br />
+			<br />
 			<h1>Q & A</h1>
 		</c:if>
 
@@ -104,7 +110,7 @@ body {
 				<a id="register" href="register"><button type="button">글쓰기</button></a>
 			</form>
 		</div>
-
+${board.b_no}
 		<div class="container text-center">
 			<table class="table">
 				<thead>
@@ -127,7 +133,7 @@ body {
 							<td>${b_regdate}</td>
 							<td>${board.b_readcnt}</td>
 						</tr>
-					</c:forEach>
+					</c:forEach>					
 				</tbody>
 			</table>
 		</div>
@@ -162,7 +168,7 @@ body {
 			value="${pageMaker.criteria.page}" /> <input type="hidden"
 			name="numsPerPage" id="numsPerPage"
 			value="${pageMaker.criteria.numsPerPage}" /> <input type="hidden"
-			name="bno" id="page-form-bno" />
+			name="b_no" id="page-form-bno" />
 	</form>
 
 	<script
@@ -246,7 +252,7 @@ body {
 		function myMap() {
 			var myCenter = new google.maps.LatLng(37.499685, 127.031535);
 			var map;
-
+	
 			var mapProp = {
 				center : myCenter,
 				zoom : 12,
@@ -255,12 +261,12 @@ body {
 				mapTypeId : google.maps.MapTypeId.ROADMAP
 			};
 			var map = new google.maps.Map(document.getElementById("googleMap"),
-					mapProp);
+				mapProp);
 			var marker = new google.maps.Marker({
 				position : myCenter
 			});
 			marker.setMap(map);
-
+	
 		}
 	</script>
 	<script
