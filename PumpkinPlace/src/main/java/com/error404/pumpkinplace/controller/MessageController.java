@@ -63,6 +63,12 @@ public class MessageController {
 		
 	} // end recieve()
 	
+	@RequestMapping(value = "/recievedetail", method = RequestMethod.GET)
+	public void recieve() {
+		logger.info("recievedetail() GET 호출");
+		
+	} // end recieve()
+	
 	
 
 } // end class MessageController

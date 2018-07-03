@@ -7,11 +7,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>받은 쪽지함</title>
+<title>받은 쪽지</title>
 </head>
 <body>
-
-	<h1>받은 쪽지</h1>
 
 	<table>
 		<thead>
@@ -27,7 +25,8 @@
 				<tr>
 					<td>${message.msg_confirm}</td>
 					<td>${message.mem_id}</td>
-					<td style="font-weight: bold;">${message.msg_content}</td>
+					<td style="font-weight: bold;"><a
+						href="/pumpkinplace/message/recievedetail">${message.msg_content}</a></td>
 					<fmt:formatDate value="${message.msg_regdate}"
 						pattern="yyyy-MM-dd HH:mm:ss" var="msg_regdate" />
 					<td>${msg_regdate}</td>
