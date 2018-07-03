@@ -49,17 +49,13 @@ body {
 	position: relative; /* For scrollyspy */
 	padding-top: 350px; /*Account for fixed navbar */
 	background-color: #f8f8f8;
-
-  position: relative; /* For scrollyspy */
-  padding-top: 300px;   /*Account for fixed navbar */
-  background-color: #f8f8f8;
+}
 }
 </style>
 </head>
 <body>
 
 	<%@ include file="/WEB-INF/views/header.jspf"%>
-	<br/>
 
 
 	<div class="container text-center">
@@ -215,7 +211,6 @@ body {
 		frm.submit();
 	});
 	
-	console.log('boardSectionNo: ${boarSectionNo}'); // 보드 구분번호
 	
 	$('#register').click(function () { // qna
 		event.preventDefault();

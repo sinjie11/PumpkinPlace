@@ -102,9 +102,10 @@ body {
 		<br/>
 		
 		<button>수정 완료</button>
-		
+		<br /><br />
 	</form>
-<div class="container text-center">
+	</div>
+
 	<%@ include file="/WEB-INF/views/footer.jspf"%>
 
 </body>

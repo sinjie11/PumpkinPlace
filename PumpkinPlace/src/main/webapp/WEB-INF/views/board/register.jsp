@@ -51,7 +51,7 @@ footer {
 
 body {
 	position: relative; /* For scrollyspy */
-	padding-top: 300px; /*Account for fixed navbar */
+	padding-top: 350px; /*Account for fixed navbar */
 	background-color: #f8f8f8;
 }
 }
@@ -75,7 +75,7 @@ body {
 		<h5 style="text-align: left;"><b> 카테고리: Q & A > 새 글쓰기</b></h5>
 	</c:if>
 
-		<div class="text-center">
+		<div class="container text-center">
 			<br />
 			<br />
 			<h1>새 글쓰기</h1>
