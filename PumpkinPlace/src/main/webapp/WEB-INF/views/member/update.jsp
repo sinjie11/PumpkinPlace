@@ -63,32 +63,37 @@ body {
 <body>
 	<%@ include file="/WEB-INF/views/header.jspf"%>
 	<div class="container text-center">
-	<h1>수정 페이지</h1>
+	<br/>
+	<br/>
+	<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/profile.png"
+				style="background-color: white; width: 110px; height: 110px;" /></a>
+	<h1><b>수정 페이지	</b></h1>
 
 	<form id="form-update" action="update" method="post">
 	
-	
-		<span>회원번호 </span>
+	<br/>
+		<span style="font-size:18px; margin-right: 15px;"><b>회원번호</b> </span>
 		<input type="number" name="mem_no" value="${member.mem_no}" readonly />
 		<br/>
-		
-		<span>아이디 </span>
+		<br/>
+		<span style="font-size:18px; margin-right: 30px;"><b>아이디</b></span>
 		<input type="text" name="mem_id" value="${member.mem_id}" readonly />
 		<br/>
-		
-		<span>비밀번호 </span>
+		<br/>
+		<span style="font-size:18px; margin-right: 15px;"><b>비밀번호</b> </span>
 		<input type="password" name="mem_pwd" value="${member.mem_pwd}" />
 		<br/>
-		
-		<span>이메일 </span>		
+		<br/>
+		<span style="font-size:18px; margin-right: 30px;"><b>이메일</b></span>		
 		<input type="text" name="mem_email" value="${member.mem_email}" />
 		<br/>
-		
-		<span>전화번호 </span>
+		<br/>
+		<span style="font-size:18px; margin-right: 15px;"><b>전화번호</b></span>
 		<input type="text" name="mem_tel" value="${member.mem_tel}" />
 		<br/>
-		
-		<span>가입일자 </span>		
+		<br/>
+		<span style="font-size:18px; margin-right: 15px;"><b>가입일자</b></span>		
 		<fmt:formatDate value="${member.mem_regdate}"
 			pattern="yyyy-MM-dd" var="regdate" />
 

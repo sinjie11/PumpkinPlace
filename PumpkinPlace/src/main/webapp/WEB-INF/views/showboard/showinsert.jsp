@@ -140,11 +140,10 @@ body {
 										<p>
 											<small>공연을 위한 포스터를 업로드해주세요. 그렇지 않을 경우 대체 이미지가 사용됩니다.</small>
 										</p>
- 
+
 
 										<br /> <img id="blah" src="#" alt="" width="570px;"
-											height="796px;" /> <br />
-										<br />
+											height="796px;" /> <br /> <br />
 
 										<!-- 사진 저장 -->
 										<script>
@@ -183,7 +182,7 @@ body {
 
 										<!-- 유튜브 -->
 										<label for="event_영상:">영상: <input id="youtube"
-											name="${youtube}" type="text"
+											name="sb_video" type="text"
 											style="text-align: center; width: 300px; margin-left: 12px;"
 											placeholder="YouTube 링크를 입력해주세요" />
 										</label> <br /> <br />
@@ -212,8 +211,9 @@ body {
 									<div id="en_title">
 										<p>
 											<label for="event_공연 이름 :">공연 제목: <input
-												id="show_name" name="event" type="text"
-												style="text-align: center; width: 200px;" required /></label>
+												id="show_name" name="sb_title" type="text"
+												style="text-align: center; width: 200px;" required />
+											</label>
 										</p>
 									</div>
 
@@ -221,20 +221,21 @@ body {
 									<!-- 뮤지션이름 -->
 									<div id="en_bands">
 										<p>
-											<label for="event_공연하는 밴드:">뮤지션명:&nbsp <input
-												id="event_band_tokens" name="event[band_tokens]" type="text"
+											<label for="event_공연하는 밴드:">뮤지션명: <input
+												id="event_band_tokens" name="sb_nm" type="text"
 												style="text-align: center; width: 200px;" required /></label>
 										</p>
 									</div>
 
 									<div id="en_daytime">
-										<label for="event_공연 날짜">공연 날짜 / 시간:<br /> <input type="text" id="startdate" placeholder="공연 시작 날짜 선택" />
-											<input type="text" name="starttime" value=""
-											placeholder="시간 입력" id="time1" required size="8"
-											maxlength="5"> ~ <input type="text" id="enddate"
-											placeholder="공연 종료 날짜 선택" required /> <input type="text"
-											name="time2" value="" placeholder="시간 입력" id="endtime"
-											required size="8" maxlength="5"></label>
+										<label for="event_공연 날짜">공연 날짜 / 시간:<br /> <input
+											type="text" id="startdate" placeholder="공연 시작 날짜 선택" /> <input
+											type="text" name="sb_startdate" value="" placeholder="시간 입력"
+											id="time1" required size="8" maxlength="5"> ~ <input
+											type="text" id="enddate" placeholder="공연 종료 날짜 선택" required />
+											<input type="text" name="sb_enddate" value=""
+											placeholder="시간 입력" id="endtime" required size="8"
+											maxlength="5"></label>
 									</div>
 									<br />
 
@@ -256,10 +257,10 @@ body {
 
 
 									<!-- 지역 -->
-									<div id="en_city">
+									<div id="sb_city">
 										<p>
-											<label for="event_도시:"> 도시: <select id="country"
-												name="country"
+											<label for="sb_city"> 도시: <select id="country"
+												name="sb_city"
 												style="text-align: center; width: 100px; margin-left: 12px;">
 													<option value="seoul">서울</option>
 													<option value="kuyngki">경기</option>
@@ -279,7 +280,7 @@ body {
 
 									<div id="en_venue">
 										<input id="pac-input" class="controls" type="text"
-											placeholder="Enter a location">
+											name="sb_locinfo" placeholder="Enter a location">
 										<div id="map"></div>
 										<div id="infowindow-content">
 											<span id="place-name" class="title"></span><br> Place ID
@@ -346,18 +347,12 @@ body {
 										<script
 											src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&libraries=places&callback=initMap"
 											async defer></script>
-
-
 									</div>
 
-
-
-
-
 									<!-- 연락처 -->
-									<div id="en_phone">
+									<div id="sb_tel">
 										<label for="event_연락처:">연락처: <input id="event_contact"
-											name="event[contact]" type="text"
+											name="sb_tel" type="text"
 											style="text-align: center; width: 200px;" />
 										</label>
 									</div>
@@ -366,72 +361,44 @@ body {
 									<!-- 가격 -->
 									<div id="en_price">
 										<p>
-											<label for="event_현매:"> 가격:<input
-												id="event_door_price" name="event[door_price]" type="number"
+											<label for="sb_price"> 가격:<input
+												id="event_door_price" name="sb_price" type="number"
 												style="text-align: center; width: 200px; margin-left: 18px;" />
 											</label>
 										</p>
 									</div>
-
 
 									<!-- 상세정보 -->
 									<div id="en_description">
 										<label>상세 정보</label>
 										<p>
 											<textarea name="description" rows="5" cols="50" id="text"
-												required></textarea>
+												name="sb_content" required></textarea>
 										</p>
 										<br />
-
 									</div>
 									<br />
 
 									<div id="en_player">
-
-
 										<div class="links"></div>
 										<p></p>
 									</div>
 									<br />
-
-
-
-
-
 								</div>
-
 							</div>
 						</div>
-
 					</div>
 				</div>
 			</div>
 		</div>
-
-
-		<br /> <input class="btn btn-primary" name="uploadFile" type="submit"
+		<br /> 
+		<input class="btn btn-primary" name="uploadFile" type="submit"
 			value="등록" style="margin-bottom: 50px; margin-left: 50%;" />
-
-
 	</form>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 
-
-
+<%@ include file="/WEB-INF/views/footer.jspf"%>
 
 
 </html>
