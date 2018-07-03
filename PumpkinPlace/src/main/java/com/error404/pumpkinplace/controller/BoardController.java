@@ -109,14 +109,14 @@ public class BoardController {
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String update(
 			@ModelAttribute("criteria") PaginationCriteria criteria,
-			Board board, RedirectAttributes attr) {
+			Board board, RedirectAttributes attr,  int urlNo) {
 		logger.info("update(board: {})", board);
 		int result = boardService.update(board);
 		if (result == 1) {
 			attr.addFlashAttribute("updateResult", "success");
 		}
 		
-		return "redirect:detail?b_no=" + board.getB_no();
+		return "redirect:detail?b_no=" + board.getB_no() + "&urlNo=" + urlNo;
 	} 
 	
 	@RequestMapping(value = "delete", method = RequestMethod.GET)

@@ -95,8 +95,6 @@ body {
 	<br />
 	<br />
 
-
->>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
 			<script>
 				function myMap() {
 					var myCenter = new google.maps.LatLng(37.499685, 127.031535);
