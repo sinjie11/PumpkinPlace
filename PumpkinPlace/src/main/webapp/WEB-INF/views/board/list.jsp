@@ -48,14 +48,8 @@ body {
 	position: relative; /* For scrollyspy */
 	padding-top: 350px; /*Account for fixed navbar */
 	background-color: #f8f8f8;
-<<<<<<< HEAD
 }
-=======
-	position: relative; /* For scrollyspy */
-	padding-top: 300px; /*Account for fixed navbar */
-	background-color: #f8f8f8;
->>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
-}
+
 </style>
 </head>
 <body>

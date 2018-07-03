@@ -21,6 +21,8 @@
 
 <div id="quillContents"></div>
 <form action="update">
+	
+	<input type="hidden" name="urlNo" value="${urlNo}" />
 	<input type="number" name="b_no" value="${board.b_no}" readonly />
 	<br/>
 	<input type="text" value="${board.b_title}" readonly />
