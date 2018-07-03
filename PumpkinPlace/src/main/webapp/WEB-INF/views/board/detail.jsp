@@ -17,6 +17,7 @@
 <body>
 
 <h1>#글 상세 보기 페이지</h1>
+
 <div id="quillContents"></div>
 <form action="update">
 	<input type="number" name="b_no" value="${board.b_no}" readonly />
