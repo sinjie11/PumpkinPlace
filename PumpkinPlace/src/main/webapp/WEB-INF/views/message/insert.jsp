@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<h1>쪽지 보내기 페이지</h1>
+<h1>쪽지 보내기</h1>
 
 <form action="insert" method="post">
 

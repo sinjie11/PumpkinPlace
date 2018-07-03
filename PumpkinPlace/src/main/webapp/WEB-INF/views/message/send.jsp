@@ -11,21 +11,21 @@
 </head>
 <body>
 
-<h1>보낸 쪽지 페이지</h1>
+<h1>보낸 쪽지</h1>
 
 <table>
 				<thead>
 					<tr>
-						<th>보낸 사람</th>
+						<th>받는 사람</th>
 						<th>제목</th>
 						<th>내용</th>
-						<th>작성시간</th>
+						<th>발신 일자</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="message" items="${sendList}">
 						<tr>
-							<td>${loginId}</td>
+							<td>${message.mem_id2}</td>
 							<td>${message.msg_title}</td>
 							<td>${message.msg_content}</td>
 							<fmt:formatDate value="${message.msg_regdate}"
