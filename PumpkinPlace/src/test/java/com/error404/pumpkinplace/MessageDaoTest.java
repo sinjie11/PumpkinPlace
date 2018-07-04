@@ -28,16 +28,16 @@ public class MessageDaoTest {
 	public void doTest() {
 //		insertTest();
 //		send();
-		recieve();
+//		recieve();
 //		selectById();
 //		selectById2();
 //		updateTest();
-//		deleteTest();
+		deleteTest();
 		
 	} // end doTest()
 	
 	private void insertTest() {
-		Message message = new Message(0, "admin", "test1", "쪽지 제목 Junit", "쪽지 내용 Uunit", null, null);
+		Message message = new Message(0, "admin", "test", "테스트 내용", null, null);
 		
 		int result = messageDao.insert(message);
 		
@@ -48,8 +48,8 @@ public class MessageDaoTest {
 		List<Message> list = messageDao.send("admin");
 		
 		for (int i = 0; i < list.size(); i++) {
-			logger.info("list : ({}, {}, {}, {}, {}, {})", 
-					list.get(i).getMem_id(), list.get(i).getMsg_title(), list.get(i).getMsg_content(), 
+			logger.info("list : ({}, {}, {}, {})", 
+					list.get(i).getMem_id(), list.get(i).getMsg_content(), 
 					list.get(i).getMsg_regdate(), list.get(i).getMsg_confirm());
 		}
 		
@@ -59,8 +59,8 @@ public class MessageDaoTest {
 		List<Message> list = messageDao.recieve("test");
 		
 		for (int i = 0; i < list.size(); i++) {
-			logger.info("list : ({}, {}, {}, {}, {}, {})", 
-					list.get(i).getMem_id2(), list.get(i).getMsg_title(), list.get(i).getMsg_content(), 
+			logger.info("list : ({}, {}, {}, {})", 
+					list.get(i).getMem_id2(), list.get(i).getMsg_content(), 
 					list.get(i).getMsg_regdate(), list.get(i).getMsg_confirm());
 		}
 		
@@ -68,20 +68,20 @@ public class MessageDaoTest {
 	
 	
 	private void selectById() {
-		Message message = new Message(0, "admin", null, null, null, null, false);
+		Message message = new Message(0, "admin",null, null, null, false);
 		
 		logger.info("selectById : {} ", message.getMem_id());
 	} // end selectById()
 	
 	private void selectById2() {
-		Message message = new Message(0, null, "test", null, null, null, false);
+		Message message = new Message(0, null, "test", null, null, false);
 		
 		logger.info("selectById2 : {}", message.getMem_id2());
 	} // end selectById2()
 		
 	
 	private void updateTest() {
-		Message message = new Message(3, null, null, "J 제목변경", "내용변경", null, false);
+		Message message = new Message(1, null, null, "내용변경", null, false);
 		
 		int result = messageDao.update(message);
 		
@@ -91,7 +91,7 @@ public class MessageDaoTest {
 	
 
 	private void deleteTest() {
-		int result = messageDao.delete(3);
+		int result = messageDao.delete(1);
 		
 		logger.info("Delete result = {} ", result);
 	} // end deleteTest()

@@ -55,7 +55,13 @@ body {
 </style>
 </head>
 <body>
+
+	<br />
+	<h5>
+		<b> 카테고리: 홈 </b>
+
 	<br/>
+
 
 	<%@ include file="header.jspf"%>
 
@@ -64,8 +70,10 @@ body {
 	<div class="container text-center">
 		<h5 style="text-align: left;"><b> 카테고리: 홈 </b></h5>
 
-		<h4><b>공연</b></h4>
-		
+		<h4>
+			<b>공연</b>
+		</h4>
+
 		<br>
 		<!-- 공연 소개  -->
 		<div class="row justify-content-md-center">
@@ -73,14 +81,17 @@ body {
 				<c:forEach var="showboard" items="${showboardList}" begin="0"
 					end="5" varStatus="vs">
 					<div class="col-md-4" style="height: 400px">
-						<a href="showboard/showdetail?page=1&numsPerPage=12&sb_no=${showboard.sb_no}"><img
-							class="my-image" alt="Bootstrap Image Preview" width="220px;" height="280px;"
+						<a
+							href="showboard/showdetail?page=1&numsPerPage=12&sb_no=${showboard.sb_no}"><img
+							class="my-image" alt="Bootstrap Image Preview" width="220px;"
+							height="280px;"
 							src="${pageContext.request.contextPath}/resources/assets/img/showboard/${showboard.sb_img}" /></a>
-						<label href="showboard/showdetail?page=1&numsPerPage=12&sb_no=${showboard.sb_no}">
-							<h4>${showboard.sb_title}</h4>
-								<fmt:formatDate value="${showboard.sb_startdate}"
-									pattern="yyyy년 MM월 dd일 " var="startdate" />
-								<p>${showboard.sb_city}/${startdate}</p>
+						<label
+							href="showboard/showdetail?page=1&numsPerPage=12&sb_no=${showboard.sb_no}">
+							<h4>${showboard.sb_title}</h4> <fmt:formatDate
+								value="${showboard.sb_startdate}" pattern="yyyy년 MM월 dd일 "
+								var="startdate" />
+							<p>${showboard.sb_city}/${startdate}</p>
 						</label>
 					</div>
 				</c:forEach>
@@ -243,74 +254,96 @@ body {
 			</div>
 		</div>
 	</div>
-	<!-- footer -->
-	<footer class="container-fluid text-center">
 
+
+	<div class="container-fluid">
 		<div class="row">
-			<!-- Add Google Maps -->
-			<div id="googleMap"
-				style="height: 400px; width: 500px; float: right; margin-right: 200px;"></div>
-			<div class="col-sm-7 slideanim">
-				<h2 class="text-center" style="margin-left: 230px;">CONTACT</h2>
-				<br /> <br />
-				<div class="col-sm-7 slideanim" style="margin-left: 350px;">
-					<div class="row">
-						<div class="col-sm-6 form-group">
-							<input class="form-control" id="name" name="name"
-								placeholder="Name" type="text" required>
-						</div>
-						<div class="col-sm-6 form-group">
-							<input class="form-control" id="email" name="email"
-								placeholder="Email" type="email" required>
+			<div class="col-md-12">
+				<div class="row">
+					<div class="col-md-6">
+						<!-- Container (Contact Section) -->
+						<div id="contact" class="container">
+							<h3 class="text-center">Contact</h3>
+
+							<div class="col align-self-center">
+								<div class="col-md-8" style="margin-left: 190px;" >
+									<div class="text-center">
+										<div class="row">
+											<div class="col-sm-6 form-group">
+												<input class="form-control" id="name" name="name"
+													placeholder="Name" type="text" required>
+											</div>
+											<div class="col-sm-6 form-group">
+												<input class="form-control" id="email" name="email"
+													placeholder="Email" type="email" required>
+											</div>
+										</div>
+										<textarea class="form-control" id="comments" name="comments"
+											placeholder="Comment" rows="5"></textarea>
+										<br>
+										<div class="row">
+											<div class="col-md-12 form-group">
+												<button class="btn pull-right" type="submit">Send</button>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<br>
+
+							</div>
 						</div>
 					</div>
-					<textarea class="form-control" id="comments" name="comments"
-						placeholder="Comment" rows="5"></textarea>
-					<br>
-					<div class="row">
-						<div class="col-sm-12 form-group">
-							<button class="btn btn-default pull-right" type="submit">Send</button>
+					<div class="col-md-6">
+						<div class="col align-self-center">
+							<!-- Add Google Maps -->
+							<div id="googleMap"
+								style="height: 400px; width: 500px; float: right; margin-right: 200px;"></div>
+
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
+	<br />
 
-		<script>
-			function myMap() {
-				var myCenter = new google.maps.LatLng(37.499685, 127.031535);
-				var map;
 
-				var mapProp = {
-					center : myCenter,
-					zoom : 16,
-					scrollwheel : false,
-					draggable : false,
-					mapTypeId : google.maps.MapTypeId.ROADMAP
-				};
-				var map = new google.maps.Map(document
-						.getElementById("googleMap"), mapProp);
-				var marker = new google.maps.Marker({
-					position : myCenter
-				});
-				marker.setMap(map);
+	<script>
+		function myMap() {
+			var myCenter = new google.maps.LatLng(37.499685, 127.031535);
+			var map;
 
-			}
-
-			$(document).ready(function() {
-				console.log('jhd');
+			var mapProp = {
+				center : myCenter,
+				zoom : 16,
+				scrollwheel : false,
+				draggable : false,
+				mapTypeId : google.maps.MapTypeId.ROADMAP
+			};
+			var map = new google.maps.Map(document.getElementById("googleMap"),
+					mapProp);
+			var marker = new google.maps.Marker({
+				position : myCenter
 			});
-		</script>
+			marker.setMap(map);
 
-		<script
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&callback=myMap"></script>
+		}
 
-		<!--
+		$(document).ready(function() {
+			console.log('jhd');
+		});
+	</script>
+
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&callback=myMap"></script>
+
+	<!--
 To use this code on your website, get a free API key from Google.
 Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 -->
 
-	</footer>
+
 
 	<%@ include file="footer.jspf"%>
 </body>

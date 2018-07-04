@@ -1,7 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,6 +10,7 @@
 <title>Pumk</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- 부트스트랩 -->
@@ -16,7 +18,6 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 
 
 <style>
@@ -96,9 +97,6 @@ body {
 	height: 400px;
 }
 
-#infowindow-content {
-	display: none;
-}
 
 #map #infowindow-content {
 	display: inline;
@@ -111,7 +109,11 @@ body {
 		<b> 카테고리: 공연 > 공연등록 </b>
 	</h5>
 
+
+	<%@ include file="/WEB-INF/views/header.jspf"%>
+
 <%@ include file="/WEB-INF/views/header.jspf"%>
+
 
 	<br />
 
@@ -131,7 +133,7 @@ body {
 						<div class="row">
 							<div class="col-md-6">
 								<div class="col align-self-end" style="margin-left: 5%;">
-									<div style="font-size: 15px; margin-left: 25%;">
+									<div style="font-size: 15px; margin-left: 15%;">
 
 										<b>공연 포스터</b> <input type='file' id="imgInp" name="uploadFile" />
 
@@ -147,12 +149,12 @@ body {
 
 										<!-- 사진 저장 -->
 										<script>
-				$(document).ready(function() {
-			if (${not empty saved}) {
-				alert('${saved}' + 'SAVED');
-			}
-				});
-			</script>
+            $(document).ready(function() {
+         if (${not empty saved}) {
+            alert('${saved}' + 'SAVED');
+         }
+            });
+         </script>
 										<!-- 사진저장 -->
 
 										<!-- 사진 미리보기 -->
@@ -187,20 +189,32 @@ body {
 											placeholder="YouTube 링크를 입력해주세요" />
 										</label> <br /> <br />
 									</div>
+
+									<div style="width: 570px; margin-left: 15%;">
+							<script>
+										$(document).ready(function (){
+											var youtube = $('#sb_video').val();
+											console.log('youtube :' + youtube);
+										});
+									</script>
 									<div style="width: 570px; margin-left: 25%;">
+
 										<iframe width="560" height="315"
-											src="https://www.youtube.com/embed/mp17vqua5MU"
+											src="https://www.youtube.com/embed/+${youtube}"
 											frameborder="0" allow="autoplay; encrypted-media"
 											allowfullscreen></iframe>
 									</div>
+									
+									<br/>
+									<br/>
 									<script>
-										
-							jQuery(document).ready(
-									function($) {
-										$('iframe[src^="https://www.youtube.com/"]').wrap(
-										'<div class="youtubeWrap"></div>');
-									});
-								</script>
+                              
+                     jQuery(document).ready(
+                           function($) {
+                              $('iframe[src^="https://www.youtube.com/"]').wrap(
+                              '<div class="youtubeWrap"></div>');
+                           });
+                        </script>
 
 								</div>
 							</div>
@@ -227,31 +241,46 @@ body {
 										</p>
 									</div>
 
-									<div id="en_daytime">
+
 										<label for="event_공연 날짜">공연 날짜 / 시간:<br /> <input
 											type="text" id="startdate" placeholder="공연 시작 날짜 선택" /> <input
-											type="text" name="sb_startdate" value="" placeholder="시간 입력"
-											id="time1" required size="8" maxlength="5"> ~ <input
+											type="text" name="starttime" value="" placeholder="시간 입력"
+											id="endtime" required size="10" maxlength="5">~ <input
 											type="text" id="enddate" placeholder="공연 종료 날짜 선택" required />
-											<input type="text" name="sb_enddate" value=""
-											placeholder="시간 입력" id="endtime" required size="8"
-											maxlength="5"></label>
+											<input type="text" name="time2" value="" placeholder="시간 입력"
+											id="endtime" required size="10" maxlength="5"></label>
+
+										<label for="event_공연 날짜">공연 날짜 / 시간:<br /> 
+										<input type="text" id="startdate" placeholder="공연 시작 날짜 선택" /> 
+										<input type="text" name="sb_startdate" placeholder="시간 입력" id="time1" required size="8" maxlength="5"> 
+										~ 
+										<input type="text" id="enddate" placeholder="공연 종료 날짜 선택" required />
+										<input type="text" name="sb_enddate" placeholder="시간 입력" id="endtime" required size="8" maxlength="5">
+										</label>
+
 									</div>
 									<br />
 
 
 
 
+									<script type="text/javascript">
 
+
+
+									$('#starttime, #endtime').timepicker({ 'scrollDefault': 'now' });
+								
+								
+									</script>
 
 									<!-- 날짜 선택 -->
 									<script>
-							$(function() {
-							$("#startdate, #enddate").datepicker({
-								dateFormat : 'yy.mm.dd'
-									});
-													});
-						</script>
+                     $(function() {
+                     $("#startdate, #enddate").datepicker({
+                        dateFormat : 'yy.mm.dd'
+                           });
+                                       });
+                  </script>
 
 
 
@@ -271,6 +300,11 @@ body {
 											</select></label>
 										</p>
 									</div>
+							<script>
+							var city = $('#country').val;
+							
+							</script>
+
 
 
 
@@ -283,7 +317,7 @@ body {
 											name="sb_locinfo" placeholder="Enter a location">
 										<div id="map"></div>
 										<div id="infowindow-content">
-											<span id="place-name" class="title"></span><br> Place ID
+											<span id="place-name" class="title"></span><br> 
 											<span id="place-id"></span><br> <span id="place-address"></span>
 										</div>
 										<br />
@@ -299,7 +333,7 @@ body {
 
         var autocomplete = new google.maps.places.Autocomplete(
             input, {placeIdOnly: true});
-        autocomplete.bindTo('bounds', map);
+        autocomplete.bindTo('bounds', map); 
 
         map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
@@ -343,7 +377,10 @@ body {
           });
         });
       }
+      
     </script>
+
+
 										<script
 											src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&libraries=places&callback=initMap"
 											async defer></script>
@@ -398,10 +435,14 @@ body {
 
 </body>
 
+
+
+
+
+
 <%@ include file="/WEB-INF/views/footer.jspf"%>
 
 
 </html>
-
 
 

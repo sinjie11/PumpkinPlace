@@ -61,8 +61,7 @@ public class MessageController {
 		
 		model.addAttribute("recieveList", list);
 		
-	} // end recieve()
-	
-	
+	} // end recieve(mem_id2, model, session)
+		
 
 } // end class MessageController

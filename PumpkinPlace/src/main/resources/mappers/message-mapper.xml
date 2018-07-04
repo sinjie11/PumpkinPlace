@@ -12,8 +12,8 @@
 		values (?, ?, ?, ?)
 	  -->
 	<insert id="insertMessage">
-		insert into ${tbl_message} (${col_mem_id}, ${col_mem_id2}, ${col_msg_title}, ${col_msg_content}) 
-		values (#{mem_id}, #{mem_id2}, #{msg_title}, #{msg_content})
+		insert into ${tbl_message} (${col_mem_id}, ${col_mem_id2}, ${col_msg_content}) 
+		values (#{mem_id}, #{mem_id2}, #{msg_content})
 	</insert>
 	
 	
@@ -47,7 +47,7 @@
 		where msg_no = ?
 	 -->
 	<update id="update">
-		update ${tbl_message} set ${col_msg_title} = #{msg_title}, ${col_msg_content} = #{msg_content} 
+		update ${tbl_message} set ${col_msg_content} = #{msg_content} 
 		where ${col_msg_no} = #{msg_no}
 	</update>
 

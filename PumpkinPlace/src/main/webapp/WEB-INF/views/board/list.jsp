@@ -48,14 +48,8 @@ body {
 	position: relative; /* For scrollyspy */
 	padding-top: 350px; /*Account for fixed navbar */
 	background-color: #f8f8f8;
-<<<<<<< HEAD
 }
-=======
-	position: relative; /* For scrollyspy */
-	padding-top: 300px; /*Account for fixed navbar */
-	background-color: #f8f8f8;
->>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
-}
+
 </style>
 </head>
 <body>
@@ -132,12 +126,6 @@ body {
 		</c:if>
 
 		<c:if test="${urlNo eq 8}">
-			<h5 style="text-align: left;">
-				<b> 카테고리: 구인구직 > 구인 </b>
-			</h5>
-			<br />
-			<br />
-
 			<h5 style="text-align: left;"><b> 카테고리: 구인구직 > 구인 </b></h5>
 			<br /><br />
 			<img alt="이미지"
