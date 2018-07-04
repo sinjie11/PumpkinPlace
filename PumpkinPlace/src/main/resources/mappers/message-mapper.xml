@@ -7,10 +7,7 @@
 
 	<!--  message 테이블 sql 쿼리문 작성  -->
 	
-	<!--
-		insert into pumpkin_message (mem_id, mem_id2, msg_title, msg_content) 
-		values (?, ?, ?, ?)
-	  -->
+	
 	<insert id="insertMessage">
 		insert into ${tbl_message} (${col_mem_id}, ${col_mem_id2}, ${col_msg_content}) 
 		values (#{mem_id}, #{mem_id2}, #{msg_content})
@@ -27,34 +24,44 @@
 	</select>
 	
 	
-	<!-- 
-		select * from pumpkin_message where mem_id = ?
- 	-->
+	
  	<select id="selectById" resultType="Message">
  		select * from ${tbl_message} where ${col_mem_id} = #{mem_id}
  	</select>
- 	
-	<!-- 	 
-		select * from pumpkin_message where mem_id2 = ?
- 	-->
+
+
+
  	<select id="selectById2" resultType="Message">
  		select * from ${tbl_message} where ${col_mem_id2} = #{mem_id2}
  	</select>
+		
+	
+	<select id="totalCount" resultType="Integer">
+		select count(${col_msg_no})
+		from ${tbl_message}
+	</select>
+	
+	
+	<select id="listPage" resultType="Message">
+		select b.msg_no, b.mem_id, b.mem_id2, b.msg_content, b.msg_regdate, b.msg_confirm
+		from (
+			select rownum rn, a.*
+			from (
+				select * from pumpkin_message
+				order by msg_no desc
+			) a
+		) b
+		where rn between #{start} and #{end}
+	</select>
 	
 
-	<!-- 
-		update pumpkin_message set msg_title = ?, msg_content = ? 
-		where msg_no = ?
-	 -->
 	<update id="update">
 		update ${tbl_message} set ${col_msg_content} = #{msg_content} 
 		where ${col_msg_no} = #{msg_no}
 	</update>
 
 
-	<!-- 
-		delete pumpkin_message where msg_no = ?
-	 -->
+
 	 <delete id="delete">
 	 	delete ${tbl_message} where ${col_msg_no} = #{msg_no}
 	 </delete>

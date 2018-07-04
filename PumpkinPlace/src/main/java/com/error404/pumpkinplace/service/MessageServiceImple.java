@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.error404.pumpkinplace.domain.Message;
+import com.error404.pumpkinplace.pageutil.PaginationCriteria;
 import com.error404.pumpkinplace.persistence.MessageDao;
 
 @Service
@@ -18,13 +19,31 @@ public class MessageServiceImple implements MessageService {
 	public List<Message> send(String mem_id) {
 	
 		return messageDao.send(mem_id);
-	} // end readAll(mem_id)
+	} // end send(mem_id)
 	
 	@Override
 	public List<Message> recieve(String mem_id2) {
 	
 		return messageDao.recieve(mem_id2);
-	} // end readAll2(mem_id2)
+	} // end recieve(mem_id2)
+	
+	@Override
+	public List<Message> send(PaginationCriteria criteria) {
+	
+		return messageDao.send(criteria);
+	} // end send(criteria)
+	
+	@Override
+	public List<Message> recieve(PaginationCriteria criteria) {
+	
+		return messageDao.recieve(criteria);
+	} // end recieve(criteria)
+	
+	@Override
+	public int total() {
+		
+		return messageDao.total();
+	} // end total()
 	
 	@Override
 	public int create(Message message) {
