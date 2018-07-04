@@ -11,11 +11,13 @@ public interface MessageService {
 	
 	List<Message> recieve(String mem_id2); // 받은 쪽지함 서비스
 	
-	List<Message> send(PaginationCriteria criteria); // 보낸 쪽지함 페이지 서비스
+	List<Message> sendPage(PaginationCriteria criteria); // 보낸 쪽지함 페이지 서비스
 	
-	List<Message> recieve(PaginationCriteria criteria); // 받은 편지함 페이지 서비스
+	List<Message> recievePage(PaginationCriteria criteria); // 받은 편지함 페이지 서비스
 	
-	int total(); // 총 페이지 서비스
+	int total(); // 보낸 쪽지함 총 페이지 서비스
+	
+	int total2(); // 받은 쪽지함 총 페이지 서비스
 	
 	int create(Message message); // 쪽지 보내기 서비스
 	

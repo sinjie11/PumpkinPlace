@@ -13,7 +13,11 @@ public interface MessageMapper {
 	
 	List<Message> listPage(PaginationCriteria criteria);
 	
+	List<Message> listPage2(PaginationCriteria criteria);
+	
 	int totalCount();
+	
+	int totalCount2();
 	
 	int insertMessage(Message message);
 	

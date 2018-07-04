@@ -28,22 +28,28 @@ public class MessageServiceImple implements MessageService {
 	} // end recieve(mem_id2)
 	
 	@Override
-	public List<Message> send(PaginationCriteria criteria) {
+	public List<Message> sendPage(PaginationCriteria criteria) {
 	
-		return messageDao.send(criteria);
-	} // end send(criteria)
+		return messageDao.sendPage(criteria);
+	} // end sendPage(criteria)
 	
 	@Override
-	public List<Message> recieve(PaginationCriteria criteria) {
+	public List<Message> recievePage(PaginationCriteria criteria) {
 	
-		return messageDao.recieve(criteria);
-	} // end recieve(criteria)
+		return messageDao.recievePage(criteria);
+	} // end recievePage(criteria)
 	
 	@Override
 	public int total() {
 		
 		return messageDao.total();
 	} // end total()
+	
+	@Override
+	public int total2() {
+	
+		return messageDao.total2();
+	} // end total2()
 	
 	@Override
 	public int create(Message message) {

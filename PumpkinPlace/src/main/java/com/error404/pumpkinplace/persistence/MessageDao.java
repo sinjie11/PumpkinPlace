@@ -11,11 +11,13 @@ public interface MessageDao {
 	
 	List<Message> recieve(String mem_id2);
 	
-	List<Message> send(PaginationCriteria criteria);
+	List<Message> sendPage(PaginationCriteria criteria);
 	
-	List<Message> recieve(PaginationCriteria criteria);
+	List<Message> recievePage(PaginationCriteria criteria);
 	
 	int total();
+	
+	int total2();
 		
 	int insert(Message message);
 	

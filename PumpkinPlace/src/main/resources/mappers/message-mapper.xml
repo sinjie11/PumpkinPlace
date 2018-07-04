@@ -39,11 +39,30 @@
 	<select id="totalCount" resultType="Integer">
 		select count(${col_msg_no})
 		from ${tbl_message}
+	    <!--  where ${col_mem_id} = #{mem_id} -->
+	</select>
+	
+	<select id="totalCount2" resultType="Integer">
+		select count(${col_msg_no})
+		from ${tbl_message}
+		where ${col_mem_id2} = #{mem_id2}
 	</select>
 	
 	
 	<select id="listPage" resultType="Message">
-		select b.msg_no, b.mem_id, b.mem_id2, b.msg_content, b.msg_regdate, b.msg_confirm
+		select b.msg_no, b.mem_id, b.mem_id2 b.msg_content, b.msg_regdate, b.msg_confirm
+		from (
+			select rownum rn, a.*
+			from (
+				select * from pumpkin_message
+				order by msg_no desc
+			) a
+		) b
+		where rn between #{start} and #{end}
+	</select>
+	
+	<select id="listPage2" resultType="Message">
+		select b.msg_no, b.mem_id2, b.msg_content, b.msg_regdate, b.msg_confirm
 		from (
 			select rownum rn, a.*
 			from (

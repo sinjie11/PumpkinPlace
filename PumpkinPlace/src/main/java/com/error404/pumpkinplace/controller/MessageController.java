@@ -26,7 +26,7 @@ public class MessageController {
 	private MessageService messageService;
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public void messageList(Model model) {
+	public void messageList() {
 		logger.info("messageList() GET 호출");
 		
 	} // end messageList()
@@ -47,18 +47,17 @@ public class MessageController {
 	} // end insertMessage()
 	
 	@RequestMapping(value = "/send", method = RequestMethod.GET)
-	public void send(String mem_id, Integer page, Integer numsPerPage, Model model, HttpSession session) {
+	public void send(Integer page, Integer numsPerPage, String mem_id, Model model, HttpSession session) {
 		
-		PaginationCriteria criteria = new PaginationCriteria();	
-		
+		PaginationCriteria criteria = new PaginationCriteria();
 		if (page != null) {
 			criteria.setPage(page);
 		}
 		if (numsPerPage != null) {
 			criteria.setNumsPerPage(numsPerPage);
 		}
-		
-		List<Message> list = messageService.send(criteria);
+				
+		List<Message> list = messageService.send((String) session.getAttribute("loginId"));
 		
 		model.addAttribute("sendList", list);
 		
@@ -68,30 +67,17 @@ public class MessageController {
 		maker.setPageLinkData();
 		model.addAttribute("pageMaker", maker);
 		
+				
 	} // end send(mem_id, model)
 	
 	@RequestMapping(value = "/recieve", method = RequestMethod.GET)
-	public void recieve(String mem_id2, Integer page, Integer numsPerPage, Model model, HttpSession session) {
+	public void recieve(String mem_id2, Model model, HttpSession session) {
 		
-		PaginationCriteria criteria = new PaginationCriteria();
-		
-		if (page != null) {
-			criteria.setPage(page);
-		}
-		if (numsPerPage != null) {
-			criteria.setNumsPerPage(numsPerPage);
-		}
-		
+			
 		List<Message> list = messageService.recieve((String) session.getAttribute("loginId"));
 		
 		model.addAttribute("recieveList", list);
-		
-		PageLinkMaker maker = new PageLinkMaker();
-		maker.setCriteria(criteria);
-		maker.setTotalCount(messageService.total());
-		maker.setPageLinkData();
-		model.addAttribute("pageMaker", maker);
-		
+
 	} // end recieve(mem_id2, model, session)
 	
 	@RequestMapping(value = "/recievedetail", method = RequestMethod.GET)
