@@ -44,6 +44,8 @@ public class BoardDaoImple implements BoardDao {
 //		return sqlSession.selectOne(NAMESPACE + ".selectBoardInfoBySectionNo", b_section);
 //	}
 
+	
+	
 	@Override
 	public Board selectByBno(int b_no) {
 		logger.info("select({})", b_no);
@@ -78,9 +80,13 @@ public class BoardDaoImple implements BoardDao {
 	}
 
 	@Override
-	public List<Board> selectBySectionNo(int sectionNo) {
+	public List<Board> selectBySectionNo(int sectionNo, PaginationCriteria criteria) {
 		logger.info("selectBySectionNo() 호출");
-		return sqlSession.selectList(NAMESPACE + ".selectBySectionNo");
+		Map<String, Object> args = new HashMap<>();
+		args.put("b_section", sectionNo);
+		args.put("start", criteria.getStart());
+		args.put("end", criteria.getEnd());
+		return sqlSession.selectList(NAMESPACE + ".selectBySectionNo", args);
 	}
 
 	// ************* 페이지 처리 관련 Overridden Method *************

@@ -62,10 +62,10 @@ body {
 
 	<div class="container text-center">
 		<h1>${board.b_title}</h1>
-		<form action="#"></form>
+
 		<div id="quillContents"></div>
 		<button id="update">수정</button>
-		<button id="backList">메인 페이지</button>
+		<button id="backList">목록</button>
 		<button id="boardUp">up ${board.b_up}</button>
 		<button id="boardDown">down ${board.b_down}</button>
 
@@ -74,6 +74,31 @@ body {
 		<form action="#"></form>
 
 		<br> <br> <br> <br>
+		<c:if test="${loginId eq board.b_id}">
+			<div style="text-align: right;">
+				<button id="update">수정</button>
+				<button>삭제</button>
+			</div>
+		</c:if>
+		
+		<form id="send-update">
+		<input type="hidden" name="page" id="page"
+			value="${criteria.page}" /> <input type="hidden"
+			name="numsPerPage" id="numsPerPage"
+			value="${criteria.numsPerPage}" /> <input type="hidden"
+			name="b_no" value="${board.b_no}" />
+			<input type="hidden" name="urlNo" value="${urlNo}" />
+		</form>
+			
+		<br />
+
+		<form action="#">
+		</form>
+		<div id="quillContents" style="border: 1px solid black;"></div>
+		<br />
+		
+		
+		<br><br><br><br>
 		<button>댓글 입력</button>
 		<button>댓글 up</button>
 		<button>댓글 down</button>
@@ -146,7 +171,7 @@ $(document).ready(function () {
 			updownBoolean=false;
 		$.ajax({
 			type : 'get',
-			url : '/pumpkinplace/board/pulsDown',
+			url : '/pumpkinplace/board/pulsDown?',
 			headers : {
 				'Content-Type' : 'application/json',
 				'X-HTTP-Method-Override' : 'get'
@@ -166,6 +191,14 @@ $(document).ready(function () {
 	
 });
 
+
+$('#update').click(function () {
+	event.preventDefault();
+	var fb = $('#send-update');
+	fb.attr('action', '/pumpkinplace/board/update');
+	fb.attr('method', 'get');
+	fb.submit();
+});
 
 </script>
 

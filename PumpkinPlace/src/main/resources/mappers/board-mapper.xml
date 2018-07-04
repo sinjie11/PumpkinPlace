@@ -24,15 +24,20 @@
 		order by ${col_b_no} desc
 	</select>
 
-	<select id="selectBySectionNo" resultType="Board">
-		select
-		${col_b_no},
-		${col_b_title}, ${col_b_content}, ${col_b_id},
-		${col_b_regdate},
-		${col_b_readcnt}
-		from ${tbl_board}
-		where
-		${col_b_section} = #{b_section}
+	<select id="selectBySectionNo"  resultType="Board">
+		select b.b_section, b.b_no, b.b_title,
+		b.b_content, b.b_id, b.b_regdate,
+		b.b_readcnt
+		from (
+		select rownum rn, a.*
+		from (
+		select * from pumpkin_board
+		where b_section = ${b_section}
+		order by b_no desc
+		) a
+		) b
+		where rn between
+		${start} and ${end}
 	</select>
 
 	<select id="selectByBno" resultType="Board">
