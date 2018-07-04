@@ -156,7 +156,7 @@ td, h5 {
                      <script>
                         function myMap() {
                            var myCenter = new google.maps.LatLng(
-                                 51.491020, -0.224488);
+                                51.491020, -0.224488);
                            var map;
 
                            var mapProp = {
