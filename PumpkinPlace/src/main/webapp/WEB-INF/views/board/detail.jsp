@@ -68,7 +68,17 @@ body {
 				<button id="update">수정</button>
 				<button>삭제</button>
 			</div>
-		</c:if>	
+		</c:if>
+		
+		<form id="send-update">
+		<input type="hidden" name="page" id="page"
+			value="${criteria.page}" /> <input type="hidden"
+			name="numsPerPage" id="numsPerPage"
+			value="${criteria.numsPerPage}" /> <input type="hidden"
+			name="b_no" value="${board.b_no}" />
+			<input type="hidden" name="urlNo" value="${urlNo}" />
+		</form>
+			
 		<br />
 
 		<form action="#">
@@ -109,6 +119,13 @@ $(document).ready(function () {
 	
 });
 
+$('#update').click(function () {
+	event.preventDefault();
+	var fb = $('#send-update');
+	fb.attr('action', '/pumpkinplace/board/update');
+	fb.attr('method', 'get');
+	fb.submit();
+});
 
 
 </script>
