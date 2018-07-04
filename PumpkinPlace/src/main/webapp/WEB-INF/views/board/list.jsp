@@ -126,12 +126,6 @@ body {
 		</c:if>
 
 		<c:if test="${urlNo eq 8}">
-			<h5 style="text-align: left;">
-				<b> 카테고리: 구인구직 > 구인 </b>
-			</h5>
-			<br />
-			<br />
-
 			<h5 style="text-align: left;"><b> 카테고리: 구인구직 > 구인 </b></h5>
 			<br /><br />
 			<img alt="이미지"

@@ -63,10 +63,19 @@ body {
 		
 	<div class="container text-center">
 		<h1>${board.b_title}</h1>
+		<c:if test="${loginId eq board.b_id}">
+			<div style="text-align: right;">
+				<button id="update">수정</button>
+				<button>삭제</button>
+			</div>
+		</c:if>	
+		<br />
+
 		<form action="#">
 		</form>
-		<div id="quillContents"></div>
-		<button>수정</button>
+		<div id="quillContents" style="border: 1px solid black;"></div>
+		<br />
+		
 		<button>메인 페이지</button>
 		<button>본문 up</button>
 		<button>본문 down</button>
@@ -99,6 +108,8 @@ $(document).ready(function () {
 	editor.updateContents(${board.getB_content()});
 	
 });
+
+
 
 </script>
 
