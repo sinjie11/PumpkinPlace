@@ -85,7 +85,12 @@
 		select * from ${tbl_board}
 		where ${col_b_no} = #{b_no}
 	</select>
-
+	
+	<!-- get UpDown -->
+	<select id="getUpDown" resultType="Board">
+		select ${col_b_up}, ${col_b_down} from ${tbl_board} where ${col_b_no} = #{b_no}
+	</select>
+	
 	<update id="puls1">
 		update ${tbl_board}
 

@@ -53,40 +53,36 @@ body {
 	padding-top: 350px; /*Account for fixed navbar */
 	background-color: #f8f8f8;
 }
-
 </style>
 </head>
 <body>
 
 	<%@ include file="/WEB-INF/views/header.jspf"%>
-		
-		
+
+
 	<div class="container text-center">
 		<h1>${board.b_title}</h1>
-		<form action="#">
-		</form>
+		<form action="#"></form>
 		<div id="quillContents"></div>
-		<button>수정</button>
-		<button>메인 페이지</button>
-		<button>본문 up</button>
-		<button>본문 down</button>
-		
-		
-		
-		<form action="#">
-		
-		</form>
-		
-		<br><br><br><br>
+		<button id="update">수정</button>
+		<button id="backList">메인 페이지</button>
+		<button id="boardUp">up ${board.b_up}</button>
+		<button id="boardDown">down ${board.b_down}</button>
+
+
+
+		<form action="#"></form>
+
+		<br> <br> <br> <br>
 		<button>댓글 입력</button>
 		<button>댓글 up</button>
 		<button>댓글 down</button>
 	</div>
-	
-	
+
+
 	<br />
 
-<script type="text/javascript">
+	<script type="text/javascript">
 var options = {
 		  debug: 'info',
 		  readOnly: true,
@@ -97,8 +93,79 @@ var editor= new Quill('#quillContents', options);
 
 $(document).ready(function () {
 	editor.updateContents(${board.getB_content()});
+	var updownBoolean = true;
+	
+	$("#update").click(function(){
+			$.ajax({
+				type : 'post',
+				url : '/pumpkinplace/board/update',
+				headers : {
+					'Content-Type' : 'application/json',
+					'X-HTTP-Method-Override' : 'post'
+				},//요청해더
+				data : JSON.stringify({//오브 잭트를 문자열로 변환
+					'b_section' : ${board.b_section}, // 받은 보드
+					'b_no': ${board.b_no},
+					'b_title' :"${board.b_title}",
+					'b_content':${board.b_content} 
+				}), //서버로 보낼 JSON 객체문자열
+				success : function(result) {
+					location = '/pumpkinplace/board/update';
+					
+				} 
+			});
+		});
+	$("#backList").click(function (){//메뉴로 보내기
+		location.href='/pumpkinplace/board/list?urlNo=' +  ${board.b_section};
+	});
+	$("#boardUp").click(function(){//up
+		if(updownBoolean==true){
+			updownBoolean=false;
+		$.ajax({
+			type : 'get',
+			url : '/pumpkinplace/board/pulsUp',
+			headers : {
+				'Content-Type' : 'application/json',
+				'X-HTTP-Method-Override' : 'get'
+			},//요청해더
+			data : {'b_no': ${board.b_no}}, //서버로 보낼 JSON 객체문자열
+			success : function(result) {
+				//console.log(result.getB_up());
+				console.log(result);
+				$("#boardUp").text("up " + result.b_up);
+				$("#boardDown").text("down "+result.b_down);
+			} 
+			});
+		}else{
+			alert("이미 추천 비추천을 하셧습니다 씨발");
+		}
+	});
+	
+	$("#boardDown").click(function(){//up
+		if(updownBoolean==true){
+			updownBoolean=false;
+		$.ajax({
+			type : 'get',
+			url : '/pumpkinplace/board/pulsDown',
+			headers : {
+				'Content-Type' : 'application/json',
+				'X-HTTP-Method-Override' : 'get'
+			},//요청해더
+			data : {'b_no': ${board.b_no}}, //서버로 보낼 JSON 객체문자열
+			success : function(result) {
+				//console.log(result.getB_up());
+				console.log(result);
+				$("#boardUp").text("up " + result.b_up);
+				$("#boardDown").text("down "+ result.b_down);
+			} 
+			});
+		}else{
+			alert("이미 추천 비추천을 하셧습니다 씨발");
+		}
+	});
 	
 });
+
 
 </script>
 

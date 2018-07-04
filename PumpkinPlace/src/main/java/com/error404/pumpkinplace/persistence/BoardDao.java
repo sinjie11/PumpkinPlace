@@ -21,6 +21,7 @@ public interface BoardDao {
 	int pulsReadcnt(int bno);
 	int pulsUp(int bno);
 	int pulsDown(int bno);
+	Board getUpDown(int bno);
 } 
 
 

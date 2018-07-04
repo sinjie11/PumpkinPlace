@@ -35,4 +35,11 @@ public interface BoardService {
 	
 	//board detail 불러오기 
 	Board readDetail(int bno);
+	
+	//up 
+	Board upPuls1(int bno );
+	
+	//down
+	Board downPuls1(int bno);
+	
 }
