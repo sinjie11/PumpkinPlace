@@ -298,7 +298,7 @@ body {
 
         var autocomplete = new google.maps.places.Autocomplete(
             input, {placeIdOnly: true});
-        autocomplete.bindTo('bounds', map);
+        autocomplete.bindTo('bounds', map); 
 
         map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
