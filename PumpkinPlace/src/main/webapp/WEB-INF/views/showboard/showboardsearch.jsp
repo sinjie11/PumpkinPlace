@@ -93,7 +93,7 @@ body {
 						<div class="col-md-3">
 							<a class="table-title-link" href="${showboardsearch.sb_no}"> <img
 								alt="Bootstrap Image Preview"
-								src="${pageContext.request.contextPath}/resources/assets/img/showboard/${showboard.sb_img}" />
+								src="${pageContext.request.contextPath}/resources/assets/img/showboard/${showboardsearch.sb_img}" style="width: 228px; height: 280px;"/>
 							</a> <label class="table-title-link" href="${showboardsearch.sb_no}">
 								<div class="card">
 									<h5 class="card-header">

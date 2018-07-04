@@ -55,15 +55,20 @@ body {
 </style>
 </head>
 <body>
+
 	<br />
 	<h5>
 		<b> 카테고리: 홈 </b>
-	</h5>
+
+	<br/>
+
+
 	<%@ include file="header.jspf"%>
 
 
 	<!-- 가운데 정렬해주는거 -->
 	<div class="container text-center">
+		<h5 style="text-align: left;"><b> 카테고리: 홈 </b></h5>
 
 		<h4>
 			<b>공연</b>

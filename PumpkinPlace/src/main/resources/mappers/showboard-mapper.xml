@@ -5,11 +5,15 @@
 
 <mapper namespace="com.error404.pumpkinplace.mappers.ShowBoardMapper">
 
-	<!--  showboard 테이블 sql 쿼리문 작성  -->
+	<!--  showboard 테이블 sql   -->
 	<insert id="insertShowBoard">
-		insert into ${tbl_show_board} (${col_sb_nm}, ${col_sb_title}, ${col_sb_content}, ${col_sb_city}, ${col_sb_price}, ${col_sb_tel}, ${col_sb_locinfo}, ${col_sb_regdate}, ${col_sb_img}, ${col_sb_video}, ${col_sb_startdate}, ${col_sb_enddate})
-		values (#{sb_nm}, #{sb_title}, #{sb_content}, #{sb_city}, #{sb_price}, #{sb_tel}, #{sb_locinfo}, #{sb_regdate}, #{sb_img}, #{sb_video}, #{sb_startdate}, #{sb_enddate})
-	</insert>
+		insert into ${tbl_show_board} (${col_sb_nm}, ${col_sb_title}, ${col_sb_content}, ${col_sb_city}, ${col_sb_price}, ${col_sb_tel}, ${col_sb_locinfo}, ${col_sb_img}, ${col_sb_video}, ${col_sb_startdate}, ${col_sb_enddate})
+		values (#{sb_nm}, #{sb_title}, #{sb_content}, #{sb_city}, #{sb_price}, #{sb_tel}, #{sb_locinfo}, #{sb_img}, #{sb_video}, #{sb_startdate}, #{sb_enddate})
+	</insert> 
+	<!--쿼리문 작성  이거가 잘못 된거같아요
+	 방금 드래그한곳 인가? 
+	 
+	 -->
 	
 	<select id="selectAllShowBoard" resultType="ShowBoard">
 		select * from ${tbl_show_board} 

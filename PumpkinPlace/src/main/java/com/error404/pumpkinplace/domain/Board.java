@@ -9,8 +9,6 @@ public class Board {
 	private String b_content; // 게시글 내용
 	private String b_id; // 게시글 작성자 아이디
 	private Date b_regdate; // 게시글 작성일자
-	private String b_img; // 게시글 이미지 내용
-	private String b_video; // 게시글 동영상 내용
 	private int b_readcnt; // 게시글 조회 수
 	private int b_up; // 게시글 추천 수
 	private int b_down; // 게시글 비추천 수
@@ -26,8 +24,6 @@ public class Board {
 		this.b_content = b_content;
 		this.b_id = b_id;
 		this.b_regdate = b_regdate;
-		this.b_img = b_img;
-		this.b_video = b_video;
 		this.b_readcnt = b_readcnt;
 		this.b_up = b_up;
 		this.b_down = b_down;
@@ -79,22 +75,6 @@ public class Board {
 
 	public void setB_regdate(Date b_regdate) {
 		this.b_regdate = b_regdate;
-	}
-
-	public String getB_img() {
-		return b_img;
-	}
-
-	public void setB_img(String b_img) {
-		this.b_img = b_img;
-	}
-
-	public String getB_video() {
-		return b_video;
-	}
-
-	public void setB_video(String b_video) {
-		this.b_video = b_video;
 	}
 
 	public int getB_readcnt() {

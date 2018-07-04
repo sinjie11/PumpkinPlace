@@ -9,14 +9,18 @@ public interface BoardDao {
 
 	List<Board> select();
 	int insert(Board board);
-	Board select(int b_section);
+//	Board select(int b_section);
+	Board selectByBno(int b_no);
 	int update(Board board);
 	int delete(int bno);
 	List<Board> search(int type, String keyword);
 	int getNumOfRecords();
 	List<Board> select(PaginationCriteria criteria);
 	List<Board> selectBySectionNo(int sectionNo);
-	
+	Board boardSelect(int bno);
+	int pulsReadcnt(int bno);
+	int pulsUp(int bno);
+	int pulsDown(int bno);
 } 
 
 
