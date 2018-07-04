@@ -51,7 +51,8 @@ public class BoardController {
 			criteria.setNumsPerPage(numsPerPage);
 		}
 		
-		List<Board> list = boardService.read(criteria);
+		List<Board> list = boardService.readBySectionNo(urlNo, criteria);
+		logger.info("urlNo : {}, page : {}, numsPerPage : {}", urlNo, criteria.getPage(), criteria.getNumsPerPage());
 		model.addAttribute("boardList", list);
 		logger.info("***** board list size {}", list.size());
 //		logger.info("{} {} {} {}",

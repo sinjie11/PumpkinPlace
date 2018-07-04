@@ -68,8 +68,8 @@ public class BoardServiceImple implements BoardService {
 	}
 
 	@Override
-	public List<Board> readSection(int b_section) {
-		return boardDao.selectBySectionNo(b_section);
+	public List<Board> readBySectionNo(int b_section, PaginationCriteria criteria) {
+		return boardDao.selectBySectionNo(b_section, criteria);
 	}
 	@Override
 	public Board readDetail(int bno) {
