@@ -74,7 +74,7 @@
 		<property name="col_msg_title" value="msg_title" />
 		<property name="col_msg_content" value="msg_content" />
 		<property name="col_msg_regdate" value="msg_regdate" />
-		<property name="col_msg_connfirm" value="msg_confirm" />
+		<property name="col_msg_confirm" value="msg_confirm" />
 
 		
 		<!-- game 테이블 -->

@@ -81,16 +81,16 @@ body {
 		<div class="container text-center">
 			<br />
 			<br />
-			<h1>새 글쓰기</h1>
+			<h1>글 수정 페이지</h1>
 			<br />
 			<form>
 				<input type="text" id="title" style="width: 385px;"
-					placeholder="글 제목" required name= "title"/> <br /> <br />
+					placeholder="글 제목" required name= "title" value="${board.b_title}"/> <br /> <br />
 			</form>
 		</div>
 		<div id="quillContents"></div>
 				<br />
-				<div class="text-center"><button id="submit" >작성완료</button></div>
+				<div class="text-center"><button id="submit" >수정완료</button></div>
 	</div>
 	<br />
 	<br />
@@ -143,29 +143,6 @@ body {
 					};
 			var quillContents = new Quill('#quillContents', options);
 			
-				$('#submit').click(function() {
-					var contents = quillContents.getContents();
-					var jsonContents =JSON.stringify(contents);
-					
-					$.ajax({
-						type : 'post',
-						url : '/pumpkinplace/board/insert/',
-						headers : {
-							'Content-Type' : 'application/json',
-							'X-HTTP-Method-Override' : 'post'
-						},//요청해더
-						data : JSON.stringify({//오브 잭트를 문자열로 변환
-							'b_section' : "${urlNo}", // 제형이가 전달할 섹션 넘버 
-							'b_title' : $('#title').val(),
-							'b_id' : "${loginId}",
-							'b_content' :jsonContents
-						}), //서버로 보낼 JSON 객체문자열
-						success : function(result) {
-							location = '/pumpkinplace/board/list?urlNo=' +  ${urlNo};
-						} 
-					});
-				
-				});
 			</script>
 			<script
 				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&callback=myMap"></script>

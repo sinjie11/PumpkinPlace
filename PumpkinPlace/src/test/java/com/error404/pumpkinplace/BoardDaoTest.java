@@ -1,6 +1,7 @@
 package com.error404.pumpkinplace;
 
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.error404.pumpkinplace.domain.Board;
+import com.error404.pumpkinplace.pageutil.PaginationCriteria;
 import com.error404.pumpkinplace.persistence.BoardDao;
 
 
@@ -27,8 +29,9 @@ public class BoardDaoTest {
 	
 	@Test
 	public void doTest() {
-		insertTest();
+//		insertTest();
 //		selectByMemid();
+		selectBySectionNoTest();
 	} // end doTest()
 	
 	private void insertTest() {
@@ -66,14 +69,23 @@ public class BoardDaoTest {
 //		logger.info("Insert result = {}", result10);
 	} // end intertTest()
 	
-	private void selectByMemid() {
-		Board b = boardDao.select(1);
-		if (b != null) {
-			logger.info("Section No : {}", b.getB_section());
-		} else {
-			logger.info("사용할 수 있는 아이디");
+//	private void selectByMemid() {
+//		Board b = boardDao.select(1);
+//		if (b != null) {
+//			logger.info("Section No : {}", b.getB_section());
+//		} else {
+//			logger.info("사용할 수 있는 아이디");
+//		}
+//	} // selectByMemid()
+	
+	private void selectBySectionNoTest() {
+		PaginationCriteria criteria = new PaginationCriteria();
+		List<Board> list = boardDao.selectBySectionNo(1, criteria);
+		for (Board b : list) {
+			logger.info("{}, {}, {}, {}, {}", b.getB_no(), b.getB_title(), 
+					b.getB_content(), b.getB_regdate(), b.getB_readcnt());
 		}
-	} // selectByMemid()
+	}
 	
 	
 } // end class MemberDaoTest

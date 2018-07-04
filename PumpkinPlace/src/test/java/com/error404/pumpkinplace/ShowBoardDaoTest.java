@@ -1,5 +1,8 @@
 package com.error404.pumpkinplace;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -26,10 +29,10 @@ public class ShowBoardDaoTest {
 	private ShowBoardDao showboardDao;
 
 	@Test
-	public void doTest() throws InterruptedException {
+	public void doTest() throws InterruptedException, ParseException {
 //		 insertBulkData();
 		 insertTest();
-//		 testSelectAll();
+//		 testSelectAll();  
 //		 testSelectBySbNo();
 //		 testUpdate();
 //		 testDelete();
@@ -46,7 +49,7 @@ public class ShowBoardDaoTest {
 		}
 	}
 
-	private void insertTest() {
+	private void insertTest() throws ParseException {
 //		ShowBoard showBoard1 = new ShowBoard(6, "황총민", "밴드 리턴", "우리가 돌아왔다", "서울", 0, "02-234-4732", "서울시 강남구 00클럽", new Date(), "c://image", "c://video", new Date(), new Date());
 		ShowBoard showBoard2 = new ShowBoard(1, "Hanwha", "Lifeplus 벚꽃피크닉 페스티벌 2018", "라인업 이적, 아이콘, 정준일, 소유, 정기고, 곽진언, 민서, 박재정 드레스코드: 핑크 티켓 이벤트기간: 2018.03.14.~04.02 까지 핑크,블라썸 스테이지티켓 응모가능 벚꽃이 흩날리는 봄날 올해로 3번째 열리는 Lifeplus 벚꽃피크닉 페스티벌! 설레는 봄날에 어울리는 뮤지션들의 블라썸 콘서트와 송은이&김숙과 함께 썸타는 이야기와 달달한 음악을 즐길 수 있는 블라썸토크! 그리고 청년작가들의 작품들로 가득한 블라썸마켓과 봄날의 입맛을 돋워주는 푸드트럭까지~ 낮에는 벚꽃이, 밤에는 불꽃이! 화려한 블라썸쇼와 함께 봄날의 설렘을 만끽하세요! 공연티켓은 Lifeplus 홈페이지에서 14일부터 4월2일까지 프로모션 참여를 통해 받을수 있으며 티켓구매도 가능합니다", "서울", 55000, "02-1234-5678", "63빌딩 야외주차장 및 한강공원", new Date(), "", "gfAWUMln0Xg", new Date(), new Date());
 		ShowBoard showBoard3 = new ShowBoard(2, "힙합", "힙합 플레이야 페스티벌 2018", "국내 최고의 힙합뮤직페스티벌, 단독 공연에 버금갈 정도로 퀄리티있는 힙합플레이야 페스티벌로 힙합계에서 대표적인 뮤지션들을 총 집합시킨 힙뮤페는 블라인드 티켓 2분만에 매진될 정도로 흥행을 일으키고 있습니다! 탄탄한 라인업으로 팬들의 마음을 흔들어 놓고있는 힙뮤페! 힙합계의 거장 다이나믹듀오부터 넉살, 기리보이, 해쉬스완, 올티 등 인기 있는 힙합 뮤지션들이 대거 출연하는 힙합 씬을 대표하는 페스티벌입니다.", "서울", 88000, "02-1234-5678", "난지한강공원", new Date(), "", "M8FEhYURR3E", new Date(), new Date());
@@ -58,7 +61,14 @@ public class ShowBoardDaoTest {
 		ShowBoard showBoard9 = new ShowBoard(8, "DMZ", "DMZ 피스트레인 뮤직페스티벌 2018", "현재 일반 구매가 가능한 티켓은 모두 매진되었지만, 강원도민 혹은 강원도 내에서 현재 군복무 중인 군인은 사전 예약 없이 현장에서 무료로 입장할 수 있어요! ", "서울 강원도", 0, "02-1234-5678", "서울 플랫폼창동61, 철원 고석정, 월정리역, 노동당사 ", new Date(), "", "6L5RY7V7-W0", new Date(), new Date());
 		ShowBoard showBoard10 = new ShowBoard(9, "폭스바겐", "레인보우 페스티벌", "자라섬에서 펼쳐지는 레인보우 캠핑 &뮤직페스티벌은 오토캠핑, 카라반, 캠핑패키지 2,000동이 모두 사전매진 될 정도로 인기가 많은 축제에요! 낮부터 밤까지 All night 스테이지로 운영되는 레인보우 축제에서는 특별하고 로맨틱한 일탈을 즐길 수 있어요! 스테이지가 나뉘어져 있는 레인보우 뮤직페스티벌에서는 다이나믹 듀오, 윤하, 10CM등 다양한 장르의 뮤지션의 공연을 관람할 수 있습니다. 해가 지면 시작되는 미드나잇 라운지는 페스티벌을 방문했다면 놓치지 말아야 하는 필수 코스! 몽환적이고 환상적인 디제잉 공연 즐기며 그 동안 잠들어 있던 흥을 불태울 시간이에요! 뮤직페스티벌 한 켠에서는 플리마켓과 캠핑 레크리에이션, 스탠드 업 코미디 쇼 등 관객이 함께 참여할 수 있는 부스도 마련되어 있습니다. 가족과 친구들과 함께 방문했다면 이 곳에서 잊지 못할 추억을 만들어 보세요.", "경기도", 66000, "010-3360-7846", "경기도 가평군 자라섬", new Date(), "", "cd1gXaJMAwQ", new Date(), new Date());
 		ShowBoard showBoard11 = new ShowBoard(10, "울트라", "울트라 코리아 2018", "울트라 뮤직페스티벌은 1999년 미국 마이애미에서 시작된 일렉트로닉 댄스 뮤직 축제로, 전세계에서 매년 10만명 이상이 참가할 정도로 규모가 큰 글로벌 축제에요. 매년 우리나라에서는 아시아 최대 규모로 울트라 뮤직페스티벌이 열리고 있지요. 특히 올해에는 빌보드 연속 1위의 기록을 가지고 있는 뮤지션 체인스 모커스, 스티브 안젤로, 아이스 큐브 등 유명 뮤지션들이 참여하며, K-pop 가수로는 씨엘, 도끼, 드렁큰타이거와 윤미래, 비지 등이 총 출동 한다는 소식이 전해져 많은 음악 팬들의 시선이 집중되고 있어요.  예쁘게 꾸며 입는 것도 좋겠지만, 장시간 뛰어 놀기 위해서는 편안한 신발과, 소지품을 넣을 수 있는 작은 가방은 필수! 만 19세 이상 출입 가능한 뮤직페스티벌이기 때문에 신분증을 꼭 챙기셔야 해요!", "서울", 140000, "02-2240-8800", "서울특별시 송파구 올림픽로 25 잠실 종합운동장", new Date(), "", "qF-aQHNiR4w", new Date(), new Date());
-		ShowBoard showBoard12 = new ShowBoard(6, "황총민", "밴드 리턴", "우리가 돌아왔다", "서울", 0, "02-234-4732", "서울시 강남구 00클럽", new Date(), "162.png", "asdasfewr", new Date(), new Date());
+		
+//		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd kk:mm");
+//		String sb_startdate = dateFormat.format(Calendar.getInstance().getTime());
+		String dateString1 = "2018-12-24 23:59";
+		String dateString2 = "2018-12-30 23:59";
+ 		Date startdate = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(dateString1);
+ 		Date enddate = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(dateString2);
+		ShowBoard showBoard12 = new ShowBoard(1, "황총민", "밴드 리턴", "우리가 돌아왔다", "서울", 0, "02-234-4732", "서울시 강남구 M모 클럽", new Date(), "162.png", "asdasfewr", startdate, enddate);
 		
 		
 //		int result1 = showboardDao.insert(showBoard1);
@@ -75,6 +85,8 @@ public class ShowBoardDaoTest {
 		int result12 = showboardDao.insert(showBoard12);
 		
 		logger.info("Insert result = {}", result12);
+		logger.info("startdate: ", startdate);
+		logger.info("enddate: ", enddate);
 	}
 
 	private void testSelectAll() {

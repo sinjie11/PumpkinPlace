@@ -1,5 +1,7 @@
 package com.error404.pumpkinplace.persistence;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,19 @@ public class MessageDaoImple implements MessageDao {
 	@Autowired
 	private MessageMapper messageMapper;
 	
+	
+	@Override
+	public List<Message> send(String mem_id) {
+		
+		return messageMapper.send(mem_id);
+	} // end selectAll(mem_id)
+	
+	@Override
+	public List<Message> recieve(String mem_id2) {
+		
+		return messageMapper.recieve(mem_id2);
+	} // end selectAll2(mem_id2)
+	
 
 	@Override
 	public int insert(Message message) {
@@ -26,10 +41,16 @@ public class MessageDaoImple implements MessageDao {
 	} // end insert(message)
 
 	@Override
-	public Message select(String mem_id, Boolean msg_confirm) {
+	public Message select(String mem_id) {
 	
-		return messageMapper.selectById(mem_id, msg_confirm);
+		return messageMapper.selectById(mem_id);
 	} // end select(mem_id)
+	
+	@Override
+	public Message select2(String mem_id2) {
+		
+		return messageMapper.selectById2(mem_id2);
+	} // end select2(mem_id2)
 
 	@Override
 	public int update(Message message) {

@@ -13,10 +13,12 @@ public interface BoardService {
 	int create(Board board);
 	
 	// 게시판DB에서 해당 b_section에 속하는 게시글 하나를 보여주는 서비스
-	Board read(int b_section);
+//	Board read(int b_section);
+	
+	Board readByBno(int bno);
 	
 	// 게시판DB에서 해당 b_section에 속하는 게시글 모두를 보여주는 서비스
-	List<Board> readSection(int b_section);
+	List<Board> readBySectionNo(int b_section, PaginationCriteria criteria);
 	
 	// 게시판DB에 있던 기존 게시글의 세부사항(제목, 내용 등)을 갱신하는 서비스
 	int update(Board board);
@@ -30,5 +32,7 @@ public interface BoardService {
 	// 아래 두 method는 Page 처리를 합니다
 	int getNumOfRecords();
 	List<Board> read(PaginationCriteria criteria);
-
+	
+	//board detail 불러오기 
+	Board readDetail(int bno);
 }

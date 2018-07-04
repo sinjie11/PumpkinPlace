@@ -45,49 +45,126 @@ footer {
 }
 
 body {
-
 	position: relative; /* For scrollyspy */
 	padding-top: 350px; /*Account for fixed navbar */
 	background-color: #f8f8f8;
-
-  position: relative; /* For scrollyspy */
-  padding-top: 300px;   /*Account for fixed navbar */
-  background-color: #f8f8f8;
 }
+
 </style>
 </head>
 <body>
 
 	<%@ include file="/WEB-INF/views/header.jspf"%>
-	<br/>
 
 
 	<div class="container text-center">
 		<c:if test="${urlNo eq 1}">
 			<h5 style="text-align: left;"><b> 카테고리: 게시판 > 자유게시판 </b></h5>
-			<br/>
-			<br/>
+			<br/><br/>
+			<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/presentation.png"
+				style="background-color: white; width: 110px; height: 110px;" />
 			<h1>자유 게시판</h1>
 		</c:if>
+
+
 		
-		<c:if test="${urlNo eq 8}">
-			<h5 style="text-align: left;"><b> 카테고리: 구인구직 > 구인 </b></h5>
-			<br/>
-			<br/>
-			<h1>구 인</h1>
+		<c:if test="${urlNo eq 2}">
+			<h5 style="text-align: left;"><b> 카테고리: 중고거래 > 기타 </b></h5>
+			<br/><br/>
+			<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/guitar.png"
+				style="background-color: white; width: 110px; height: 110px;" />
+			<h1>기 타</h1>
 		</c:if>
 		
+		<c:if test="${urlNo eq 3}">
+			<h5 style="text-align: left;"><b> 카테고리: 중고거래 > 베이스 </b></h5>
+			<br/><br/>
+			<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/bass-guitar.png"
+				style="background-color: white; width: 110px; height: 110px;" />
+			<h1>베이스</h1>
+		</c:if>
+		
+		<c:if test="${urlNo eq 4}">
+			<h5 style="text-align: left;"><b> 카테고리: 중고거래 > 드럼/퍼커션 </b></h5>
+			<br/><br/>
+			<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/drummer-set.png"
+				style="background-color: white; width: 110px; height: 110px;" />
+			<h1>드럼/퍼커션</h1>
+		</c:if>
+		
+		<c:if test="${urlNo eq 5}">
+			<h5 style="text-align: left;"><b> 카테고리: 중고거래 > 앰프 </b></h5>
+			<br/><br/>
+			<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/music-woofer-with-sound.png"
+				style="background-color: white; width: 110px; height: 110px;" />
+			<h1>앰 프</h1>
+		</c:if>
+		
+		<c:if test="${urlNo eq 6}">
+			<h5 style="text-align: left;"><b> 카테고리: 중고거래 > 음향장비 </b></h5>
+			<br/><br/>
+			<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/audio-equipment.png"
+				style="background-color: white; width: 110px; height: 110px;" />
+			<h1>음향장비</h1>
+		</c:if>
+		
+		<c:if test="${urlNo eq 7}">
+			<h5 style="text-align: left;"><b> 카테고리: 중고거래 > ect </b></h5>
+			<br/><br/>
+			<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/three-dots-punctuation-sign.png"
+				style="background-color: white; width: 110px; height: 110px;" />
+			<h1>ect</h1>
+		</c:if>
+
+		<c:if test="${urlNo eq 8}">
+			<h5 style="text-align: left;"><b> 카테고리: 구인구직 > 구인 </b></h5>
+			<br /><br />
+			<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/businessman.png"
+				style="background-color: white; width: 110px; height: 110px;" />
+			<h1>구 인</h1>
+		</c:if>
+
 		<c:if test="${urlNo eq 9}">
 			<h5 style="text-align: left;"><b> 카테고리: 구인구직 > 구직 </b></h5>
-			<br/>
-			<br/>
+			<br/><br/>
+			<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/resume.png"
+				style="background-color: white; width: 110px; height: 110px; margin-left: 15px;" />			
 			<h1>구 직</h1>
 		</c:if>
 		
+		<c:if test="${urlNo eq 11}">
+			<h5 style="text-align: left;"><b> 카테고리: 구인구직 > 전체보기 </b></h5>
+			<br/><br/>
+			<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/resume.png"
+				style="background-color: white; width: 110px; height: 110px; margin-left: 15px;" />			
+			<h1>구인구직</h1>
+		</c:if>
+		
+		<c:if test="${urlNo eq 12}">
+			<h5 style="text-align: left;"><b> 카테고리: 중고거래 > 전체보기 </b></h5>
+			<br/><br/>
+			<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/audio-equipment.png"
+				style="background-color: white; width: 110px; height: 110px; margin-left: 15px;" />			
+			<h1>중고거래</h1>
+		</c:if>
+
 		<c:if test="${urlNo eq 20}">
 			<h5 style="text-align: left;"><b> 카테고리: Q & A </b></h5>
-			<br/>
-			<br/>
+			<br/><br/>
+			<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/question-mark.png"
+				style="background-color: white; width: 110px; height: 110px;" />
 			<h1>Q & A</h1>
 		</c:if>
 
@@ -101,10 +178,14 @@ body {
 					</select>
 
 				</ul>
-				<a id="register" href="register"><button type="button">글쓰기</button></a>
+				<ul>
+					<a id="register" href="register">
+					<button type="button" style="color: black;">글쓰기</button></a>
+				</ul>
+				
 			</form>
 		</div>
-
+${board.b_no}
 		<div class="container text-center">
 			<table class="table">
 				<thead>
@@ -127,7 +208,7 @@ body {
 							<td>${b_regdate}</td>
 							<td>${board.b_readcnt}</td>
 						</tr>
-					</c:forEach>
+					</c:forEach>					
 				</tbody>
 			</table>
 		</div>
@@ -153,8 +234,8 @@ body {
 			</select> <input type="text" name="searchKeyword" placeholder="검색어 입력"
 				required /> <input type="submit" value="검색" />
 		</form>
-
 	</div>
+	<br />
 
 
 	<form id="page-form">
@@ -162,8 +243,10 @@ body {
 			value="${pageMaker.criteria.page}" /> <input type="hidden"
 			name="numsPerPage" id="numsPerPage"
 			value="${pageMaker.criteria.numsPerPage}" /> <input type="hidden"
-			name="bno" id="page-form-bno" />
+			name="b_no" id="page-form-bno" />
+			<input type="hidden" name="urlNo" value="${urlNo}" />
 	</form>
+
 
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -193,7 +276,6 @@ body {
 		frm.submit();
 	});
 	
-	console.log('boardSectionNo: ${boarSectionNo}'); // 보드 구분번호
 	
 	$('#register').click(function () { // qna
 		event.preventDefault();
@@ -246,21 +328,22 @@ body {
 		function myMap() {
 			var myCenter = new google.maps.LatLng(37.499685, 127.031535);
 			var map;
-
+	
 			var mapProp = {
 				center : myCenter,
 				zoom : 12,
 				scrollwheel : false,
 				draggable : false,
+				
 				mapTypeId : google.maps.MapTypeId.ROADMAP
 			};
 			var map = new google.maps.Map(document.getElementById("googleMap"),
-					mapProp);
+				mapProp);
 			var marker = new google.maps.Marker({
 				position : myCenter
 			});
 			marker.setMap(map);
-
+	
 		}
 	</script>
 	<script

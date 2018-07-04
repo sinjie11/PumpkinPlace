@@ -1,5 +1,7 @@
 package com.error404.pumpkinplace;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -25,39 +27,74 @@ public class MessageDaoTest {
 	@Test
 	public void doTest() {
 //		insertTest();
-		selectById();
+//		send();
+//		recieve();
+//		selectById();
+//		selectById2();
 //		updateTest();
-//		deleteTest();
+		deleteTest();
 		
 	} // end doTest()
 	
 	private void insertTest() {
-		Message message = new Message(0, "admin", "test1", "쪽지 제목 Junit", "쪽지 내용 Uunit", null, null);
+		Message message = new Message(0, "admin", "test", "테스트 내용", null, null);
 		
 		int result = messageDao.insert(message);
 		
 		logger.info("Insert result : {} ", result);
 	} // end insertTest()
 	
+	private void send() {
+		List<Message> list = messageDao.send("admin");
+		
+		for (int i = 0; i < list.size(); i++) {
+			logger.info("list : ({}, {}, {}, {})", 
+					list.get(i).getMem_id(), list.get(i).getMsg_content(), 
+					list.get(i).getMsg_regdate(), list.get(i).getMsg_confirm());
+		}
+		
+	} // end send()
+	
+	private void recieve() {
+		List<Message> list = messageDao.recieve("test");
+		
+		for (int i = 0; i < list.size(); i++) {
+			logger.info("list : ({}, {}, {}, {})", 
+					list.get(i).getMem_id2(), list.get(i).getMsg_content(), 
+					list.get(i).getMsg_regdate(), list.get(i).getMsg_confirm());
+		}
+		
+	} // end recieve()
+	
+	
 	private void selectById() {
-		Message message = new Message(0, "admin", null, null, null, null, false);
+		Message message = new Message(0, "admin",null, null, null, false);
 		
 		logger.info("selectById : {} ", message.getMem_id());
 	} // end selectById()
 	
+	private void selectById2() {
+		Message message = new Message(0, null, "test", null, null, false);
+		
+		logger.info("selectById2 : {}", message.getMem_id2());
+	} // end selectById2()
+		
+	
 	private void updateTest() {
-		Message message = new Message(3, null, null, "J 제목변경", "내용변경", null, false);
+		Message message = new Message(1, null, null, "내용변경", null, false);
 		
 		int result = messageDao.update(message);
 		
 		logger.info("Update result : {} ", result);
 		
 	} // end updateTest()
+	
 
 	private void deleteTest() {
-		int result = messageDao.delete(3);
+		int result = messageDao.delete(1);
 		
 		logger.info("Delete result = {} ", result);
 	} // end deleteTest()
+	
 	
 } // end class MessageDaoTest

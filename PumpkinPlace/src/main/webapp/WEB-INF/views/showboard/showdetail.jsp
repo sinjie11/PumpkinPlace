@@ -66,137 +66,137 @@ body {
 
 
 td, h5 {
-	font-size: 15px;
-	font-style: inherit;
+   font-size: 15px;
+   font-style: inherit;
 
 </style>
 </head>
 <body>
 
 
-	<%@ include file="/WEB-INF/views/header.jspf"%>
+   <%@ include file="/WEB-INF/views/header.jspf"%>
 
 
 
 
 
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="page-header">
-					<div class="container text-center">
-						<h1 style="font-size: 50px;">
-							<!-- 공연 제목 -->
-							<b>${showboard.sb_title}</b>
-						</h1>
-						<!-- 날짜 -->
-						<fmt:formatDate value="${showboard.sb_startdate}"
-						pattern="yyyy-MM-dd" var="startdate" />
-						<h2>${startdate}</h2>
-					</div>
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="page-header">
+               <div class="container text-center">
+                  <h1 style="font-size: 50px;">
+                     <!-- 공연 제목 -->
+                     <b>${showboard.sb_title}</b>
+                  </h1>
+                  <!-- 날짜 -->
+                  <fmt:formatDate value="${showboard.sb_startdate}"
+                  pattern="yyyy-MM-dd" var="startdate" />
+                  <h2>${startdate}</h2>
+               </div>
 
-				</div>
-		
-	
-				<div class="row">
+            </div>
+      
+   
+            <div class="row">
 
-					<div class="col-md-6">
+               <div class="col-md-6">
 
-						<img alt="포스터"
-							src="${pageContext.request.contextPath}/resources/assets/img/showboard/${showboard.sb_img}"
-							
-							style="margin-left: 30%; width: 570px; height: 796px; " />
+                  <img alt="포스터"
+                     src="${pageContext.request.contextPath}/resources/assets/img/showboard/${showboard.sb_img}"
+                     
+                     style="margin-left: 30%; width: 570px; height: 796px; " />
 
-					</div>
-
-
-
-					<div class="col-md-6" style="padding-left: 5%;">
-						<h3>공연 정보</h3>
-						<table class="table table-hover" style="width: 50%;">
-						
-							<tr>
-								<td width="40%">시간:</td>
-								<fmt:formatDate value="${showboard.sb_startdate}"
-										pattern="HH:mm" var="starttime" />
-								<td>${starttime}</td>
-							</tr>
-
-							<tr>
-								<td>입장료:</td>
-								<td><i class="price"></i>
-								<fmt:formatNumber value="${showboard.sb_price}" pattern="#,### 원"></fmt:formatNumber>
-								</td>
-							</tr>
-							<tr>
-								<td>도시:</td>
-								<td>${showboard.sb_city}</td>
-							</tr>
-
-							<tr>
-								<td>연락처:</td>
-								<td>${showboard.sb_tel}</td>
-							</tr>
-						</table>
-						<div class="">
-							<h5>상세 정보</h5>
-							<textarea rows="6" cols="68" readonly="readonly">${showboard.sb_content}</textarea>
-						</div>
-
-						<br />
-
-						<div>
-							<h3>공연장: ${showboard.sb_locinfo}</h3>
-							<br />
+               </div>
 
 
-							<!-- Add Google Maps -->
-							<div id="placeMap" style="height: 400px; width: 500px;"></div>
 
-							<script>
-								function myMap() {
-									var myCenter = new google.maps.LatLng(
-											51.491020, -0.224488);
-									var map;
+               <div class="col-md-6" style="padding-left: 5%;">
+                  <h3>공연 정보</h3>
+                  <table class="table table-hover" style="width: 50%;">
+                  
+                     <tr>
+                        <td width="40%">시간:</td>
+                        <fmt:formatDate value="${showboard.sb_startdate}"
+                              pattern="HH:mm" var="starttime" />
+                        <td>${starttime}</td>
+                     </tr>
 
-									var mapProp = {
-										center : myCenter,
-										zoom : 16,
-										scrollwheel : false,
-										draggable : false,
-										mapTypeId : google.maps.MapTypeId.ROADMAP
-									};
-									var map = new google.maps.Map(document
-											.getElementById("placeMap"),
-											mapProp);
-									var marker = new google.maps.Marker({
-										position : myCenter
-									});
-									marker.setMap(map);
+                     <tr>
+                        <td>입장료:</td>
+                        <td><i class="price"></i>
+                        <fmt:formatNumber value="${showboard.sb_price}" pattern="#,### 원"></fmt:formatNumber>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>도시:</td>
+                        <td>${showboard.sb_city}</td>
+                     </tr>
 
-								}
-							</script>
-							<script
-								src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&callback=myMap"></script>
+                     <tr>
+                        <td>연락처:</td>
+                        <td>${showboard.sb_tel}</td>
+                     </tr>
+                  </table>
+                  <div class="">
+                     <h5>상세 정보</h5>
+                     <textarea rows="6" cols="68" readonly="readonly">${showboard.sb_content}</textarea>
+                  </div>
 
-						</div>
-						<br/>
-						<button style="size: small; margin-left: 50%;">수정하기(작성자만 보이기 위치는 어디로 할까요?)</button>
-					</div>
-				</div>
-			</div>
-		</div>
+                  <br />
 
-	</div>
+                  <div>
+                     <h3>공연장: ${showboard.sb_locinfo}</h3>
+                     <br />
 
-	<br />
-	<div class="container text-center">
-		<iframe width="560" height="315"
-			src="https://www.youtube.com/embed/${showboard.sb_video}" frameborder="0"
-			allow="autoplay; encrypted-media" allowfullscreen></iframe>
-	</div>
-	<br />
-	
+
+                     <!-- Add Google Maps -->
+                     <div id="placeMap" style="height: 400px; width: 500px;"></div>
+
+                     <script>
+                        function myMap() {
+                           var myCenter = new google.maps.LatLng(
+                                 51.491020, -0.224488);
+                           var map;
+
+                           var mapProp = {
+                              center : myCenter,
+                              zoom : 16,
+                              scrollwheel : false,
+                              draggable : false,
+                              mapTypeId : google.maps.MapTypeId.ROADMAP
+                           };
+                           var map = new google.maps.Map(document
+                                 .getElementById("placeMap"),
+                                 mapProp);
+                           var marker = new google.maps.Marker({
+                              position : myCenter
+                           });
+                           marker.setMap(map);
+
+                        }
+                     </script>
+                     <script
+                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&callback=myMap"></script>
+
+                  </div>
+                  <br/>
+                  <button style="size: small; margin-left: 50%;">수정하기(작성자만 보이기 위치는 어디로 할까요?)</button>
+               </div>
+            </div>
+         </div>
+      </div>
+
+   </div>
+
+   <br />
+   <div class="container text-center">
+      <iframe width="560" height="315"
+         src="https://www.youtube.com/embed/${showboard.sb_video}" frameborder="0"
+         allow="autoplay; encrypted-media" allowfullscreen></iframe>
+   </div>
+   <br />
+   
 
 
 
