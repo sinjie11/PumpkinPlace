@@ -103,6 +103,9 @@ body {
 #map #infowindow-content {
    display: inline;
 }
+
+
+
 </style>
 </head>
 <body>
@@ -227,7 +230,7 @@ body {
                            <!-- 뮤지션이름 -->
                            <div id="en_bands">
                               <p>
-                                 <label for="event_공연하는 밴드:">뮤지션명: <input
+                                 <label for="event_공연하는 밴드:">뮤지션 명: <input
                                     id="event_band_tokens" name="sb_nm" type="text"
                                     style="text-align: center; width: 200px;" required /></label>
                               </p>
@@ -386,11 +389,9 @@ body {
                               <br />
                            </div>
                            <br />
+                           
+                           
 
-                           <div id="en_player">
-                              <div class="links"></div>
-                              <p></p>
-                           </div>
                            <br />
                         </div>
                      </div>
