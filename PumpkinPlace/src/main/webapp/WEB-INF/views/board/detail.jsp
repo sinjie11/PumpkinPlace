@@ -76,7 +76,7 @@ body {
 		<br> <br> <br> <br>
 		<c:if test="${loginId eq board.b_id}">
 			<div style="text-align: right;">
-				<button id="update">수정</button>
+				<button id="update2">수정</button>
 				<button>삭제</button>
 			</div>
 		</c:if>
@@ -121,25 +121,9 @@ $(document).ready(function () {
 	var updownBoolean = true;
 	
 	$("#update").click(function(){
-			$.ajax({
-				type : 'post',
-				url : '/pumpkinplace/board/update',
-				headers : {
-					'Content-Type' : 'application/json',
-					'X-HTTP-Method-Override' : 'post'
-				},//요청해더
-				data : JSON.stringify({//오브 잭트를 문자열로 변환
-					'b_section' : ${board.b_section}, // 받은 보드
-					'b_no': ${board.b_no},
-					'b_title' :"${board.b_title}",
-					'b_content':${board.b_content} 
-				}), //서버로 보낼 JSON 객체문자열
-				success : function(result) {
-					location = '/pumpkinplace/board/update';
-					
-				} 
-			});
+		location.href='/pumpkinplace/board/update?b_no=' +  ${board.b_no};
 		});
+	
 	$("#backList").click(function (){//메뉴로 보내기
 		location.href='/pumpkinplace/board/list?urlNo=' +  ${board.b_section};
 	});
@@ -192,13 +176,13 @@ $(document).ready(function () {
 });
 
 
-$('#update').click(function () {
+/*$('#update').click(function () {
 	event.preventDefault();
 	var fb = $('#send-update');
 	fb.attr('action', '/pumpkinplace/board/update');
 	fb.attr('method', 'get');
 	fb.submit();
-});
+});*/
 
 </script>
 

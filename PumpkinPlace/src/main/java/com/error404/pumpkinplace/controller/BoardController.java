@@ -88,25 +88,13 @@ public class BoardController {
 		model.addAttribute("board", board);
 	} 
 	
+	
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public void update(
 			@ModelAttribute("criteria") PaginationCriteria criteria,
-			Board board, Model model) {
-			model.addAttribute("board", board);
-	}
-	
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String update(
-			@ModelAttribute("criteria") PaginationCriteria criteria,
-			Board board, RedirectAttributes attr,  int urlNo) {
-		logger.info("update(board: {})", board);
-		int result = boardService.update(board);
-		if (result == 1) {
-			attr.addFlashAttribute("updateResult", "success");
-		}
-		
-		
-		return "redirect:detail?b_no=" + board.getB_no() + "&urlNo=" + board.getB_section();
+			int b_no ,Model model) {
+			Board board = boardService.readByBno(b_no);
+			model.addAttribute("board",board);
 	} 
 	
 	@RequestMapping(value = "delete", method = RequestMethod.POST)
