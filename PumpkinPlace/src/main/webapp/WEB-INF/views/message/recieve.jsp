@@ -14,7 +14,7 @@
 </head>
 <body>
 
-	<h1>받은 쪽지</h1>
+	<h1>받은 쪽지함</h1>
 
 	<table>
 		<thead>

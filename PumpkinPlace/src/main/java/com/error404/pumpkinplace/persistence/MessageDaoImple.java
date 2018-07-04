@@ -35,15 +35,15 @@ public class MessageDaoImple implements MessageDao {
 	} // end recieve(mem_id2)
 	
 	@Override
-	public List<Message> sendPage(PaginationCriteria criteria) {
+	public List<Message> send(PaginationCriteria criteria) {
 	
-		return messageMapper.listPage(criteria);
+		return messageMapper.send(criteria);
 	} // end sendPage(criteria)
 	
 	@Override
-	public List<Message> recievePage(PaginationCriteria criteria) {
+	public List<Message> recieve(PaginationCriteria criteria) {
 		
-		return messageMapper.listPage2(criteria);
+		return messageMapper.recieve(criteria);
 	} // end recievePage(criteria)
 	
 	@Override

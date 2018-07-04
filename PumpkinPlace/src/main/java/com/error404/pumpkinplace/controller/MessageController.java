@@ -66,8 +66,8 @@ public class MessageController {
 		maker.setTotalCount(messageService.total());
 		maker.setPageLinkData();
 		model.addAttribute("pageMaker", maker);
+
 		
-				
 	} // end send(mem_id, model)
 	
 	@RequestMapping(value = "/recieve", method = RequestMethod.GET)
@@ -87,7 +87,7 @@ public class MessageController {
 		List<Message> list = messageService.recieve((String) session.getAttribute("loginId"));
 		
 		model.addAttribute("recieveDetail", list);
-
+		
 	} // end recieveDetail(mem_id2, model, session)
 		
 

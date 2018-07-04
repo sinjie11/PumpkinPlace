@@ -11,9 +11,9 @@ public interface MessageMapper {
 	
 	List<Message> recieve(String mem_id2);
 	
-	List<Message> listPage(PaginationCriteria criteria);
+	List<Message> send(PaginationCriteria criteria);
 	
-	List<Message> listPage2(PaginationCriteria criteria);
+	List<Message> recieve(PaginationCriteria criteria);
 	
 	int totalCount();
 	

@@ -14,7 +14,7 @@
 </head>
 <body>
 
-	<h1>보낸 쪽지</h1>
+	<h1>보낸 쪽지함</h1>
 
 	<table>
 
@@ -66,8 +66,10 @@
 	$('.page-link').click(function () {
 		event.preventDefault();
 		var targetPage = $(this).attr('href');
+		console.log('targetPage' + targetPage);
 		$('#page').val(targetPage);
 		var frm = $('#page-form');
+		console.log('frm' + frm);
 		frm.attr('action', 'send');
 		frm.attr('method', 'get');
 		frm.submit();

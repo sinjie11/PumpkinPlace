@@ -11,9 +11,9 @@ public interface MessageDao {
 	
 	List<Message> recieve(String mem_id2);
 	
-	List<Message> sendPage(PaginationCriteria criteria);
+	List<Message> send(PaginationCriteria criteria);
 	
-	List<Message> recievePage(PaginationCriteria criteria);
+	List<Message> recieve(PaginationCriteria criteria);
 	
 	int total();
 	
