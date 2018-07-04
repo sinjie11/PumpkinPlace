@@ -85,7 +85,7 @@ body {
 			<br />
 			<form>
 				<input type="text" id="title" style="width: 385px;"
-					placeholder="글 제목" required name= "title"/> <br /> <br />
+					placeholder="글 제목" required name= "title" value="${board.b_title}"/> <br /> <br />
 			</form>
 		</div>
 		<div id="quillContents"></div>
