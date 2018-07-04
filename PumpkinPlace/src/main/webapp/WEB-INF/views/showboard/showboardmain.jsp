@@ -51,7 +51,7 @@ body {
 	padding-top: 300px; /*Account for fixed navbar */
 	background-color: #f8f8f8;
 }
-}
+
 </style>
 </head>
 <body>
