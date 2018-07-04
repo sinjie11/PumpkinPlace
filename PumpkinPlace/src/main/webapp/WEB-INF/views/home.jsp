@@ -93,7 +93,7 @@ body {
          <div class="row">
             <div class="col-md-4">
                <p class="text-left" style="font-size: medium;">
-                  <b>자유 게시판</b> <a href="/pumpkinplace/board/list"
+                  <b>자유 게시판</b> <a href="/pumpkinplace/board/list?urlNo=1"
                      style="float: right">more</a>
                </p>
 
@@ -102,43 +102,23 @@ body {
                <table class="table">
                   <thead>
                      <tr>
-                        <th>#</th>
-                        <th>Product</th>
-                        <th>Payment Taken</th>
-                        <th>Status</th>
+                        <th>No.</th>
+                        <th>Title</th>
+                        <th>Writer</th>
+                        <th>Creation Time</th>
                      </tr>
                   </thead>
                   <tbody>
-                     <tr>
-                        <td>1</td>
-                        <td>TB - Monthly</td>
-                        <td>01/04/2012</td>
-                        <td>Default</td>
-                     </tr>
-                     <tr class="table-active">
-                        <td>1</td>
-                        <td>TB - Monthly</td>
-                        <td>01/04/2012</td>
-                        <td>Approved</td>
-                     </tr>
-                     <tr class="table-success">
-                        <td>2</td>
-                        <td>TB - Monthly</td>
-                        <td>02/04/2012</td>
-                        <td>Declined</td>
-                     </tr>
-                     <tr class="table-warning">
-                        <td>3</td>
-                        <td>TB - Monthly</td>
-                        <td>03/04/2012</td>
-                        <td>Pending</td>
-                     </tr>
-                     <tr class="table-danger">
-                        <td>4</td>
-                        <td>TB - Monthly</td>
-                        <td>04/04/2012</td>
-                        <td>Call in to confirm</td>
-                     </tr>
+                     <c:forEach var="board" items="${boardList1}">
+						<tr>
+							<td>${board.b_no}</td>
+							<td><a class="table-title-link" href="${board.b_no}">${board.b_title}</a></td>
+							<td>${board.b_id}</td>
+							<fmt:formatDate value="${board.b_regdate}"
+								pattern="yyyy/MM/dd HH:mm:ss" var="b_regdate" />
+							<td>${b_regdate}</td>
+						</tr>
+					</c:forEach>					
                   </tbody>
                </table>
             </div>
@@ -146,48 +126,28 @@ body {
             <!-- 구인구직 -->
             <div class="col-md-4">
                <p class="text-left" style="font-size: medium;">
-                  <b>구인구직</b> <a href="" style="float: right">more</a>
+                  <b>구인구직</b> <a href="/pumpkinplace/board/list?urlNo=11" style="float: right">more</a>
                </p>
                <table class="table">
-                  <thead>
+                   <thead>
                      <tr>
-                        <th>#</th>
-                        <th>Product</th>
-                        <th>Payment Taken</th>
-                        <th>Status</th>
+                        <th>No.</th>
+                        <th>Title</th>
+                        <th>Writer</th>
+                        <th>Creation Time</th>
                      </tr>
                   </thead>
                   <tbody>
-                     <tr>
-                        <td>1</td>
-                        <td>TB - Monthly</td>
-                        <td>01/04/2012</td>
-                        <td>Default</td>
-                     </tr>
-                     <tr class="table-active">
-                        <td>1</td>
-                        <td>TB - Monthly</td>
-                        <td>01/04/2012</td>
-                        <td>Approved</td>
-                     </tr>
-                     <tr class="table-success">
-                        <td>2</td>
-                        <td>TB - Monthly</td>
-                        <td>02/04/2012</td>
-                        <td>Declined</td>
-                     </tr>
-                     <tr class="table-warning">
-                        <td>3</td>
-                        <td>TB - Monthly</td>
-                        <td>03/04/2012</td>
-                        <td>Pending</td>
-                     </tr>
-                     <tr class="table-danger">
-                        <td>4</td>
-                        <td>TB - Monthly</td>
-                        <td>04/04/2012</td>
-                        <td>Call in to confirm</td>
-                     </tr>
+                     <c:forEach var="board" items="${boardList11}">
+						<tr>
+							<td>${board.b_no}</td>
+							<td><a class="table-title-link" href="${board.b_no}">${board.b_title}</a></td>
+							<td>${board.b_id}</td>
+							<fmt:formatDate value="${board.b_regdate}"
+								pattern="yyyy/MM/dd HH:mm:ss" var="b_regdate" />
+							<td>${b_regdate}</td>
+						</tr>
+					</c:forEach>					
                   </tbody>
                </table>
             </div>
@@ -195,48 +155,28 @@ body {
             <!-- 중고거래 -->
             <div class="col-md-4">
                <p class="text-left" style="font-size: medium;">
-                  <b>중고 거래</b> <a href="" style="float: right">more</a>
+                  <b>중고 거래</b> <a href="/pumpkinplace/board/list?urlNo=12" style="float: right">more</a>
                </p>
                <table class="table">
                   <thead>
                      <tr>
-                        <th>#</th>
-                        <th>Product</th>
-                        <th>Payment Taken</th>
-                        <th>Status</th>
+                        <th>No.</th>
+                        <th>Title</th>
+                        <th>Writer</th>
+                        <th>Creation Time</th>
                      </tr>
                   </thead>
                   <tbody>
-                     <tr>
-                        <td>1</td>
-                        <td>TB - Monthly</td>
-                        <td>01/04/2012</td>
-                        <td>Default</td>
-                     </tr>
-                     <tr class="table-active">
-                        <td>1</td>
-                        <td>TB - Monthly</td>
-                        <td>01/04/2012</td>
-                        <td>Approved</td>
-                     </tr>
-                     <tr class="table-success">
-                        <td>2</td>
-                        <td>TB - Monthly</td>
-                        <td>02/04/2012</td>
-                        <td>Declined</td>
-                     </tr>
-                     <tr class="table-warning">
-                        <td>3</td>
-                        <td>TB - Monthly</td>
-                        <td>03/04/2012</td>
-                        <td>Pending</td>
-                     </tr>
-                     <tr class="table-danger">
-                        <td>4</td>
-                        <td>TB - Monthly</td>
-                        <td>04/04/2012</td>
-                        <td>Call in to confirm</td>
-                     </tr>
+                     <c:forEach var="board" items="${boardList12}">
+						<tr>
+							<td>${board.b_no}</td>
+							<td><a class="table-title-link" href="${board.b_no}">${board.b_title}</a></td>
+							<td>${board.b_id}</td>
+							<fmt:formatDate value="${board.b_regdate}"
+								pattern="yyyy/MM/dd HH:mm:ss" var="b_regdate" />
+							<td>${b_regdate}</td>
+						</tr>
+					</c:forEach>					
                   </tbody>
                </table>
             </div>

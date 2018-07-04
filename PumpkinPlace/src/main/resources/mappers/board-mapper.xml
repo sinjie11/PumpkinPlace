@@ -14,8 +14,9 @@
 		${col_b_title}, ${col_b_content},
 		${col_b_id})
 		values
-		(#{b_section, jdbcType=INTEGER}, #{b_title, jdbcType=VARCHAR},
-		#{b_content, jdbcType=CLOB},
+		(${b_section}, #{b_title, jdbcType=VARCHAR},
+		#{b_content,
+		jdbcType=CLOB},
 		#{b_id, jdbcType=VARCHAR})
 	</insert>
 
@@ -24,20 +25,65 @@
 		order by ${col_b_no} desc
 	</select>
 
-	<select id="selectBySectionNo"  resultType="Board">
-		select b.b_section, b.b_no, b.b_title,
+	<select id="selectBySectionNo" resultType="Board">
+		select b.b_section,
+		b.b_no, b.b_title,
 		b.b_content, b.b_id, b.b_regdate,
 		b.b_readcnt
 		from (
 		select rownum rn, a.*
 		from (
 		select * from pumpkin_board
-		where b_section = ${b_section}
+		where b_section
+		= ${b_section}
 		order by b_no desc
 		) a
 		) b
 		where rn between
-		${start} and ${end}
+		${start} and
+		${end}
+	</select>
+
+	<select id = "selectBySectionNo1" resultType="Board">
+		select b.b_no, b.b_title, b.b_content, b.b_id, b.b_regdate, b.b_readcnt
+		from (
+		select
+		rownum rn, a.*
+		from (
+		select * from pumpkin_board
+		where b_section = 1
+		order by b_no desc
+		) a
+		) b
+		where rn between 1 and 5
+	</select>
+	
+	<select id = "selectBySectionNo11" resultType="Board">
+		select b.b_no, b.b_title, b.b_content, b.b_id, b.b_regdate, b.b_readcnt
+		from (
+		select
+		rownum rn, a.*
+		from (
+		select * from pumpkin_board
+		where b_section = 11
+		order by b_no desc
+		) a
+		) b
+		where rn between 1 and 5
+	</select>
+	
+	<select id = "selectBySectionNo12" resultType="Board">
+		select b.b_no, b.b_title, b.b_content, b.b_id, b.b_regdate, b.b_readcnt
+		from (
+		select
+		rownum rn, a.*
+		from (
+		select * from pumpkin_board
+		where b_section = 12
+		order by b_no desc
+		) a
+		) b
+		where rn between 1 and 5
 	</select>
 
 	<select id="selectByBno" resultType="Board">

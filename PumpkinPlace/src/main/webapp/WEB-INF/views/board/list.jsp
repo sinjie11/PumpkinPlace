@@ -221,7 +221,6 @@ ${board.b_no}
 	</div>
 	<br />
 
-
 	<form id="page-form">
 		<input type="hidden" name="page" id="page"
 			value="${pageMaker.criteria.page}" /> <input type="hidden"

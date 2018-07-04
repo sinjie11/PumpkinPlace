@@ -24,7 +24,7 @@ public class BoardServiceImple implements BoardService {
 	@Override
 	public int create(Board board) {
 
-		return boardDao.insert(board);
+		return boardDao.insert( board);
 	}
 
 //	@Override
@@ -71,7 +71,22 @@ public class BoardServiceImple implements BoardService {
 	public List<Board> readBySectionNo(int b_section, PaginationCriteria criteria) {
 		return boardDao.selectBySectionNo(b_section, criteria);
 	}
-
+	
+	@Override
+	public List<Board> readBySectionNo1() {
+		return boardDao.selectBySectionNo1();
+	}
+	
+	@Override
+	public List<Board> readBySectionNo11() {
+		return boardDao.selectBySectionNo11();
+	}
+	
+	@Override
+	public List<Board> readBySectionNo12() {
+		return boardDao.selectBySectionNo12();
+	}
+	
 	@Override
 	public Board readDetail(int bno) {
 		int result = boardDao.pulsReadcnt(bno);//조회수 +1

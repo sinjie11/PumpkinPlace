@@ -66,19 +66,17 @@ public class BoardController {
 		maker.setPageLinkData();
 		model.addAttribute("pageMaker", maker);
 		model.addAttribute("urlNo", urlNo);
-		
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void register(Model model, int urlNo) {
 		logger.info("register() GET 호출");
-
 		model.addAttribute("urlNo", urlNo);
 		
 	} 
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String register(Board board) {
+	public String register( Board board) {
 		logger.info("register({}) POST 호출", board);
 		boardService.create(board);
 				
@@ -154,7 +152,7 @@ public class BoardController {
 				board.getB_title(),
 				board.getB_id(),
 				board.getB_content());
-		int result = boardService.create(board);
+		int result = boardService.create( board);
 		ResponseEntity<Integer> entity =
 				new ResponseEntity<Integer>(result, HttpStatus.OK);
 		return entity;

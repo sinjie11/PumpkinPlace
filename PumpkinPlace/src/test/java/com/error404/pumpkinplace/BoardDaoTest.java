@@ -31,11 +31,13 @@ public class BoardDaoTest {
 	public void doTest() {
 //		insertTest();
 //		selectByMemid();
-		selectBySectionNoTest();
+//		selectBySectionNoTest();
+		selectBySectionNo1Test();
 	} // end doTest()
 	
-	private void insertTest() {
-		Board board1= new Board(1, 0, "test1234", "테스트 글입니다", "admin", new Date(),"c://image", "c://video", 0, 0, 0);
+//	private void insertTest() {
+		
+//		Board board1= new Board(1, 0, "test1234", "테스트 글입니다", "admin", new Date(),"c://image", "c://video", 0, 0, 0);
 //		Board board2= new Board(2, 2, "Test", "Content", "admin", new Date(), null, null, 0, 0, 0);
 //		Board board3= new Board(1, 3, "Test", "Content", "admin", new Date(), null, null, 0, 0, 0);
 //		Board board4= new Board(1, 4, "Test", "Content", "admin", new Date(), null, null, 0, 0, 0);
@@ -46,7 +48,7 @@ public class BoardDaoTest {
 //		Board board9= new Board(4, 9, "Test", "Content", "admin", new Date(), null, null, 0, 0, 0);
 //		Board board10= new Board(1, 10, "Test", "Content", "admin", new Date(), null, null, 0, 0, 0);
 
-		int result1 = boardDao.insert(board1);
+//		int result1 = boardDao.insert(board1);
 //		int result2 = boardDao.insert(board2);
 //		int result3 = boardDao.insert(board3);
 //		int result4 = boardDao.insert(board4);
@@ -57,7 +59,7 @@ public class BoardDaoTest {
 //		int result9 = boardDao.insert(board9);
 //		int result10 = boardDao.insert(board10);
 		
-		logger.info("Insert result = {}", result1);
+//		logger.info("Insert result = {}", result1);
 //		logger.info("Insert result = {}", result2);
 //		logger.info("Insert result = {}", result3);
 //		logger.info("Insert result = {}", result4);
@@ -67,7 +69,7 @@ public class BoardDaoTest {
 //		logger.info("Insert result = {}", result8);
 //		logger.info("Insert result = {}", result9);
 //		logger.info("Insert result = {}", result10);
-	} // end intertTest()
+//	} // end intertTest()
 	
 //	private void selectByMemid() {
 //		Board b = boardDao.select(1);
@@ -84,6 +86,14 @@ public class BoardDaoTest {
 		for (Board b : list) {
 			logger.info("{}, {}, {}, {}, {}", b.getB_no(), b.getB_title(), 
 					b.getB_content(), b.getB_regdate(), b.getB_readcnt());
+		}
+	}
+	
+	private void selectBySectionNo1Test() {
+		List<Board> list = boardDao.selectBySectionNo1();
+		for (Board b : list) {
+			logger.info("{}, {}, {}, {}, {}", b.getB_no(), b.getB_title(), 
+					 b.getB_id(), b.getB_regdate());
 		}
 	}
 	

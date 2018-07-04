@@ -30,7 +30,7 @@ public class BoardDaoImple implements BoardDao {
 	}
 
 	@Override
-	public int insert(Board board) {
+	public int insert (Board board) {
 		logger.info("insert({}, {}, {}, {}, {}) 호출", board.getB_section(), board.getB_no(), board.getB_title(),
 				board.getB_content(), board.getB_id());
 
@@ -44,8 +44,7 @@ public class BoardDaoImple implements BoardDao {
 //		return sqlSession.selectOne(NAMESPACE + ".selectBoardInfoBySectionNo", b_section);
 //	}
 
-	
-	
+
 	@Override
 	public Board selectByBno(int b_no) {
 		logger.info("select({})", b_no);
@@ -89,6 +88,25 @@ public class BoardDaoImple implements BoardDao {
 		return sqlSession.selectList(NAMESPACE + ".selectBySectionNo", args);
 	}
 
+	@Override
+	public List<Board> selectBySectionNo1() {
+		logger.info("selectBySectionNo1 호출");
+		return sqlSession.selectList(NAMESPACE + ".selectBySectionNo1");
+	}
+	
+	@Override
+	public List<Board> selectBySectionNo11() {
+		logger.info("selectBySectionNo1 호출");
+		return sqlSession.selectList(NAMESPACE + ".selectBySectionNo11");
+	}
+	
+	@Override
+	public List<Board> selectBySectionNo12() {
+		logger.info("selectBySectionNo1 호출");
+		return sqlSession.selectList(NAMESPACE + ".selectBySectionNo12");
+	}
+
+	
 	// ************* 페이지 처리 관련 Overridden Method *************
 
 	@Override
