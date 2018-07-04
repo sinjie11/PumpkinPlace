@@ -17,7 +17,11 @@
 <!-- jquery -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+<!-- Quill -->
+<script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+<script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
+<link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
 <style>
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
@@ -60,9 +64,8 @@ body {
 	<div class="container text-center">
 		<h1>${board.b_title}</h1>
 		<form action="#">
-			
-				
 		</form>
+		<div id="quillContents"></div>
 		<button>수정</button>
 		<button>메인 페이지</button>
 		<button>본문 up</button>
@@ -84,7 +87,18 @@ body {
 	<br />
 
 <script type="text/javascript">
+var options = {
+		  debug: 'info',
+		  readOnly: true,
+		  theme: 'bubble'
+		};
+var editor= new Quill('#quillContents', options);
 
+
+$(document).ready(function () {
+	editor.updateContents(${board.getB_content()});
+	
+});
 
 </script>
 
