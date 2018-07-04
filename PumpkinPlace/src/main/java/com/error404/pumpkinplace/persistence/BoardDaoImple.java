@@ -130,4 +130,5 @@ public class BoardDaoImple implements BoardDao {
 	}
 	
 	
+
 }

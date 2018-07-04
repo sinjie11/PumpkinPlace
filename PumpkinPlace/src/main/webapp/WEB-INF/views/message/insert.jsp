@@ -20,11 +20,6 @@
 		<span>받는 사람</span> <input type="text" name="mem_id2" placeholder="받는사람" required />
 		<br />
 		<br />
-
-		<span>쪽지 제목</span>
-		<textarea rows="1" cols="50" name="msg_title" placeholder="쪽지 제목 작성" required></textarea>
-		<br />
-		<br />
 		
 		<span>쪽지내용</span>
 		<textarea rows="8" cols="50" name="msg_content" placeholder="쪽지 내용 작성" required></textarea>

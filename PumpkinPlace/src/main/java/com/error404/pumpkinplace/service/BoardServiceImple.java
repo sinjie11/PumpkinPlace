@@ -71,6 +71,7 @@ public class BoardServiceImple implements BoardService {
 	public List<Board> readSection(int b_section) {
 		return boardDao.selectBySectionNo(b_section);
 	}
+
 	@Override
 	public Board readDetail(int bno) {
 		int result = boardDao.pulsReadcnt(bno);//조회수 +1
