@@ -239,10 +239,10 @@ body {
                            <div id="en_daytime">
                               <label for="event_공연 날짜">공연 날짜 / 시간:<br /> 
                               <input type="text" id="startdate" placeholder="공연 시작 날짜 선택" /> 
-                              <input type="text" name="sb_startdate" placeholder="시간 입력" id="time1" required size="8" maxlength="5"> 
+                              <input type="text" name="sb_startdate" placeholder="시간 입력" id="starttime" required size="10" maxlength="5"> 
                               ~ 
                               <input type="text" id="enddate" placeholder="공연 종료 날짜 선택" required />
-                              <input type="text" name="sb_enddate" placeholder="시간 입력" id="endtime" required size="8" maxlength="5">
+                              <input type="text" name="sb_enddate" placeholder="시간 입력" id="endtime" required size="10" maxlength="5">
                               </label>
                            </div>
                            <br />
@@ -260,7 +260,10 @@ body {
                            });
                                        });
                   </script>
-
+                  <script type="text/javascript">
+$(document).ready(function(){
+    $("#starttime, #endtime").timepicker({});
+});</script>
 
 
 
@@ -298,6 +301,8 @@ body {
                                  <span id="place-id"></span><br> <span id="place-address"></span>
                               </div>
                               <br />
+                              
+                              
 
                               <script>
       function initMap() {
@@ -356,8 +361,8 @@ body {
       }
     </script>
                               <script
-                                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&libraries=places&callback=initMap"
-                                 async defer></script>
+                            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&libraries=places&callback=initMap"
+                               ></script>
                            </div>
 
                            <!-- 연락처 -->
