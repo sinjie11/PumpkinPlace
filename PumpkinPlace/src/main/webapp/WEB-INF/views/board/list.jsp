@@ -59,8 +59,6 @@ body {
 
 	<div class="container text-center">
 		<c:if test="${urlNo eq 1}">
-			<br />
-			<br />
 			<h5 style="text-align: left;"><b> 카테고리: 게시판 > 자유게시판 </b></h5>
 			<br/><br/>
 			<img alt="이미지"
@@ -141,6 +139,24 @@ body {
 				src="${pageContext.request.contextPath}/resources/resume.png"
 				style="background-color: white; width: 110px; height: 110px; margin-left: 15px;" />			
 			<h1>구 직</h1>
+		</c:if>
+		
+		<c:if test="${urlNo eq 11}">
+			<h5 style="text-align: left;"><b> 카테고리: 구인구직 > 전체보기 </b></h5>
+			<br/><br/>
+			<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/resume.png"
+				style="background-color: white; width: 110px; height: 110px; margin-left: 15px;" />			
+			<h1>구인구직</h1>
+		</c:if>
+		
+		<c:if test="${urlNo eq 12}">
+			<h5 style="text-align: left;"><b> 카테고리: 중고거래 > 전체보기 </b></h5>
+			<br/><br/>
+			<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/audio-equipment.png"
+				style="background-color: white; width: 110px; height: 110px; margin-left: 15px;" />			
+			<h1>중고거래</h1>
 		</c:if>
 
 		<c:if test="${urlNo eq 20}">

@@ -149,7 +149,7 @@
                   </c:choose>
                                     
                   <c:choose>
-                     <c:when test="${urlNo eq 2 or urlNo eq 3 or urlNo eq 4 or urlNo eq 5 or urlNo eq 6 or urlNo eq 7}">
+                     <c:when test="${urlNo eq 2 or urlNo eq 3 or urlNo eq 4 or urlNo eq 5 or urlNo eq 6 or urlNo eq 7 or urlNo eq 12}">
                         <li class="active"><a class="dropdown-toggle"
                         data-toggle="dropdown" href="#">중고 거래<span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -159,10 +159,11 @@
                            <li><a id="amp" href="#">앰프</a></li>
                            <li><a id="sound-equipment" href="#">음향장비</a></li>
                            <li><a id="ect" href="#">etc</a></li>
+                           <li><a id="trade" href="#">전체보기</a></li>
                         </ul></li>
                      </c:when>
                      
-                     <c:when test="${urlNo ne 2 or urlNo ne 3 or urlNo ne 4 or urlNo ne 5 or urlNo ne 6 or urlNo ne 7}">
+                     <c:when test="${urlNo ne 2 or urlNo ne 3 or urlNo ne 4 or urlNo ne 5 or urlNo ne 6 or urlNo ne 7 or urlNo ne 12}">
                         <li class="dropdown"><a class="dropdown-toggle"
                         data-toggle="dropdown" href="#">중고 거래<span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -172,25 +173,28 @@
                            <li><a id="amp" href="#">앰프</a></li>
                            <li><a id="sound-equipment" href="#">음향장비</a></li>
                            <li><a id="ect" href="#">etc</a></li>
+                           <li><a id="trade" href="#">전체보기</a></li>
                         </ul></li>
                      </c:when>
                   </c:choose>
                         
                   <c:choose>
-                     <c:when test="${urlNo eq 8 or urlNo eq 9}">
+                     <c:when test="${urlNo eq 8 or urlNo eq 9 or urlNo eq 11}">
                         <li class="active"><a class="dropdown-toggle" data-toggle="dropdown" href="#">구인 구직<span class="caret"></span></a>
                            <ul class="dropdown-menu">
                               <li><a id="job-offer" href="/pumpkinplace/jobboard/employeelist">구인</a></li>
                               <li><a id="job-search" href="/pumpkinplace/jobboard/joblist">구직</a></li>
+                              <li><a id="job" href="/pumpkinplace/jobboard/employeelist">전체보기</a></li>
                            </ul>
                         </li>
                      </c:when>
                      
-                     <c:when test="${urlNo ne 8 or urlNo ne 9}">
+                     <c:when test="${urlNo ne 8 or urlNo ne 9 or urlNo ne 11}">
                         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">구인 구직<span class="caret"></span></a>
                            <ul class="dropdown-menu">
                               <li><a id="job-offer" href="/pumpkinplace/jobboard/employeelist">구인</a></li>
                               <li><a id="job-search" href="/pumpkinplace/jobboard/joblist">구직</a></li>
+                              <li><a id="job" href="/pumpkinplace/jobboard/employeelist">전체보기</a></li>
                            </ul>
                         </li>
                      </c:when>
@@ -282,6 +286,18 @@
             $('#url-no').val(9);
             sendUrlNo();
          });
+         
+         $('#job').click(function () { // 구인구직 전체보기
+             event.preventDefault();
+             $('#url-no').val(11);
+             sendUrlNo();
+          });
+         
+         $('#trade').click(function () { // 사고팔기 전체보기
+             event.preventDefault();
+             $('#url-no').val(12);
+             sendUrlNo();
+          });
          
          $('#qna-board').click(function () { // qna
             event.preventDefault();
