@@ -1,33 +1,91 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>쪽지 보내기</title>
+<title>쪽지함</title>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- 부트스트랩 -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- jquery -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<style>
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+	margin-bottom: 0;
+	border-radius: 0;
+}
+
+/* Add a gray background color and some padding to the footer */
+footer {
+	background-color: #f2f2f2;
+	padding: 25px;
+}
+
+.carousel-inner img {
+	width: 100%; /* Set width to 100% */
+	margin: auto;
+	min-height: 200px;
+}
+
+/* Hide the carousel text when the screen is less than 600 pixels wide */
+@media ( max-width : 600px) {
+	.carousel-caption {
+		display: none;
+	}
+}
+
+body {
+
+	position: relative; /* For scrollyspy */
+	padding-top: 350px; /*Account for fixed navbar */
+	background-color: #f8f8f8;
+
+  position: relative; /* For scrollyspy */
+  padding-top: 300px;   /*Account for fixed navbar */
+  background-color: #f8f8f8;
+}
+
+</style>
+
 </head>
 <body>
+<%@ include file="/WEB-INF/views/header.jspf"%>
+<div class="container text-center">
+	</br></br>
+	<h1><b>쪽지 보내기</b></h1><br/><br/>
+</div>
+	<form action="insert" method="post" style="margin-left: 700px; font-size: 15px;" >
 
-	<h1>쪽지 보내기</h1>
-
-	<form action="insert" method="post">
-
-		<span>보내는 사람</span> 
+		<label>보내는 사람</label>
 		<input type="text" name="mem_id" value="${loginId}" readonly />
 		<br />
 		<br />
 		
-		<span>받는 사람</span> <input type="text" name="mem_id2" placeholder="받는사람" required />
+		<label style="mar">받는 사람</label> <input type="text" style="margin-left: 15px;" name="mem_id2" placeholder="받는사람" required />
 		<br />
 		<br />
 		
-		<span>쪽지내용</span>
-		<textarea rows="8" cols="50" name="msg_content" placeholder="쪽지 내용 작성" required></textarea>
+		
+		<label>쪽지내용</label>
+		<textarea rows="8" cols="50" style="margin-left: 20px;" name="msg_content" placeholder="쪽지 내용 작성" required></textarea>
 		<br />
 		<br />
 		 
-		<input type="submit" value="작성 완료" />
+		<input type="submit" value="작성 완료" style="margin-left: 230px;"/>
+		<br/>
 	</form>
-
+	
+<%@ include file="/WEB-INF/views/footer.jspf"%>
 </body>
 </html>

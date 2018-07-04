@@ -152,6 +152,11 @@ public class BoardDaoImple implements BoardDao {
 		args.put("b_no" ,bno);
 		return sqlSession.update(NAMESPACE + ".puls1",args);
 	}
+
+	@Override
+	public Board getUpDown(int bno) {
+		return sqlSession.selectOne(NAMESPACE+".getUpDown",bno);
+	}
 	
 	
 

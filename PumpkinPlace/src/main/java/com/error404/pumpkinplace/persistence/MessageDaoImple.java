@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.error404.pumpkinplace.domain.Message;
 import com.error404.pumpkinplace.mappers.MessageMapper;
+import com.error404.pumpkinplace.pageutil.PaginationCriteria;
 
 @Repository
 public class MessageDaoImple implements MessageDao {
@@ -25,14 +26,37 @@ public class MessageDaoImple implements MessageDao {
 	public List<Message> send(String mem_id) {
 		
 		return messageMapper.send(mem_id);
-	} // end selectAll(mem_id)
+	} // end send(mem_id)
 	
 	@Override
 	public List<Message> recieve(String mem_id2) {
 		
 		return messageMapper.recieve(mem_id2);
-	} // end selectAll2(mem_id2)
+	} // end recieve(mem_id2)
 	
+	@Override
+	public List<Message> send(PaginationCriteria criteria) {
+	
+		return messageMapper.send(criteria);
+	} // end sendPage(criteria)
+	
+	@Override
+	public List<Message> recieve(PaginationCriteria criteria) {
+		
+		return messageMapper.recieve(criteria);
+	} // end recievePage(criteria)
+	
+	@Override
+	public int total() {
+		
+		return messageMapper.totalCount();
+	} // end total()
+	
+	@Override
+	public int total2() {
+	
+		return messageMapper.totalCount2();
+	} // end total2()
 
 	@Override
 	public int insert(Message message) {

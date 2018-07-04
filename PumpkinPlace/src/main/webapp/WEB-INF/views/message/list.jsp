@@ -55,6 +55,7 @@ body {
   padding-top: 300px;   /*Account for fixed navbar */
   background-color: #f8f8f8;
 }
+
 </style>
 
 </head>
@@ -64,22 +65,38 @@ body {
 	<br/>
 	
 	<!-- 본문 작성 -->
-	<h1>쪽지함</h1>
-	
-	<a href="/pumpkinplace/message/insert">쪽지 보내기</a>
-	<br/>
-	<br/>
-	
-	<a href="/pumpkinplace/message/send">보낸 쪽지함</a>
-	<br/>
-	<br/>
-	
-	<a href="/pumpkinplace/message/recieve">받은 쪽지함</a>
-	<br/>
-	<br/>
+	<div class="container text-center">
+	</br></br>
+	<h1><b>쪽지함</b></h1>
+	</div>
 
-
-
+	<div class="container text-center" style="display: flex;">
+	<div style="margin: 140px; margin-left: 60px; margin-top: 80px;"  >
+	<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/msg1.png"
+				style="background-color: white; width: 150px; height: 150px;" /></a><br/><br/>
+	<a href="/pumpkinplace/message/insert" style="text-align: left; font-size: 20px;
+	font-style: inherit; ">쪽지 보내기</a>
+	</div>
 	
+	
+	<div style="margin: 140px; margin-top: 80px;" >
+	<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/msg2.png"
+				style="background-color: white; width: 150px; height: 150px;" /></a><br/><br/>
+	<a href="/pumpkinplace/message/recieve" style="text-align: center;font-size: 20px;
+	font-style: inherit; "">받은 쪽지함</a>
+	</div>
+
+	<div style="margin: 140px; margin-top: 80px;">
+	<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/msg3.png"
+				style="background-color: white; width: 150px; height: 150px;" /></a><br/><br/>
+	<a href="/pumpkinplace/message/send" style="text-align:right;font-size: 20px;
+	font-style: inherit; "">보낸 쪽지함</a>
+	</div>	
+	</div>
+
+	<%@ include file="/WEB-INF/views/footer.jspf"%>
 </body>
 </html>

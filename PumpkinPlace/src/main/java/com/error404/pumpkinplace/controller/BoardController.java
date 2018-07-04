@@ -44,7 +44,7 @@ public class BoardController {
 		// numsPerPage에 들어갈 수는 10/20/40 중 하나
 //		PaginationCriteria criteria = new PaginationCriteria(page, numsPerPage);
 		PaginationCriteria criteria = new PaginationCriteria();
-		if (page != null) {//수형아 왜코딩이 멈춤??일해라 핫산!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		if (page != null) {
 			criteria.setPage(page);
 		}
 		if (numsPerPage != null) {
@@ -55,11 +55,6 @@ public class BoardController {
 		logger.info("urlNo : {}, page : {}, numsPerPage : {}", urlNo, criteria.getPage(), criteria.getNumsPerPage());
 		model.addAttribute("boardList", list);
 		logger.info("***** board list size {}", list.size());
-//		logger.info("{} {} {} {}",
-//				list.get(0).getB_no(), list.get(0).getB_title(), list.get(0).getB_id(), list.get(0).getB_regdate());
-//		logger.info("boardList : " + model.addAttribute("boardList", list)); 
-		
-//		PageLinkMaker maker = new PageLinkMaker(numsOfPageLinks);
 		PageLinkMaker maker = new PageLinkMaker();
 		maker.setCriteria(criteria);
 		maker.setTotalCount(boardService.getNumOfRecords());
@@ -86,40 +81,21 @@ public class BoardController {
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public void detail(
 			@ModelAttribute("criteria") PaginationCriteria criteria,
-			int b_no, int urlNo, Model model) {
-		logger.info("detail(bno: {}, urlNo: {},  page: {}, numsPerPage: {}) 호출", 
-				b_no, urlNo, criteria.getPage(), criteria.getNumsPerPage());
+			int b_no, Model model) {
 		Board board = boardService.readDetail(b_no);
 		model.addAttribute("board", board);
-		model.addAttribute("urlNo", urlNo);
-
 	} 
+	
 	
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public void update(
 			@ModelAttribute("criteria") PaginationCriteria criteria,
-			int b_no, int urlNo, Model model) {
-		logger.info("update(b_no: {}, urlNo: {})", b_no, urlNo);
-		Board board = boardService.readByBno(b_no);
-		model.addAttribute("board", board);
-		model.addAttribute("urlNo", urlNo);
-	}
-	
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String update(
-			@ModelAttribute("criteria") PaginationCriteria criteria,
-			Board board, RedirectAttributes attr,  int urlNo) {
-		logger.info("update(board: {})", board);
-		int result = boardService.update(board);
-		if (result == 1) {
-			attr.addFlashAttribute("updateResult", "success");
-		}
-		
-		
-		return "redirect:detail?b_no=" + board.getB_no() + "&urlNo=" + urlNo;
+			int b_no ,Model model) {
+			Board board = boardService.readByBno(b_no);
+			model.addAttribute("board",board);
 	} 
 	
-	@RequestMapping(value = "delete", method = RequestMethod.GET)
+	@RequestMapping(value = "delete", method = RequestMethod.POST)
 	public String delete(int b_no, RedirectAttributes attr, int urlNo) {
 		logger.info("delete(bno: {})", b_no);
 		logger.info("delete(urlNo: {}) 호출", urlNo);
@@ -162,7 +138,24 @@ public class BoardController {
 	public void testdetail(int bno ,Model model) {
 		Board board = boardService.readDetail(bno);
 		model.addAttribute("board",board);
+	}//테스트용 컨트롤러 지워도됨
+	
+	@RequestMapping(value="/pulsUp")
+	public ResponseEntity<Board> pulsUp(int b_no ) {//좋아요
+		Board result = boardService.upPuls1(b_no);
+		ResponseEntity<Board> entity = 
+				new ResponseEntity<Board>(result,HttpStatus.OK);
+		return entity;
 	}
+	@RequestMapping(value="/pulsDown")
+	public ResponseEntity<Board> pulsDowm(int b_no) {//싫어요
+		Board result = boardService.downPuls1(b_no);
+		ResponseEntity<Board> entity = 
+				new ResponseEntity<Board>(result,HttpStatus.OK);
+		return entity;
+	}
+	
+	
 
 	
 }

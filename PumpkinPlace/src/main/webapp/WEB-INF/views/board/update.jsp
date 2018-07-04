@@ -85,7 +85,7 @@ body {
 			<br />
 			<form>
 				<input type="text" id="title" style="width: 385px;"
-					placeholder="글 제목" required name= "title"/> <br /> <br />
+					placeholder="글 제목" required name= "title" value="${board.b_title}"/> <br /> <br />
 			</form>
 		</div>
 		<div id="quillContents"></div>
@@ -96,30 +96,6 @@ body {
 	<br />
 	<br />
 
-			<script>
-				function myMap() {
-					var myCenter = new google.maps.LatLng(37.499685, 127.031535);
-					var map;
-
-					var mapProp = {
-						center : myCenter,
-						zoom : 16,
-						scrollwheel : false,
-						draggable : false,
-						mapTypeId : google.maps.MapTypeId.ROADMAP
-					};
-					var map = new google.maps.Map(document
-							.getElementById("googleMap"), mapProp);
-					var marker = new google.maps.Marker({
-						position : myCenter
-					});
-					marker.setMap(map);
-
-				}
-
-				
-				
-			</script>
 			<script type="text/javascript">
 			var options = {
 					  debug: 'info',
@@ -142,12 +118,36 @@ body {
 					  theme: 'snow'
 					};
 			var quillContents = new Quill('#quillContents', options);
+			 
+			$(document).ready(function () {
+				quillContents.updateContents(${board.getB_content()});
+			});
 			
+			$('#submit').click(function() {
+				var contents = quillContents.getContents();
+				var jsonContents =JSON.stringify(contents);
+				
+				$.ajax({
+					type : 'post',
+					url : '/pumpkinplace/board/insert/',
+					headers : {
+						'Content-Type' : 'application/json',
+						'X-HTTP-Method-Override' : 'post'
+					},//요청해더
+					data : JSON.stringify({//오브 잭트를 문자열로 변환
+						'b_section' : "${urlNo}", // 제형이가 전달할 섹션 넘버 
+						'b_title' : $('#title').val(),
+						'b_id' : "${loginId}",
+						'b_content' :jsonContents
+					}), //서버로 보낼 JSON 객체문자열
+					success : function(result) {
+						location = '/pumpkinplace/board/detail?page=1&numsPerPage=10&b_no='+ ${board.b_no} + '&urlNo=' +  ${urlNo};
+					}
+				});
+			
+			});
 			</script>
-			<script
-				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&callback=myMap"></script>
-
-		</footer>
+			
 
 
 		<%@ include file="/WEB-INF/views/footer.jspf"%>
