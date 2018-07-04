@@ -1,7 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,23 +10,7 @@
 <title>Pumk</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<!-- 부트스트랩 -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery.min.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 
-
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery-1.12.4.js"></script>
-<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style>
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
@@ -103,9 +88,6 @@ body {
 	height: 400px;
 }
 
-#infowindow-content {
-	display: none;
-}
 
 #map #infowindow-content {
 	display: inline;
@@ -119,7 +101,6 @@ body {
 	</h5>
 
 	<%@ include file="/WEB-INF/views/header.jspf"%>
-
 
 	<br />
 
@@ -139,7 +120,7 @@ body {
 						<div class="row">
 							<div class="col-md-6">
 								<div class="col align-self-end" style="margin-left: 5%;">
-									<div style="font-size: 15px; margin-left: 25%;">
+									<div style="font-size: 15px; margin-left: 15%;">
 
 										<b>공연 포스터</b> <input type='file' id="imgInp" name="uploadFile" />
 
@@ -148,20 +129,19 @@ body {
 										<p>
 											<small>공연을 위한 포스터를 업로드해주세요. 그렇지 않을 경우 대체 이미지가 사용됩니다.</small>
 										</p>
- 
+
 
 										<br /> <img id="blah" src="#" alt="" width="570px;"
-											height="796px;" /> <br />
-										<br />
+											height="796px;" /> <br /> <br />
 
 										<!-- 사진 저장 -->
 										<script>
-				$(document).ready(function() {
-			if (${not empty saved}) {
-				alert('${saved}' + 'SAVED');
-			}
-				});
-			</script>
+            $(document).ready(function() {
+         if (${not empty saved}) {
+            alert('${saved}' + 'SAVED');
+         }
+            });
+         </script>
 										<!-- 사진저장 -->
 
 										<!-- 사진 미리보기 -->
@@ -196,20 +176,23 @@ body {
 											placeholder="YouTube 링크를 입력해주세요" />
 										</label> <br /> <br />
 									</div>
-									<div style="width: 570px; margin-left: 25%;">
+									<div style="width: 570px; margin-left: 15%;">
 										<iframe width="560" height="315"
 											src="https://www.youtube.com/embed/mp17vqua5MU"
 											frameborder="0" allow="autoplay; encrypted-media"
 											allowfullscreen></iframe>
 									</div>
+									
+									<br/>
+									<br/>
 									<script>
-										
-							jQuery(document).ready(
-									function($) {
-										$('iframe[src^="https://www.youtube.com/"]').wrap(
-										'<div class="youtubeWrap"></div>');
-									});
-								</script>
+                              
+                     jQuery(document).ready(
+                           function($) {
+                              $('iframe[src^="https://www.youtube.com/"]').wrap(
+                              '<div class="youtubeWrap"></div>');
+                           });
+                        </script>
 
 								</div>
 							</div>
@@ -236,29 +219,36 @@ body {
 									</div>
 
 									<div id="en_daytime">
-										<label for="event_공연 날짜">공연 날짜 / 시간:<br /> <input type="text" id="startdate" placeholder="공연 시작 날짜 선택" />
-											<input type="text" name="starttime" value=""
-											placeholder="시간 입력" id="time1" required size="8"
-											maxlength="5"> ~ <input type="text" id="enddate"
-											placeholder="공연 종료 날짜 선택" required /> <input type="text"
-											name="time2" value="" placeholder="시간 입력" id="endtime"
-											required size="8" maxlength="5"></label>
+										<label for="event_공연 날짜">공연 날짜 / 시간:<br /> <input
+											type="text" id="startdate" placeholder="공연 시작 날짜 선택" /> <input
+											type="text" name="starttime" value="" placeholder="시간 입력"
+											id="endtime" required size="10" maxlength="5">~ <input
+											type="text" id="enddate" placeholder="공연 종료 날짜 선택" required />
+											<input type="text" name="time2" value="" placeholder="시간 입력"
+											id="endtime" required size="10" maxlength="5"></label>
 									</div>
 									<br />
 
 
 
 
+									<script type="text/javascript">
 
+
+
+									$('#starttime, #endtime').timepicker({ 'scrollDefault': 'now' });
+								
+								
+									</script>
 
 									<!-- 날짜 선택 -->
 									<script>
-							$(function() {
-							$("#startdate, #enddate").datepicker({
-								dateFormat : 'yy.mm.dd'
-									});
-													});
-						</script>
+                     $(function() {
+                     $("#startdate, #enddate").datepicker({
+                        dateFormat : 'yy.mm.dd'
+                           });
+                                       });
+                  </script>
 
 
 
@@ -282,6 +272,8 @@ body {
 
 
 
+
+
 									<!-- 공연장 -->
 
 
@@ -290,7 +282,7 @@ body {
 											placeholder="Enter a location">
 										<div id="map"></div>
 										<div id="infowindow-content">
-											<span id="place-name" class="title"></span><br> Place ID
+											<span id="place-name" class="title"></span><br> 
 											<span id="place-id"></span><br> <span id="place-address"></span>
 										</div>
 										<br />
@@ -350,7 +342,10 @@ body {
           });
         });
       }
+      
     </script>
+
+
 										<script
 											src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&libraries=places&callback=initMap"
 											async defer></script>
@@ -440,9 +435,8 @@ body {
 
 
 
-<%@ include file="/WEB-INF/views/footer.jspf"%>
+
 
 </html>
-
 
 

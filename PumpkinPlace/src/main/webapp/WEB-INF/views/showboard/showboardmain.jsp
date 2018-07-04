@@ -27,12 +27,8 @@
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 
-<!-- datepicker -->
-<link
-	href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css"
-	rel="stylesheet">
-<link rel="stylesheet" type="text/css" media="screen"
-	href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+
+
 <style>
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
@@ -74,35 +70,41 @@ body {
 	</h5>
 	<%@ include file="/WEB-INF/views/header.jspf"%>
 	<br />
+	
+	
 	<!-- 가운데 정렬 -->
 	<div class="container text-center">
+
+
+
 		<div class="tab-content">
-			<div>
-			<form action="showboardsearch"
-				style="float: right; margin-bottom: 50px;">
-				<div id="datetimepicker4" class="input-append date">
-					<input type="text" placeholder="공연 날짜 선택"></input> <span
-						class="add-on"> <i data-time-icon="icon-time"
-						data-date-icon="icon-calendar"></i>
-					</span> <input type="submit" value="검색" />
-				</div>
-				<div class="tab-content">
-			<input type="submit" value="검색" />
-			</div>
+			<form action="showboardsearch" style="float: right;">
+				<input type="text" id="startdate" placeholder="공연 날짜 선택"> <input
+					type="submit" value="Search" />
 			</form>
-			</div>
-		</div>
-		
-		<div>
+			<br /> <br />
 			<!-- 검색창 -->
 			<form action="showboardsearch"
-				style="float: right; margin-bottom: 50px;">
+				style="float: right;  margin-bottom: 50px;">
+
 				<input type="text" name="searchKeyword" placeholder="검색어 입력"
-					required /> <input type="submit" value="검색" />
+					required /> <input type="submit" value="Search" />
 			</form>
-		</div>
+			</div>
+	
+	
+	
 		
 	</div>
+
+
+										<script>
+                     $(function() {
+                     $("#startdate, #enddate").datepicker({
+                        dateFormat : 'yy.mm.dd'
+                           });
+                                       });
+                  </script>
 
 	<!-- 바디부분 -->
 
@@ -114,16 +116,9 @@ body {
 						<div class="col-md-3">
 							<a class="table-title-link" href="${showboard.sb_no}"> <img
 								alt="Bootstrap Image Preview"
-
-								src="${pageContext.request.contextPath}/resources/images/showboard/${showboard.sb_img}"
+								src="${pageContext.request.contextPath}/resources/assets/img/showboard/${showboard.sb_img}"
 								style="width: 228px; height: 280px;" />
 							</a> <label class="table-title-link" href="${showboard.sb_no}">
-
-								src="${pageContext.request.contextPath}/resources/assets/img/showboard/${showboard.sb_img}" 
-								 style="width: 228px; height: 280px;"
-								 />
-							 <label class="table-title-link" href="${showboard.sb_no}">
-
 								<div class="card">
 									<h5 class="card-header">
 										<b>${showboard.sb_title}</b>
@@ -136,7 +131,6 @@ body {
 									<div class="card-footer">${startdate}</div>
 								</div>
 							</label>
-							</a>
 						</div>
 					</c:forEach>
 				</div>
@@ -208,29 +202,6 @@ body {
 			});
 		});
 	</script>
-
-
-	<!-- datepicker -->
-	<script type="text/javascript"
-		src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
-		
-	</script>
-
-	<script type="text/javascript"
-		src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
-		
-	</script>
-	<script type="text/javascript"
-		src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
-		
-	</script>
-	<script type="text/javascript">
-		$('#datetimepicker4').datetimepicker({
-			format : 'yyyy/MM/dd',
-			pickTime : false
-		});
-	</script>
-
 
 
 
