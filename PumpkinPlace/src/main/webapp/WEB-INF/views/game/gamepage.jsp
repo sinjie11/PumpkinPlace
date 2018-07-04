@@ -13,7 +13,7 @@
 
 	<canvas id="canvas" width="1440" height="2960"></canvas>
 	<script>
-		/* Init *///asd
+		/* Init */ //asd
 		var run = "main";
 		var resources = "${pageContext.request.contextPath}/resources/images/";
 		var png = ".png";
@@ -33,8 +33,11 @@
 		var thermometerSpeed = 0.25;
 		var isPressed = false;
 		var buy_State = false;
-		var use_coin = 0; 
-			
+		var use_coin = 0;
+		var buff_Cnt = 0;
+		var buff_time = false;
+		var player_costume = 0;
+	
 		var bg = new Image();
 		var title = new Image();
 		var player = new Image();
@@ -44,7 +47,7 @@
 		var shop = new Image();
 		var shopmenu = new Image();
 		var upgrade = new Image();
-		var buff = new Image();
+		var btn_buff = new Image();
 		var gauge = new Image();
 		var sot = new Image();
 		var thermometer1 = new Image();
@@ -59,8 +62,10 @@
 		var end = new Image();
 		var btn_Buy = new Image();
 		var btn_character = new Image();
+		var show_item = new Image();
 		var select_item = "init_item";
-		
+		var select_view = "init_item";
+	
 		/*
 		Setting Images
 		*/
@@ -73,7 +78,7 @@
 		tent.src = resources + "tent" + png; // Tent Image
 		player.src = resources + "player1" + png; // Player Image
 		upgrade.src = resources + "upgrade1" + png; // updgrade Image
-		buff.src = resources + "buff1" + png; // buff Image
+		btn_buff.src = resources + "buff_Disabled" + png; // buff Image
 		gauge.src = resources + "gauge" + png; // Gauge Image
 		sot.src = resources + "sot" + png; // Sot Image
 		thermometer1.src = resources + "thermometer1" + png;
@@ -90,7 +95,7 @@
 		shopmenu.src = resources + "shopmenu" + png;
 		btn_Buy.src = resources + "btn_BuyUp" + png;
 		btn_character.src = resources + select_item + png;
-	
+		show_item.src = resources + select_view + png;
 		/*
 		FrameWork
 		*/
@@ -116,6 +121,22 @@
 		function init() {
 			cvs.clientWidth = window.innerWidth;
 			cvs.clientHeight = window.innerHeight;
+			shopRun = false;
+			coinText = 0;
+			scoreText = 0;
+			clickX = 0;
+			clickY = 0;
+			dir = -1;
+			speed = 1;
+			pickY = 1900;
+			fanX = 460;
+			thermometerY = 650;
+			thermometerSize = -90; //MAX = 400;
+			thermometerSpeed = 0.25;
+			isPressed = false;
+			buy_State = false;
+			use_coin = 0;
+			buff_Cnt = 0;
 			ctx.clearRect(0, 0, 1440, 2960);
 			bg.src = resources + "bg" + png; // BackGround Image
 			title.src = resources + "title" + png;
@@ -124,7 +145,7 @@
 			tent.src = resources + "tent" + png; // Tent Image
 			player.src = resources + "player1" + png; // Player Image
 			upgrade.src = resources + "upgrade1" + png; // updgrade Image
-			buff.src = resources + "buff1" + png; // buff Image
+			btn_buff.src = resources + "buff_Disabled" + png; // buff Image
 			gauge.src = resources + "gauge" + png; // Gauge Image
 			sot.src = resources + "sot" + png; // Sot Image
 			thermometer1.src = resources + "thermometer1" + png;
@@ -141,6 +162,7 @@
 			shopmenu.src = resources + "shopmenu" + png;
 			btn_Buy.src = resources + "btn_BuyUp" + png;
 			btn_character.src = resources + select_item + png;
+			show_item.src = resources + select_view + png;
 		}
 	
 		function doInterval(action, event) {
@@ -159,7 +181,12 @@
 				console.log("upgrade out");
 			}
 			if (event.offsetX <= 330 && event.offsetX >= 630 && event.offsetY <= 2620 && event.offsetY >= 2900) {
-				buff.src = resources + "buff2" + png;
+				if (buff_Cnt >= 1) {
+					btn_buff.src = resources + "buff_Up" + png;
+	
+				} else {
+					btn_buff.src = resources + "buff_Disabled" + png;
+				}
 				console.log("buff out");
 			}
 		}
@@ -168,97 +195,131 @@
 			if (run == "run") {
 				console.log("mouse up");
 				upgrade.src = resources + "upgrade1" + png;
-				buff.src = resources + "buff1" + png;
 				btn_Buy.src = resources + "btn_BuyUp" + png;
-				if (event.offsetX >= 544 && event.offsetX <= 894 && event.offsetY >= 1032 && event.offsetY <= 1132) {
-					console.log(buy_State);
-					if(use_coin == 0){
-						alert("선택 바람");
+				if (event.offsetX <= 330 && event.offsetX >= 630 && event.offsetY <= 2620 && event.offsetY >= 2900) {
+					if (buff_Cnt >= 1) {
+						btn_buff.src = resources + "buff_Up" + png;
+						buff_time = true;
+						buff_Cnt--;
+						console.log("buff_cnt -- : ", buff_Cnt);
+					} else {
+						btn_buff.src = resources + "buff_Disabled" + png;
 					}
-					else if(coinText.valueOf() >= use_coin){
-						coinText -= use_coin;
-						alert("아이템 구입 성공" + coinText);
-						
-					}
-					else{
-						alert("코인 부족");
-					}
-					//requestAnimationFrame(draw);
 				}
+	
 			}
 			// Item Shop Select Button
 			if (shopRun) {
+	
+				if (event.offsetX >= 544 && event.offsetX <= 894 && event.offsetY >= 1032 && event.offsetY <= 1132) {
+					console.log(buy_State);
+					if (use_coin == 0) {
+						alert("선택 바람");
+					} else if (coinText.valueOf() >= use_coin) {
+						coinText -= use_coin;
+						console.log("select_item : " + select_item);
+						switch (select_item) {
+						case "detail_item_hood":
+							player_costume = 1;
+							break;
+						case "detail_item_santa":
+							player_costume = 2;
+							break;
+						case "detail_buff":
+							buff_Cnt++;
+							console.log("buff_Cnt : " + buff_Cnt);
+							/* ctx.clearRect(0, 0, 1440, 2960); */
+							requestAnimationFrame(draw);
+							break;
+						}
+						alert("아이템 구입 성공" + coinText);
+	
+					} else {
+						alert("코인 부족");
+					}
+				//requestAnimationFrame(draw);
+				}
 				// Shop Close
-				use_coin = 0;
 				if ((event.offsetX >= 1100 && event.offsetX <= 1200 && event.offsetY >= 550 && event.offsetY <= 650) ||
 					(event.offsetX <= 245 && event.offsetX >= 1195 && event.offsetY <= 530 && event.offsetY >= 2430)) {
 					console.log("shopRun false");
 					shopRun = false;
 					select_item = "init_item";
+					select_view = "init_item";
 				}
 				// Item Select
 				if( (event.offsetX >= 284 && event.offsetX <= 484 && event.offsetY >= 1264 && event.offsetY <= 1464) ) {
 					select_item = "detail_character_peulodo";
+					select_view = "character_peulodo";
 					use_coin = 150;
 					console.log("detail_character_peulodo");
 					console.log(btn_character.src);
 				}
 				if( (event.offsetX >= 508 && event.offsetX <= 708 && event.offsetY >= 1268 && event.offsetY <= 1464) ) {
 					select_item = "detail_character_jeiji";
+					select_view = "character_jeiji";
 					use_coin = 500;
 					console.log("detail_character_jeiji");
 					console.log(btn_character.src);
 				}
 				if( (event.offsetX >= 730 && event.offsetX <= 932 && event.offsetY >= 1268 && event.offsetY <= 1464) ) {
 					select_item = "detail_character_eopichi";
+					select_view = "character_eopichi";
 					use_coin = 1200;
 					console.log("detail_character_eopichi");
 					console.log(btn_character.src);
 				}
 				if( (event.offsetX >= 950 && event.offsetX <= 1154 && event.offsetY >= 1268 && event.offsetY <= 1464) ) {
 					select_item = "detail_character_mujicon";
+					select_view = "character_mujicon";
 					use_coin = 2000;
 					console.log("detail_character_mujicon");
 					console.log(btn_character.src);
 				}
 				if( (event.offsetX >= 284 && event.offsetX <= 488 && event.offsetY >= 2182 && event.offsetY <= 2382) ) {
 					select_item = "detail_buff";
+					select_view = "view_buff";
 					use_coin = 300;
 					console.log("detail_buff");
 					console.log(btn_character.src);
 				}
 				if( (event.offsetX >= 284 && event.offsetX <= 488 && event.offsetY >= 1610 && event.offsetY <= 1812) ) {
-					use_coin = 500;
 					select_item = "detail_item_sheep_pot";
+					select_view = "view_sheep_pot";
+					use_coin = 500;
 					console.log("detail_item_sheep_pot");
 					console.log(btn_character.src);
 				}
 				if( (event.offsetX >= 618 && event.offsetX <= 820 && event.offsetY >= 1610 && event.offsetY <= 1812) ) {
-					use_coin = 200;
 					select_item = "detail_item_gita";
+					select_view = "view_gita";
+					use_coin = 200;
 					console.log("detail_item_gita");
 					console.log(btn_character.src);
 				}
 				if( (event.offsetX >= 618 && event.offsetX <= 820 && event.offsetY >= 1832 && event.offsetY <= 2034) ) {
-					use_coin = 200;
 					select_item = "detail_tiem_fish";
+					select_view = "view_fish";
+					use_coin = 200;
 					console.log("detail_tiem_fish");
 					console.log(btn_character.src);
 				}
 				if( (event.offsetX >= 952 && event.offsetX <= 1156 && event.offsetY >= 1610 && event.offsetY <= 1812) ) {
-					use_coin = 300;
 					select_item = "detail_item_hood";
+					select_view = "view_hood";
+					use_coin = 300;
 					console.log("detail_item_hood");
 					console.log(btn_character.src);
 				}
 				if( (event.offsetX >= 952 && event.offsetX <= 1156 && event.offsetY >= 1832 && event.offsetY <= 2034) ) {
-					use_coin = 300;
 					select_item = "detail_item_santa";
+					select_view = "view_santa";
+					use_coin = 300;
 					console.log("detail_item_santa");
 					console.log(btn_character.src);
 				}
 				btn_character.src = resources + select_item + png;
-	
+				show_item.src = resources + select_view + png;
 	
 			}
 			console.log("event.offsetX : " + event.offsetX);
@@ -276,16 +337,34 @@
 				}
 				if (event.offsetX >= 330 && event.offsetX <= 630 && event.offsetY >= 2620 && event.offsetY <= 2900) {
 					console.log("run buff down");
-					buff.src = resources + "buff2" + png;
+					if (buff_Cnt >= 1) {
+						btn_buff.src = resources + "buff_Down" + png;
+					} else {
+						btn_buff.src = resources + "buff_Disabled" + png;
+					}
 				}
 				if (!shopRun) {
 					if (event.offsetX >= 840 && event.offsetX <= 1640 && event.offsetY >= 1900 && event.offsetY <= 2680) {
-						console.log("player click");
-						player.src = resources + "player2" + png; // Player Image
+						console.log("player click & player_costume : " + player_costume);
+						switch(player_costume){
+						case 0 :
+							console.log("player_costume : " + player_costume);
+							player.src = resources + "player2" + png; // Player Image
+							break;
+						case 1 :
+							console.log("player_costume : " + player_costume);
+							player.src = resources + "player_hood2" + png; // Player Image
+							break;
+						case 2 :
+							console.log("player_costume : " + player_costume);
+							player.src = resources + "player_santa2" + png; // Player Image
+							break;
+						}
+						//player.src = resources + "player2" + png; // Player Image
 						fan.src = resources + "fan2" + png;
 						fire.src = resources + "fire2" + png;
-						fanX = 1000;
-						//pickY = 1900;
+						fanX = 1000; //pickY = 1900;
+						
 						scoreText += 100;
 						//TODO 코인 태스트
 						coinText += 1000;
@@ -297,7 +376,18 @@
 						}, 50);
 						setTimeout(function() {
 							fan.src = resources + "fan1" + png;
-							player.src = resources + "player1" + png; // Player Image
+							switch(player_costume){
+							case 0 :
+								player.src = resources + "player1" + png; // Player Image
+								break;
+							case 1 :
+								player.src = resources + "player_hood1" + png; // Player Image
+								break;
+							case 2 :
+								player.src = resources + "player_santa1" + png; // Player Image
+								break;
+							}
+							//player.src = resources + "player1" + png; // Player Image
 							fire.src = resources + "fire1" + png;
 							fanX = 460;
 						}, 100);
@@ -326,6 +416,7 @@
 				if (event.offsetX >= 135 && event.offsetX <= 535 && event.offsetY >= 2280 && event.offsetY <= 2480) {
 					console.log("shop click");
 					shopRun = true;
+					use_coin = 0;
 				}
 			}
 		}
@@ -349,15 +440,21 @@
 		*/
 		// 자동 코인 증가 합수
 		setInterval(function() {
-			if (run == "run") {
+			if (run == "run" && !shopRun) {
 				console.log("BaseCoin Up");
-				coinText += 1000;
+				if (buff_time) {
+					coinText += 2000;
+					console.log("Buff On");
+				} else {
+					coinText += 1000;
+					console.log("Buff Off");
+				}
 			}
-		}, 30000);
+		}, 1000);
 		// 속도 증가
 		setInterval(function() {
 			if (run == "run" && !shopRun) {
-				console.log("speedUp : " + thermometerSpeed);
+				//console.log("speedUp : " + thermometerSpeed);
 				thermometerSpeed += 0.00001;
 			}
 		}, 1000);
@@ -386,7 +483,7 @@
 			}
 			if (run == "run") {
 				//coin Text
-
+	
 				if (!shopRun) {
 					/* 	speed += dir;
 						pickY += dir; */
@@ -403,7 +500,7 @@
 					ctx.drawImage(tent, -200, 1900, 900, 600); // Draw Tent
 					ctx.drawImage(shop, 120, 2200);
 					ctx.drawImage(upgrade, 20, 2610); // Draw updgrade
-					ctx.drawImage(buff, 330, 2610); // Draw Btn2
+					ctx.drawImage(btn_buff, 330, 2610); // Draw Btn2
 					ctx.drawImage(gauge, -60, 820); // Draw Gauge
 					ctx.drawImage(pick, 100, pickY);
 	
@@ -412,6 +509,17 @@
 					ctx.drawImage(thermometer2, 705, thermometerY);
 					ctx.drawImage(thermometer1, 632, 320);
 					ctx.drawImage(fan, fanX, 1890);
+					switch(player_costume){
+					case 0 :
+						player.src = resources + "player1" + png; // Player Image
+						break;
+					case 1 :
+						player.src = resources + "player_hood1" + png; // Player Image
+						break;
+					case 2 :
+						player.src = resources + "player_santa1" + png; // Player Image
+						break;
+					}
 					ctx.drawImage(player, 640, 1900); // Draw Player
 				//if (pickY >= 1900) {
 				//	console.log("pickY Low = " + pickY);
@@ -434,6 +542,12 @@
 					coinText += 10000;
 					pickY = 1900;
 				}
+				ctx.font = "160px a전자시계 보통";
+				ctx.fillText(coinText, 320, 450);
+				ctx.font = "160px a로케트 보통";
+				ctx.fillText(scoreText, 860, 2800);
+				ctx.font = "160px a로케트 보통";
+				ctx.fillText(buff_Cnt, 660, 2800);
 				if (shopRun) {
 					ctx.drawImage(shopmenu, 245, 530);
 					ctx.drawImage(btn_Buy, 544, 1032);
@@ -457,37 +571,38 @@
 													break;
 												} */
 						ctx.drawImage(btn_character, 801, 651);
+						ctx.drawImage(show_item, 289, 652);
 	
-/* 						if (!buy_State) {
-							alert("아이템 구임?");
-						} */
+					/* 						if (!buy_State) {
+												alert("아이템 구임?");
+											} */
 					}
 				} else {
 					select_item = "init_item";
+					select_view = "init_item";
 				}
-				ctx.font = "160px a전자시계 보통";
-				ctx.fillText(coinText, 320, 450);
-				ctx.font = "160px a로케트 보통";
-				ctx.fillText(scoreText, 860, 2800);
+	
 			}
 			if (run == "end") {
-				init();
 				ctx.clearRect(0, 0, 1440, 2960);
-				ctx.drawImage(bg, 0, 0); // Draw BackGround
-				ctx.drawImage(end, 520, 1780);
-				shopRun = false;
-				coinText = 0;
-				scoreText = 0;
-				clickX = 0;
-				clickY = 0;
-				dir = -1;
-				speed = 1;
-				pickY = 1900;
-				fanX = 460;
-				thermometerY = 650;
-				thermometerSize = -90; //MAX = 400;
-				thermometerSpeed = 0.25;
-				console.log("end");
+				init();
+			/* asdasd
+							ctx.drawImage(bg, 0, 0); // Draw BackGround
+							ctx.drawImage(end, 520, 1780);
+							shopRun = false;
+							coinText = 0;
+							scoreText = 0;
+							clickX = 0;
+							clickY = 0;
+							dir = -1;
+							speed = 1;
+							pickY = 1900;
+							fanX = 460;
+							thermometerY = 650;
+							thermometerSize = -90; //MAX = 400;
+							thermometerSpeed = 0.25;
+							console.log("end");
+			 */
 			}
 			requestAnimationFrame(draw);
 		}
