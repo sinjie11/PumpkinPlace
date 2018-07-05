@@ -92,8 +92,8 @@ body {
 }
 
 #map {
-	width: 500px;
-	height: 600px;
+	width: 600px;
+	height: 550px;
 }
 
 #infowindow-content {
@@ -262,7 +262,7 @@ body {
 									<script type="text/javascript">
 
     
-    
+									<!-- 시간 -->    
     $("#starttime, #endtime").timepicker({
         timeFormat: 'HH:mm ',
         interval: 30,
@@ -316,7 +316,7 @@ body {
 										<div id="map"></div>
 										<div id="infowindow-content">
 											<span id="place-name" class="title"><br/></span><br>
-											<span id="place-id" style="visibility: hidden;"></span><br> <span id="place-address">
+											<span id="place-id" ></span><br> <span id="place-address">
 											<br/></span>
 										</div>
 										<br />
@@ -328,7 +328,7 @@ body {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 37.498145, lng: 127.027612},
           
-       
+      
           zoom: 16
         });
 
@@ -358,7 +358,12 @@ body {
           if (!place.place_id) {
             return;
           }
+          
+          
+          
           geocoder.geocode({'placeId': place.place_id}, function(results, status) {
+        	  
+        	  
 
             if (status !== 'OK') {
               window.alert('Geocoder failed due to: ' + status);
@@ -376,6 +381,10 @@ body {
             infowindowContent.children['place-id'].textContent = place.place_id;
             infowindowContent.children['place-address'].textContent =
                 results[0].formatted_address;
+            
+            
+            
+            
             infowindow.open(map, marker);
           });
         });

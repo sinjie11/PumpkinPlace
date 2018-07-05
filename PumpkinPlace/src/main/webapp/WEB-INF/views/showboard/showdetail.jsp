@@ -75,18 +75,7 @@ td, h5 {
 	bold;
 }
 
-#map {
-	width: 500px;
-	height: 400px;
-}
 
-#infowindow-content {
-	display: none;
-}
-
-#map #infowindow-content {
-	display: inline;
-}
 </style>
 </head>
 <body>
@@ -167,99 +156,66 @@ td, h5 {
 							<br />
 
 
-							<!-- Add Google Maps -->
+							<script type="text/javascript">
+							function initMap() {
+								  // jQuery('.site-content').prepend('<div id=\"map-container\"><div id=\"map-canvas\"></div></div>');
 
+								  var request = {
+								    placeId: 'ChIJwRvyh8SYfDURcCKVXGVMYUA'
+								  };
 
-							<script>
-								// This example requires the Places library. Include the libraries=places
-								// parameter when you first load the API. For example:
-								// <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+								  function callback(place, status) {
+								    if (status == google.maps.places.PlacesServiceStatus.OK) {
+								      var marker = new google.maps.Marker({
+								        map: map,
+								        position: place.geometry.location
+								      });
+								      map.setCenter(marker.getPosition());
+								    }
+								  }
 
-								function initMap() {
-									var map = new google.maps.Map(document
-											.getElementById('map'), {
-										center : {
-											lat : 37.498145,
-											lng : 127.027612
-											
+								  var map = new google.maps.Map(document.getElementById('map-canvas'), {
+								    zoom: 15
+								  });
 
-
-											
-										},
-										zoom : 15
-									});
-
-									var infowindow = new google.maps.InfoWindow();
-									var service = new google.maps.places.PlacesService(
-											map);
-
-									service
-											.getDetails(
-													{
-														placeId : 'ChIJKxs2jFmhfDURPP--kvKavw0'
-													},
-													function(place, status) {
-														if (status === google.maps.places.PlacesServiceStatus.OK) {
-															var marker = new google.maps.Marker(
-																	{
-																		map : map,
-																		position : place.geometry.location
-																	});
-															google.maps.event
-																	.addListener(
-																			marker,
-																			'click',
-																			function() {
-																				infowindow
-																						.setContent('<div><strong>'
-																								+ place.name
-																								+ '</strong><br>'
-																								+ 'Place ID: '
-																								+ place.place_id
-																								+ '<br>'
-																								+ place.formatted_address
-																								+ '</div>');
-																				infowindow
-																						.open(
-																								map,
-																								this);
-																			});
-														}
-													});
+								  service = new google.maps.places.PlacesService(map);
+								  service.getDetails(request, callback);
 								}
+								google.maps.event.addDomListener(window,'load',initializeGoogleMaps);
 							</script>
 
-							<div id="map" style="height: 400px; width:500px;"></div>
+							<div id="map-canvas" style="height: 500px; width: 500px;"></div></div>
 							<script async defer
 								src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&libraries=places&callback=initMap">
 								
 							</script>
+							
+							
+							<br />
 
+
+							<button style="size: small; margin-left: 50%;">수정하기(작성자만
+								보이기 위치는 어디로 할까요?)</button>
 						</div>
-						<br />
-						<button style="size: small; margin-left: 50%;">수정하기(작성자만
-							보이기 위치는 어디로 할까요?)</button>
 					</div>
 				</div>
 			</div>
+
 		</div>
 
-	</div>
+		<br />
+		<div class="container text-center">
+			<iframe width="560" height="315"
+				src="https://www.youtube.com/embed/${showboard.sb_video}"
+				frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+		</div>
+		<br />
 
-	<br />
-	<div class="container text-center">
-		<iframe width="560" height="315"
-			src="https://www.youtube.com/embed/${showboard.sb_video}"
-			frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-	</div>
-	<br />
-
-
+</div>
 
 
 
-	<%@ include file="/WEB-INF/views/footer.jspf"%>
-
+		<%@ include file="/WEB-INF/views/footer.jspf"%>
 </body>
 
 </html>
