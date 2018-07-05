@@ -26,9 +26,9 @@
 	</select>
 
 	<select id="selectBySectionNo" resultType="Board">
-		select b.b_section,
+		select 
 		b.b_no, b.b_title,
-		b.b_content, b.b_id, b.b_regdate,
+		 b.b_id, b.b_regdate,
 		b.b_readcnt
 		from (
 		select rownum rn, a.*
@@ -46,9 +46,9 @@
 
 	<select id="selectAllBySectionNo11" resultType="Board">
 		select
-		b.b_section,
+
 		b.b_no, b.b_title,
-		b.b_content, b.b_id, b.b_regdate,
+		b.b_id, b.b_regdate,
 		b.b_readcnt
 		from (
 		select rownum rn, a.*
@@ -66,9 +66,9 @@
 
 	<select id="selectAllBySectionNo12" resultType="Board">
 		select
-		b.b_section,
+
 		b.b_no, b.b_title,
-		b.b_content, b.b_id, b.b_regdate,
+		b.b_id, b.b_regdate,
 		b.b_readcnt
 		from (
 		select rownum rn, a.*
@@ -89,7 +89,7 @@
 
 	<select id="selectBySectionNo1" resultType="Board">
 		select b.b_no,
-		b.b_title, b.b_content, b.b_id, b.b_regdate
+		b.b_title, b.b_id, b.b_regdate
 		from (
 		select
 		rownum rn, a.*
@@ -104,7 +104,7 @@
 
 	<select id="selectBySectionNo11" resultType="Board">
 		select b.b_no,
-		b.b_title, b.b_content, b.b_id, b.b_regdate
+		b.b_title, b.b_id, b.b_regdate
 		from (
 		select
 		rownum rn, a.*
@@ -120,7 +120,7 @@
 
 	<select id="selectBySectionNo12" resultType="Board">
 		select b.b_no,
-		b.b_title, b.b_content, b.b_id, b.b_regdate
+		b.b_title, b.b_id, b.b_regdate
 		from (
 		select
 		rownum rn, a.*

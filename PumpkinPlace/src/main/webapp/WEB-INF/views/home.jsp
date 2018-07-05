@@ -93,7 +93,7 @@ body {
          <div class="row">
             <div class="col-md-4">
                <p class="text-left" style="font-size: medium;">
-                  <b>자유 게시판</b> <a href="/pumpkinplace/board/list?urlNo=1"
+                  <b>자유 게시판 "최신 5"</b> <a href="/pumpkinplace/board/list?urlNo=1"
                      style="float: right">more</a>
                </p>
                
@@ -125,7 +125,7 @@ body {
             <!-- 구인구직 -->
             <div class="col-md-4">
                <p class="text-left" style="font-size: medium;">
-                  <b>구인구직</b> <a href="/pumpkinplace/board/list?urlNo=11" style="float: right">more</a>
+                  <b>구인구직 "최신 5"</b> <a href="/pumpkinplace/board/list?urlNo=11" style="float: right">more</a>
                </p>
                <table class="table">
                    <thead>
@@ -154,7 +154,7 @@ body {
             <!-- 중고거래 -->
             <div class="col-md-4">
                <p class="text-left" style="font-size: medium;">
-                  <b>중고 거래</b> <a href="/pumpkinplace/board/list?urlNo=12" style="float: right">more</a>
+                  <b>중고 거래 "최신 5"</b> <a href="/pumpkinplace/board/list?urlNo=12" style="float: right">more</a>
                </p>
                <table class="table">
                   <thead>
