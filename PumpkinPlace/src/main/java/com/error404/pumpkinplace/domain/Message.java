@@ -9,12 +9,11 @@ public class Message {
 	private String mem_id2; // 쪽지 수신 아이디
 	private String msg_content; // 쪽지 내용
 	private Date msg_regdate; // 쪽지 작성 일자
-	private Boolean msg_confirm; // 쪽지 수신 여부
+	private int msg_confirm; // 쪽지 수신 여부 (0: 읽지않음, 0이외 값: 읽음)
 	
 	public Message() {}
 
-	public Message(int msg_no, String mem_id, String mem_id2, String msg_content, Date msg_regdate,
-			Boolean msg_confirm) {
+	public Message(int msg_no, String mem_id, String mem_id2, String msg_content, Date msg_regdate, int msg_confirm) {
 		
 		this.msg_no = msg_no;
 		this.mem_id = mem_id;
@@ -64,13 +63,12 @@ public class Message {
 		this.msg_regdate = msg_regdate;
 	}
 
-	public Boolean getMsg_confirm() {
+	public int getMsg_confirm() {
 		return msg_confirm;
 	}
 
-	public void setMsg_confirm(Boolean msg_confirm) {
+	public void setMsg_confirm(int msg_confirm) {
 		this.msg_confirm = msg_confirm;
 	}
-	
-	
+
 } // end class Message

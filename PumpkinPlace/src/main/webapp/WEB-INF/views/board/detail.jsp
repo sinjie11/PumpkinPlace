@@ -62,10 +62,10 @@ body {
 
 	<div class="container text-center">
 		<h1>${board.b_title}</h1>
-
-		<div id="quillContents"></div>
-		<button id="update">수정</button>
+		
+		<button id="update" style="margin-left: 1000px;">수정</button>
 		<button id="backList">목록</button>
+		<div id="quillContents"></div>		
 		<button id="boardUp">up ${board.b_up}</button>
 		<button id="boardDown">down ${board.b_down}</button>
 
@@ -76,8 +76,11 @@ body {
 		<br> <br> <br> <br>
 		<c:if test="${loginId eq board.b_id}">
 			<div style="text-align: right;">
-				<button id="update2">수정</button>
 				<button>삭제</button>
+			</div>
+			<div>
+				<button>이전 글</button>
+				<button>다음 글</button>
 			</div>
 		</c:if>
 		
