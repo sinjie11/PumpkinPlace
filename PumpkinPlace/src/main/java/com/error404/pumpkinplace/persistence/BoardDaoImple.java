@@ -89,6 +89,18 @@ public class BoardDaoImple implements BoardDao {
 	}
 
 	@Override
+	public List<Board> selectAllBySectionNo11(PaginationCriteria criteria) {
+		logger.info("selectAllBySectionNo11 호출");
+		return sqlSession.selectList(NAMESPACE + ".selectAllBySectionNo11", criteria);
+	}
+	
+	@Override
+	public List<Board> selectAllBySectionNo12(PaginationCriteria criteria) {
+		logger.info("selectAllBySectionNo12 호출");
+		return sqlSession.selectList(NAMESPACE + ".selectAllBySectionNo12", criteria);
+	}
+	
+	@Override
 	public List<Board> selectBySectionNo1() {
 		logger.info("selectBySectionNo1 호출");
 		return sqlSession.selectList(NAMESPACE + ".selectBySectionNo1");
@@ -96,13 +108,13 @@ public class BoardDaoImple implements BoardDao {
 	
 	@Override
 	public List<Board> selectBySectionNo11() {
-		logger.info("selectBySectionNo1 호출");
+		logger.info("selectBySectionNo11 호출");
 		return sqlSession.selectList(NAMESPACE + ".selectBySectionNo11");
 	}
 	
 	@Override
 	public List<Board> selectBySectionNo12() {
-		logger.info("selectBySectionNo1 호출");
+		logger.info("selectBySectionNo12 호출");
 		return sqlSession.selectList(NAMESPACE + ".selectBySectionNo12");
 	}
 

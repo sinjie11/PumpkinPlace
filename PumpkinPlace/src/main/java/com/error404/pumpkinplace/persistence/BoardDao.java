@@ -18,6 +18,8 @@ public interface BoardDao {
 	List<Board> select(PaginationCriteria criteria);
 	
 	List<Board> selectBySectionNo(int sectionNo, PaginationCriteria criteria);
+	List<Board> selectAllBySectionNo11(PaginationCriteria criteria);
+	List<Board> selectAllBySectionNo12(PaginationCriteria criteria);
 	List<Board> selectBySectionNo1();
 	List<Board> selectBySectionNo11();
 	List<Board> selectBySectionNo12();

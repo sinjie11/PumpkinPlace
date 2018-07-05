@@ -52,6 +52,8 @@ public class HomeController {
 		List<ShowBoard> list = showBoardService.read();
 		model.addAttribute("showboardList", list);
 		
+		
+		
 		// 여러 종류의 게시판 
 		List<Board> listSectionNo1 = boardService.readBySectionNo1();
 		List<Board> listSectionNo11 = boardService.readBySectionNo11();
@@ -61,6 +63,12 @@ public class HomeController {
 		model.addAttribute("boardList12", listSectionNo12);
 		
 		return "home";
+	}
+	
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
+	public void detail(@ModelAttribute("criteria") PaginationCriteria criteria, int b_no, Model model) {
+		Board board = boardService.readDetail(b_no);
+		model.addAttribute("board", board);
 	}
 	
 	

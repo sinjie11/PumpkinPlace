@@ -44,8 +44,52 @@
 		${end}
 	</select>
 
-	<select id = "selectBySectionNo1" resultType="Board">
-		select b.b_no, b.b_title, b.b_content, b.b_id, b.b_regdate, b.b_readcnt
+	<select id="selectAllBySectionNo11" resultType="Board">
+		select
+		b.b_section,
+		b.b_no, b.b_title,
+		b.b_content, b.b_id, b.b_regdate,
+		b.b_readcnt
+		from (
+		select rownum rn, a.*
+		from (
+		select * from
+		pumpkin_board
+		where b_section = 8 or b_section = 9
+		order by b_no desc
+		) a
+		) b
+		where rn between
+		${start} and
+		${end}
+	</select>
+
+	<select id="selectAllBySectionNo12" resultType="Board">
+		select
+		b.b_section,
+		b.b_no, b.b_title,
+		b.b_content, b.b_id, b.b_regdate,
+		b.b_readcnt
+		from (
+		select rownum rn, a.*
+		from (
+		select * from
+		pumpkin_board
+		where b_section = 2 or b_section = 3 or b_section = 4
+		or
+		b_section = 5 or b_section = 6 or b_section = 7
+		order by b_no desc
+		) a
+		)
+		b
+		where rn between
+		${start} and
+		${end}
+	</select>
+
+	<select id="selectBySectionNo1" resultType="Board">
+		select b.b_no,
+		b.b_title, b.b_content, b.b_id, b.b_regdate
 		from (
 		select
 		rownum rn, a.*
@@ -57,33 +101,38 @@
 		) b
 		where rn between 1 and 5
 	</select>
-	
-	<select id = "selectBySectionNo11" resultType="Board">
-		select b.b_no, b.b_title, b.b_content, b.b_id, b.b_regdate, b.b_readcnt
+
+	<select id="selectBySectionNo11" resultType="Board">
+		select  b.b_no,
+		b.b_title, b.b_content, b.b_id, b.b_regdate
 		from (
 		select
 		rownum rn, a.*
 		from (
 		select * from pumpkin_board
-		where b_section = 11
+		where b_section = 8 or
+		b_section = 9
 		order by b_no desc
 		) a
 		) b
 		where rn between 1 and 5
 	</select>
-	
-	<select id = "selectBySectionNo12" resultType="Board">
-		select b.b_no, b.b_title, b.b_content, b.b_id, b.b_regdate, b.b_readcnt
+
+	<select id="selectBySectionNo12" resultType="Board">
+		select  b.b_no,
+		b.b_title, b.b_content, b.b_id, b.b_regdate
 		from (
 		select
 		rownum rn, a.*
 		from (
 		select * from pumpkin_board
-		where b_section = 12
-		order by b_no desc
+		where b_section = 2 or b_section = 3 or b_section = 4
+		or b_section = 5 or
+		b_section = 6 or b_section = 7 order by b_no desc
 		) a
 		) b
-		where rn between 1 and 5
+		where rn
+		between 1 and 5
 	</select>
 
 	<select id="selectByBno" resultType="Board">

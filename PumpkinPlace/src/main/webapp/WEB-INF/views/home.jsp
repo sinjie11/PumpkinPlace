@@ -215,6 +215,16 @@ body {
             </div>
          </div>
       </div>
+      <br>
+      
+      <form id="page-form">
+		<input type="hidden" name="page" id="page"
+			value="${pageMaker.criteria.page}" /> <input type="hidden"
+			name="numsPerPage" id="numsPerPage"
+			value="${pageMaker.criteria.numsPerPage}" /> <input type="hidden"
+			name="b_no" id="page-form-bno" />
+			<input type="hidden" name="urlNo" value="${urlNo}" />
+	</form>
 
       <script>
          function myMap() {
@@ -240,6 +250,16 @@ body {
          $(document).ready(function() {
             console.log('jhd');
          });
+         
+     	$('.table-title-link').click(function () {
+    		event.preventDefault();
+    		var b_no = $(this).attr('href');
+    		$('#page-form-bno').val(b_no);
+    		var frm = $('#page-form');
+    		frm.attr('action', 'detail');
+    		frm.attr('method', 'get');
+    		frm.submit();
+    	});
       </script>
 
       <script
