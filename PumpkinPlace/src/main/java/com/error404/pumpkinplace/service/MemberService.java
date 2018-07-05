@@ -1,7 +1,5 @@
 package com.error404.pumpkinplace.service;
 
-import java.util.List;
-
 import com.error404.pumpkinplace.domain.Member;
 
 public interface MemberService {

@@ -16,23 +16,10 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- jquery -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery.min.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 
-<!-- datepicker -->
-<link
-	href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css"
-	rel="stylesheet">
-<link rel="stylesheet" type="text/css" media="screen"
-	href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+
 <style>
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
@@ -64,37 +51,32 @@ body {
 	padding-top: 300px; /*Account for fixed navbar */
 	background-color: #f8f8f8;
 }
-}
+
 </style>
 </head>
 <body>
-	<br/>
-<h5><b> 카테고리: 공연 </b></h5>
+	<br />
+	<h5>
+		<b> 카테고리: 공연 </b>
+	</h5>
 	<%@ include file="/WEB-INF/views/header.jspf"%>
 	<br />
 	<!-- 가운데 정렬 -->
 	<div class="container text-center">
-		<div class="tab-content">
-			
-			<form action="showboardsearch"
-				style="float: right; margin-bottom: 50px;">
-				<div id="datetimepicker4" class="input-append date">
-					<input type="text" placeholder="공연 날짜 선택"></input> <span
-						class="add-on"> <i data-time-icon="icon-time"
-						data-date-icon="icon-calendar"></i>
-					</span>
-					<input type="submit" value="선택" />
-				</div>
-				
+			<div class="tab-content">
+			<form action="showboardsearch" style="float: right;">
+				<input type="text" id="startdate" placeholder="공연 날짜 선택" /> <input
+					type="submit" value="Search" />
 			</form>
-
+			<br /> <br />
 			<!-- 검색창 -->
 			<form action="showboardsearch"
 				style="float: right; margin-bottom: 50px;">
 				<input type="text" name="searchKeyword" placeholder="검색어 입력"
-					required /> <input type="submit" value="검색" />
+					required /> <input type="submit" value="Search" />
 			</form>
 
+			<br /> <br />
 		</div>
 	</div>
 
@@ -108,21 +90,20 @@ body {
 						<div class="col-md-3">
 							<a class="table-title-link" href="${showboard.sb_no}"> <img
 								alt="Bootstrap Image Preview"
-								src="${pageContext.request.contextPath}/resources/assets/img/showboard/${showboard.sb_img}" 
-								 style="width: 228px; height: 280px;"
-								 />
-							 <label class="table-title-link" href="${showboard.sb_no}">
-								<div class="card">
-									<h5 class="card-header">
-										<b>${showboard.sb_title}</b>
-									</h5>
-									<div class="card-body">
-										<p class="card-text">${showboard.sb_nm}</p>
+								src="${pageContext.request.contextPath}/resources/assets/img/showboard/${showboard.sb_img}"
+								style="width: 228px; height: 280px;" /> <label
+								class="table-title-link" href="${showboard.sb_no}">
+									<div class="card">
+										<h5 class="card-header">
+											<b>${showboard.sb_title}</b>
+										</h5>
+										<div class="card-body">
+											<p class="card-text">${showboard.sb_nm}</p>
+										</div>
+										<fmt:formatDate value="${showboard.sb_startdate}"
+											pattern="yyyy년 MM월 dd일 HH시 mm분" var="startdate" />
+										<div class="card-footer">${startdate}</div>
 									</div>
-									<fmt:formatDate value="${showboard.sb_startdate}"
-										pattern="yyyy년 MM월 dd일 HH시 mm분" var="startdate" />
-									<div class="card-footer">${startdate}</div>
-								</div>
 							</label>
 							</a>
 						</div>
@@ -203,7 +184,7 @@ body {
 		src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
 		
 	</script>
-		
+
 	<script type="text/javascript"
 		src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
 		
@@ -219,71 +200,9 @@ body {
 		});
 	</script>
 
-	<!-- footer -->
-	<footer class="container-fluid text-center">
-
-		<div class="row">
-			<!-- Add Google Maps -->
-			<div id="googleMap"
-				style="height: 400px; width: 500px; float: right; margin-right: 200px;"></div>
-			<div class="col-sm-7 slideanim">
-				<h2 class="text-center" style="margin-left: 230px;">CONTACT</h2>
-				<br /> <br />
-				<div class="col-sm-7 slideanim" style="margin-left: 350px;">
-					<div class="row">
-						<div class="col-sm-6 form-group">
-							<input class="form-control" id="name" name="name"
-								placeholder="Name" type="text" required>
-						</div>
-						<div class="col-sm-6 form-group">
-							<input class="form-control" id="email" name="email"
-								placeholder="Email" type="email" required>
-						</div>
-					</div>
-					<textarea class="form-control" id="comments" name="comments"
-						placeholder="Comment" rows="5"></textarea>
-					<br>
-					<div class="row">
-						<div class="col-sm-12 form-group">
-							<button class="btn btn-default pull-right" type="submit">Send</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<script>
-			function myMap() {
-				var myCenter = new google.maps.LatLng(37.499685, 127.031535);
-				var map;
-
-				var mapProp = {
-					center : myCenter,
-					zoom : 12,
-					scrollwheel : false,
-					draggable : false,
-					mapTypeId : google.maps.MapTypeId.ROADMAP
-				};
-				var map = new google.maps.Map(document
-						.getElementById("googleMap"), mapProp);
-				var marker = new google.maps.Marker({
-					position : myCenter
-				});
-				marker.setMap(map);
-
-			}
-		</script>
-		<script
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&callback=myMap"></script>
-		<!--
-To use this code on your website, get a free API key from Google.
-Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
--->
-
-	</footer>
+	
 
 	<%@ include file="/WEB-INF/views/footer.jspf"%>
 
 </body>
 </html>
-

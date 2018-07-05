@@ -11,7 +11,7 @@ public class GameController {
 
 	private static final Logger logger = LoggerFactory.getLogger(GameController.class);
 	
-	@RequestMapping(value = "/gamepage")
+	@RequestMapping(value = "/gameView")
 	public void game() {
 		logger.info("game 페이지 호출");
 	}

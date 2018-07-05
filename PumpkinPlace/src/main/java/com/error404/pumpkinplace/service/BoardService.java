@@ -18,8 +18,13 @@ public interface BoardService {
 	Board readByBno(int bno);
 	
 	// 게시판DB에서 해당 b_section에 속하는 게시글 모두를 보여주는 서비스
-	List<Board> readSection(int b_section);
-	
+	List<Board> readBySectionNo(int b_section, PaginationCriteria criteria);
+	List<Board> readAllBySectionNo11( PaginationCriteria criteria);
+	List<Board> readAllBySectionNo12( PaginationCriteria criteria);
+	List<Board> readBySectionNo1();
+	List<Board> readBySectionNo11();
+	List<Board> readBySectionNo12();
+
 	// 게시판DB에 있던 기존 게시글의 세부사항(제목, 내용 등)을 갱신하는 서비스
 	int update(Board board);
 	
@@ -35,4 +40,11 @@ public interface BoardService {
 	
 	//board detail 불러오기 
 	Board readDetail(int bno);
+	
+	//up 
+	Board upPuls1(int bno );
+	
+	//down
+	Board downPuls1(int bno);
+	
 }

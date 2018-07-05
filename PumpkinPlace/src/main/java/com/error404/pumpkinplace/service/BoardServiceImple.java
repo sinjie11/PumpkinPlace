@@ -24,7 +24,7 @@ public class BoardServiceImple implements BoardService {
 	@Override
 	public int create(Board board) {
 
-		return boardDao.insert(board);
+		return boardDao.insert( board);
 	}
 
 //	@Override
@@ -68,16 +68,54 @@ public class BoardServiceImple implements BoardService {
 	}
 
 	@Override
-	public List<Board> readSection(int b_section) {
-		return boardDao.selectBySectionNo(b_section);
+	public List<Board> readBySectionNo(int b_section, PaginationCriteria criteria) {
+		return boardDao.selectBySectionNo(b_section, criteria);
 	}
-
+	
+	@Override
+	public List<Board> readAllBySectionNo11( PaginationCriteria criteria) {
+		return boardDao.selectAllBySectionNo11(criteria);
+	}
+	
+	@Override
+	public List<Board> readAllBySectionNo12( PaginationCriteria criteria) {
+		return boardDao.selectAllBySectionNo12(criteria);
+	}
+	
+	@Override
+	public List<Board> readBySectionNo1() {
+		return boardDao.selectBySectionNo1();
+	}
+	
+	@Override
+	public List<Board> readBySectionNo11() {
+		return boardDao.selectBySectionNo11();
+	}
+	
+	@Override
+	public List<Board> readBySectionNo12() {
+		return boardDao.selectBySectionNo12();
+	}
+	
 	@Override
 	public Board readDetail(int bno) {
 		int result = boardDao.pulsReadcnt(bno);//조회수 +1
 		System.out.println("검색 리저트"+result);
 		return boardDao.boardSelect(bno);//보드 불러오기 
 	}
+
+	@Override
+	public Board upPuls1(int bno) {
+		boardDao.pulsUp(bno);
+		return boardDao.getUpDown(bno);
+	}
+
+	@Override
+	public Board downPuls1(int bno) {
+		boardDao.pulsDown(bno);
+		return boardDao.getUpDown(bno);
+	}
+
 	
 } 
 

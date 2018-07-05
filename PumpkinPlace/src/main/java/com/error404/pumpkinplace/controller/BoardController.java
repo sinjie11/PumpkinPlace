@@ -27,100 +27,98 @@ import com.error404.pumpkinplace.pageutil.PaginationCriteria;
 @RequestMapping(value = "/board")
 public class BoardController {
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
-	
+
 	@Autowired
 	private BoardService boardService;
-	
-	/* 
-	페이지 10/20/40개 동적처리는 한 줄짜리 주석으로 따로 빼놨습니다. 아직 jsp와 연동 전이기 때문에
-	 PageLinkMaker와 PaginationCriteria 클래스의 디폴트 생성자가 아닌 매개변수 생성자를 호출하게
-	되면 NullPointerException이 발생합니다. 일단 임시로 디폴트 생성자로 두겠습니다.
+
+	/*
+	 * 페이지 10/20/40개 동적처리는 한 줄짜리 주석으로 따로 빼놨습니다. 아직 jsp와 연동 전이기 때문에 PageLinkMaker와
+	 * PaginationCriteria 클래스의 디폴트 생성자가 아닌 매개변수 생성자를 호출하게 되면 NullPointerException이
+	 * 발생합니다. 일단 임시로 디폴트 생성자로 두겠습니다.
 	 */
-	
+
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-//	public void list(Integer page, Integer numsOfPageLinks, Integer numsPerPage, Model model) {
+	// public void list(Integer page, Integer numsOfPageLinks, Integer numsPerPage,
+	// Model model) {
 	public void list(Integer page, Integer numsPerPage, int urlNo, Model model) {
 		logger.info("list(urlNo: {}) 호출", urlNo);
 		// numsPerPage에 들어갈 수는 10/20/40 중 하나
-//		PaginationCriteria criteria = new PaginationCriteria(page, numsPerPage);
+		// PaginationCriteria criteria = new PaginationCriteria(page, numsPerPage);
 		PaginationCriteria criteria = new PaginationCriteria();
-		if (page != null) {//수형아 왜코딩이 멈춤??일해라 핫산!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		if (page != null) {
 			criteria.setPage(page);
 		}
 		if (numsPerPage != null) {
 			criteria.setNumsPerPage(numsPerPage);
 		}
-		
-		List<Board> list = boardService.read(criteria);
-		model.addAttribute("boardList", list);
-		logger.info("***** board list size {}", list.size());
-//		logger.info("{} {} {} {}",
-//				list.get(0).getB_no(), list.get(0).getB_title(), list.get(0).getB_id(), list.get(0).getB_regdate());
-//		logger.info("boardList : " + model.addAttribute("boardList", list)); 
-		
-//		PageLinkMaker maker = new PageLinkMaker(numsOfPageLinks);
-		PageLinkMaker maker = new PageLinkMaker();
-		maker.setCriteria(criteria);
-		maker.setTotalCount(boardService.getNumOfRecords());
-		maker.setPageLinkData();
-		model.addAttribute("pageMaker", maker);
-		model.addAttribute("urlNo", urlNo);
-		
+		if (urlNo == 1 || urlNo == 2 || urlNo == 3
+		 || urlNo == 4 || urlNo == 5 || urlNo == 6
+		 || urlNo == 7 || urlNo == 8 || urlNo == 9
+		 || urlNo == 10 || urlNo == 20) {
+			List<Board> list = boardService.readBySectionNo(urlNo, criteria);
+			logger.info("urlNo : {}, page : {}, numsPerPage : {}", urlNo, criteria.getPage(),
+					criteria.getNumsPerPage());
+			model.addAttribute("boardList", list);
+			logger.info("***** board list size {}", list.size());
+			PageLinkMaker maker = new PageLinkMaker();
+			maker.setCriteria(criteria);
+			maker.setTotalCount(boardService.getNumOfRecords());
+			maker.setPageLinkData();
+			model.addAttribute("pageMaker", maker);
+			model.addAttribute("urlNo", urlNo);
+		}
+		else if (urlNo == 11) {
+			List<Board> list = boardService.readAllBySectionNo11(criteria);
+			model.addAttribute("boardList", list);
+			logger.info("***** board list size {}", list.size());
+			PageLinkMaker maker = new PageLinkMaker();
+			maker.setCriteria(criteria);
+			maker.setTotalCount(boardService.getNumOfRecords());
+			maker.setPageLinkData();
+			model.addAttribute("pageMaker", maker);
+			model.addAttribute("urlNo", urlNo);
+		}
+		else if (urlNo ==12) {
+			List<Board> list = boardService.readAllBySectionNo12(criteria);
+			model.addAttribute("boardList", list);
+			logger.info("***** board list size {}", list.size());
+			PageLinkMaker maker = new PageLinkMaker();
+			maker.setCriteria(criteria);
+			maker.setTotalCount(boardService.getNumOfRecords());
+			maker.setPageLinkData();
+			model.addAttribute("pageMaker", maker);
+			model.addAttribute("urlNo", urlNo);
+		}
 	}
-	
+
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void register(Model model, int urlNo) {
 		logger.info("register() GET 호출");
-
 		model.addAttribute("urlNo", urlNo);
-		
-	} 
-	
+
+	}
+
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String register(Board board) {
 		logger.info("register({}) POST 호출", board);
 		boardService.create(board);
-				
+
 		return "redirect:/board/list";
-	} 
-	
+	}
+
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
-	public void detail(
-			@ModelAttribute("criteria") PaginationCriteria criteria,
-			int b_no, int urlNo, Model model) {
-		logger.info("detail(bno: {}, urlNo: {},  page: {}, numsPerPage: {}) 호출", 
-				b_no, urlNo, criteria.getPage(), criteria.getNumsPerPage());
+	public void detail(@ModelAttribute("criteria") PaginationCriteria criteria, int b_no, Model model) {
 		Board board = boardService.readDetail(b_no);
 		model.addAttribute("board", board);
-		model.addAttribute("urlNo", urlNo);
+	}
 
-	} 
-	
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
-	public void update(
-			@ModelAttribute("criteria") PaginationCriteria criteria,
-			int b_no, int urlNo, Model model) {
-		logger.info("update(b_no: {}, urlNo: {})", b_no, urlNo);
+	public void update(@ModelAttribute("criteria") PaginationCriteria criteria, int b_no, Model model) {
 		Board board = boardService.readByBno(b_no);
 		model.addAttribute("board", board);
-		model.addAttribute("urlNo", urlNo);
 	}
-	
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String update(
-			@ModelAttribute("criteria") PaginationCriteria criteria,
-			Board board, RedirectAttributes attr,  int urlNo) {
-		logger.info("update(board: {})", board);
-		int result = boardService.update(board);
-		if (result == 1) {
-			attr.addFlashAttribute("updateResult", "success");
-		}
-		
-		
-		return "redirect:detail?b_no=" + board.getB_no() + "&urlNo=" + urlNo;
-	} 
-	
-	@RequestMapping(value = "delete", method = RequestMethod.GET)
+
+	@RequestMapping(value = "delete", method = RequestMethod.POST)
 	public String delete(int b_no, RedirectAttributes attr, int urlNo) {
 		logger.info("delete(bno: {})", b_no);
 		logger.info("delete(urlNo: {}) 호출", urlNo);
@@ -129,41 +127,48 @@ public class BoardController {
 		if (result == 1) {
 			attr.addFlashAttribute("bno", b_no);
 			attr.addFlashAttribute("deleteResult", "success");
-			
+
 		}
-		
+
 		return "redirect:/board/list?urlNo=" + urlNo;
 	}
-	
+
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public void search(int searchType, String searchKeyword,
-			Model model) {
-		logger.info("search(type: {}, keyword: {})",
-				searchType, searchKeyword);
-		List<Board> list = 
-				boardService.read(searchType, searchKeyword);
+	public void search(int searchType, String searchKeyword, Model model) {
+		logger.info("search(type: {}, keyword: {})", searchType, searchKeyword);
+		List<Board> list = boardService.read(searchType, searchKeyword);
 		model.addAttribute("boardList", list);
-		model.addAttribute("searchKeyword", searchKeyword);  
-	} 	
-	
-	@RequestMapping(value = "/insert" , method = RequestMethod.POST)
+		model.addAttribute("searchKeyword", searchKeyword);
+	}
+
+	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public ResponseEntity<Integer> insert(@RequestBody Board board) {
-		logger.info("===== {}, {}, {}, {} ",
-				board.getB_section(),
-				board.getB_title(),
-				board.getB_id(),
+		logger.info("===== {}, {}, {}, {} ", board.getB_section(), board.getB_title(), board.getB_id(),
 				board.getB_content());
 		int result = boardService.create(board);
-		ResponseEntity<Integer> entity =
-				new ResponseEntity<Integer>(result, HttpStatus.OK);
+		ResponseEntity<Integer> entity = new ResponseEntity<Integer>(result, HttpStatus.OK);
 		return entity;
 
 	}
-	@RequestMapping(value = "/testdetail" ,method = RequestMethod.GET)
-	public void testdetail(int bno ,Model model) {
+
+	@RequestMapping(value = "/testdetail", method = RequestMethod.GET)
+	public void testdetail(int bno, Model model) {
 		Board board = boardService.readDetail(bno);
-		model.addAttribute("board",board);
+		model.addAttribute("board", board);
+	}// 테스트용 컨트롤러 지워도됨
+
+	@RequestMapping(value = "/pulsUp")
+	public ResponseEntity<Board> pulsUp(int b_no) {// 좋아요
+		Board result = boardService.upPuls1(b_no);
+		ResponseEntity<Board> entity = new ResponseEntity<Board>(result, HttpStatus.OK);
+		return entity;
 	}
 
-	
+	@RequestMapping(value = "/pulsDown")
+	public ResponseEntity<Board> pulsDowm(int b_no) {// 싫어요
+		Board result = boardService.downPuls1(b_no);
+		ResponseEntity<Board> entity = new ResponseEntity<Board>(result, HttpStatus.OK);
+		return entity;
+	}
+
 }

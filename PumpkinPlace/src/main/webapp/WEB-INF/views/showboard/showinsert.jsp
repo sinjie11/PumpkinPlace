@@ -92,12 +92,13 @@ body {
 }
 
 #map {
-	width: 500px;
-	height: 400px;
+	width: 600px;
+	height: 550px;
 }
 
 #infowindow-content {
 	display: none;
+	
 }
 
 #map #infowindow-content {
@@ -189,6 +190,7 @@ body {
 									<script>
                               $(document).ready(function (){
                                  var youtube = $('#youtube').val();
+                                 var youtube = $('#sb_video').val();
                                  console.log('youtube :' + youtube);
                               });
                            </script>
@@ -234,10 +236,12 @@ body {
 
 									<div id="en_daytime">
 										<label for="event_공연 날짜">공연 날짜 / 시간:<br /> <input
-											type="text" id="startdate" placeholder="공연 시작 날짜 선택" /> <input
+											type="text" id="startdate" placeholder="공연 시작 날짜 선택" /> 
+											<input
 											type="text" placeholder="시간 입력" id="starttime" required
 											size="10" maxlength="5"> ~ <input type="text"
-											id="enddate" placeholder="공연 종료 날짜 선택" required /> <input
+											id="enddate" placeholder="공연 종료 날짜 선택" required /> 
+											<input
 											type="text" placeholder="시간 입력" id="endtime" required
 											size="10" maxlength="5">
 										</label>
@@ -266,6 +270,34 @@ $(document).ready(function(){
 	        scrollbar: true
 	    });
 });
+                     $(function() {
+                     $("#startdate, #enddate").datepicker({
+                        dateFormat : 'yy.mm.dd'
+                           });
+                                       });
+                  </script>
+									<script type="text/javascript">
+
+    
+									<!-- 시간 -->    
+    $("#starttime, #endtime").timepicker({
+        timeFormat: 'HH:mm ',
+        interval: 30,
+        minTime: '00:00',
+        maxTime: '23:00',
+        defaultTime: '19',
+        startTime: '00:00',
+        dynamic: false,
+        dropdown: true,
+        scrollbar: true
+    });
+    	
+
+    
+    
+    
+    
+    
 </script>
 
 
@@ -300,8 +332,9 @@ $(document).ready(function(){
 											name="sb_locinfo" placeholder="Enter a location">
 										<div id="map"></div>
 										<div id="infowindow-content">
-											<span id="place-name" class="title"></span><br> Place ID
-											<span id="place-id"></span><br> <span id="place-address"></span>
+											<span id="place-name" class="title"><br/></span><br>
+											<span id="place-id" ></span><br> <span id="place-address">
+											<br/></span>
 										</div>
 										<br />
 
@@ -310,7 +343,9 @@ $(document).ready(function(){
 										<script>
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -33.8688, lng: 151.2195},
+          center: {lat: 37.498145, lng: 127.027612},
+          
+      
           zoom: 16
         });
 
@@ -340,7 +375,12 @@ $(document).ready(function(){
           if (!place.place_id) {
             return;
           }
+          
+          
+          
           geocoder.geocode({'placeId': place.place_id}, function(results, status) {
+        	  
+        	  
 
             if (status !== 'OK') {
               window.alert('Geocoder failed due to: ' + status);
@@ -358,6 +398,10 @@ $(document).ready(function(){
             infowindowContent.children['place-id'].textContent = place.place_id;
             infowindowContent.children['place-address'].textContent =
                 results[0].formatted_address;
+            
+            
+            
+            
             infowindow.open(map, marker);
           });
         });
@@ -403,9 +447,11 @@ $(document).ready(function(){
 				</div>
 			</div>
 		</div>
-		<br /> <!-- <input  class="btn btn-primary"
+		<br /> 
+		<!-- <input  class="btn btn-primary"
 			name="uploadFile" type="submit" value="등록"
 			style="margin-bottom: 50px; margin-left: 50%;" /> -->
+			
 	<button type="button" class="btn btn-primary" id="btnshowinsert" class="btn btn-primary"  style="margin-bottom: 50px; margin-left: 50%;">등록</button>
 
 	<script>
@@ -472,6 +518,7 @@ $(document).ready(function(){
 		});
 	});
 </script>
+
 
 </body>
 

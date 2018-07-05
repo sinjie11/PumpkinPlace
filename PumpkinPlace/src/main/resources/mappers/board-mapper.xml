@@ -14,8 +14,9 @@
 		${col_b_title}, ${col_b_content},
 		${col_b_id})
 		values
-		(#{b_section, jdbcType=INTEGER}, #{b_title, jdbcType=VARCHAR},
-		#{b_content, jdbcType=CLOB},
+		(${b_section}, #{b_title, jdbcType=VARCHAR},
+		#{b_content,
+		jdbcType=CLOB},
 		#{b_id, jdbcType=VARCHAR})
 	</insert>
 
@@ -25,14 +26,113 @@
 	</select>
 
 	<select id="selectBySectionNo" resultType="Board">
+		select b.b_section,
+		b.b_no, b.b_title,
+		b.b_content, b.b_id, b.b_regdate,
+		b.b_readcnt
+		from (
+		select rownum rn, a.*
+		from (
+		select * from pumpkin_board
+		where b_section
+		= ${b_section}
+		order by b_no desc
+		) a
+		) b
+		where rn between
+		${start} and
+		${end}
+	</select>
+
+	<select id="selectAllBySectionNo11" resultType="Board">
 		select
-		${col_b_no},
-		${col_b_title}, ${col_b_content}, ${col_b_id},
-		${col_b_regdate},
-		${col_b_readcnt}
-		from ${tbl_board}
-		where
-		${col_b_section} = #{b_section}
+		b.b_section,
+		b.b_no, b.b_title,
+		b.b_content, b.b_id, b.b_regdate,
+		b.b_readcnt
+		from (
+		select rownum rn, a.*
+		from (
+		select * from
+		pumpkin_board
+		where b_section = 8 or b_section = 9
+		order by b_no desc
+		) a
+		) b
+		where rn between
+		${start} and
+		${end}
+	</select>
+
+	<select id="selectAllBySectionNo12" resultType="Board">
+		select
+		b.b_section,
+		b.b_no, b.b_title,
+		b.b_content, b.b_id, b.b_regdate,
+		b.b_readcnt
+		from (
+		select rownum rn, a.*
+		from (
+		select * from
+		pumpkin_board
+		where b_section = 2 or b_section = 3 or b_section = 4
+		or
+		b_section = 5 or b_section = 6 or b_section = 7
+		order by b_no desc
+		) a
+		)
+		b
+		where rn between
+		${start} and
+		${end}
+	</select>
+
+	<select id="selectBySectionNo1" resultType="Board">
+		select b.b_no,
+		b.b_title, b.b_content, b.b_id, b.b_regdate
+		from (
+		select
+		rownum rn, a.*
+		from (
+		select * from pumpkin_board
+		where b_section = 1
+		order by b_no desc
+		) a
+		) b
+		where rn between 1 and 5
+	</select>
+
+	<select id="selectBySectionNo11" resultType="Board">
+		select  b.b_no,
+		b.b_title, b.b_content, b.b_id, b.b_regdate
+		from (
+		select
+		rownum rn, a.*
+		from (
+		select * from pumpkin_board
+		where b_section = 8 or
+		b_section = 9
+		order by b_no desc
+		) a
+		) b
+		where rn between 1 and 5
+	</select>
+
+	<select id="selectBySectionNo12" resultType="Board">
+		select  b.b_no,
+		b.b_title, b.b_content, b.b_id, b.b_regdate
+		from (
+		select
+		rownum rn, a.*
+		from (
+		select * from pumpkin_board
+		where b_section = 2 or b_section = 3 or b_section = 4
+		or b_section = 5 or
+		b_section = 6 or b_section = 7 order by b_no desc
+		) a
+		) b
+		where rn
+		between 1 and 5
 	</select>
 
 	<select id="selectByBno" resultType="Board">
@@ -101,6 +201,7 @@
 		where ${col_b_no} = #{b_no}
 	</update>
 
+
 	<!-- <update id="updateCount"> update ${tbl_board} <if test="type == 1"> 
 		set ${col_readcnt} = ${col_readcnt} + 1 </if> <if test="type == 2"> set ${col_b_up} 
 		= ${col_b_up} + 1 </if> <if test="type == 3"> set ${col_b_down} = ${col_b_down} 
@@ -121,4 +222,28 @@
 		delete from ${tbl_board} where ${col_b_no} = #{b_no}
 	</delete>
 
+
+
+	<!-- 현재 보드의 section과 no로 이전 보드 번호 받아오기 -->
+	<select id="boardPrevNo" resultType="Integer">
+		select ${col_b_no} 
+		from
+		(select rownum r,a.*
+		from
+		(select b_no from ${tbl_board} WHERE ${col_b_section} = #{b_section} and ${col_b_no} &lt; #{b_no}
+		order by ${col_b_no} desc) a)
+		where r = 1
+	</select>
+	
+	<!-- 현재 보드의 section과 no로 다음 보드 번호 받아오기 -->
+	<select id="boardNextNo" resultType="Integer">
+		select ${col_b_no} 
+		from
+		(select rownum r,a.*
+		from
+		(select b_no from ${tbl_board} WHERE ${col_b_section} = #{b_section} and ${col_b_no} &gt; #{b_no}
+		order by ${col_b_no} desc) a)
+		where r = 1
+	</select>
+	
 </mapper>

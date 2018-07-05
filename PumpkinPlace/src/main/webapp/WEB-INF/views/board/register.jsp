@@ -96,30 +96,7 @@ body {
 	<br />
 	<br />
 
-			<script>
-				function myMap() {
-					var myCenter = new google.maps.LatLng(37.499685, 127.031535);
-					var map;
-
-					var mapProp = {
-						center : myCenter,
-						zoom : 16,
-						scrollwheel : false,
-						draggable : false,
-						mapTypeId : google.maps.MapTypeId.ROADMAP
-					};
-					var map = new google.maps.Map(document
-							.getElementById("googleMap"), mapProp);
-					var marker = new google.maps.Marker({
-						position : myCenter
-					});
-					marker.setMap(map);
-
-				}
-
-				
-				
-			</script>
+			
 			<script type="text/javascript">
 			var options = {
 					  debug: 'info',
@@ -167,10 +144,7 @@ body {
 				
 				});
 			</script>
-			<script
-				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&callback=myMap"></script>
-
-		</footer>
+		
 
 
 		<%@ include file="/WEB-INF/views/footer.jspf"%>
