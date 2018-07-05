@@ -179,8 +179,10 @@ body {
 
 				</ul>
 				<ul>
-					<a id="register" href="register">
-					<button type="button" style="color: black;">글쓰기</button></a>
+					<c:if test="${urlNo ne 11 and urlNo ne 12}">
+						<a id="register" href="register">
+						<button type="button" style="color: black;">글쓰기</button></a>
+					</c:if>
 				</ul>
 				
 			</form>

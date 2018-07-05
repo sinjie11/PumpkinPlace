@@ -31,7 +31,8 @@ public interface BoardDao {
 	Board getUpDown(int bno);
 	
 	//////////////////////
-//	int prevBoardNo(Board board);
+	int prevBoardNo(Board board); // 이전글 번호 받기
+	int nextBoardNo(Board board); // 다음글 번호 받기
 } 
 
 
