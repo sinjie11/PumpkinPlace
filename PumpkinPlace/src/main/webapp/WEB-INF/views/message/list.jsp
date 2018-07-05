@@ -67,6 +67,9 @@ body {
 	<!-- 본문 작성 -->
 	<div class="container text-center">
 	</br></br>
+	<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/post.png"
+				style="background-color: white; width: 110px; height: 110px;" /></a>
 	<h1><b>쪽지함</b></h1>
 	</div>
 
