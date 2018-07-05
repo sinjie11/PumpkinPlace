@@ -29,6 +29,8 @@ public interface BoardDao {
 	int pulsUp(int bno);
 	int pulsDown(int bno);
 	Board getUpDown(int bno);
+	
+	int checkSectionNoByBno(int bno);
 } 
 
 

@@ -50,9 +50,7 @@ public class HomeController {
 		
 		// 공연 페이지 코드
 		List<ShowBoard> list = showBoardService.read();
-		model.addAttribute("showboardList", list);
-		
-		
+		model.addAttribute("showboardList", list);		
 		
 		// 여러 종류의 게시판 
 		List<Board> listSectionNo1 = boardService.readBySectionNo1();
@@ -69,6 +67,8 @@ public class HomeController {
 	public void detail(@ModelAttribute("criteria") PaginationCriteria criteria, int b_no, Model model) {
 		Board board = boardService.readDetail(b_no);
 		model.addAttribute("board", board);
+		int b_section = boardService.readSectionNoByBno(b_no);
+		model.addAttribute("sectionNo", b_section);
 	}
 	
 	

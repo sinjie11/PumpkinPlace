@@ -96,9 +96,7 @@ body {
                   <b>자유 게시판</b> <a href="/pumpkinplace/board/list?urlNo=1"
                      style="float: right">more</a>
                </p>
-
-
-
+               
                <table class="table">
                   <thead>
                      <tr>
@@ -112,10 +110,11 @@ body {
                      <c:forEach var="board" items="${boardList1}">
 						<tr>
 							<td>${board.b_no}</td>
-							<td><a class="table-title-link" href="${board.b_no}">${board.b_title}</a></td>
+							<td><a class="table-title-link" href="board/detail?page=1&numsPerPage=10&b_no=${board.b_no}&urlNo=1">
+							${board.b_title}</a></td>
 							<td>${board.b_id}</td>
 							<fmt:formatDate value="${board.b_regdate}"
-								pattern="yyyy/MM/dd HH:mm:ss" var="b_regdate" />
+								pattern="yyyy.MM.dd HH:mm" var="b_regdate" />
 							<td>${b_regdate}</td>
 						</tr>
 					</c:forEach>					
@@ -141,10 +140,10 @@ body {
                      <c:forEach var="board" items="${boardList11}">
 						<tr>
 							<td>${board.b_no}</td>
-							<td><a class="table-title-link" href="${board.b_no}">${board.b_title}</a></td>
+							<td><a class="table-title-link" href="board/detail?page=1&numsPerPage=10&b_no=${board.b_no}&urlNo=11">${board.b_title}</a></td>
 							<td>${board.b_id}</td>
 							<fmt:formatDate value="${board.b_regdate}"
-								pattern="yyyy/MM/dd HH:mm:ss" var="b_regdate" />
+								pattern="yyyy.MM.dd HH:mm" var="b_regdate" />
 							<td>${b_regdate}</td>
 						</tr>
 					</c:forEach>					
@@ -170,10 +169,10 @@ body {
                      <c:forEach var="board" items="${boardList12}">
 						<tr>
 							<td>${board.b_no}</td>
-							<td><a class="table-title-link" href="${board.b_no}">${board.b_title}</a></td>
+							<td><a class="table-title-link" href="board/detail?page=1&numsPerPage=10&b_no=${board.b_no}&urlNo=12">${board.b_title}</a></td>
 							<td>${board.b_id}</td>
 							<fmt:formatDate value="${board.b_regdate}"
-								pattern="yyyy/MM/dd HH:mm:ss" var="b_regdate" />
+								pattern="yyyy.MM.dd HH:mm" var="b_regdate" />
 							<td>${b_regdate}</td>
 						</tr>
 					</c:forEach>					
@@ -217,14 +216,6 @@ body {
       </div>
       <br>
       
-      <form id="page-form">
-		<input type="hidden" name="page" id="page"
-			value="${pageMaker.criteria.page}" /> <input type="hidden"
-			name="numsPerPage" id="numsPerPage"
-			value="${pageMaker.criteria.numsPerPage}" /> <input type="hidden"
-			name="b_no" id="page-form-bno" />
-			<input type="hidden" name="urlNo" value="${urlNo}" />
-	</form>
 
       <script>
          function myMap() {
@@ -250,16 +241,7 @@ body {
          $(document).ready(function() {
             console.log('jhd');
          });
-         
-     	$('.table-title-link').click(function () {
-    		event.preventDefault();
-    		var b_no = $(this).attr('href');
-    		$('#page-form-bno').val(b_no);
-    		var frm = $('#page-form');
-    		frm.attr('action', 'detail');
-    		frm.attr('method', 'get');
-    		frm.submit();
-    	});
+
       </script>
 
       <script

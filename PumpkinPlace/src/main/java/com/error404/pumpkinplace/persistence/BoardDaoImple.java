@@ -133,6 +133,8 @@ public class BoardDaoImple implements BoardDao {
 		return sqlSession.selectList(NAMESPACE + ".listPage", criteria);
 	}
 	
+	// ******************************************************************	
+	
 	//보드 디테일 
 	@Override
 	public Board boardSelect(int bno) {//보드샐랙트
@@ -168,6 +170,11 @@ public class BoardDaoImple implements BoardDao {
 	@Override
 	public Board getUpDown(int bno) {
 		return sqlSession.selectOne(NAMESPACE+".getUpDown",bno);
+	}
+	
+	@Override
+	public int checkSectionNoByBno(int bno) {
+		return sqlSession.selectOne(NAMESPACE + ".checkSectionNoByBno", bno);
 	}
 	
 	
