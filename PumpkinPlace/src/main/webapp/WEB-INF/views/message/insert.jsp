@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>쪽지함</title>
+<title>쪽지 보내기</title>
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -62,30 +62,33 @@ body {
 <body>
 <%@ include file="/WEB-INF/views/header.jspf"%>
 <div class="container text-center">
-	</br></br>
+	<br/><br/>
+	<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/msg1.png"
+				style="background-color: white; width: 110px; height: 110px;" /></a>
 	<h1><b>쪽지 보내기</b></h1><br/><br/>
-</div>
-	<form action="insert" method="post" style="margin-left: 700px; font-size: 15px;" >
 
+	<form action="insert" method="post"  style="font-size: 15px;">
+	<div style="margin-right: 220px;">
 		<label>보내는 사람</label>
 		<input type="text" name="mem_id" value="${loginId}" readonly />
-		<br />
-		<br />
+		<br/>
+		<br/>
 		
-		<label style="mar">받는 사람</label> <input type="text" style="margin-left: 15px;" name="mem_id2" placeholder="받는사람" required />
-		<br />
-		<br />
-		
+		<label>받는 사람</label> <input type="text" style="margin-left: 15px;" name="mem_id2" placeholder="받는사람" required />
+		<br/>
+		<br/>
+	</div>	
 		
 		<label>쪽지내용</label>
 		<textarea rows="8" cols="50" style="margin-left: 20px;" name="msg_content" placeholder="쪽지 내용 작성" required></textarea>
-		<br />
-		<br />
+		<br/>
+		<br/>
 		 
-		<input type="submit" value="작성 완료" style="margin-left: 230px;"/>
+		<input type="submit" value="작성 완료"/>
 		<br/>
 	</form>
-	
+	</div>
 <%@ include file="/WEB-INF/views/footer.jspf"%>
 </body>
 </html>
