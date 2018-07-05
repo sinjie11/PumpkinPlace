@@ -73,10 +73,10 @@ public class MessageController {
 	@RequestMapping(value = "/senddetail", method = RequestMethod.GET)
 	public void sendDetail(String mem_id, Model model, HttpSession session) {
 		logger.info("sendDetail() GET 호출");
-		
+				
 		List<Message> list = messageService.send((String) session.getAttribute("loginId"));
 		
-		model.addAttribute("sendDetail", list);
+		model.addAttribute("sendList", list);
 		
 	} // end sendDetail(mem_id, model, session)
 	
