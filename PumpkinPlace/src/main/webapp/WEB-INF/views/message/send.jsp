@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -56,6 +57,7 @@ body {
   background-color: #f8f8f8;
 }
 
+
 </style>
 
 </head>
@@ -68,17 +70,16 @@ body {
 				style="background-color: white; width: 110px; height: 110px;" /></a>
 	<br/>
 	<h1><b>보낸 쪽지함</b></h1><br/>
-
 	<table class="table">
 
 		<thead>
 			<tr>
-				<th>받는 사람</th>
-				<th>내용</th>
-				<th>발신 일자</th>
+				<th style="text-align: center;">받는 사람</th>
+				<th style="text-align: center;">내용</th>
+				<th style="text-align: center;">발신 일자</th>
 			</tr>
 		</thead>
-		<tbody  style="text-align: left;">
+		<tbody>
 			<c:forEach var="message" items="${sendList}">
 				<tr>
 					<td>${message.mem_id2}</td>

@@ -84,10 +84,9 @@ body {
 		<label>받는 사람</label> <input type="text" style="margin-left: 15px;" name="mem_id2" placeholder="받는사람" required />
 		<br/>
 		<br/>
-	</div>	
-
-		<p style="font-weight: bold;">쪽지 내용</p>
-		<textarea rows="8" cols="50" name="msg_content" placeholder="쪽지 내용 작성" required></textarea>
+	</div>		
+		<p style="font-weight: bold; margin-right: 430px;" >쪽지 내용</p>
+		<textarea style="margin-left: 80px;" rows="8" cols="50" name="msg_content" placeholder="쪽지 내용 작성" required></textarea>
 		<br/>
 		<br/>
 
