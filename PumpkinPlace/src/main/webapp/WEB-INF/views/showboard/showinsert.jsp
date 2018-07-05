@@ -473,6 +473,7 @@ $(document).ready(function(){
 	var sb_startdate = new Date(startdatetime);
 	var enddatetime = enddate + ' ' + endtime;
 	var sb_enddate = new Date(enddatetime);
+
 	console.log('sb_nm :' + sb_nm);
 	console.log('sb_title :' + sb_title);
 	console.log('sb_content :' + sb_content);

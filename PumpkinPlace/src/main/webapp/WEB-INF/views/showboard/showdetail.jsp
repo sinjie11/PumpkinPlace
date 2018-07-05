@@ -153,15 +153,16 @@ td, h5 {
 
 						<div>
 							<h3>공연장: ${showboard.sb_locinfo}</h3>
+							
 							<br />
-
+					
 
 							<script type="text/javascript">
 							function initMap() {
 								  // jQuery('.site-content').prepend('<div id=\"map-container\"><div id=\"map-canvas\"></div></div>');
 
 								  var request = {
-								    placeId: 'ChIJwRvyh8SYfDURcCKVXGVMYUA'
+								    placeId: 'ChIJDyg-oY6YfDURjmNa7ENSt7c'
 								  };
 
 								  function callback(place, status) {
