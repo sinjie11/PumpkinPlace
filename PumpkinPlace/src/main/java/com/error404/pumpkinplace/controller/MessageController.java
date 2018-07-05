@@ -113,7 +113,7 @@ public class MessageController {
 		Message message = messageService.read3(msg_no);
 		
 		model.addAttribute("message", message);
-		
+				
 		
 	} // end recieveDetail(mem_id2, model, session)
 		
