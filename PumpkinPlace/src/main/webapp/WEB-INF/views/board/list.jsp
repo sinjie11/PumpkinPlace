@@ -190,11 +190,11 @@ ${board.b_no}
 			<table class="table">
 				<thead>
 					<tr>
-						<th>글번호</th>
-						<th>제목</th>
-						<th>작성자</th>
-						<th>작성시간</th>
-						<th>조회수</th>
+						<th class="text-center">글번호</th>
+						<th class="text-center">제목</th>
+						<th class="text-center">작성자</th>
+						<th class="text-center">작성시간</th>
+						<th class="text-center">조회수</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -204,7 +204,7 @@ ${board.b_no}
 							<td><a class="table-title-link" href="${board.b_no}">${board.b_title}</a></td>
 							<td>${board.b_id}</td>
 							<fmt:formatDate value="${board.b_regdate}"
-								pattern="yyyy/MM/dd HH:mm:ss" var="b_regdate" />
+								pattern="yyyy.MM.dd HH:mm" var="b_regdate" />
 							<td>${b_regdate}</td>
 							<td>${board.b_readcnt}</td>
 						</tr>

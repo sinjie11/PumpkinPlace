@@ -189,7 +189,7 @@ body {
 					<td><a class="table-title-link" href="${board.b_no}">${board.b_title}</a></td>
 					<td>${board.b_id}</td>
 					<fmt:formatDate value="${board.b_regdate}"
-						pattern="yyyy/MM/dd HH:mm:ss" var="regdate" />
+								pattern="yyyy.MM.dd HH:mm" var="b_regdate" />
 					<td>${b_regdate}</td>
 					<td>${board.b_readcnt}</td>
 				</tr>

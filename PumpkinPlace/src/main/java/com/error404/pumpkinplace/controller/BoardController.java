@@ -62,7 +62,7 @@ public class BoardController {
 			logger.info("***** board list size {}", list.size());
 			PageLinkMaker maker = new PageLinkMaker();
 			maker.setCriteria(criteria);
-			maker.setTotalCount(boardService.getNumOfRecords());
+			maker.setTotalCount(boardService.getNumOfRecords(urlNo));
 			maker.setPageLinkData();
 			model.addAttribute("pageMaker", maker);
 			model.addAttribute("urlNo", urlNo);
@@ -73,7 +73,7 @@ public class BoardController {
 			logger.info("***** board list size {}", list.size());
 			PageLinkMaker maker = new PageLinkMaker();
 			maker.setCriteria(criteria);
-			maker.setTotalCount(boardService.getNumOfRecords());
+			maker.setTotalCount(boardService.getNumOfRecords(urlNo));
 			maker.setPageLinkData();
 			model.addAttribute("pageMaker", maker);
 			model.addAttribute("urlNo", urlNo);
@@ -84,7 +84,7 @@ public class BoardController {
 			logger.info("***** board list size {}", list.size());
 			PageLinkMaker maker = new PageLinkMaker();
 			maker.setCriteria(criteria);
-			maker.setTotalCount(boardService.getNumOfRecords());
+			maker.setTotalCount(boardService.getNumOfRecords(urlNo));
 			maker.setPageLinkData();
 			model.addAttribute("pageMaker", maker);
 			model.addAttribute("urlNo", urlNo);
@@ -135,6 +135,33 @@ public class BoardController {
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public void search(int searchType, String searchKeyword, Model model) {
+		
+//		logger.info("list(urlNo: {}) 호출", urlNo);
+//		// numsPerPage에 들어갈 수는 10/20/40 중 하나
+//		// PaginationCriteria criteria = new PaginationCriteria(page, numsPerPage);
+//		PaginationCriteria criteria = new PaginationCriteria();
+//		if (page != null) {
+//			criteria.setPage(page);
+//		}
+//		if (numsPerPage != null) {
+//			criteria.setNumsPerPage(numsPerPage);
+//		}
+//		if (urlNo == 1 || urlNo == 2 || urlNo == 3
+//		 || urlNo == 4 || urlNo == 5 || urlNo == 6
+//		 || urlNo == 7 || urlNo == 8 || urlNo == 9
+//		 || urlNo == 10 || urlNo == 20) {
+//			List<Board> list = boardService.readBySectionNo(urlNo, criteria);
+//			logger.info("urlNo : {}, page : {}, numsPerPage : {}", urlNo, criteria.getPage(),
+//					criteria.getNumsPerPage());
+//			model.addAttribute("boardList", list);
+//			logger.info("***** board list size {}", list.size());
+//			PageLinkMaker maker = new PageLinkMaker();
+//			maker.setCriteria(criteria);
+//			maker.setTotalCount(boardService.getNumOfRecords(urlNo));
+//			maker.setPageLinkData();
+//			model.addAttribute("pageMaker", maker);
+//			model.addAttribute("urlNo", urlNo);
+		
 		logger.info("search(type: {}, keyword: {})", searchType, searchKeyword);
 		List<Board> list = boardService.read(searchType, searchKeyword);
 		model.addAttribute("boardList", list);

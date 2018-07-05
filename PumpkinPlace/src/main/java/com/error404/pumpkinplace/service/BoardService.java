@@ -35,7 +35,7 @@ public interface BoardService {
 	List<Board> read(int type, String keyword); 
 	
 	// 아래 두 method는 Page 처리를 합니다
-	int getNumOfRecords();
+	int getNumOfRecords(int b_section);
 	List<Board> read(PaginationCriteria criteria);
 	
 	//board detail 불러오기 

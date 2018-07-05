@@ -58,8 +58,8 @@ public class BoardServiceImple implements BoardService {
 	}
 
 	@Override
-	public int getNumOfRecords() {
-		return boardDao.getNumOfRecords();
+	public int getNumOfRecords(int b_section) {
+		return boardDao.getNumOfRecords(b_section);
 	}
 
 	@Override

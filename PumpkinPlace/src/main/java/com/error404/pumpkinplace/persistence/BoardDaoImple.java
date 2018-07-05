@@ -30,20 +30,20 @@ public class BoardDaoImple implements BoardDao {
 	}
 
 	@Override
-	public int insert (Board board) {
+	public int insert(Board board) {
 		logger.info("insert({}, {}, {}, {}, {}) 호출", board.getB_section(), board.getB_no(), board.getB_title(),
 				board.getB_content(), board.getB_id());
 
 		return sqlSession.insert(NAMESPACE + ".insert", board);
 	}
 
-//	@Override
-//	public Board select(int b_section) {
-//		logger.info("select({})", b_section);
-//
-//		return sqlSession.selectOne(NAMESPACE + ".selectBoardInfoBySectionNo", b_section);
-//	}
-
+	// @Override
+	// public Board select(int b_section) {
+	// logger.info("select({})", b_section);
+	//
+	// return sqlSession.selectOne(NAMESPACE + ".selectBoardInfoBySectionNo",
+	// b_section);
+	// }
 
 	@Override
 	public Board selectByBno(int b_no) {
@@ -93,37 +93,42 @@ public class BoardDaoImple implements BoardDao {
 		logger.info("selectAllBySectionNo11 호출");
 		return sqlSession.selectList(NAMESPACE + ".selectAllBySectionNo11", criteria);
 	}
-	
+
 	@Override
 	public List<Board> selectAllBySectionNo12(PaginationCriteria criteria) {
 		logger.info("selectAllBySectionNo12 호출");
 		return sqlSession.selectList(NAMESPACE + ".selectAllBySectionNo12", criteria);
 	}
-	
+
 	@Override
 	public List<Board> selectBySectionNo1() {
 		logger.info("selectBySectionNo1 호출");
 		return sqlSession.selectList(NAMESPACE + ".selectBySectionNo1");
 	}
-	
+
 	@Override
 	public List<Board> selectBySectionNo11() {
 		logger.info("selectBySectionNo11 호출");
 		return sqlSession.selectList(NAMESPACE + ".selectBySectionNo11");
 	}
-	
+
 	@Override
 	public List<Board> selectBySectionNo12() {
 		logger.info("selectBySectionNo12 호출");
 		return sqlSession.selectList(NAMESPACE + ".selectBySectionNo12");
 	}
 
-	
 	// ************* 페이지 처리 관련 Overridden Method *************
 
 	@Override
-	public int getNumOfRecords() {
-		return sqlSession.selectOne(NAMESPACE + ".totalCount");
+	public int getNumOfRecords(int sectionNo) {
+		if (sectionNo == 1 || sectionNo == 2 || sectionNo == 3 || sectionNo == 4 || sectionNo == 5 || sectionNo == 6
+				|| sectionNo == 7 || sectionNo == 8 || sectionNo == 9)
+			return sqlSession.selectOne(NAMESPACE + ".totalCount", sectionNo);
+		else if (sectionNo == 11)
+			return sqlSession.selectOne(NAMESPACE + ".countTotalSectionNo11", sectionNo);
+		else 
+			return sqlSession.selectOne(NAMESPACE + ".countTotalSectionNo12", sectionNo);
 	}
 
 	@Override
@@ -132,60 +137,55 @@ public class BoardDaoImple implements BoardDao {
 
 		return sqlSession.selectList(NAMESPACE + ".listPage", criteria);
 	}
-	
-	// ******************************************************************	
-	
-	//보드 디테일 
+
+	// ******************************************************************
+
+	// 보드 디테일
 	@Override
-	public Board boardSelect(int bno) {//보드샐랙트
-		
+	public Board boardSelect(int bno) {// 보드샐랙트
+
 		return sqlSession.selectOne(NAMESPACE + ".boardSelect", bno);
 	}
 
 	@Override
-	public int pulsReadcnt(int bno) {//조회수 1+
+	public int pulsReadcnt(int bno) {// 조회수 1+
 		System.out.println("씨발 조회수 +1");
-		Map<String, Object> args =  new HashMap<>();
+		Map<String, Object> args = new HashMap<>();
 		args.put("type", 1);
-		args.put("b_no" ,bno);
-		return sqlSession.update(NAMESPACE + ".puls1",args);
+		args.put("b_no", bno);
+		return sqlSession.update(NAMESPACE + ".puls1", args);
 	}
 
 	@Override
-	public int pulsUp(int bno) {//조아요 1+
-		Map<String, Object> args =  new HashMap<>();
+	public int pulsUp(int bno) {// 조아요 1+
+		Map<String, Object> args = new HashMap<>();
 		args.put("type", 2);
-		args.put("b_no" ,bno);
-		return sqlSession.update(NAMESPACE + ".puls1",args);
+		args.put("b_no", bno);
+		return sqlSession.update(NAMESPACE + ".puls1", args);
 	}
 
 	@Override
-	public int pulsDown(int bno) {//비추 +1
-		Map<String, Object> args =  new HashMap<>();
+	public int pulsDown(int bno) {// 비추 +1
+		Map<String, Object> args = new HashMap<>();
 		args.put("type", 3);
-		args.put("b_no" ,bno);
-		return sqlSession.update(NAMESPACE + ".puls1",args);
+		args.put("b_no", bno);
+		return sqlSession.update(NAMESPACE + ".puls1", args);
 	}
 
 	@Override
 	public Board getUpDown(int bno) {
-		return sqlSession.selectOne(NAMESPACE+".getUpDown",bno);
+		return sqlSession.selectOne(NAMESPACE + ".getUpDown", bno);
 	}
 
-	
-	
-	
 	///////////////////////////////////////////// 이전 다음 페이지
-//	@Override
-//	public int prevBoardNo(Board board) {
-//		return sqlSession.selectOne(NAMESPACE + ".boardPrevNo", board);
-//	}
-	
+	// @Override
+	// public int prevBoardNo(Board board) {
+	// return sqlSession.selectOne(NAMESPACE + ".boardPrevNo", board);
+	// }
+
 	@Override
 	public int checkSectionNoByBno(int bno) {
 		return sqlSession.selectOne(NAMESPACE + ".checkSectionNoByBno", bno);
 	}
-	
-	
 
 }
