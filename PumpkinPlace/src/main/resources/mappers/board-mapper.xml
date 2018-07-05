@@ -26,9 +26,9 @@
 	</select>
 
 	<select id="selectBySectionNo" resultType="Board">
-		select b.b_section,
+		select 
 		b.b_no, b.b_title,
-		b.b_content, b.b_id, b.b_regdate,
+		 b.b_id, b.b_regdate,
 		b.b_readcnt
 		from (
 		select rownum rn, a.*
@@ -46,9 +46,9 @@
 
 	<select id="selectAllBySectionNo11" resultType="Board">
 		select
-		b.b_section,
+
 		b.b_no, b.b_title,
-		b.b_content, b.b_id, b.b_regdate,
+		b.b_id, b.b_regdate,
 		b.b_readcnt
 		from (
 		select rownum rn, a.*
@@ -66,9 +66,9 @@
 
 	<select id="selectAllBySectionNo12" resultType="Board">
 		select
-		b.b_section,
+
 		b.b_no, b.b_title,
-		b.b_content, b.b_id, b.b_regdate,
+		b.b_id, b.b_regdate,
 		b.b_readcnt
 		from (
 		select rownum rn, a.*
@@ -89,7 +89,7 @@
 
 	<select id="selectBySectionNo1" resultType="Board">
 		select b.b_no,
-		b.b_title, b.b_content, b.b_id, b.b_regdate
+		b.b_title, b.b_id, b.b_regdate
 		from (
 		select
 		rownum rn, a.*
@@ -103,8 +103,8 @@
 	</select>
 
 	<select id="selectBySectionNo11" resultType="Board">
-		select  b.b_no,
-		b.b_title, b.b_content, b.b_id, b.b_regdate
+		select b.b_no,
+		b.b_title, b.b_id, b.b_regdate
 		from (
 		select
 		rownum rn, a.*
@@ -119,16 +119,18 @@
 	</select>
 
 	<select id="selectBySectionNo12" resultType="Board">
-		select  b.b_no,
-		b.b_title, b.b_content, b.b_id, b.b_regdate
+		select b.b_no,
+		b.b_title, b.b_id, b.b_regdate
 		from (
 		select
 		rownum rn, a.*
 		from (
 		select * from pumpkin_board
-		where b_section = 2 or b_section = 3 or b_section = 4
+		where b_section = 2 or b_section = 3
+		or b_section = 4
 		or b_section = 5 or
-		b_section = 6 or b_section = 7 order by b_no desc
+		b_section = 6 or b_section = 7
+		order by b_no desc
 		) a
 		) b
 		where rn
@@ -222,6 +224,13 @@
 		delete from ${tbl_board} where ${col_b_no} = #{b_no}
 	</delete>
 
+
+	<!-- 해당 글이 어느 Section에 속하는지를 b_no를 통해 알아내는 SQL Statement -->
+	<select id="checkSectionNoByBno" resultType="Integer">
+		select ${col_b_section}
+		from ${tbl_board}
+		where ${col_b_no} = #{b_no};
+	</select>
 
 
 	<!-- 현재 보드의 section과 no로 이전 보드 번호 받아오기 -->

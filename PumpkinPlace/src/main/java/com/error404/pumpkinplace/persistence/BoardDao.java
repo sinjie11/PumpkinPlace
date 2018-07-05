@@ -30,6 +30,9 @@ public interface BoardDao {
 	int pulsDown(int bno);
 	Board getUpDown(int bno);
 	
+
+	int checkSectionNoByBno(int bno);
+
 	//////////////////////
 	int prevBoardNo(Board board); // 이전글 번호 받기
 	int nextBoardNo(Board board); // 다음글 번호 받기

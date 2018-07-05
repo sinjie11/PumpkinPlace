@@ -116,6 +116,10 @@ public class BoardServiceImple implements BoardService {
 		return boardDao.getUpDown(bno);
 	}
 
+	@Override
+	public int readSectionNoByBno(int bno) {
+		return boardDao.checkSectionNoByBno(bno);
+	}
 	
 } 
 

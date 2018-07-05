@@ -47,4 +47,6 @@ public interface BoardService {
 	//down
 	Board downPuls1(int bno);
 	
+	int readSectionNoByBno(int bno);
+	
 }

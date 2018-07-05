@@ -11,16 +11,18 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 import org.springframework.util.FileCopyUtils;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
-
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.error404.pumpkinplace.domain.Member;
@@ -42,7 +44,7 @@ public class ShowBoardController {
 	@RequestMapping(value = "/showboardmain", method = RequestMethod.GET)
 	public void showBoard(Integer page, Integer numsPerPage, Model model) {
 		logger.info("showboard() 호출");
-		Integer numsPerpage = 12;
+		numsPerPage = 12;
 		PaginationCriteria criteria = new PaginationCriteria();
 		if (page != null) {
 			criteria.setPage(page);
@@ -80,11 +82,11 @@ public class ShowBoardController {
 	}
 
 	@RequestMapping(value = "/showinsert", method = RequestMethod.POST)
-	public String showInsert(ShowBoard showboard) {
-		logger.info("showInsert({}) POST 호출", showboard);
-		showBoardService.create(showboard);
-		
-		return "redirect:/showboard/showboardmain?page=1&numsPerPage=12&sb_no=";
+	@ResponseBody
+	public int showInsert(@RequestBody ShowBoard showboard) {
+		logger.info("showInsert({}, {}) POST 호출", showboard, showboard.getSb_nm());
+		int result = showBoardService.create(showboard);
+		return result;
 	}
 	
 //	@Resource(name = "uploadPath")
