@@ -10,10 +10,10 @@ public interface MessageMapper {
 	List<Message> send(String mem_id);
 	
 	List<Message> recieve(String mem_id2);
+		
+	List<Message> sendPage(PaginationCriteria criteria);
 	
-	List<Message> send(PaginationCriteria criteria);
-	
-	List<Message> recieve(PaginationCriteria criteria);
+	List<Message> recievePage(PaginationCriteria criteria);
 	
 	int totalCount();
 	
@@ -24,6 +24,8 @@ public interface MessageMapper {
 	Message selectById(String mem_id);
 	
 	Message selectById2(String mem_id2);
+	
+	Message selectByMsgNo(int msg_no);
 		
 	int update(Message message);
 	

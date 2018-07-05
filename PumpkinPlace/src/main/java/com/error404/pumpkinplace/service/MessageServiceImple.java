@@ -28,29 +28,29 @@ public class MessageServiceImple implements MessageService {
 	} // end recieve(mem_id2)
 	
 	@Override
-	public List<Message> send(PaginationCriteria criteria) {
+	public List<Message> sendPage(PaginationCriteria criteria) {
 	
-		return messageDao.send(criteria);
-	} // end sendPage(criteria)
-	
-	@Override
-	public List<Message> recieve(PaginationCriteria criteria) {
-	
-		return messageDao.recieve(criteria);
-	} // end recievePage(criteria)
+		return messageDao.sendPage(criteria);
+	} // end sendPage(mem_id, criteria)
 	
 	@Override
-	public int total() {
+	public List<Message> recievePage(PaginationCriteria criteria) {
 		
-		return messageDao.total();
-	} // end total()
+		return messageDao.recievePage(criteria);
+	} // end recievePage(mem_id2, criteria)
 	
 	@Override
-	public int total2() {
+	public int totalCount() {
+
+		return messageDao.totalCount();
+	} // end totalCount()
 	
-		return messageDao.total2();
-	} // end total2()
+	@Override
+	public int totalCount2() {
 	
+		return messageDao.totalCount2();
+	} // end totalCount2()
+		
 	@Override
 	public int create(Message message) {
 		
@@ -68,6 +68,12 @@ public class MessageServiceImple implements MessageService {
 		
 		return messageDao.select2(mem_id2);
 	} // end read2(mem_id2)
+	
+	@Override
+	public Message read3(int msg_no) {
+	
+		return messageDao.select3(msg_no);
+	} // end read3(msg_no)
 
 	@Override
 	public int update(Message message) {

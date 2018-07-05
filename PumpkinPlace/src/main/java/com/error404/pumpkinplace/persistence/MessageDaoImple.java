@@ -35,29 +35,29 @@ public class MessageDaoImple implements MessageDao {
 	} // end recieve(mem_id2)
 	
 	@Override
-	public List<Message> send(PaginationCriteria criteria) {
-	
-		return messageMapper.send(criteria);
-	} // end sendPage(criteria)
+	public List<Message> sendPage(PaginationCriteria criteria) {
+		
+		return messageMapper.sendPage(criteria);
+	}
 	
 	@Override
-	public List<Message> recieve(PaginationCriteria criteria) {
-		
-		return messageMapper.recieve(criteria);
-	} // end recievePage(criteria)
+	public List<Message> recievePage(PaginationCriteria criteria) {
+	
+		return messageMapper.recievePage(criteria);
+	}
 	
 	@Override
-	public int total() {
-		
+	public int totalCount() {
+	
 		return messageMapper.totalCount();
-	} // end total()
+	}
 	
 	@Override
-	public int total2() {
+	public int totalCount2() {
 	
 		return messageMapper.totalCount2();
-	} // end total2()
-
+	}
+	
 	@Override
 	public int insert(Message message) {
 	
@@ -76,6 +76,12 @@ public class MessageDaoImple implements MessageDao {
 		return messageMapper.selectById2(mem_id2);
 	} // end select2(mem_id2)
 
+	@Override
+	public Message select3(int msg_no) {
+	
+		return messageMapper.selectByMsgNo(msg_no);
+	} // end select3(msg_no)
+	
 	@Override
 	public int update(Message message) {
 		

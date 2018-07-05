@@ -175,7 +175,6 @@ body {
             }
         }
 
-
     </script>
 										<!-- end 미리보기 -->
 
@@ -248,16 +247,14 @@ body {
 									</div>
 									<br />
 
-									<!-- 날짜 선택 -->
+									
 									<script>
-$(function() {
+									$(function() {
+										<!-- 날짜 선택 -->
   $("#startdate, #enddate").datepicker({
     dateFormat : 'yy/mm/dd'
   });
-});
-</script>
-									<script>
-$(document).ready(function(){
+	<!-- 시간 -->   
 	 $("#starttime, #endtime").timepicker({
 	        timeFormat: 'HH:mm ',
 	        interval: 30,
@@ -269,37 +266,8 @@ $(document).ready(function(){
 	        dropdown: true,
 	        scrollbar: true
 	    });
-});
-                     $(function() {
-                     $("#startdate, #enddate").datepicker({
-                        dateFormat : 'yy.mm.dd'
-                           });
-                                       });
+									});
                   </script>
-									<script type="text/javascript">
-
-    
-									<!-- 시간 -->    
-    $("#starttime, #endtime").timepicker({
-        timeFormat: 'HH:mm ',
-        interval: 30,
-        minTime: '00:00',
-        maxTime: '23:00',
-        defaultTime: '19',
-        startTime: '00:00',
-        dynamic: false,
-        dropdown: true,
-        scrollbar: true
-    });
-    	
-
-    
-    
-    
-    
-    
-</script>
-
 
 
 									<!-- 지역 -->
@@ -317,15 +285,8 @@ $(document).ready(function(){
 											</select></label>
 										</p>
 									</div>
-									<script>
-                     var city = $('#country').val;
-                     
-                     </script>
-
-
 
 									<!-- 공연장 -->
-
 
 									<div id="en_venue">
 										<input id="pac-input" class="controls" type="text"
@@ -333,81 +294,88 @@ $(document).ready(function(){
 										<div id="map"></div>
 										<div id="infowindow-content">
 											<span id="place-name" class="title"><br/></span><br>
-											<span id="place-id" ></span><br> <span id="place-address">
+											<span id="place-id" style="display: none;" ></span>
+											<br> 
+											<span id="place-address">
 											<br/></span>
+										
 										</div>
 										<br />
-
-
+									
+								
+										
 
 										<script>
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 37.498145, lng: 127.027612},
-          
+										 var sb_placeid = null;
+											function initMap() {
+										        var map = new google.maps.Map(document.getElementById('map'), {
+										          center: {lat: 37.498145, lng: 127.027612},
+										          
+										      
+										          zoom: 16
+										        });
+
+										        var input = document.getElementById('pac-input');
+
+										        var autocomplete = new google.maps.places.Autocomplete(
+										            input, {placeIdOnly: true});
+										        autocomplete.bindTo('bounds', map);
+
+										        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+										        var infowindow = new google.maps.InfoWindow();
+										        var infowindowContent = document.getElementById('infowindow-content');
+										        infowindow.setContent(infowindowContent);
+										        var geocoder = new google.maps.Geocoder;
+										        var marker = new google.maps.Marker({
+										          map: map
+										        });
+										        marker.addListener('click', function() {
+										          infowindow.open(map, marker);
+										        });
+
+										        autocomplete.addListener('place_changed', function() {
+										          infowindow.close();
+										          var place = autocomplete.getPlace();
+
+										          if (!place.place_id) {
+										            return;
+										          }
+										          
+										          sb_placeid = place.place_id;
+										          console.log('placeId :' + place.place_id);
+										          console.log('sb_placeid :' + sb_placeid);
+										          geocoder.geocode({'placeId': place.place_id}, function(results, status) {
+										        	  
+										        	  
+
+										            if (status !== 'OK') {
+										              window.alert('Geocoder failed due to: ' + status);
+										              return;
+										            }
+										            map.setZoom(16);
+										            map.setCenter(results[0].geometry.location);
+										            // Set the position of the marker using the place ID and location.
+										            marker.setPlace({
+										              placeId: place.place_id,
+										              location: results[0].geometry.location
+										            });
+										            marker.setVisible(true);
+										            infowindowContent.children['place-name'].textContent = place.name;
+										            infowindowContent.children['place-id'].textContent = place.place_id;
+										            infowindowContent.children['place-address'].textContent =
+										                results[0].formatted_address;
+										            
+										            
+										            
+										            
+										            infowindow.open(map, marker);
+										          });
+										        });
+										      }
       
-          zoom: 16
-        });
-
-        var input = document.getElementById('pac-input');
-
-        var autocomplete = new google.maps.places.Autocomplete(
-            input, {placeIdOnly: true});
-        autocomplete.bindTo('bounds', map);
-
-        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-        var infowindow = new google.maps.InfoWindow();
-        var infowindowContent = document.getElementById('infowindow-content');
-        infowindow.setContent(infowindowContent);
-        var geocoder = new google.maps.Geocoder;
-        var marker = new google.maps.Marker({
-          map: map
-        });
-        marker.addListener('click', function() {
-          infowindow.open(map, marker);
-        });
-
-        autocomplete.addListener('place_changed', function() {
-          infowindow.close();
-          var place = autocomplete.getPlace();
-
-          if (!place.place_id) {
-            return;
-          }
-          
-          
-          
-          geocoder.geocode({'placeId': place.place_id}, function(results, status) {
-        	  
-        	  
-
-            if (status !== 'OK') {
-              window.alert('Geocoder failed due to: ' + status);
-              return;
-            }
-            map.setZoom(16);
-            map.setCenter(results[0].geometry.location);
-            // Set the position of the marker using the place ID and location.
-            marker.setPlace({
-              placeId: place.place_id,
-              location: results[0].geometry.location
-            });
-            marker.setVisible(true);
-            infowindowContent.children['place-name'].textContent = place.name;
-            infowindowContent.children['place-id'].textContent = place.place_id;
-            infowindowContent.children['place-address'].textContent =
-                results[0].formatted_address;
-            
-            
-            
-            
-            infowindow.open(map, marker);
-          });
-        });
-      }
     </script>
-										<script
+										<script async defer
 											src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&libraries=places&callback=initMap"></script>
 									</div>
 
@@ -455,6 +423,8 @@ $(document).ready(function(){
 	<button type="button" class="btn btn-primary" id="btnshowinsert" class="btn btn-primary"  style="margin-bottom: 50px; margin-left: 50%;">등록</button>
 
 	<script>
+	
+	
 	$('#btnshowinsert').click(function () {
  	var sb_nm = $('#event_band_tokens').val();
 	var sb_title = $('#show_name').val();
@@ -490,6 +460,9 @@ $(document).ready(function(){
 	console.log('enddatetime :' + enddatetime);
 	console.log('sb_startdate :' + sb_startdate);
 	console.log('sb_enddate :' + sb_enddate);
+	console.log('sb_placeId :' + sb_placeid);	
+	
+	
 	$.ajax({
 		type: 'post',
 		url: '/pumpkinplace/showboard/showinsert/',
@@ -508,7 +481,8 @@ $(document).ready(function(){
 			'sb_img': sb_img,
 			'sb_video': sb_video,
 			'sb_startdate': sb_startdate,
-			'sb_enddate': sb_enddate
+			'sb_enddate': sb_enddate,
+			'sb_placeid' : sb_placeid
 		}),
 		success: function (result){
 				alert(sb_nm + '님 공연 등록 성공');

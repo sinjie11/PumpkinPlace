@@ -32,8 +32,9 @@ public class BoardDaoTest {
 		// selectByMemid();
 		// selectBySectionNoTest();
 //		 selectBySectionNo1Test();
-		 selectBySectionNo11Test();
-//		 selectPrevNo();
+//		 selectBySectionNo11Test();
+		 selectPrevNo();
+		 selectNextNo();
 	} // end doTest()
 
 	// private void insertTest() {
@@ -114,10 +115,18 @@ public class BoardDaoTest {
 		}
 	}
 
-	
-	////////////////////////////////이전글 번호 받기
+	// 이전글 번호 받기
 	private void selectPrevNo() {
-		Board board = new Board(1, 73, null, null, null, null, null, null, 0, 0, 0);
+		Board board = new Board(1, 81, null, null, null, null, null, null, 0, 0, 0);
+		int prevNo = boardDao.prevBoardNo(board);
+		logger.info("이전 번호:{}", prevNo);
+	}
+	
+	// 다음글 번호 받기
+	private void selectNextNo() {
+		Board board = new Board(1, 81, null, null, null, null, null, null, 0, 0, 0);
+		int nextNo = boardDao.nextBoardNo(board);
+		logger.info("다음 번호:{}", nextNo);
 	}
 
 

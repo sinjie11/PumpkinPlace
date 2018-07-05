@@ -280,6 +280,8 @@
 		${col_b_section} = #{b_section} and ${col_b_no} &gt; #{b_no}
 		order by
 		${col_b_no} desc) a)
+		(select b_no from ${tbl_board} WHERE ${col_b_section} = #{b_section} and ${col_b_no} &gt; #{b_no}
+		order by ${col_b_no}) a)
 		where r = 1
 	</select>
 

@@ -161,7 +161,7 @@ td, h5 {
 								  // jQuery('.site-content').prepend('<div id=\"map-container\"><div id=\"map-canvas\"></div></div>');
 
 								  var request = {
-								    placeId: 'ChIJwRvyh8SYfDURcCKVXGVMYUA'
+								    placeId: '${showboard.sb_placeid}'
 								  };
 
 								  function callback(place, status) {

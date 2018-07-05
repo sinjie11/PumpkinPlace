@@ -25,7 +25,7 @@ public class ShowBoardDaoImple implements ShowBoardDao {
 	
 	@Override
 	public int insert(ShowBoard showBoard) {
-		logger.info("insert({}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}) 호출", 
+		logger.info("insert({}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}) 호출", 
 				showBoard.getSb_nm(), 
 				showBoard.getSb_title(), 
 				showBoard.getSb_content(),
@@ -36,7 +36,9 @@ public class ShowBoardDaoImple implements ShowBoardDao {
 				showBoard.getSb_img(),
 				showBoard.getSb_video(),
 				showBoard.getSb_startdate(),
-				showBoard.getSb_enddate());
+				showBoard.getSb_enddate(),
+				showBoard.getSb_placeid());
+				
 		return showBoardMapper.insertShowBoard(showBoard);
 	}
 	
@@ -55,7 +57,8 @@ public class ShowBoardDaoImple implements ShowBoardDao {
 
 	@Override
 	public int update(ShowBoard showBoard) {
-		logger.info("update(sb_no: {}, sb_title; {}, sb_content: {}, sb_city: {}, sb_price: {}, sb_tel: {}, sb_locinfo: {}, sb_regdate: {}, sb_img: {}, sb_vide: {}, sb_startdate: {}, sb_enddate: {})",
+		logger.info("update(sb_no: {}, sb_title; {}, sb_content: {}, sb_city: {}, sb_price: {}, sb_tel: {}, sb_locinfo: {}, sb_regdate: {}, sb_img: {}, sb_vide: {}, sb_startdate: {}, sb_enddate: {}"
+				+ "			sb_placeid: {})",
 				showBoard.getSb_no(),
 				showBoard.getSb_title(), 
 				showBoard.getSb_content(),	
@@ -67,7 +70,9 @@ public class ShowBoardDaoImple implements ShowBoardDao {
 				showBoard.getSb_img(), 
 				showBoard.getSb_video(),	
 				showBoard.getSb_startdate(), 
-				showBoard.getSb_enddate());
+				showBoard.getSb_enddate(),
+				showBoard.getSb_placeid());
+			
 		return showBoardMapper.updateShowBoard(showBoard);
 	}
 

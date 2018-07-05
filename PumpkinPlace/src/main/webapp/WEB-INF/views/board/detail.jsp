@@ -62,10 +62,10 @@ body {
 
 	<div class="container text-center">
 		<h1>${board.b_title}</h1>
-
-		<div id="quillContents"></div>
-		<button id="update">수정</button>
+		
+		<button id="update" style="margin-left: 1000px;">수정</button>
 		<button id="backList">목록</button>
+		<div id="quillContents"></div>		
 		<button id="boardUp">up ${board.b_up}</button>
 		<button id="boardDown">down ${board.b_down}</button>
 
@@ -76,10 +76,13 @@ body {
 		<br> <br> <br> <br>
 		<c:if test="${loginId eq board.b_id}">
 			<div style="text-align: right;">
-				<button id="update2">수정</button>
 				<button>삭제</button>
 			</div>
 		</c:if>
+			<div>
+				<button id="prevBoard">이전 글</button>
+				<button id="nextBoard">다음 글</button>
+			</div>
 		
 		<form id="send-update">
 		<input type="hidden" name="page" id="page"
@@ -173,6 +176,54 @@ $(document).ready(function () {
 		}
 	});
 	
+	$('#prevBoard').click(function () {
+		console.log('이전페이지')
+		
+		$.ajax({
+			type : 'post',
+			url : '/pumpkinplace/board/prevBoardNo',
+			headers : {
+				'Content-Type' : 'application/json',
+				'X-HTTP-Method-Override' : 'post'
+			},//요청해더
+			data : JSON.stringify({'b_no': ${board.b_no},
+				'b_section': ${board.b_section}
+			}),
+			//서버로 보낼 JSON 객체문자열
+			success : function(result) {
+				console.log(result);
+				console.log('urlNo:' + ${board.b_section});
+				console.log('page:' + ${criteria.page});
+				console.log('numsPerPage:' + ${criteria.numsPerPage})
+				location='/pumpkinplace/board/detail?page=' + ${criteria.page} 
+				+ '&numsPerPage=' + ${criteria.numsPerPage} + '&b_no=' + result + '&urlNo=' + ${board.b_section};
+			}
+			
+			});
+	});
+	
+	$('#nextBoard').click(function () {
+		console.log('다음페이지')
+		
+		$.ajax({
+			type : 'post',
+			url : '/pumpkinplace/board/nextBoardNo',
+			headers : {
+				'Content-Type' : 'application/json',
+				'X-HTTP-Method-Override' : 'post'
+			},//요청해더
+			data : JSON.stringify({'b_no': ${board.b_no},
+				'b_section': ${board.b_section}
+			}),
+			//서버로 보낼 JSON 객체문자열
+			success : function(result) {
+				console.log(result);
+				location='/pumpkinplace/board/detail?page=' + ${criteria.page}
+				+ '&numsPerPage=' + ${criteria.numsPerPage} + '&b_no=' + result + '&urlNo=' + ${board.b_section};
+			}
+			
+			});
+	});
 });
 
 

@@ -120,6 +120,17 @@ public class BoardServiceImple implements BoardService {
 	public int readSectionNoByBno(int bno) {
 		return boardDao.checkSectionNoByBno(bno);
 	}
+
+	@Override
+	public int prevboardNo(Board board) {
+		return boardDao.prevBoardNo(board);
+	}
+
+	@Override
+	public int nextboardNo(Board board) {
+		return boardDao.nextBoardNo(board);
+	}
+	
 	
 } 
 

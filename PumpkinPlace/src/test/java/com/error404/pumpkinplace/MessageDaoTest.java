@@ -26,18 +26,18 @@ public class MessageDaoTest {
 	
 	@Test
 	public void doTest() {
-//		insertTest();
+		insertTest();
 //		send();
 //		recieve();
 //		selectById();
 //		selectById2();
 //		updateTest();
-		deleteTest();
+//		deleteTest();
 		
 	} // end doTest()
 	
 	private void insertTest() {
-		Message message = new Message(0, "admin", "test", "테스트 내용", null, null);
+		Message message = new Message(0, "admin", "test", "테스트 내용", null, 0);
 		
 		int result = messageDao.insert(message);
 		
@@ -68,20 +68,20 @@ public class MessageDaoTest {
 	
 	
 	private void selectById() {
-		Message message = new Message(0, "admin",null, null, null, false);
+		Message message = new Message(0, "admin",null, null, null, 0);
 		
 		logger.info("selectById : {} ", message.getMem_id());
 	} // end selectById()
 	
 	private void selectById2() {
-		Message message = new Message(0, null, "test", null, null, false);
+		Message message = new Message(0, null, "test", null, null, 0);
 		
 		logger.info("selectById2 : {}", message.getMem_id2());
 	} // end selectById2()
-		
+			
 	
 	private void updateTest() {
-		Message message = new Message(1, null, null, "내용변경", null, false);
+		Message message = new Message(1, null, null, "내용변경", null, 0);
 		
 		int result = messageDao.update(message);
 		
