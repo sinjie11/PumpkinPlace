@@ -49,4 +49,9 @@ public interface BoardService {
 	
 	int readSectionNoByBno(int bno);
 	
+	// 이전게시글 번호
+	int prevboardNo(Board board);
+	
+	// 다음 게시글 번호
+	int nextboardNo(Board board);
 }

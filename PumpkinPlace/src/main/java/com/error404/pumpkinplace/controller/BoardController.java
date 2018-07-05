@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.error404.pumpkinplace.service.BoardService;
@@ -168,6 +169,26 @@ public class BoardController {
 	public ResponseEntity<Board> pulsDowm(int b_no) {// 싫어요
 		Board result = boardService.downPuls1(b_no);
 		ResponseEntity<Board> entity = new ResponseEntity<Board>(result, HttpStatus.OK);
+		return entity;
+	}
+	
+	
+	//////////////////이전 페이지
+	@ResponseBody
+	@RequestMapping(value = "/prevBoardNo", method = RequestMethod.POST)
+	public ResponseEntity<Integer> PrevBoardNo(@RequestBody Board board) {
+		logger.info("----- b_no: {}, b_section: {}", board.getB_no(), board.getB_section());
+		int result = boardService.prevboardNo(board); // 이전 게시글 번호 넘겨줌
+		ResponseEntity<Integer> entity = new ResponseEntity<Integer>(result, HttpStatus.OK);
+		return entity;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/nextBoardNo", method = RequestMethod.POST)
+	public ResponseEntity<Integer> NextBoardNo(@RequestBody Board board) {
+		logger.info("----- b_no: {}, b_section: {}", board.getB_no(), board.getB_section());
+		int result = boardService.nextboardNo(board); // 다음 게시글 번호 넘겨줌
+		ResponseEntity<Integer> entity = new ResponseEntity<Integer>(result, HttpStatus.OK);
 		return entity;
 	}
 
