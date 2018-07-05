@@ -62,7 +62,9 @@ body {
 <body>
 <%@ include file="/WEB-INF/views/header.jspf"%>
 <div class="container text-center">
-	</br></br>
+	<br/>
+	<br/>
+	
 	<h1><b>쪽지 보내기</b></h1><br/><br/>
 </div>
 	<form action="insert" method="post" style="margin-left: 700px; font-size: 15px;" >
@@ -77,8 +79,8 @@ body {
 		<br />
 		
 		
-		<label>쪽지내용</label>
-		<textarea rows="8" cols="50" style="margin-left: 20px;" name="msg_content" placeholder="쪽지 내용 작성" required></textarea>
+		<p style="font-weight: bold;">쪽지 내용</p>
+		<textarea rows="8" cols="50" name="msg_content" placeholder="쪽지 내용 작성" required></textarea>
 		<br />
 		<br />
 		 
