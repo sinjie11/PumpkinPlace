@@ -180,7 +180,7 @@ td, h5 {
 
 								  service = new google.maps.places.PlacesService(map);
 								  service.getDetails(request, callback);
-								}
+								} 
 								google.maps.event.addDomListener(window,'load',initializeGoogleMaps);
 							</script>
 
