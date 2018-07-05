@@ -33,6 +33,7 @@ public class BoardDaoTest {
 		// selectBySectionNoTest();
 //		 selectBySectionNo1Test();
 		 selectBySectionNo11Test();
+//		 selectPrevNo();
 	} // end doTest()
 
 	// private void insertTest() {
@@ -111,6 +112,12 @@ public class BoardDaoTest {
 		for (Board b : list) {
 			logger.info("{}, {}, {}, {}", b.getB_no(), b.getB_title(), b.getB_id(), b.getB_regdate());
 		}
+	}
+
+	
+	////////////////////////////////이전글 번호 받기
+	private void selectPrevNo() {
+		Board board = new Board(1, 73, null, null, null, null, null, null, 0, 0, 0);
 	}
 
 

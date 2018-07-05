@@ -222,4 +222,28 @@
 		delete from ${tbl_board} where ${col_b_no} = #{b_no}
 	</delete>
 
+
+
+	<!-- 현재 보드의 section과 no로 이전 보드 번호 받아오기 -->
+	<select id="boardPrevNo" resultType="Integer">
+		select ${col_b_no} 
+		from
+		(select rownum r,a.*
+		from
+		(select b_no from ${tbl_board} WHERE ${col_b_section} = #{b_section} and ${col_b_no} &lt; #{b_no}
+		order by ${col_b_no} desc) a)
+		where r = 1
+	</select>
+	
+	<!-- 현재 보드의 section과 no로 다음 보드 번호 받아오기 -->
+	<select id="boardNextNo" resultType="Integer">
+		select ${col_b_no} 
+		from
+		(select rownum r,a.*
+		from
+		(select b_no from ${tbl_board} WHERE ${col_b_section} = #{b_section} and ${col_b_no} &gt; #{b_no}
+		order by ${col_b_no} desc) a)
+		where r = 1
+	</select>
+	
 </mapper>
