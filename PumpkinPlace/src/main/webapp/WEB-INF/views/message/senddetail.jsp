@@ -26,7 +26,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="message" items="${sendDetail}">
+			<c:forEach var="message" items="${sendList}">
 				<tr>
 					<td>${message.mem_id2}</td>
 					<td>${message.msg_content}</td>
