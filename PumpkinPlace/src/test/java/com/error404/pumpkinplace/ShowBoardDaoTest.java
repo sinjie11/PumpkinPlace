@@ -64,10 +64,10 @@ public class ShowBoardDaoTest {
 		
 //		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd kk:mm");
 //		String sb_startdate = dateFormat.format(Calendar.getInstance().getTime());
-		String dateString1 = "2018-12-24 23:59";
-		String dateString2 = "2018-12-30 23:59";
- 		Date startdate = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(dateString1);
- 		Date enddate = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(dateString2);
+		String dateString1 = "2018/12/24 23:59";
+		String dateString2 = "2018/12/30 23:59";
+ 		Date startdate = new SimpleDateFormat("yyyy/MM/dd HH:mm").parse(dateString1);
+ 		Date enddate = new SimpleDateFormat("yyyy/MM/dd HH:mm").parse(dateString2);
 		ShowBoard showBoard12 = new ShowBoard(1, "황총민", "밴드 리턴", "우리가 돌아왔다", "서울", 0, "02-234-4732", "서울시 강남구 M모 클럽", new Date(), "162.png", "asdasfewr", startdate, enddate);
 		
 		

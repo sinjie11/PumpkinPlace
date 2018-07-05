@@ -111,11 +111,10 @@ body {
 		<b> 카테고리: 공연 > 공연등록 </b>
 	</h5>
 
-<%@ include file="/WEB-INF/views/header.jspf"%>
+	<%@ include file="/WEB-INF/views/header.jspf"%>
 
 	<br />
 
-	<form action="showinsert" method="post" enctype="multipart/form-data">
 		<div style="margin: 0; padding: 0; display: inline">
 			<input name="utf8" type="hidden" value="&#x2713;" /> <input
 				name="authenticity_token" type="hidden"
@@ -147,12 +146,12 @@ body {
 
 										<!-- 사진 저장 -->
 										<script>
-				$(document).ready(function() {
-			if (${not empty saved}) {
-				alert('${saved}' + 'SAVED');
-			}
-				});
-			</script>
+            $(document).ready(function() {
+         if (${not empty saved}) {
+            alert('${saved}' + 'SAVED');
+         }
+            });
+         </script>
 										<!-- 사진저장 -->
 
 										<!-- 사진 미리보기 -->
@@ -188,11 +187,11 @@ body {
 										</label> <br /> <br />
 									</div>
 									<script>
-										$(document).ready(function (){
-											var youtube = $('#sb_video').val();
-											console.log('youtube :' + youtube);
-										});
-									</script>
+                              $(document).ready(function (){
+                                 var youtube = $('#youtube').val();
+                                 console.log('youtube :' + youtube);
+                              });
+                           </script>
 									<div style="width: 570px; margin-left: 25%;">
 										<iframe width="560" height="315"
 											src="https://www.youtube.com/embed/+${youtube}"
@@ -200,13 +199,13 @@ body {
 											allowfullscreen></iframe>
 									</div>
 									<script>
-										
-							jQuery(document).ready(
-									function($) {
-										$('iframe[src^="https://www.youtube.com/"]').wrap(
-										'<div class="youtubeWrap"></div>');
-									});
-								</script>
+                              
+                     jQuery(document).ready(
+                           function($) {
+                              $('iframe[src^="https://www.youtube.com/"]').wrap(
+                              '<div class="youtubeWrap"></div>');
+                           });
+                        </script>
 
 								</div>
 							</div>
@@ -227,37 +226,47 @@ body {
 									<!-- 뮤지션이름 -->
 									<div id="en_bands">
 										<p>
-											<label for="event_공연하는 밴드:">뮤지션명: <input
+											<label for="event_공연하는 밴드:">뮤지션 명: <input
 												id="event_band_tokens" name="sb_nm" type="text"
 												style="text-align: center; width: 200px;" required /></label>
 										</p>
 									</div>
 
 									<div id="en_daytime">
-										<label for="event_공연 날짜">공연 날짜 / 시간:<br /> 
-										<input type="text" id="startdate" placeholder="공연 시작 날짜 선택" /> 
-										<input type="text" name="sb_startdate" placeholder="시간 입력" id="time1" required size="8" maxlength="5"> 
-										~ 
-										<input type="text" id="enddate" placeholder="공연 종료 날짜 선택" required />
-										<input type="text" name="sb_enddate" placeholder="시간 입력" id="endtime" required size="8" maxlength="5">
+										<label for="event_공연 날짜">공연 날짜 / 시간:<br /> <input
+											type="text" id="startdate" placeholder="공연 시작 날짜 선택" /> <input
+											type="text" placeholder="시간 입력" id="starttime" required
+											size="10" maxlength="5"> ~ <input type="text"
+											id="enddate" placeholder="공연 종료 날짜 선택" required /> <input
+											type="text" placeholder="시간 입력" id="endtime" required
+											size="10" maxlength="5">
 										</label>
 									</div>
 									<br />
 
-
-
-
-
-
 									<!-- 날짜 선택 -->
 									<script>
-							$(function() {
-							$("#startdate, #enddate").datepicker({
-								dateFormat : 'yy.mm.dd'
-									});
-													});
-						</script>
-
+$(function() {
+  $("#startdate, #enddate").datepicker({
+    dateFormat : 'yy/mm/dd'
+  });
+});
+</script>
+									<script>
+$(document).ready(function(){
+	 $("#starttime, #endtime").timepicker({
+	        timeFormat: 'HH:mm ',
+	        interval: 30,
+	        minTime: '00:00',
+	        maxTime: '23:00',
+	        defaultTime: '19',
+	        startTime: '00:00',
+	        dynamic: false,
+	        dropdown: true,
+	        scrollbar: true
+	    });
+});
+</script>
 
 
 
@@ -276,10 +285,10 @@ body {
 											</select></label>
 										</p>
 									</div>
-							<script>
-							var city = $('#country').val;
-							
-							</script>
+									<script>
+                     var city = $('#country').val;
+                     
+                     </script>
 
 
 
@@ -295,6 +304,8 @@ body {
 											<span id="place-id"></span><br> <span id="place-address"></span>
 										</div>
 										<br />
+
+
 
 										<script>
       function initMap() {
@@ -353,8 +364,7 @@ body {
       }
     </script>
 										<script
-											src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&libraries=places&callback=initMap"
-											async defer></script>
+											src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&libraries=places&callback=initMap"></script>
 									</div>
 
 									<!-- 연락처 -->
@@ -380,18 +390,12 @@ body {
 									<div id="en_description">
 										<label>상세 정보</label>
 										<p>
-											<textarea name="description" rows="5" cols="50" id="text"
-												name="sb_content" required></textarea>
+											<textarea name="description" rows="5" cols="50" name="sb_content"
+												id="showinserttext" required></textarea>
 										</p>
 										<br />
 									</div>
-									<br />
-
-									<div id="en_player">
-										<div class="links"></div>
-										<p></p>
-									</div>
-									<br />
+									<br /> <br />
 								</div>
 							</div>
 						</div>
@@ -399,10 +403,75 @@ body {
 				</div>
 			</div>
 		</div>
-		<br /> 
-		<input class="btn btn-primary" name="uploadFile" type="submit"
-			value="등록" style="margin-bottom: 50px; margin-left: 50%;" />
-	</form>
+		<br /> <!-- <input  class="btn btn-primary"
+			name="uploadFile" type="submit" value="등록"
+			style="margin-bottom: 50px; margin-left: 50%;" /> -->
+	<button type="button" class="btn btn-primary" id="btnshowinsert" class="btn btn-primary"  style="margin-bottom: 50px; margin-left: 50%;">등록</button>
+
+	<script>
+	$('#btnshowinsert').click(function () {
+ 	var sb_nm = $('#event_band_tokens').val();
+	var sb_title = $('#show_name').val();
+	var sb_content = $('#showinserttext').val();
+	var sb_city = $('#country').val();
+	var sb_price = $('#event_door_price').val();
+	var sb_tel = $('#event_contact').val();
+	var sb_locinfo = $('#pac-input').val();
+	var sb_img = $('#imgInp').val();
+	var sb_video = $('#youtube').val(); 
+	var startdate = $('#startdate').val();
+	var starttime = $('#starttime').val();
+	var enddate = $('#enddate').val();
+	var endtime = $('#endtime').val();
+	var startdatetime = startdate + ' ' + starttime;
+	var sb_startdate = new Date(startdatetime);
+	var enddatetime = enddate + ' ' + endtime;
+	var sb_enddate = new Date(enddatetime);
+	console.log('sb_nm :' + sb_nm);
+	console.log('sb_title :' + sb_title);
+	console.log('sb_content :' + sb_content);
+	console.log('sb_city :' + sb_city);
+	console.log('sb_price :' + sb_price);
+	console.log('sb_tel :' + sb_tel);
+	console.log('sb_locinfo :' + sb_locinfo);
+	console.log('sb_img :' + sb_img);
+	console.log('sb_video :' + sb_video);
+	console.log('startdate :' + startdate);
+	console.log('starttime :' + starttime);
+	console.log('enddate :' + enddate);
+	console.log('endtime :' + endtime);
+	console.log('startdatetime :' + startdatetime);
+	console.log('enddatetime :' + enddatetime);
+	console.log('sb_startdate :' + sb_startdate);
+	console.log('sb_enddate :' + sb_enddate);
+	$.ajax({
+		type: 'post',
+		url: '/pumpkinplace/showboard/showinsert/',
+		headers: {
+			'Content-Type': 'application/json',
+			'X-HTTP-Method-Override' : 'post'
+		},
+		data: JSON.stringify({
+			'sb_nm': sb_nm,
+			'sb_title': sb_title,
+			'sb_content': sb_content,
+			'sb_city': sb_city,
+			'sb_price': sb_price,
+			'sb_tel': sb_tel,
+			'sb_locinfo': sb_locinfo,
+			'sb_img': sb_img,
+			'sb_video': sb_video,
+			'sb_startdate': sb_startdate,
+			'sb_enddate': sb_enddate
+		}),
+		success: function (result){
+				alert(sb_nm + '님 공연 등록 성공');
+				location = '/pumpkinplace/showboard/showboardmain';
+			}
+		
+		});
+	});
+</script>
 
 </body>
 
@@ -410,6 +479,3 @@ body {
 
 
 </html>
-
-
-
