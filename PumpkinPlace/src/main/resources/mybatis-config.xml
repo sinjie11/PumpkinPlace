@@ -52,6 +52,7 @@
 		<property name="col_sb_video" value="sb_video" />
 		<property name="col_sb_startdate" value="sb_startdate" />
 		<property name="col_sb_enddate" value="sb_enddate" />
+		<property name="col_sb_placeid" value="sb_placeid"/>
 		
 		
 		<!-- reply 테이블  -->

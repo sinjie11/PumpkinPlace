@@ -17,12 +17,13 @@ public class ShowBoard {
 	private String sb_video; // 공연 동영상
 	private Date sb_startdate; // 공연 시작일자
 	private Date sb_enddate; // 공연 종료일자
+	private String sb_placeid;// 구글맵 플레이스 아이디
 	
 	public ShowBoard() {}
 
 	public ShowBoard(int sb_no, String sb_nm, String sb_title, String sb_content, String sb_city, int sb_price,
 			String sb_tel, String sb_locinfo, Date sb_regdate, String sb_img, String sb_video, Date sb_startdate,
-			Date sb_enddate) {
+			Date sb_enddate, String sb_placeid)  {
 		
 		this.sb_no = sb_no;
 		this.sb_nm = sb_nm;
@@ -37,6 +38,15 @@ public class ShowBoard {
 		this.sb_video = sb_video;
 		this.sb_startdate = sb_startdate;
 		this.sb_enddate = sb_enddate;
+		this.sb_placeid = sb_placeid;
+	}
+
+	public String getSb_placeid() {
+		return sb_placeid;
+	}
+
+	public void setSb_placeid(String sb_placeid) {
+		this.sb_placeid = sb_placeid;
 	}
 
 	public long getSb_no() {
