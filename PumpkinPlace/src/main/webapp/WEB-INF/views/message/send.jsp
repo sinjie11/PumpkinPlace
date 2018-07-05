@@ -62,14 +62,14 @@ body {
 <body>
 <%@ include file="/WEB-INF/views/header.jspf"%>
 <div class="container text-center">
-<br/><br/>
+<br/><br/><br/>
 	<img alt="이미지"
 				src="${pageContext.request.contextPath}/resources/msg3.png"
 				style="background-color: white; width: 110px; height: 110px;" /></a>
 	<br/>
-	<h1><b>보낸 쪽지함</b></h1>
+	<h1><b>보낸 쪽지함</b></h1><br/>
 
-	<table>
+	<table class="table">
 
 		<thead>
 			<tr>

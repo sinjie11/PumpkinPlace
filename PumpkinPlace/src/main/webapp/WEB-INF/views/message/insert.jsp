@@ -80,8 +80,8 @@ body {
 		<br/>
 	</div>	
 		
-		<label>쪽지내용</label>
-		<textarea rows="8" cols="50" style="margin-left: 20px;" name="msg_content" placeholder="쪽지 내용 작성" required></textarea>
+		<label style="position: relative; top: 50%;">쪽지내용</label>
+		<textarea rows="8" cols="50" style="margin-left: 20px;"  name="msg_content" placeholder="쪽지 내용 작성" required></textarea>
 		<br/>
 		<br/>
 		 
