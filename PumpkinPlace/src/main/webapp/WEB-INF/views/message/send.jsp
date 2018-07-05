@@ -78,7 +78,7 @@ body {
 				<th>발신 일자</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody  style="text-align: left;">
 			<c:forEach var="message" items="${sendList}">
 				<tr>
 					<td>${message.mem_id2}</td>
