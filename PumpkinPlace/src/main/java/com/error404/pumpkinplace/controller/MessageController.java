@@ -48,6 +48,7 @@ public class MessageController {
 	
 	@RequestMapping(value = "/send", method = RequestMethod.GET)
 	public void send(Integer page, Integer numsPerPage, String mem_id, Model model, HttpSession session) {
+		logger.info("send() GET 호출");
 		
 		PaginationCriteria criteria = new PaginationCriteria();
 		if (page != null) {
@@ -56,27 +57,52 @@ public class MessageController {
 		if (numsPerPage != null) {
 			criteria.setNumsPerPage(numsPerPage);
 		}
-				
-		List<Message> list = messageService.send((String) session.getAttribute("loginId"));
 		
+		List<Message> list = messageService.send((String) session.getAttribute("loginId"));
 		model.addAttribute("sendList", list);
 		
 		PageLinkMaker maker = new PageLinkMaker();
 		maker.setCriteria(criteria);
-		maker.setTotalCount(messageService.total());
+		maker.setTotalCount(messageService.totalCount());
 		maker.setPageLinkData();
-		model.addAttribute("pageMaker", maker);
-
 		
+		model.addAttribute("pageMaker", maker);
+				
 	} // end send(mem_id, model)
 	
-	@RequestMapping(value = "/recieve", method = RequestMethod.GET)
-	public void recieve(String mem_id2, Model model, HttpSession session) {
+	@RequestMapping(value = "/senddetail", method = RequestMethod.GET)
+	public void sendDetail(String mem_id, Model model, HttpSession session) {
+		logger.info("sendDetail() GET 호출");
 		
-			
+		List<Message> list = messageService.send((String) session.getAttribute("loginId"));
+		
+		model.addAttribute("sendDetail", list);
+		
+	} // end sendDetail(mem_id, model, session)
+	
+	@RequestMapping(value = "/recieve", method = RequestMethod.GET)
+	public void recieve(Integer page, Integer numsPerPage, String mem_id2, Model model, HttpSession session) {
+		logger.info("recievePage() GET 호출");
+		
+		PaginationCriteria criteria = new PaginationCriteria();
+		if (page != null) {
+			criteria.setPage(page);
+		}
+		if (numsPerPage != null) {
+			criteria.setNumsPerPage(numsPerPage);
+		}
+		
 		List<Message> list = messageService.recieve((String) session.getAttribute("loginId"));
 		
 		model.addAttribute("recieveList", list);
+		
+		PageLinkMaker maker = new PageLinkMaker();
+		maker.setCriteria(criteria);
+		maker.setTotalCount(messageService.totalCount2());
+		maker.setPageLinkData();
+		
+		model.addAttribute("pageMaker", maker);
+		
 
 	} // end recieve(mem_id2, model, session)
 	
