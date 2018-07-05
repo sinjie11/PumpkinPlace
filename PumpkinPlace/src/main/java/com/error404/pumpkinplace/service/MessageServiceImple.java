@@ -68,6 +68,12 @@ public class MessageServiceImple implements MessageService {
 		
 		return messageDao.select2(mem_id2);
 	} // end read2(mem_id2)
+	
+	@Override
+	public Message read3(int msg_no) {
+	
+		return messageDao.select3(msg_no);
+	} // end read3(msg_no)
 
 	@Override
 	public int update(Message message) {

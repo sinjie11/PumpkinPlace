@@ -75,7 +75,7 @@ body {
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="message" items="${recieveDetail}">
+			
 				<tr>
 					<td>${message.mem_id}</td>
 					<td>${message.mem_id2}</td>
@@ -84,7 +84,7 @@ body {
 						pattern="yyyy-MM-dd HH:mm:ss" var="msg_regdate" />
 					<td>${msg_regdate}</td>
 				</tr>
-			</c:forEach>
+		
 		</tbody>
 	</table>
 

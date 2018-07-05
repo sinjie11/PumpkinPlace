@@ -77,6 +77,12 @@ public class MessageDaoImple implements MessageDao {
 	} // end select2(mem_id2)
 
 	@Override
+	public Message select3(int msg_no) {
+	
+		return messageMapper.selectByMsgNo(msg_no);
+	} // end select3(msg_no)
+	
+	@Override
 	public int update(Message message) {
 		
 		return messageMapper.update(message);

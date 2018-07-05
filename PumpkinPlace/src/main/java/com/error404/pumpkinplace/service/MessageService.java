@@ -25,6 +25,8 @@ public interface MessageService {
 	
 	Message read2(String mem_id2); // 아이디2 검색 서비스
 	
+	Message read3(int msg_no); // 쪽지 번호로 검색 서비스
+	
 	int update(Message message); // 쪽지 수정 서비스
 	
 	int delete(int msg_no); // 쪽지 삭제 서비스

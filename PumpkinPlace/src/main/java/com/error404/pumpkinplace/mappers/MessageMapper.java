@@ -24,6 +24,8 @@ public interface MessageMapper {
 	Message selectById(String mem_id);
 	
 	Message selectById2(String mem_id2);
+	
+	Message selectByMsgNo(int msg_no);
 		
 	int update(Message message);
 	
