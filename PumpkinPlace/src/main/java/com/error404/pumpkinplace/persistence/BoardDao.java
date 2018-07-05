@@ -30,7 +30,11 @@ public interface BoardDao {
 	int pulsDown(int bno);
 	Board getUpDown(int bno);
 	
+
 	int checkSectionNoByBno(int bno);
+
+	//////////////////////
+//	int prevBoardNo(Board board);
 } 
 
 

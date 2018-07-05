@@ -171,6 +171,15 @@ public class BoardDaoImple implements BoardDao {
 	public Board getUpDown(int bno) {
 		return sqlSession.selectOne(NAMESPACE+".getUpDown",bno);
 	}
+
+	
+	
+	
+	///////////////////////////////////////////// 이전 다음 페이지
+//	@Override
+//	public int prevBoardNo(Board board) {
+//		return sqlSession.selectOne(NAMESPACE + ".boardPrevNo", board);
+//	}
 	
 	@Override
 	public int checkSectionNoByBno(int bno) {

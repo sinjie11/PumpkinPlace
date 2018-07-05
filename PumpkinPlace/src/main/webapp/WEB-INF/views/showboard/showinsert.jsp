@@ -92,8 +92,8 @@ body {
 }
 
 #map {
-	width: 500px;
-	height: 600px;
+	width: 600px;
+	height: 550px;
 }
 
 #infowindow-content {
@@ -116,7 +116,6 @@ body {
 
 	<br />
 
-	<form action="showinsert" method="post" enctype="multipart/form-data">
 		<div style="margin: 0; padding: 0; display: inline">
 			<input name="utf8" type="hidden" value="&#x2713;" /> <input
 				name="authenticity_token" type="hidden"
@@ -190,6 +189,7 @@ body {
 									</div>
 									<script>
                               $(document).ready(function (){
+                                 var youtube = $('#youtube').val();
                                  var youtube = $('#sb_video').val();
                                  console.log('youtube :' + youtube);
                               });
@@ -236,23 +236,40 @@ body {
 
 									<div id="en_daytime">
 										<label for="event_공연 날짜">공연 날짜 / 시간:<br /> <input
-											type="text" id="startdate" placeholder="공연 시작 날짜 선택" /> <input
-											type="text" name="sb_startdate" placeholder="시간 입력"
-											id="starttime" required size="10" maxlength="5"> ~ <input
-											type="text" id="enddate" placeholder="공연 종료 날짜 선택" required />
-											<input type="text" name="sb_enddate" placeholder="시간 입력"
-											id="endtime" required size="10" maxlength="5">
+											type="text" id="startdate" placeholder="공연 시작 날짜 선택" /> 
+											<input
+											type="text" placeholder="시간 입력" id="starttime" required
+											size="10" maxlength="5"> ~ <input type="text"
+											id="enddate" placeholder="공연 종료 날짜 선택" required /> 
+											<input
+											type="text" placeholder="시간 입력" id="endtime" required
+											size="10" maxlength="5">
 										</label>
 									</div>
 									<br />
 
-
-
-
-
-
 									<!-- 날짜 선택 -->
 									<script>
+$(function() {
+  $("#startdate, #enddate").datepicker({
+    dateFormat : 'yy/mm/dd'
+  });
+});
+</script>
+									<script>
+$(document).ready(function(){
+	 $("#starttime, #endtime").timepicker({
+	        timeFormat: 'HH:mm ',
+	        interval: 30,
+	        minTime: '00:00',
+	        maxTime: '23:00',
+	        defaultTime: '19',
+	        startTime: '00:00',
+	        dynamic: false,
+	        dropdown: true,
+	        scrollbar: true
+	    });
+});
                      $(function() {
                      $("#startdate, #enddate").datepicker({
                         dateFormat : 'yy.mm.dd'
@@ -262,7 +279,7 @@ body {
 									<script type="text/javascript">
 
     
-    
+									<!-- 시간 -->    
     $("#starttime, #endtime").timepicker({
         timeFormat: 'HH:mm ',
         interval: 30,
@@ -316,7 +333,7 @@ body {
 										<div id="map"></div>
 										<div id="infowindow-content">
 											<span id="place-name" class="title"><br/></span><br>
-											<span id="place-id" style="visibility: hidden;"></span><br> <span id="place-address">
+											<span id="place-id" ></span><br> <span id="place-address">
 											<br/></span>
 										</div>
 										<br />
@@ -328,7 +345,7 @@ body {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 37.498145, lng: 127.027612},
           
-       
+      
           zoom: 16
         });
 
@@ -358,7 +375,12 @@ body {
           if (!place.place_id) {
             return;
           }
+          
+          
+          
           geocoder.geocode({'placeId': place.place_id}, function(results, status) {
+        	  
+        	  
 
             if (status !== 'OK') {
               window.alert('Geocoder failed due to: ' + status);
@@ -376,6 +398,10 @@ body {
             infowindowContent.children['place-id'].textContent = place.place_id;
             infowindowContent.children['place-address'].textContent =
                 results[0].formatted_address;
+            
+            
+            
+            
             infowindow.open(map, marker);
           });
         });
@@ -408,8 +434,8 @@ body {
 									<div id="en_description">
 										<label>상세 정보</label>
 										<p>
-											<textarea name="description" rows="5" cols="50" id="text"
-												name="sb_content" required></textarea>
+											<textarea name="description" rows="5" cols="50" name="sb_content"
+												id="showinserttext" required></textarea>
 										</p>
 										<br />
 									</div>
@@ -421,9 +447,78 @@ body {
 				</div>
 			</div>
 		</div>
-		<br /> <input class="btn btn-primary" name="uploadFile" type="submit"
-			value="등록" style="margin-bottom: 50px; margin-left: 50%;" />
-	</form>
+		<br /> 
+		<!-- <input  class="btn btn-primary"
+			name="uploadFile" type="submit" value="등록"
+			style="margin-bottom: 50px; margin-left: 50%;" /> -->
+			
+	<button type="button" class="btn btn-primary" id="btnshowinsert" class="btn btn-primary"  style="margin-bottom: 50px; margin-left: 50%;">등록</button>
+
+	<script>
+	$('#btnshowinsert').click(function () {
+ 	var sb_nm = $('#event_band_tokens').val();
+	var sb_title = $('#show_name').val();
+	var sb_content = $('#showinserttext').val();
+	var sb_city = $('#country').val();
+	var sb_price = $('#event_door_price').val();
+	var sb_tel = $('#event_contact').val();
+	var sb_locinfo = $('#pac-input').val();
+	var sb_img = $('#imgInp').val();
+	var sb_video = $('#youtube').val(); 
+	var startdate = $('#startdate').val();
+	var starttime = $('#starttime').val();
+	var enddate = $('#enddate').val();
+	var endtime = $('#endtime').val();
+	var startdatetime = startdate + ' ' + starttime;
+	var sb_startdate = new Date(startdatetime);
+	var enddatetime = enddate + ' ' + endtime;
+	var sb_enddate = new Date(enddatetime);
+	console.log('sb_nm :' + sb_nm);
+	console.log('sb_title :' + sb_title);
+	console.log('sb_content :' + sb_content);
+	console.log('sb_city :' + sb_city);
+	console.log('sb_price :' + sb_price);
+	console.log('sb_tel :' + sb_tel);
+	console.log('sb_locinfo :' + sb_locinfo);
+	console.log('sb_img :' + sb_img);
+	console.log('sb_video :' + sb_video);
+	console.log('startdate :' + startdate);
+	console.log('starttime :' + starttime);
+	console.log('enddate :' + enddate);
+	console.log('endtime :' + endtime);
+	console.log('startdatetime :' + startdatetime);
+	console.log('enddatetime :' + enddatetime);
+	console.log('sb_startdate :' + sb_startdate);
+	console.log('sb_enddate :' + sb_enddate);
+	$.ajax({
+		type: 'post',
+		url: '/pumpkinplace/showboard/showinsert/',
+		headers: {
+			'Content-Type': 'application/json',
+			'X-HTTP-Method-Override' : 'post'
+		},
+		data: JSON.stringify({
+			'sb_nm': sb_nm,
+			'sb_title': sb_title,
+			'sb_content': sb_content,
+			'sb_city': sb_city,
+			'sb_price': sb_price,
+			'sb_tel': sb_tel,
+			'sb_locinfo': sb_locinfo,
+			'sb_img': sb_img,
+			'sb_video': sb_video,
+			'sb_startdate': sb_startdate,
+			'sb_enddate': sb_enddate
+		}),
+		success: function (result){
+				alert(sb_nm + '님 공연 등록 성공');
+				location = '/pumpkinplace/showboard/showboardmain';
+			}
+		
+		});
+	});
+</script>
+
 
 </body>
 
