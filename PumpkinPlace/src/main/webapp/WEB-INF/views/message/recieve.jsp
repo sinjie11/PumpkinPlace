@@ -77,7 +77,7 @@ body {
 				<th>수신 일자</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody style="text-align: left;">
 			<c:forEach var="message" items="${recieveList}">
 				<tr>
 					<td>${message.mem_id}</td>
