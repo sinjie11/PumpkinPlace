@@ -166,7 +166,7 @@ public class ShowBoardController {
 		
 		return "redirect:detail?sb_no=" + showboard.getSb_no();
 	} // end update()
-	
+	 
 	@RequestMapping(value = "delete", method = RequestMethod.GET)
 	public String delete(int sb_no, RedirectAttributes attr) {
 		logger.info("delete(bno: {})", sb_no);
