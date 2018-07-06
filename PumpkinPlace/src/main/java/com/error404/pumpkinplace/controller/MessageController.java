@@ -71,13 +71,13 @@ public class MessageController {
 	} // end send(mem_id, model)
 	
 	@RequestMapping(value = "/senddetail", method = RequestMethod.GET)
-	public void sendDetail(String mem_id, Model model, HttpSession session) {
+	public void sendDetail(int msg_no, Model model, HttpSession session) {
 		logger.info("sendDetail() GET 호출");
 				
-		List<Message> list = messageService.send((String) session.getAttribute("loginId"));
+		Message message = messageService.read3(msg_no);
 		
-		model.addAttribute("sendList", list);
-		
+		model.addAttribute("message", message);
+				
 	} // end sendDetail(mem_id, model, session)
 	
 	@RequestMapping(value = "/recieve", method = RequestMethod.GET)
@@ -107,12 +107,13 @@ public class MessageController {
 	} // end recieve(mem_id2, model, session)
 	
 	@RequestMapping(value = "/recievedetail", method = RequestMethod.GET)
-	public void recieveDetail(String mem_id2, Model model, HttpSession session) {
+	public void recieveDetail(int msg_no, Model model, HttpSession session) {
 		logger.info("recieveDetail() GET 호출");
 		
-		List<Message> list = messageService.recieve((String) session.getAttribute("loginId"));
+		Message message = messageService.read3(msg_no);
 		
-		model.addAttribute("recieveDetail", list);
+		model.addAttribute("message", message);
+				
 		
 	} // end recieveDetail(mem_id2, model, session)
 		

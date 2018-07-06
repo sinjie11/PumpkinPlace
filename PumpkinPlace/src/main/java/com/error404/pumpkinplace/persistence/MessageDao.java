@@ -25,6 +25,8 @@ public interface MessageDao {
 	
 	Message select2(String mem_id2);
 	
+	Message select3(int msg_no);
+	
 	int update(Message message);
 	
 	int delete(int msg_no);

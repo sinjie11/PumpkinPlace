@@ -29,10 +29,12 @@
  		select * from ${tbl_message} where ${col_mem_id} = #{mem_id}
  	</select>
 
-
-
  	<select id="selectById2" resultType="Message">
  		select * from ${tbl_message} where ${col_mem_id2} = #{mem_id2}
+ 	</select>
+ 	 	
+ 	<select id="selectByMsgNo" resultType="Message">
+ 		select * from ${tbl_message} where ${col_msg_no} = #{msg_no}
  	</select>
  	
 

@@ -100,10 +100,10 @@ body {
                <table class="table">
                   <thead>
                      <tr>
-                        <th>No.</th>
-                        <th>Title</th>
-                        <th>Writer</th>
-                        <th>Creation Time</th>
+                        <th class="text-center">No.</th>
+                        <th class="text-center">Title</th>
+                        <th class="text-center">Writer</th>
+                        <th class="text-center">Creation Time</th>
                      </tr>
                   </thead>
                   <tbody>
@@ -130,10 +130,10 @@ body {
                <table class="table">
                    <thead>
                      <tr>
-                        <th>No.</th>
-                        <th>Title</th>
-                        <th>Writer</th>
-                        <th>Creation Time</th>
+                        <th class="text-center">No.</th>
+                        <th class="text-center">Title</th>
+                        <th class="text-center">Writer</th>
+                        <th class="text-center">Creation Time</th>
                      </tr>
                   </thead>
                   <tbody>
@@ -159,10 +159,10 @@ body {
                <table class="table">
                   <thead>
                      <tr>
-                        <th>No.</th>
-                        <th>Title</th>
-                        <th>Writer</th>
-                        <th>Creation Time</th>
+                        <th class="text-center">No.</th>
+                        <th class="text-center">Title</th>
+                        <th class="text-center">Writer</th>
+                        <th class="text-center">Creation Time</th>
                      </tr>
                   </thead>
                   <tbody>

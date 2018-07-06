@@ -84,6 +84,33 @@ public class PageLinkMaker {
 		
 	} 
 	
+	public void setPageLinkDataForSectionNo(int totalCount) {
+		int totalPageLinks = (int)
+				Math.ceil((double) totalCount / criteria.getNumsPerPage());
+		
+		int temp = (int)
+				Math.ceil((double) criteria.getPage() / numsOfPageLinks) * numsOfPageLinks;
+		if (temp > totalPageLinks) {
+			endPageNo = totalPageLinks;
+		} else {
+			endPageNo = temp;
+		}
+		
+		startPageNo = ((endPageNo - 1) / numsOfPageLinks) * numsOfPageLinks + 1;
+
+		if (startPageNo == 1) {
+			hasPrev = false;
+		} else {
+			hasPrev = true;
+		}
+		
+		if (endPageNo * criteria.getNumsPerPage() >= totalCount) {
+			hasNext = false;
+		} else {
+			hasNext = true;
+		}
+	}
+	
 } 
 
 

@@ -74,7 +74,7 @@ body {
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="message" items="${sendList}">
+		
 				<tr>
 					<td>${message.mem_id2}</td>
 					<td>${message.msg_content}</td>
@@ -82,7 +82,7 @@ body {
 						pattern="yyyy-MM-dd HH:mm:ss" var="msg_regdate" />
 					<td>${msg_regdate}</td>
 				</tr>
-			</c:forEach>
+		
 		</tbody>
 	</table>
 

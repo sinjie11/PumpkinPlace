@@ -26,14 +26,15 @@
 	</select>
 
 	<select id="selectBySectionNo" resultType="Board">
-		select 
+		select
 		b.b_no, b.b_title,
-		 b.b_id, b.b_regdate,
+		b.b_id, b.b_regdate,
 		b.b_readcnt
 		from (
 		select rownum rn, a.*
 		from (
-		select * from pumpkin_board
+		select * from
+		pumpkin_board
 		where b_section
 		= ${b_section}
 		order by b_no desc
@@ -46,8 +47,8 @@
 
 	<select id="selectAllBySectionNo11" resultType="Board">
 		select
-
-		b.b_no, b.b_title,
+		b.b_no,
+		b.b_title,
 		b.b_id, b.b_regdate,
 		b.b_readcnt
 		from (
@@ -64,10 +65,17 @@
 		${end}
 	</select>
 
+	<select id="countTotalSectionNo11" resultType="Integer">
+		select count(${col_b_no})
+		from ${tbl_board}
+		where ${col_b_section} = 8 or ${col_b_section} = 9
+	</select>
+
 	<select id="selectAllBySectionNo12" resultType="Board">
 		select
 
-		b.b_no, b.b_title,
+		b.b_no,
+		b.b_title,
 		b.b_id, b.b_regdate,
 		b.b_readcnt
 		from (
@@ -75,7 +83,8 @@
 		from (
 		select * from
 		pumpkin_board
-		where b_section = 2 or b_section = 3 or b_section = 4
+		where b_section = 2 or b_section = 3
+		or b_section = 4
 		or
 		b_section = 5 or b_section = 6 or b_section = 7
 		order by b_no desc
@@ -86,6 +95,14 @@
 		${start} and
 		${end}
 	</select>
+	
+	<select id="countTotalSectionNo12" resultType="Integer">
+		select count(${col_b_no})
+		from ${tbl_board}
+		where ${col_b_section} = 2 or ${col_b_section} = 3
+		or ${col_b_section} = 4 or ${col_b_section} = 5
+		or ${col_b_section} = 6 or ${col_b_section} = 7
+	</select>
 
 	<select id="selectBySectionNo1" resultType="Board">
 		select b.b_no,
@@ -94,12 +111,14 @@
 		select
 		rownum rn, a.*
 		from (
-		select * from pumpkin_board
+		select *
+		from pumpkin_board
 		where b_section = 1
 		order by b_no desc
 		) a
 		) b
-		where rn between 1 and 5
+		where rn
+		between 1 and 5
 	</select>
 
 	<select id="selectBySectionNo11" resultType="Board">
@@ -109,10 +128,12 @@
 		select
 		rownum rn, a.*
 		from (
-		select * from pumpkin_board
+		select *
+		from pumpkin_board
 		where b_section = 8 or
 		b_section = 9
-		order by b_no desc
+		order by b_no
+		desc
 		) a
 		) b
 		where rn between 1 and 5
@@ -125,7 +146,8 @@
 		select
 		rownum rn, a.*
 		from (
-		select * from pumpkin_board
+		select *
+		from pumpkin_board
 		where b_section = 2 or b_section = 3
 		or b_section = 4
 		or b_section = 5 or
@@ -143,7 +165,7 @@
 	</select>
 
 	<!-- Dynamic SQL: 조건에 따라서 동적으로 SQL 문장을 생성 -->
-	<select id="search" resultType="Board">
+	<select id="searchWithSectionNo" resultType="Board">
 		select * from ${tbl_board}
 		where
 		<if test="searchType == 1">
@@ -164,6 +186,7 @@
 	<select id="totalCount" resultType="Integer">
 		select count(${col_b_no})
 		from ${tbl_board}
+		where ${col_b_section} = #{b_section}
 	</select>
 
 	<select id="listPage" resultType="Board">
@@ -227,7 +250,8 @@
 
 	<!-- 해당 글이 어느 Section에 속하는지를 b_no를 통해 알아내는 SQL Statement -->
 	<select id="checkSectionNoByBno" resultType="Integer">
-		select ${col_b_section}
+		select
+		${col_b_section}
 		from ${tbl_board}
 		where ${col_b_no} = #{b_no};
 	</select>
@@ -235,24 +259,31 @@
 
 	<!-- 현재 보드의 section과 no로 이전 보드 번호 받아오기 -->
 	<select id="boardPrevNo" resultType="Integer">
-		select ${col_b_no} 
+		select ${col_b_no}
 		from
 		(select rownum r,a.*
 		from
-		(select b_no from ${tbl_board} WHERE ${col_b_section} = #{b_section} and ${col_b_no} &lt; #{b_no}
-		order by ${col_b_no} desc) a)
+		(select b_no from ${tbl_board} WHERE
+		${col_b_section} = #{b_section} and ${col_b_no} &lt; #{b_no}
+		order by
+		${col_b_no} desc) a)
 		where r = 1
 	</select>
-	
+
 	<!-- 현재 보드의 section과 no로 다음 보드 번호 받아오기 -->
 	<select id="boardNextNo" resultType="Integer">
-		select ${col_b_no} 
+		select ${col_b_no}
 		from
 		(select rownum r,a.*
 		from
+		(select b_no from ${tbl_board} WHERE
+		${col_b_section} = #{b_section} and ${col_b_no} &gt; #{b_no}
+		order by
+		${col_b_no} desc) a)
 		(select b_no from ${tbl_board} WHERE ${col_b_section} = #{b_section} and ${col_b_no} &gt; #{b_no}
 		order by ${col_b_no}) a)
 		where r = 1
 	</select>
-	
+
+
 </mapper>
