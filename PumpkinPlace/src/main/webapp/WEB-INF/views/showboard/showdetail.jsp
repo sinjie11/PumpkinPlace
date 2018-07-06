@@ -194,8 +194,15 @@ td, h5 {
                      <br />
 
 
-                     <button style="size: small; margin-left: 50%;">수정하기(작성자만
+                     <button id="updatebutton" style="size: small; margin-left: 50%;" 
+                     onclick="udatebutton_click();">수정하기(작성자만
                         보이기 위치는 어디로 할까요?)</button>
+                        <script type="text/javascript">
+                        	function udatebutton_click(){
+								
+							}
+                        
+                        </script>
                   </div>
                </div>
             </div>

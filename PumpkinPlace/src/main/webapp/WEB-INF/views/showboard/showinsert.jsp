@@ -276,12 +276,12 @@ body {
 											<label for="sb_city"> 도시: <select id="country"
 												name="sb_city"
 												style="text-align: center; width: 100px; margin-left: 12px;">
-													<option value="seoul">서울</option>
-													<option value="kuyngki">경기</option>
-													<option value="kwangju">광주</option>
-													<option value="daegu">대구</option>
-													<option value="busan">부산</option>
-													<option value="jeju">제주</option>
+													<option value="seoul/서울">서울</option>
+													<option value="kyungki/경기">경기</option>
+													<option value="kwangju/광주">광주</option>
+													<option value="daegu/대구">대구</option>
+													<option value="busan/부산">부산</option>
+													<option value="jeju/제주">제주</option>
 											</select></label>
 										</p>
 									</div>
