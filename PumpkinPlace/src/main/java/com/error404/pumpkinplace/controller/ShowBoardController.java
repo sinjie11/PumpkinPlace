@@ -134,4 +134,18 @@ public class ShowBoardController {
 		model.addAttribute("showboardList", list);
 		model.addAttribute("searchKeyword", searchKeyword);
 	}
+	
+	
+	
+	
+	@RequestMapping(value = "/showboardupdate", method = RequestMethod.GET)
+	public void showboardUpdate() {
+		logger.info("showboardupdate() 호출");
+		
+	}
+	
+	
+	
 } // end class ShowBoardController
+
+

@@ -44,14 +44,13 @@
 	</update>
 
 
-
 	 <delete id="delete">
 	 	delete ${tbl_message} where ${col_msg_no} = #{msg_no}
 	 </delete>
 	 
 	 
 	 <select id="totalCount" resultType="Integer">
-		select count(${col_mem_id}) from ${tbl_message}
+		select count(${col_mem_id}) from ${tbl_message} where ${col_mem_id} = #{mem_id}
 	</select>
 	
 	<select id="totalCount2" resultType="Integer">

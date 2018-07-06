@@ -266,37 +266,36 @@ body {
 
 
 								<!-- 지역 -->
-								<div id="sb_city">
-									<p>
-										<label for="sb_city"> 도시: <select id="country"
-											name="sb_city"
-											style="text-align: center; width: 100px; margin-left: 12px;">
-												<option value="seoul">서울</option>
-												<option value="kuyngki">경기</option>
-												<option value="kwangju">광주</option>
-												<option value="daegu">대구</option>
-												<option value="busan">부산</option>
-												<option value="jeju">제주</option>
-										</select></label>
-									</p>
-								</div>
-
-								<!-- 공연장 -->
-
-								<div id="en_venue">
-									<input id="pac-input" class="controls" type="text"
-										name="sb_locinfo" placeholder="Enter a location">
-									<div id="map"></div>
-									<div id="infowindow-content">
-										<span id="place-name" class="title"><br /></span><br> <span
-											id="place-id" style="display: none;"></span> <br> <span
-											id="place-address"> <br /></span>
-
+									<div id="sb_city">
+										<p>
+											<label for="sb_city"> 도시: <select id="country"
+												name="sb_city"
+												style="text-align: center; width: 100px; margin-left: 12px;">
+													<option value="seoul/서울">서울</option>
+													<option value="kyungki/경기">경기</option>
+													<option value="kwangju/광주">광주</option>
+													<option value="daegu/대구">대구</option>
+													<option value="busan/부산">부산</option>
+													<option value="jeju/제주">제주</option>
+											</select></label>
+										</p>
 									</div>
-									<br />
 
+									<!-- 공연장 -->
 
-
+									<div id="en_venue">
+										<input id="pac-input" class="controls" type="text"
+											name="sb_locinfo" placeholder="Enter a location">
+										<div id="map"></div>
+										<div id="infowindow-content">
+											<span id="place-name" class="title"><br/></span><br>
+											<span id="place-id" style="display: none;" ></span>
+											<br> 
+											<span id="place-address">
+											<br/></span>
+										
+										</div>
+										<br />
 
 									<script>
 										 var sb_placeid = null;
@@ -437,6 +436,7 @@ body {
 	var sb_startdate = new Date(startdatetime);
 	var enddatetime = enddate + ' ' + endtime;
 	var sb_enddate = new Date(enddatetime);
+
 	console.log('sb_nm :' + sb_nm);
 	console.log('sb_title :' + sb_title);
 	console.log('sb_content :' + sb_content);
