@@ -167,6 +167,18 @@ public class ShowBoardController {
 		return "redirect:detail?sb_no=" + showboard.getSb_no();
 	} // end update()
 	
+	@RequestMapping(value = "delete", method = RequestMethod.GET)
+	public String delete(int sb_no, RedirectAttributes attr) {
+		logger.info("delete(bno: {})", sb_no);
+		int result = showBoardService.delete(sb_no);
+		if (result == 1) {
+			attr.addFlashAttribute("sb_no", sb_no);
+			attr.addFlashAttribute("deleteResult", "success");
+		}
+		
+		return "redirect:/showboard/showboardmain";
+	} // end delete()
+	
 	
 } // end class ShowBoardController
 

@@ -203,11 +203,22 @@ td, h5 {
 
 
 						<button id="updatebutton" style="size: small; margin-left: 50%;">수정하기</button>
+						<button id = "btnDelete" style="size: small; margin-left: 50%;">삭제하기</button>
 						<script>
 		
 				$("#updatebutton").click(function(){
 					location.href='/pumpkinplace/showboard/showboardupdate?sb_no=' +  ${showboard.sb_no};
 					});
+				
+
+				$('#btnDelete').click(function () {
+					var result = confirm('${board.bno} 정말 삭제?');
+					if (result) {
+						location = 'delete?sb_no=' + ${showboard.sb_no};
+					}
+				});
+				
+				
 </script>
 
 
