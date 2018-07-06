@@ -132,7 +132,6 @@ public class ShowBoardController {
 	@RequestMapping(value = "/showboardsearch", method = RequestMethod.GET)
 	public void searchShowBoard(String searchKeyword, Model model) {
 		logger.info("showboardsearch(keyword: {})", searchKeyword);
-		
 		List<ShowBoard> list = showBoardService.search(searchKeyword);
 		model.addAttribute("showboardList", list);
 		model.addAttribute("searchKeyword", searchKeyword);
@@ -165,7 +164,7 @@ public class ShowBoardController {
 		// RedirectAttributes: redirect 방식에서 View(JSP)에게 데이터를 전달할 때 사용하는 객체
 		// redirectAttributes.addFlashAttribute(이름, 값);
 		
-		return "redirect:detail?bno=" + showboard.getSb_no();
+		return "redirect:detail?sb_no=" + showboard.getSb_no();
 	} // end update()
 	
 	

@@ -466,11 +466,80 @@ body {
 			name="uploadFile" type="submit" value="등록"
 			style="margin-bottom: 50px; margin-left: 50%;" /> -->
 
-	<button type="button" class="btn btn-primary" id="btnshowinsert"
+	<button type="button" class="btn btn-primary" id="btnshowupdate"
 		class="btn btn-primary" style="margin-bottom: 50px; margin-left: 50%;">수정
 		완료</button>
 
 
+<script type="text/javascript">
+$('#btnshowupdate').click(function () {
+ 	var sb_nm = $('#event_band_tokens').val();
+	var sb_title = $('#show_name').val();
+	var sb_content = $('#showinserttext').val();
+	var sb_city = $('#country').val();
+	var sb_price = $('#event_door_price').val();
+	var sb_tel = $('#event_contact').val();
+	var sb_locinfo = $('#pac-input').val();
+	var sb_img = $('#imgInp').val();
+	var sb_video = $('#youtube').val(); 
+	var startdate = $('#startdate').val();
+	var starttime = $('#starttime').val();
+	var enddate = $('#enddate').val();
+	var endtime = $('#endtime').val();
+	var startdatetime = startdate + ' ' + starttime;
+	var sb_startdate = new Date(startdatetime);
+	var enddatetime = enddate + ' ' + endtime;
+	var sb_enddate = new Date(enddatetime);
+
+	console.log('sb_nm :' + sb_nm);
+	console.log('sb_title :' + sb_title);
+	console.log('sb_content :' + sb_content);
+	console.log('sb_city :' + sb_city);
+	console.log('sb_price :' + sb_price);
+	console.log('sb_tel :' + sb_tel);
+	console.log('sb_locinfo :' + sb_locinfo);
+	console.log('sb_img :' + sb_img);
+	console.log('sb_video :' + sb_video);
+	console.log('startdate :' + startdate);
+	console.log('starttime :' + starttime);
+	console.log('enddate :' + enddate);
+	console.log('endtime :' + endtime);
+	console.log('startdatetime :' + startdatetime);
+	console.log('enddatetime :' + enddatetime);
+	console.log('sb_startdate :' + sb_startdate);
+	console.log('sb_enddate :' + sb_enddate);
+	console.log('sb_placeId :' + sb_placeid);	
+	
+	
+	$.ajax({
+		type: 'post',
+		url: '/pumpkinplace/showboard/showboardupdate/',
+		headers: {
+			'Content-Type': 'application/json',
+			'X-HTTP-Method-Override' : 'post'
+		},
+		data: JSON.stringify({
+			'sb_nm': sb_nm,
+			'sb_title': sb_title,
+			'sb_content': sb_content,
+			'sb_city': sb_city,
+			'sb_price': sb_price,
+			'sb_tel': sb_tel,
+			'sb_locinfo': sb_locinfo,
+			'sb_img': sb_img,
+			'sb_video': sb_video,
+			'sb_startdate': sb_startdate,
+			'sb_enddate': sb_enddate,
+			'sb_placeid' : sb_placeid
+		}),
+		success: function (result){
+				alert(sb_nm + '님 공연 등록 성공');
+				location = '/pumpkinplace/showboard/showboardmain';
+			}
+		
+		});
+	});
+</script>
 
 
 
