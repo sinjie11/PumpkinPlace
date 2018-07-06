@@ -40,15 +40,15 @@ public class MessageServiceImple implements MessageService {
 	} // end recievePage(mem_id2, criteria)
 	
 	@Override
-	public int totalCount() {
+	public int totalCount(String mem_id) {
 
-		return messageDao.totalCount();
+		return messageDao.totalCount(mem_id);
 	} // end totalCount()
 	
 	@Override
-	public int totalCount2() {
+	public int totalCount2(String mem_id2) {
 	
-		return messageDao.totalCount2();
+		return messageDao.totalCount2(mem_id2);
 	} // end totalCount2()
 		
 	@Override

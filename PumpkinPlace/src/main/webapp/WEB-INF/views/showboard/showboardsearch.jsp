@@ -111,31 +111,6 @@ body {
                </c:forEach>
             </div>
          </div>
-
-         <nav>
-            <ul class="pagination">
-               <c:if test="${pageMaker.hasPrev}">
-                  <li class="page-item"><a class="page-link"
-                     href="${pageMaker.startPageNo - 1}">Previous</a></li>
-               </c:if>
-               <c:forEach begin="${pageMaker.startPageNo}"
-                  end="${pageMaker.endPageNo}" var="num">
-                  <li class="page-item"><a class="page-link" href="${num}">${num}</a></li>
-               </c:forEach>
-               <c:if test="${pageMaker.hasNext}">
-                  <li class="page-item"><a class="page-link"
-                     href="${pageMaker.endPageNo + 1}">Next</a></li>
-               </c:if>
-            </ul>
-            <form id="page-form">
-               <input type="" name="page" id="page"
-                  value="${pageMaker.criteria.page}" style="display: none;" /> <input
-                  type="" name="numsPerPage" id="numsPerPage"
-                  value="${pageMaker.criteria.numsPerPage}" style="display: none;" />
-               <input type="" name="sb_no" id="page-form-sb_no"
-                  style="display: none;" />
-            </form>
-         </nav>
       </div>
    </div>
 
@@ -144,21 +119,8 @@ body {
       $(document).ready(function() {
          $(function() {
             $("#startdate, #enddate").datepicker({
-               dateFormat : 'yy.mm.dd'
+               dateFormat : 'yy/mm/dd'
             });
-         });
-
-         $('.page-link').click(function() {
-            // <a> 태그의 기본 이벤트 동작(클릭하면 페이지 이동)을 금지
-            event.preventDefault();
-            // 이동할 페이지 번호
-            var targetPage = $(this).attr('href');
-            $('#page').val(targetPage);
-            // #page-form의 내용을 submit
-            var frm = $('#page-form');
-            frm.attr('action', 'showboardmain');
-            frm.attr('method', 'get');
-            frm.submit();
          });
 
          $('.table-title-link').click(function() {

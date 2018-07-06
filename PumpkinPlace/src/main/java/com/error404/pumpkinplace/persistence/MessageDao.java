@@ -15,9 +15,9 @@ public interface MessageDao {
 	
 	List<Message> recievePage(PaginationCriteria criteria);
 	
-	int totalCount();
+	int totalCount(String mem_id);
 	
-	int totalCount2();
+	int totalCount2(String mem_id2);
 	
 	int insert(Message message);
 	

@@ -108,15 +108,14 @@ body {
 		</div>
 		
 	
-	<form id="page-form">
-		<input type="hidden" name="page" id="page"
-			value="${pageMaker.criteria.page}" /> <input type="hidden"
-			name="numsPerPage" id="numsPerPage"
-			value="${pageMaker.criteria.numsPerPage}" /> <input type="hidden"
-			name="msg_no" id="page-form-msg_no" />
-			<input type="hidden" name="msg_no" value="${msg_no}" />
-	</form>
+		<form id="page-form">
+			<input type="hidden" name="page" id="page" value="${pageMaker.criteria.page}" /> 
+			<input type="hidden" name="numsPerPage" id="numsPerPage" value="${pageMaker.criteria.numsPerPage}" />
+			<input type="hidden" name="msg_no" id="page-form-msg_no" />
+		</form>
+	
 	</div>
+	
 	<script>
 	$('.page-link').click(function () {
 		event.preventDefault();

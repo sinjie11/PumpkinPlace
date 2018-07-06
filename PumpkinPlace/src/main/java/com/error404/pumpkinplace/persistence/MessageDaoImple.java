@@ -47,15 +47,15 @@ public class MessageDaoImple implements MessageDao {
 	}
 	
 	@Override
-	public int totalCount() {
+	public int totalCount(String mem_id) {
 	
-		return messageMapper.totalCount();
+		return messageMapper.totalCount(mem_id);
 	}
 	
 	@Override
-	public int totalCount2() {
+	public int totalCount2(String mem_id2) {
 	
-		return messageMapper.totalCount2();
+		return messageMapper.totalCount2(mem_id2);
 	}
 	
 	@Override

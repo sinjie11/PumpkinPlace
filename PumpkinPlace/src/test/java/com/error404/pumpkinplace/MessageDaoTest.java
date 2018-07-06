@@ -26,9 +26,9 @@ public class MessageDaoTest {
 	
 	@Test
 	public void doTest() {
-		insertTest();
+//		insertTest();
 //		send();
-//		recieve();
+		recieve();
 //		selectById();
 //		selectById2();
 //		updateTest();

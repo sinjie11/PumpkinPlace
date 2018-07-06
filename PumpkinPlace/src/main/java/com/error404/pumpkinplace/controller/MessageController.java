@@ -63,7 +63,7 @@ public class MessageController {
 		
 		PageLinkMaker maker = new PageLinkMaker();
 		maker.setCriteria(criteria);
-		maker.setTotalCount(messageService.totalCount());
+		maker.setTotalCount(messageService.totalCount((String) session.getAttribute("loginId")));
 		maker.setPageLinkData();
 		
 		model.addAttribute("pageMaker", maker);
@@ -98,11 +98,11 @@ public class MessageController {
 		
 		PageLinkMaker maker = new PageLinkMaker();
 		maker.setCriteria(criteria);
-		maker.setTotalCount(messageService.totalCount2());
+		maker.setTotalCount(messageService.totalCount2((String) session.getAttribute("loginId")));
 		maker.setPageLinkData();
 		
 		model.addAttribute("pageMaker", maker);
-		
+
 
 	} // end recieve(mem_id2, model, session)
 	
@@ -114,7 +114,6 @@ public class MessageController {
 		
 		model.addAttribute("message", message);
 				
-		
 	} // end recieveDetail(mem_id2, model, session)
 		
 
