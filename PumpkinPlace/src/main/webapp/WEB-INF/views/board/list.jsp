@@ -183,7 +183,7 @@ ${board.b_no}
 		<div class="container text-center">
 			<table class="table">
 				<thead>
-					<tr>
+					<tr> 
 						<th class="text-center">글번호</th>
 						<th class="text-center">제목</th>
 						<th class="text-center">작성자</th>
