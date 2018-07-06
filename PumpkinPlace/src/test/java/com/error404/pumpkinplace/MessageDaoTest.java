@@ -28,7 +28,7 @@ public class MessageDaoTest {
 	public void doTest() {
 //		insertTest();
 //		send();
-		recieve();
+		receive();
 //		selectById();
 //		selectById2();
 //		updateTest();
@@ -55,8 +55,8 @@ public class MessageDaoTest {
 		
 	} // end send()
 	
-	private void recieve() {
-		List<Message> list = messageDao.recieve("test");
+	private void receive() {
+		List<Message> list = messageDao.receive("test");
 		
 		for (int i = 0; i < list.size(); i++) {
 			logger.info("list : ({}, {}, {}, {})", 

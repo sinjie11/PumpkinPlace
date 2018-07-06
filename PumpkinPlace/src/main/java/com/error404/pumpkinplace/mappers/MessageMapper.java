@@ -9,11 +9,11 @@ public interface MessageMapper {
 	
 	List<Message> send(String mem_id);
 	
-	List<Message> recieve(String mem_id2);
+	List<Message> receive(String mem_id2);
 		
 	List<Message> sendPage(PaginationCriteria criteria);
 	
-	List<Message> recievePage(PaginationCriteria criteria);
+	List<Message> receivePage(PaginationCriteria criteria);
 	
 	int totalCount(String mem_id);
 	

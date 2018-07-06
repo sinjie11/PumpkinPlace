@@ -29,22 +29,22 @@ public class MessageDaoImple implements MessageDao {
 	} // end send(mem_id)
 	
 	@Override
-	public List<Message> recieve(String mem_id2) {
+	public List<Message> receive(String mem_id2) {
 		
-		return messageMapper.recieve(mem_id2);
-	} // end recieve(mem_id2)
+		return messageMapper.receive(mem_id2);
+	} // end receive(mem_id2)
 	
 	@Override
 	public List<Message> sendPage(PaginationCriteria criteria) {
 		
 		return messageMapper.sendPage(criteria);
-	}
+	} // end sendPage(criteria)
 	
 	@Override
-	public List<Message> recievePage(PaginationCriteria criteria) {
+	public List<Message> receivePage(PaginationCriteria criteria) {
 	
-		return messageMapper.recievePage(criteria);
-	}
+		return messageMapper.receivePage(criteria);
+	} // receivePage(criteria)
 	
 	@Override
 	public int totalCount(String mem_id) {

@@ -19,7 +19,7 @@
 	</select>
 	
 	
-	<select id="recieve" resultType="Message">
+	<select id="receive" resultType="Message">
 		select * from ${tbl_message} where ${col_mem_id2} = #{mem_id2} order by ${col_msg_no} desc 
 	</select>
 	
@@ -62,14 +62,14 @@
 		from (
 			select rownum rn, a.*
 			from (
-				select * from pumpkin_message where ${col_mem_id} = #{mem_id}
+				select * from pumpkin_message where
 				order by msg_no desc
 			) a
 		) b
 		where rn between #{start} and #{end}
 	</select>
 	
-	<select id="recievePage" resultType="Message">
+	<select id="receivePage" resultType="Message">
 		select b.msg_no, b.mem_id2, b.msg_content, b.msg_regdate, b.msg_confirm
 		from (
 			select rownum rn, a.*

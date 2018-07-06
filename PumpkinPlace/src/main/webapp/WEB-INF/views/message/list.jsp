@@ -66,10 +66,11 @@ body {
 	
 	<!-- 본문 작성 -->
 	<div class="container text-center">
-	</br></br>
+	<br />
+	<br />
 	<img alt="이미지"
 				src="${pageContext.request.contextPath}/resources/post.png"
-				style="background-color: white; width: 110px; height: 110px;" /></a>
+				style="background-color: white; width: 110px; height: 110px;" />
 	<h1><b>쪽지함</b></h1>
 	</div>
 
@@ -77,7 +78,7 @@ body {
 	<div style="margin: 140px; margin-left: 60px; margin-top: 80px;"  >
 	<img alt="이미지"
 				src="${pageContext.request.contextPath}/resources/msg1.png"
-				style="background-color: white; width: 150px; height: 150px;" /></a><br/><br/>
+				style="background-color: white; width: 150px; height: 150px;" /><br/><br/>
 	<a href="/pumpkinplace/message/insert" style="text-align: left; font-size: 20px;
 	font-style: inherit; ">쪽지 보내기</a>
 	</div>
@@ -86,17 +87,17 @@ body {
 	<div style="margin: 140px; margin-top: 80px;" >
 	<img alt="이미지"
 				src="${pageContext.request.contextPath}/resources/msg2.png"
-				style="background-color: white; width: 150px; height: 150px;" /></a><br/><br/>
-	<a href="/pumpkinplace/message/recieve" style="text-align: center;font-size: 20px;
-	font-style: inherit; "">받은 쪽지함</a>
+				style="background-color: white; width: 150px; height: 150px;" /><br/><br/>
+	<a href="/pumpkinplace/message/receive" style="text-align: center;font-size: 20px;
+	font-style: inherit; ">받은 쪽지함</a>
 	</div>
 
 	<div style="margin: 140px; margin-top: 80px;">
 	<img alt="이미지"
 				src="${pageContext.request.contextPath}/resources/msg3.png"
-				style="background-color: white; width: 150px; height: 150px;" /></a><br/><br/>
+				style="background-color: white; width: 150px; height: 150px;" /><br/><br/>
 	<a href="/pumpkinplace/message/send" style="text-align:right;font-size: 20px;
-	font-style: inherit; "">보낸 쪽지함</a>
+	font-style: inherit; ">보낸 쪽지함</a>
 	</div>	
 	</div>
 
