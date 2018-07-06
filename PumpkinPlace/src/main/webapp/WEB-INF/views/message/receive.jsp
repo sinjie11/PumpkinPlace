@@ -84,7 +84,7 @@ body {
 					<td>${message.mem_id}</td>
 					<td><a class="table-title-link" href="${message.msg_no}">${message.msg_content}</a></td>
 					<fmt:formatDate value="${message.msg_regdate}"
-						pattern="yyyy-MM-dd HH:mm:ss" var="msg_regdate" />
+						pattern="yyyy.MM.dd HH:mm" var="msg_regdate" />
 					<td>${msg_regdate}</td>
 				</tr>
 			</c:forEach>

@@ -60,7 +60,7 @@ public class MessageController {
 		
 		List<Message> list = messageService.send((String) session.getAttribute("loginId"));
 		model.addAttribute("sendList", list);
-		
+				
 		PageLinkMaker maker = new PageLinkMaker();
 		maker.setCriteria(criteria);
 		maker.setTotalCount(messageService.totalCount((String) session.getAttribute("loginId")));
