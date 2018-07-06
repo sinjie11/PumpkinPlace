@@ -192,16 +192,25 @@ body {
                                  console.log('youtube :' + youtube);
                               });
                            </script>
+
+									<div style="width: 570px; margin-left: 25%;">
+										<iframe width="560" height="315"
+											src="https://www.youtube.com/embed/+${youtube}"
+											frameborder="0" allow="autoplay; encrypted-media"
+											allowfullscreen></iframe>
+									</div>
+									<script>
+
 								<div style="width: 570px; margin-left: 25%;">
 									<iframe width="560" height="315"
 										src="https://www.youtube.com/embed/${youtube}" frameborder="0"
 										allow="autoplay; encrypted-media" allowfullscreen></iframe>
 								</div>
 								<script>
-                              
+
                      jQuery(document).ready(
                            function($) {
-                              $('iframe[src^="https://www.youtube.com/${youtube}"]').wrap(
+                              $('iframe[src^="https://www.youtube.com/"]').wrap(
                               '<div class="youtubeWrap"></div>');
                            });
                         </script>
@@ -255,8 +264,8 @@ body {
 	        interval: 30,
 	        minTime: '00:00',
 	        maxTime: '23:00',
-	        defaultTime: '18',
-	        startTime: '18:00',
+	        defaultTime: '19',
+	        startTime: '00:00',
 	        dynamic: false,
 	        dropdown: true,
 	        scrollbar: true
