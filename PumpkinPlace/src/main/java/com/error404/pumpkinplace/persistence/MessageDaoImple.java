@@ -35,9 +35,9 @@ public class MessageDaoImple implements MessageDao {
 	} // end recieve(mem_id2)
 	
 	@Override
-	public List<Message> sendPage(PaginationCriteria criteria, String mem_id) {
+	public List<Message> sendPage(PaginationCriteria criteria) {
 		
-		return messageMapper.sendPage(criteria, mem_id);
+		return messageMapper.sendPage(criteria);
 	}
 	
 	@Override
@@ -53,9 +53,9 @@ public class MessageDaoImple implements MessageDao {
 	}
 	
 	@Override
-	public int totalCount2() {
+	public int totalCount2(String mem_id2) {
 	
-		return messageMapper.totalCount2();
+		return messageMapper.totalCount2(mem_id2);
 	}
 	
 	@Override

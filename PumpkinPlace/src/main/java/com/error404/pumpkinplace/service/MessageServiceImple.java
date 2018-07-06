@@ -28,9 +28,9 @@ public class MessageServiceImple implements MessageService {
 	} // end recieve(mem_id2)
 	
 	@Override
-	public List<Message> sendPage(PaginationCriteria criteria, String mem_id) {
+	public List<Message> sendPage(PaginationCriteria criteria) {
 	
-		return messageDao.sendPage(criteria, mem_id);
+		return messageDao.sendPage(criteria);
 	} // end sendPage(mem_id, criteria)
 	
 	@Override
@@ -46,9 +46,9 @@ public class MessageServiceImple implements MessageService {
 	} // end totalCount()
 	
 	@Override
-	public int totalCount2() {
+	public int totalCount2(String mem_id2) {
 	
-		return messageDao.totalCount2();
+		return messageDao.totalCount2(mem_id2);
 	} // end totalCount2()
 		
 	@Override

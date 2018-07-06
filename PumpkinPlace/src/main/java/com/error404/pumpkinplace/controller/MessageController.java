@@ -84,7 +84,6 @@ public class MessageController {
 	public void recieve(Integer page, Integer numsPerPage, String mem_id2, Model model, HttpSession session) {
 		logger.info("recievePage() GET 호출");
 		
-		numsPerPage = 10;
 		PaginationCriteria criteria = new PaginationCriteria();
 		if (page != null) {
 			criteria.setPage(page);
@@ -99,11 +98,11 @@ public class MessageController {
 		
 		PageLinkMaker maker = new PageLinkMaker();
 		maker.setCriteria(criteria);
-		maker.setTotalCount(messageService.totalCount2());
+		maker.setTotalCount(messageService.totalCount2((String) session.getAttribute("loginId")));
 		maker.setPageLinkData();
 		
 		model.addAttribute("pageMaker", maker);
-		
+
 
 	} // end recieve(mem_id2, model, session)
 	
@@ -115,7 +114,6 @@ public class MessageController {
 		
 		model.addAttribute("message", message);
 				
-		
 	} // end recieveDetail(mem_id2, model, session)
 		
 
