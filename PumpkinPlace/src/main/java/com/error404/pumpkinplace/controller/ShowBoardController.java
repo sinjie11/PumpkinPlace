@@ -129,6 +129,7 @@ public class ShowBoardController {
 	@RequestMapping(value = "/showboardsearch", method = RequestMethod.GET)
 	public void searchShowBoard(String searchKeyword, Model model) {
 		logger.info("showboardsearch(keyword: {})", searchKeyword);
+		
 		List<ShowBoard> list = showBoardService.search(searchKeyword);
 		model.addAttribute("showboardList", list);
 		model.addAttribute("searchKeyword", searchKeyword);

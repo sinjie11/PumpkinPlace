@@ -31,13 +31,13 @@ public class ShowBoardDaoTest {
 	@Test
 	public void doTest() throws InterruptedException, ParseException {
 		// insertBulkData();
-		// insertTest();
+		 insertTest();
 		// testSelectAll();
 		// testSelectBySbNo();
 		// testUpdate();
 		// testDelete();
 		 //testTotalCount();
-		testSearch();
+		//testSearch();
 	}
 
 	private void insertBulkData() throws InterruptedException {

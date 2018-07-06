@@ -127,11 +127,11 @@ body {
 					</c:if>
 				</ul>
 				<form id="page-form">
-					<input type="" name="page" id="page"
+					<input name="page" id="page"
 						value="${pageMaker.criteria.page}" style="display: none;" /> <input
-						type="" name="numsPerPage" id="numsPerPage"
+						name="numsPerPage" id="numsPerPage"
 						value="${pageMaker.criteria.numsPerPage}" style="display: none;" />
-					<input type="" name="sb_no" id="page-form-sb_no"
+					<input name="sb_no" id="page-form-sb_no"
 						style="display: none;" />
 				</form>
 			</nav>
@@ -149,7 +149,7 @@ body {
 		$(document).ready(function() {
 			$(function() {
 				$("#startdate, #enddate").datepicker({
-					dateFormat : 'yy.mm.dd'
+					dateFormat : 'yy/mm/dd'
 				});
 			});
 
