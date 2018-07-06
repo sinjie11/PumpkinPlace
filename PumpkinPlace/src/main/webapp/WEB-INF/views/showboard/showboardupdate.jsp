@@ -145,7 +145,9 @@ body {
 									</p>
 
 
-									<br /> <img id="blah" src="#" alt="" width="570px;"
+									<br /> <img id="blah" 
+									src="${pageContext.request.contextPath}/resources/assets/img/showboard/${showboard.sb_img}" alt="포스터" 
+									width="570px;"
 										height="796px;" /> <br /> <br />
 
 									<!-- 사진 저장 -->
