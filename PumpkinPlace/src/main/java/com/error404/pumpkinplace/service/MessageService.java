@@ -9,15 +9,15 @@ public interface MessageService {
 	
 	List<Message> send(String mem_id); // 보낸 쪽지함 서비스
 	
-	List<Message> recieve(String mem_id2); // 받은 쪽지함 서비스
+	List<Message> receive(String mem_id2); // 받은 쪽지함 서비스
 	
-	List<Message> sendPage(PaginationCriteria criteria, String mem_id); // 보낸 쪽지함 페이지 서비스
+	List<Message> sendPage(PaginationCriteria criteria); // 보낸 쪽지함 페이지 서비스
 	
-	List<Message> recievePage(PaginationCriteria criteria); // 받은 쪽지함 페이지 서비스
+	List<Message> receivePage(PaginationCriteria criteria); // 받은 쪽지함 페이지 서비스
 	
 	int totalCount(String mem_id); // 보낸 쪽지함 총 페이지 개수
 	
-	int totalCount2(); // 받은 쪽지함 총 페이지 개수
+	int totalCount2(String mem_id2); // 받은 쪽지함 총 페이지 개수
 	
 	int create(Message message); // 쪽지 보내기 서비스
 	

@@ -175,7 +175,7 @@ public class ShowBoardDaoTest {
 	}
 
 	private void testUpdate() {
-		ShowBoard sb = new ShowBoard(3, null, "이거는 테스트", "이 공연은 취소되었습니다.", "없음", 0, "없음", "없음", new Date(), "0", "0",
+		ShowBoard sb = new ShowBoard(9, null, "이거는 테스트", "이 공연은 취소되었습니다.", "없음", 0, "없음", "없음", new Date(), "0", "0",
 				new Date(), new Date(), "ChIJTTSlOf6jfDURNTWDXWmcZ-Y");
 		int result = showboardDao.update(sb);
 		logger.info("update result = {}", result);

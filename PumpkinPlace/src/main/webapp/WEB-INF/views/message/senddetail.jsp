@@ -79,7 +79,7 @@ body {
 					<td>${message.mem_id2}</td>
 					<td>${message.msg_content}</td>
 					<fmt:formatDate value="${message.msg_regdate}"
-						pattern="yyyy-MM-dd HH:mm:ss" var="msg_regdate" />
+						pattern="yyyy.MM.dd HH:mm" var="msg_regdate" />
 					<td>${msg_regdate}</td>
 				</tr>
 		

@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.error404.pumpkinplace.domain.Member;
 
@@ -32,6 +33,8 @@ import com.error404.pumpkinplace.pageutil.PageLinkMaker;
 import com.error404.pumpkinplace.pageutil.PaginationCriteria;
 
 import com.error404.pumpkinplace.service.ShowBoardService;
+
+
 
 @Controller
 @RequestMapping(value = "/showboard")
@@ -139,15 +142,47 @@ public class ShowBoardController {
 			List<ShowBoard> keylist = showBoardService.searchByKeyword(searchKeyword);
 			model.addAttribute("showboardListKey", keylist);
 			model.addAttribute("searchKeyword", searchKeyword);
-		}		
+		}	
 	}
 	
 	@RequestMapping(value = "/showboardupdate", method = RequestMethod.GET)
-	public void showboardUpdate() {
-		logger.info("showboardupdate() 호출");
+	public void update(
+			@ModelAttribute("criteria") PaginationCriteria criteria, int sb_no, Model model) {
+		logger.info("update(bno: {})", sb_no);
+		ShowBoard showboard = showBoardService.read(sb_no);
+		model.addAttribute("showboard", showboard);
 		
-	}
+	} // end update()
 	
+	
+	@RequestMapping(value = "/showboardupdate", method = RequestMethod.POST)
+	public String update(
+			@ModelAttribute("criteria") PaginationCriteria criteria,
+			ShowBoard showboard, RedirectAttributes attr) {
+		logger.info("update(board: {})", showboard);
+		int result = showBoardService.update(showboard);
+		if (result == 1) {
+			attr.addFlashAttribute("updateResult", "success");
+		}
+		// Model: forward 방식에서 View(JSP)에게 데이터를 전달할 때 사용하는 객체
+		// model.addAttribute(이름, 값);
+		// RedirectAttributes: redirect 방식에서 View(JSP)에게 데이터를 전달할 때 사용하는 객체
+		// redirectAttributes.addFlashAttribute(이름, 값);
+		
+		return "redirect:detail?sb_no=" + showboard.getSb_no();
+	} // end update()
+	 
+	@RequestMapping(value = "delete", method = RequestMethod.GET)
+	public String delete(int sb_no, RedirectAttributes attr) {
+		logger.info("delete(bno: {})", sb_no);
+		int result = showBoardService.delete(sb_no);
+		if (result == 1) {
+			attr.addFlashAttribute("sb_no", sb_no);
+			attr.addFlashAttribute("deleteResult", "success");
+		}
+		
+		return "redirect:/showboard/showboardmain";
+	} // end delete()
 	
 	
 } // end class ShowBoardController

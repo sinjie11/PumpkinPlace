@@ -60,7 +60,7 @@ public class MessageController {
 		
 		List<Message> list = messageService.send((String) session.getAttribute("loginId"));
 		model.addAttribute("sendList", list);
-		
+				
 		PageLinkMaker maker = new PageLinkMaker();
 		maker.setCriteria(criteria);
 		maker.setTotalCount(messageService.totalCount((String) session.getAttribute("loginId")));
@@ -80,11 +80,10 @@ public class MessageController {
 				
 	} // end sendDetail(mem_id, model, session)
 	
-	@RequestMapping(value = "/recieve", method = RequestMethod.GET)
-	public void recieve(Integer page, Integer numsPerPage, String mem_id2, Model model, HttpSession session) {
-		logger.info("recievePage() GET 호출");
+	@RequestMapping(value = "/receive", method = RequestMethod.GET)
+	public void receive(Integer page, Integer numsPerPage, String mem_id2, Model model, HttpSession session) {
+		logger.info("receivePage() GET 호출");
 		
-		numsPerPage = 10;
 		PaginationCriteria criteria = new PaginationCriteria();
 		if (page != null) {
 			criteria.setPage(page);
@@ -93,30 +92,29 @@ public class MessageController {
 			criteria.setNumsPerPage(numsPerPage);
 		}
 		
-		List<Message> list = messageService.recieve((String) session.getAttribute("loginId"));
+		List<Message> list = messageService.receive((String) session.getAttribute("loginId"));
 		
-		model.addAttribute("recieveList", list);
+		model.addAttribute("receiveList", list);
 		
 		PageLinkMaker maker = new PageLinkMaker();
 		maker.setCriteria(criteria);
-		maker.setTotalCount(messageService.totalCount2());
+		maker.setTotalCount(messageService.totalCount2((String) session.getAttribute("loginId")));
 		maker.setPageLinkData();
 		
 		model.addAttribute("pageMaker", maker);
-		
 
-	} // end recieve(mem_id2, model, session)
+
+	} // end receive(mem_id2, model, session)
 	
-	@RequestMapping(value = "/recievedetail", method = RequestMethod.GET)
-	public void recieveDetail(int msg_no, Model model, HttpSession session) {
-		logger.info("recieveDetail() GET 호출");
+	@RequestMapping(value = "/receivedetail", method = RequestMethod.GET)
+	public void receiveDetail(int msg_no, Model model, HttpSession session) {
+		logger.info("receiveDetail() GET 호출");
 		
 		Message message = messageService.read3(msg_no);
 		
 		model.addAttribute("message", message);
 				
-		
-	} // end recieveDetail(mem_id2, model, session)
+	} // end receiveDetail(mem_id2, model, session)
 		
 
 } // end class MessageController
