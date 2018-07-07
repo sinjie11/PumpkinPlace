@@ -52,15 +52,21 @@ public class ShowBoardServiceImple implements ShowBoardService {
 	}
 
 	@Override
-	public List<ShowBoard> search(String keyword) {
+	public List<ShowBoard> searchByKeyword(String keyword) {
 
-		return showBoardDao.searchShowBoard(keyword);
+		return showBoardDao.searchkeyShowBoard(keyword);
 	}
 
 	@Override
 	public List<ShowBoard> read(PaginationCriteria criteria) {
 
 		return showBoardDao.select(criteria);
+	}
+
+	@Override
+	public List<ShowBoard> searchByDate(String date) {
+		
+		return showBoardDao.searchdateShowBoard(date);
 	}
 		
 

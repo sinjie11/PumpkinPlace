@@ -30,14 +30,15 @@ public class ShowBoardDaoTest {
 
 	@Test
 	public void doTest() throws InterruptedException, ParseException {
-		// insertBulkData();
-		// insertTest();
-		// testSelectAll();
-		// testSelectBySbNo();
-		// testUpdate();
-		// testDelete();
-		 //testTotalCount();
-		testSearch();
+//		 insertBulkData();
+//		 insertTest();
+//		 testSelectAll();
+//		 testSelectBySbNo();
+//		 testUpdate();
+//		 testDelete();
+//		 testTotalCount();
+//		 testkeySearch();
+		 testdateSearch();
 	}
 
 	private void insertBulkData() throws InterruptedException {
@@ -174,7 +175,7 @@ public class ShowBoardDaoTest {
 	}
 
 	private void testUpdate() {
-		ShowBoard sb = new ShowBoard(3, null, "이거는 테스트", "이 공연은 취소되었습니다.", "없음", 0, "없음", "없음", new Date(), "0", "0",
+		ShowBoard sb = new ShowBoard(9, null, "이거는 테스트", "이 공연은 취소되었습니다.", "없음", 0, "없음", "없음", new Date(), "0", "0",
 				new Date(), new Date(), "ChIJTTSlOf6jfDURNTWDXWmcZ-Y");
 		int result = showboardDao.update(sb);
 		logger.info("update result = {}", result);
@@ -190,8 +191,18 @@ public class ShowBoardDaoTest {
 		logger.info("totalCount result = {}", result);
 	}
 
-	private void testSearch() {
-		List<ShowBoard> list = showboardDao.searchShowBoard("잠실");
+	private void testkeySearch() {
+		List<ShowBoard> list = showboardDao.searchkeyShowBoard("잠실");
+		for (ShowBoard sb : list) {
+			logger.info("{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}", sb.getSb_no(), sb.getSb_nm(),
+					sb.getSb_title(), sb.getSb_content(), sb.getSb_city(), sb.getSb_price(), sb.getSb_tel(),
+					sb.getSb_locinfo(), sb.getSb_regdate(), sb.getSb_img(), sb.getSb_video(), sb.getSb_startdate(),
+					sb.getSb_enddate(), sb.getSb_placeid());
+		}
+	}
+	
+	private void testdateSearch() {
+		List<ShowBoard> list = showboardDao.searchdateShowBoard("2018/12/25");
 		for (ShowBoard sb : list) {
 			logger.info("{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}", sb.getSb_no(), sb.getSb_nm(),
 					sb.getSb_title(), sb.getSb_content(), sb.getSb_city(), sb.getSb_price(), sb.getSb_tel(),

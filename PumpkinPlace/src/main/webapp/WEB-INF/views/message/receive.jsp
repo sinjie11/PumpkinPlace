@@ -66,7 +66,7 @@ body {
 <br/><br/><br/>
 <img alt="이미지"
 				src="${pageContext.request.contextPath}/resources/msg2.png"
-				style="background-color: white; width: 110px; height: 110px;" /></a>
+				style="background-color: white; width: 110px; height: 110px;" />
 		<br/>		
 	<h1><b>받은 쪽지함</b></h1><br/>
 <div class="container text-center">
@@ -79,12 +79,12 @@ body {
 			</tr>
 		</thead>
 		<tbody style="text-align: center;">
-			<c:forEach var="message" items="${recieveList}">
+			<c:forEach var="message" items="${receiveList}">
 				<tr>
 					<td>${message.mem_id}</td>
 					<td><a class="table-title-link" href="${message.msg_no}">${message.msg_content}</a></td>
 					<fmt:formatDate value="${message.msg_regdate}"
-						pattern="yyyy-MM-dd HH:mm:ss" var="msg_regdate" />
+						pattern="yyyy.MM.dd HH:mm" var="msg_regdate" />
 					<td>${msg_regdate}</td>
 				</tr>
 			</c:forEach>
@@ -106,22 +106,22 @@ body {
 			</ul>
 	</div>
 	
-	<form id="page-form">
-		<input type="hidden" name="page" id="page"
-			value="${pageMaker.criteria.page}" /> <input type="hidden"
-			name="numsPerPage" id="numsPerPage"
-			value="${pageMaker.criteria.numsPerPage}" /> <input type="hidden"
-			name="msg_no" id="page-form-msg_no" />
-			<input type="hidden" name="msg_no" value="${msg_no}" />
-	</form>
+	
+		<form id="page-form">
+			<input type="hidden" name="page" id="page" value="${pageMaker.criteria.page}" />
+			<input type="hidden" name="numsPerPage" id="numsPerPage" value="${pageMaker.criteria.numsPerPage}" />
+			<input type="hidden" name="msg_no" id="page-form-msg_no" />
+		</form>
+	
 	</div>	
+	
 	<script>
 	$('.page-link').click(function () {
 		event.preventDefault();
 		var targetPage = $(this).attr('href');
 		$('#page').val(targetPage);
 		var frm = $('#page-form');
-		frm.attr('action', 'recieve');
+		frm.attr('action', 'receive');
 		frm.attr('method', 'get');
 		frm.submit();
 	});
@@ -131,7 +131,7 @@ body {
 		var msg_no = $(this).attr('href');
 		$('#page-form-msg_no').val(msg_no);
 		var frm = $('#page-form');
-		frm.attr('action', 'recievedetail');
+		frm.attr('action', 'receivedetail');
 		frm.attr('method', 'get');
 		frm.submit();
 	});

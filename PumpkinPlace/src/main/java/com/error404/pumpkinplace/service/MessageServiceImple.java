@@ -22,10 +22,10 @@ public class MessageServiceImple implements MessageService {
 	} // end send(mem_id)
 	
 	@Override
-	public List<Message> recieve(String mem_id2) {
+	public List<Message> receive(String mem_id2) {
 	
-		return messageDao.recieve(mem_id2);
-	} // end recieve(mem_id2)
+		return messageDao.receive(mem_id2);
+	} // end receive(mem_id2)
 	
 	@Override
 	public List<Message> sendPage(PaginationCriteria criteria) {
@@ -34,21 +34,21 @@ public class MessageServiceImple implements MessageService {
 	} // end sendPage(mem_id, criteria)
 	
 	@Override
-	public List<Message> recievePage(PaginationCriteria criteria) {
+	public List<Message> receivePage(PaginationCriteria criteria) {
 		
-		return messageDao.recievePage(criteria);
-	} // end recievePage(mem_id2, criteria)
+		return messageDao.receivePage(criteria);
+	} // end receivePage(mem_id2, criteria)
 	
 	@Override
-	public int totalCount() {
+	public int totalCount(String mem_id) {
 
-		return messageDao.totalCount();
+		return messageDao.totalCount(mem_id);
 	} // end totalCount()
 	
 	@Override
-	public int totalCount2() {
+	public int totalCount2(String mem_id2) {
 	
-		return messageDao.totalCount2();
+		return messageDao.totalCount2(mem_id2);
 	} // end totalCount2()
 		
 	@Override

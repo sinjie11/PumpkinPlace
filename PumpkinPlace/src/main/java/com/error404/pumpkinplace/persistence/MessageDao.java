@@ -9,15 +9,15 @@ public interface MessageDao {
 	
 	List<Message> send(String mem_id);
 	
-	List<Message> recieve(String mem_id2);
+	List<Message> receive(String mem_id2);
 		
 	List<Message> sendPage(PaginationCriteria criteria);
 	
-	List<Message> recievePage(PaginationCriteria criteria);
+	List<Message> receivePage(PaginationCriteria criteria);
 	
-	int totalCount();
+	int totalCount(String mem_id);
 	
-	int totalCount2();
+	int totalCount2(String mem_id2);
 	
 	int insert(Message message);
 	

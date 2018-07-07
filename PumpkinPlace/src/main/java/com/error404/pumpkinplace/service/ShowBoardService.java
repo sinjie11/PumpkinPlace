@@ -14,7 +14,7 @@ public interface ShowBoardService {
 	int delete(int sb_no); // delete
 	int getNumOfShowBoardRecords(); // 게시글 갯수 카운트
 	List<ShowBoard> read(PaginationCriteria criteria); // 페이징
-	List<ShowBoard> search(String keyword); // search
-//	List<ShowBoard> searchByDate(Date keywordDate);
+	List<ShowBoard> searchByKeyword(String keyword); // search
+	List<ShowBoard> searchByDate(String date);
 	
 }

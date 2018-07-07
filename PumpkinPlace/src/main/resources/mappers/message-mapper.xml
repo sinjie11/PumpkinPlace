@@ -14,12 +14,12 @@
 	</insert>
 	
 	
-	<select id="send" resultType="Message">
+	<select id="send" resultType="Message">		
 		select * from ${tbl_message} where ${col_mem_id} = #{mem_id} order by ${col_msg_no} desc 
 	</select>
 	
 	
-	<select id="recieve" resultType="Message">
+	<select id="receive" resultType="Message">
 		select * from ${tbl_message} where ${col_mem_id2} = #{mem_id2} order by ${col_msg_no} desc 
 	</select>
 	
@@ -44,18 +44,17 @@
 	</update>
 
 
-
 	 <delete id="delete">
 	 	delete ${tbl_message} where ${col_msg_no} = #{msg_no}
 	 </delete>
 	 
 	 
 	 <select id="totalCount" resultType="Integer">
-		select count(${col_mem_id}) from ${tbl_message}
+		select count(${col_msg_no}) from ${tbl_message} where ${col_mem_id} = #{mem_id}
 	</select>
 	
 	<select id="totalCount2" resultType="Integer">
-		select count(${col_mem_id2}) from ${tbl_message}
+		select count(${col_msg_no}) from ${tbl_message} where ${col_mem_id2} = #{mem_id2}
 	</select>
 	
 	<select id="sendPage" resultType="Message">
@@ -63,14 +62,14 @@
 		from (
 			select rownum rn, a.*
 			from (
-				select * from pumpkin_message
+				select * from pumpkin_message where
 				order by msg_no desc
 			) a
 		) b
 		where rn between #{start} and #{end}
 	</select>
 	
-	<select id="recievePage" resultType="Message">
+	<select id="receivePage" resultType="Message">
 		select b.msg_no, b.mem_id2, b.msg_content, b.msg_regdate, b.msg_confirm
 		from (
 			select rownum rn, a.*

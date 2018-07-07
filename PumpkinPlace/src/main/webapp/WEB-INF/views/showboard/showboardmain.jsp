@@ -65,7 +65,7 @@ body {
 	<div class="container text-center">
 			<div class="tab-content">
 			<form action="showboardsearch" style="float: right;">
-				<input type="text" id="startdate" placeholder="공연 날짜 선택" /> <input
+				<input type="text" id="searchdate" name="searchKeyDate" placeholder="공연 날짜 선택" /> <input
 					type="submit" value="Search" />
 			</form>
 			<br /> <br />
@@ -127,11 +127,11 @@ body {
 					</c:if>
 				</ul>
 				<form id="page-form">
-					<input type="" name="page" id="page"
+					<input name="page" id="page"
 						value="${pageMaker.criteria.page}" style="display: none;" /> <input
-						type="" name="numsPerPage" id="numsPerPage"
+						name="numsPerPage" id="numsPerPage"
 						value="${pageMaker.criteria.numsPerPage}" style="display: none;" />
-					<input type="" name="sb_no" id="page-form-sb_no"
+					<input name="sb_no" id="page-form-sb_no"
 						style="display: none;" />
 				</form>
 			</nav>
@@ -148,8 +148,8 @@ body {
 	<script>
 		$(document).ready(function() {
 			$(function() {
-				$("#startdate, #enddate").datepicker({
-					dateFormat : 'yy.mm.dd'
+				$("#searchdate").datepicker({
+					dateFormat : 'yy/mm/dd'
 				});
 			});
 

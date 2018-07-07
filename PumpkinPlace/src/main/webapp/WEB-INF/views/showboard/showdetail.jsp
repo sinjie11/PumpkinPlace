@@ -74,8 +74,6 @@ td, h5 {
 	:
 	bold;
 }
-
-
 </style>
 </head>
 <body>
@@ -122,6 +120,12 @@ td, h5 {
 						<table class="table table-hover" style="width: 50%;">
 
 							<tr>
+								<td width="40%">라인업:</td>
+								
+								<td>${showboard.sb_nm}</td>
+							</tr>		
+
+							<tr>
 								<td width="40%">시간:</td>
 								<fmt:formatDate value="${showboard.sb_startdate}"
 									pattern="HH:mm" var="starttime" />
@@ -156,66 +160,90 @@ td, h5 {
 							<br />
 
 
+
+
+
 							<script type="text/javascript">
-							function initMap() {
-								  // jQuery('.site-content').prepend('<div id=\"map-container\"><div id=\"map-canvas\"></div></div>');
+                     function initMap() {
+                          // jQuery('.site-content').prepend('<div id=\"map-container\"><div id=\"map-canvas\"></div></div>');
 
-								  var request = {
-								    placeId: '${showboard.sb_placeid}'
-								  };
+                          var request = {
+                            placeId: '${showboard.sb_placeid}'
+                          };
 
-								  function callback(place, status) {
-								    if (status == google.maps.places.PlacesServiceStatus.OK) {
-								      var marker = new google.maps.Marker({
-								        map: map,
-								        position: place.geometry.location
-								      });
-								      map.setCenter(marker.getPosition());
-								    }
-								  }
+                          function callback(place, status) {
+                            if (status == google.maps.places.PlacesServiceStatus.OK) {
+                              var marker = new google.maps.Marker({
+                                map: map,
+                                position: place.geometry.location
+                              });
+                              map.setCenter(marker.getPosition());
+                            }
+                          }
 
-								  var map = new google.maps.Map(document.getElementById('map-canvas'), {
-								    zoom: 15
-								  });
+                          var map = new google.maps.Map(document.getElementById('map-canvas'), {
+                            zoom: 15
+                          });
 
-								  service = new google.maps.places.PlacesService(map);
-								  service.getDetails(request, callback);
-								} 
-								google.maps.event.addDomListener(window,'load',initializeGoogleMaps);
-							</script>
+                          service = new google.maps.places.PlacesService(map);
+                          service.getDetails(request, callback);
+                        } 
+                        google.maps.event.addDomListener(window,'load',initializeGoogleMaps);
+                     </script>
 
-							<div id="map-canvas" style="height: 500px; width: 500px;"></div></div>
-							<script async defer
-								src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&libraries=places&callback=initMap">
-								
-							</script>
-							
-							
-							<br />
-
-
-							<button style="size: small; margin-left: 50%;">수정하기(작성자만
-								보이기 위치는 어디로 할까요?)</button>
+							<div id="map-canvas" style="height: 500px; width: 500px;"></div>
 						</div>
+						<script async defer
+							src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&libraries=places&callback=initMap">
+                        
+                     </script>
+
+
+						<br />
+
+
+						<button id="updatebutton" style="size: small; margin-left: 50%;">수정하기</button>
+						<button id = "btnDelete" style="size: small; margin-left: 50%;">삭제하기</button>
+						<script>
+		
+				$("#updatebutton").click(function(){
+					location.href='/pumpkinplace/showboard/showboardupdate?sb_no=' +  ${showboard.sb_no};
+					});
+				
+
+				$('#btnDelete').click(function () {
+					var result = confirm('${board.bno} 정말 삭제?');
+					if (result) {
+						location = 'delete?sb_no=' + ${showboard.sb_no};
+					}
+				});
+				
+				
+</script>
+
+
+						
+                       
 					</div>
 				</div>
 			</div>
-
 		</div>
 
-		<br />
-		<div class="container text-center">
-			<iframe width="560" height="315"
-				src="https://www.youtube.com/embed/${showboard.sb_video}"
-				frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-		</div>
-		<br />
+	</div>
 
-</div>
+	<br />
+	<div class="container text-center">
+		<iframe width="560" height="315"
+			src="https://www.youtube.com/embed/${showboard.sb_video}"
+			frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+	</div>
+	<br />
 
 
 
-		<%@ include file="/WEB-INF/views/footer.jspf"%>
+
+
+	<%@ include file="/WEB-INF/views/footer.jspf"%>
 </body>
 
 </html>

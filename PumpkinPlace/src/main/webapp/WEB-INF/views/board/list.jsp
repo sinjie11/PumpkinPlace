@@ -171,14 +171,6 @@ body {
 		<div class="container text-right">
 			<form action="search">
 				<ul>
-					<select name="searchType">
-						<option value="1">10개씩 보기</option>
-						<option value="2">20개씩 보기</option>
-						<option value="3">40개씩 보기</option>
-					</select>
-
-				</ul>
-				<ul>
 					<c:if test="${urlNo ne 11 and urlNo ne 12}">
 						<a id="register" href="register">
 						<button type="button" style="color: black;">글쓰기</button></a>
@@ -191,7 +183,7 @@ ${board.b_no}
 		<div class="container text-center">
 			<table class="table">
 				<thead>
-					<tr>
+					<tr> 
 						<th class="text-center">글번호</th>
 						<th class="text-center">제목</th>
 						<th class="text-center">작성자</th>

@@ -69,8 +69,8 @@ body {
    <div class="container text-center">
       <h1>공 연 검색 결과</h1>
       <div class="tab-content">
-         <form action="search" style="float: right;">
-            <input type="text" id="startdate" placeholder="공연 날짜 선택" /> <input
+         <form action="showboardsearch" style="float: right;">
+            <input type="text" id="startdate" name="searchKeyDate"placeholder="공연 날짜 선택" /> <input
                type="submit" value="선택" />
          </form>
          <br /> <br />
@@ -84,25 +84,25 @@ body {
 
    <!-- 바디부분 -->
 
-   <div class="container text-center">
+	<div class="container text-center">
       <div class=""></div>
       <div class="row justify-content-md-center">
          <div class="row align-items-start">
             <div class="row align-items-start">
-               <c:forEach var="showboardsearch" items="${showboardList}">
+               <c:forEach var="showboardsearchdate" items="${showboardListDate}">
                   <div class="col-md-3">
-                     <a class="table-title-link" href="${showboardsearch.sb_no}"> <img
+                     <a class="table-title-link" href="showdetail?sb_no=${showboardsearchdate.sb_no}"> <img
                         alt="Bootstrap Image Preview"
-                        src="${pageContext.request.contextPath}/resources/assets/img/showboard/${showboardsearch.sb_img}" style="width: 228px; height: 280px;"/>
-                     </a> <label class="table-title-link" href="${showboardsearch.sb_no}">
+                        src="${pageContext.request.contextPath}/resources/assets/img/showboard/${showboardsearchdate.sb_img}" style="width: 228px; height: 280px;"/>
+                     </a> <label class="table-title-link" href="showdetail?sb_no=${showboardsearchdate.sb_no}">
                         <div class="card">
                            <h5 class="card-header">
-                              <b>${showboardsearch.sb_title}</b>
+                              <b>${showboardsearchdate.sb_title}</b>
                            </h5>
                            <div class="card-body">
-                              <p class="card-text">${showboardsearch.sb_nm}</p>
+                              <p class="card-text">${showboardsearchdate.sb_nm}</p>
                            </div>
-                           <fmt:formatDate value="${showboardsearch.sb_startdate}"
+                           <fmt:formatDate value="${showboardsearchdate.sb_startdate}"
                               pattern="yyyy년 MM월 dd일 HH시 mm분" var="startdate" />
                            <div class="card-footer">${startdate}</div>
                         </div>
@@ -111,31 +111,36 @@ body {
                </c:forEach>
             </div>
          </div>
+      </div>
+   </div>
 
-         <nav>
-            <ul class="pagination">
-               <c:if test="${pageMaker.hasPrev}">
-                  <li class="page-item"><a class="page-link"
-                     href="${pageMaker.startPageNo - 1}">Previous</a></li>
-               </c:if>
-               <c:forEach begin="${pageMaker.startPageNo}"
-                  end="${pageMaker.endPageNo}" var="num">
-                  <li class="page-item"><a class="page-link" href="${num}">${num}</a></li>
+   <div class="container text-center">
+      <div class=""></div>
+      <div class="row justify-content-md-center">
+         <div class="row align-items-start">
+            <div class="row align-items-start">
+               <c:forEach var="showboardsearchword" items="${showboardListKey}">
+                  <div class="col-md-3">
+                     <a class="table-title-link" href="showboard/showdetail?${showboardsearchword.sb_no}"> <img
+                        alt="Bootstrap Image Preview"
+                        src="${pageContext.request.contextPath}/resources/assets/img/showboard/${showboardsearchword.sb_img}" style="width: 228px; height: 280px;"/>
+                     </a> <label class="table-title-link" href="showboard/showdetail?${showboardsearchword.sb_no}">
+                        <div class="card">
+                           <h5 class="card-header">
+                              <b>${showboardsearchword.sb_title}</b>
+                           </h5>
+                           <div class="card-body">
+                              <p class="card-text">${showboardsearchword.sb_nm}</p>
+                           </div>
+                           <fmt:formatDate value="${showboardsearchword.sb_startdate}"
+                              pattern="yyyy년 MM월 dd일 HH시 mm분" var="startdate" />
+                           <div class="card-footer">${startdate}</div>
+                        </div>
+                     </label>
+                  </div>
                </c:forEach>
-               <c:if test="${pageMaker.hasNext}">
-                  <li class="page-item"><a class="page-link"
-                     href="${pageMaker.endPageNo + 1}">Next</a></li>
-               </c:if>
-            </ul>
-            <form id="page-form">
-               <input type="" name="page" id="page"
-                  value="${pageMaker.criteria.page}" style="display: none;" /> <input
-                  type="" name="numsPerPage" id="numsPerPage"
-                  value="${pageMaker.criteria.numsPerPage}" style="display: none;" />
-               <input type="" name="sb_no" id="page-form-sb_no"
-                  style="display: none;" />
-            </form>
-         </nav>
+            </div>
+         </div>
       </div>
    </div>
 
@@ -144,21 +149,8 @@ body {
       $(document).ready(function() {
          $(function() {
             $("#startdate, #enddate").datepicker({
-               dateFormat : 'yy.mm.dd'
+               dateFormat : 'yy/mm/dd'
             });
-         });
-
-         $('.page-link').click(function() {
-            // <a> 태그의 기본 이벤트 동작(클릭하면 페이지 이동)을 금지
-            event.preventDefault();
-            // 이동할 페이지 번호
-            var targetPage = $(this).attr('href');
-            $('#page').val(targetPage);
-            // #page-form의 내용을 submit
-            var frm = $('#page-form');
-            frm.attr('action', 'showboardmain');
-            frm.attr('method', 'get');
-            frm.submit();
          });
 
          $('.table-title-link').click(function() {
