@@ -96,12 +96,23 @@ public class ShowBoardDaoImple implements ShowBoardDao {
 	}
 	
 	@Override
-	public List<ShowBoard> searchShowBoard(String keyword) {
+	public List<ShowBoard> searchkeyShowBoard(String keyword) {
 		logger.info("keyword: {}", keyword);
 		Map<String, Object> args = new HashMap<>();
 		args.put("searchKeyWord", "%" + keyword + "%");
 		
-		List<ShowBoard> list = sqlSession.selectList(NAMESPACE + ".searchShowBoard", args);
+		List<ShowBoard> list = sqlSession.selectList(NAMESPACE + ".searchKeyShowBoard", args);
+		
+		return list;
+	}
+
+	@Override
+	public List<ShowBoard> searchdateShowBoard(String date) {
+		logger.info("date: {}", date);
+		Map<String, Object> args = new HashMap<>();
+		args.put("searchKeyDate", date);
+		
+		List<ShowBoard> list = sqlSession.selectList(NAMESPACE + ".searchDateShowBoard", args);
 		
 		return list;
 	}

@@ -65,7 +65,7 @@ body {
 	<div class="container text-center">
 			<div class="tab-content">
 			<form action="showboardsearch" style="float: right;">
-				<input type="text" id="startdate" placeholder="공연 날짜 선택" /> <input
+				<input type="text" id="searchdate" name="searchKeyDate" placeholder="공연 날짜 선택" /> <input
 					type="submit" value="Search" />
 			</form>
 			<br /> <br />
@@ -148,7 +148,7 @@ body {
 	<script>
 		$(document).ready(function() {
 			$(function() {
-				$("#startdate, #enddate").datepicker({
+				$("#searchdate").datepicker({
 					dateFormat : 'yy/mm/dd'
 				});
 			});

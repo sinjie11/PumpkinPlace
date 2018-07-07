@@ -69,8 +69,8 @@ body {
    <div class="container text-center">
       <h1>공 연 검색 결과</h1>
       <div class="tab-content">
-         <form action="search" style="float: right;">
-            <input type="text" id="startdate" placeholder="공연 날짜 선택" /> <input
+         <form action="showboardsearch" style="float: right;">
+            <input type="text" id="startdate" name="searchKeyDate"placeholder="공연 날짜 선택" /> <input
                type="submit" value="선택" />
          </form>
          <br /> <br />
@@ -84,25 +84,55 @@ body {
 
    <!-- 바디부분 -->
 
+	<div class="container text-center">
+      <div class=""></div>
+      <div class="row justify-content-md-center">
+         <div class="row align-items-start">
+            <div class="row align-items-start">
+               <c:forEach var="showboardsearchdate" items="${showboardListDate}">
+                  <div class="col-md-3">
+                     <a class="table-title-link" href="showdetail?sb_no=${showboardsearchdate.sb_no}"> <img
+                        alt="Bootstrap Image Preview"
+                        src="${pageContext.request.contextPath}/resources/assets/img/showboard/${showboardsearchdate.sb_img}" style="width: 228px; height: 280px;"/>
+                     </a> <label class="table-title-link" href="showdetail?sb_no=${showboardsearchdate.sb_no}">
+                        <div class="card">
+                           <h5 class="card-header">
+                              <b>${showboardsearchdate.sb_title}</b>
+                           </h5>
+                           <div class="card-body">
+                              <p class="card-text">${showboardsearchdate.sb_nm}</p>
+                           </div>
+                           <fmt:formatDate value="${showboardsearchdate.sb_startdate}"
+                              pattern="yyyy년 MM월 dd일 HH시 mm분" var="startdate" />
+                           <div class="card-footer">${startdate}</div>
+                        </div>
+                     </label>
+                  </div>
+               </c:forEach>
+            </div>
+         </div>
+      </div>
+   </div>
+
    <div class="container text-center">
       <div class=""></div>
       <div class="row justify-content-md-center">
          <div class="row align-items-start">
             <div class="row align-items-start">
-               <c:forEach var="showboardsearch" items="${showboardList}">
+               <c:forEach var="showboardsearchword" items="${showboardListKey}">
                   <div class="col-md-3">
-                     <a class="table-title-link" href="${showboardsearch.sb_no}"> <img
+                     <a class="table-title-link" href="showboard/showdetail?${showboardsearchword.sb_no}"> <img
                         alt="Bootstrap Image Preview"
-                        src="${pageContext.request.contextPath}/resources/assets/img/showboard/${showboardsearch.sb_img}" style="width: 228px; height: 280px;"/>
-                     </a> <label class="table-title-link" href="${showboardsearch.sb_no}">
+                        src="${pageContext.request.contextPath}/resources/assets/img/showboard/${showboardsearchword.sb_img}" style="width: 228px; height: 280px;"/>
+                     </a> <label class="table-title-link" href="showboard/showdetail?${showboardsearchword.sb_no}">
                         <div class="card">
                            <h5 class="card-header">
-                              <b>${showboardsearch.sb_title}</b>
+                              <b>${showboardsearchword.sb_title}</b>
                            </h5>
                            <div class="card-body">
-                              <p class="card-text">${showboardsearch.sb_nm}</p>
+                              <p class="card-text">${showboardsearchword.sb_nm}</p>
                            </div>
-                           <fmt:formatDate value="${showboardsearch.sb_startdate}"
+                           <fmt:formatDate value="${showboardsearchword.sb_startdate}"
                               pattern="yyyy년 MM월 dd일 HH시 mm분" var="startdate" />
                            <div class="card-footer">${startdate}</div>
                         </div>

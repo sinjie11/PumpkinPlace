@@ -30,14 +30,15 @@ public class ShowBoardDaoTest {
 
 	@Test
 	public void doTest() throws InterruptedException, ParseException {
-		// insertBulkData();
-		 insertTest();
-		// testSelectAll();
-		// testSelectBySbNo();
-		// testUpdate();
-		// testDelete();
-		 //testTotalCount();
-		//testSearch();
+//		 insertBulkData();
+//		 insertTest();
+//		 testSelectAll();
+//		 testSelectBySbNo();
+//		 testUpdate();
+//		 testDelete();
+//		 testTotalCount();
+//		 testkeySearch();
+		 testdateSearch();
 	}
 
 	private void insertBulkData() throws InterruptedException {
@@ -190,8 +191,18 @@ public class ShowBoardDaoTest {
 		logger.info("totalCount result = {}", result);
 	}
 
-	private void testSearch() {
-		List<ShowBoard> list = showboardDao.searchShowBoard("잠실");
+	private void testkeySearch() {
+		List<ShowBoard> list = showboardDao.searchkeyShowBoard("잠실");
+		for (ShowBoard sb : list) {
+			logger.info("{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}", sb.getSb_no(), sb.getSb_nm(),
+					sb.getSb_title(), sb.getSb_content(), sb.getSb_city(), sb.getSb_price(), sb.getSb_tel(),
+					sb.getSb_locinfo(), sb.getSb_regdate(), sb.getSb_img(), sb.getSb_video(), sb.getSb_startdate(),
+					sb.getSb_enddate(), sb.getSb_placeid());
+		}
+	}
+	
+	private void testdateSearch() {
+		List<ShowBoard> list = showboardDao.searchdateShowBoard("2018/12/25");
 		for (ShowBoard sb : list) {
 			logger.info("{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}", sb.getSb_no(), sb.getSb_nm(),
 					sb.getSb_title(), sb.getSb_content(), sb.getSb_city(), sb.getSb_price(), sb.getSb_tel(),

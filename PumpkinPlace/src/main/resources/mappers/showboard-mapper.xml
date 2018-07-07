@@ -49,9 +49,17 @@
 		where rn between #{start} and #{end}
 	</select>
 	
-	<select id="searchShowBoard" resultType="ShowBoard">
+	<select id="searchKeyShowBoard" resultType="ShowBoard">
 		select * from ${tbl_show_board}
 		where ${col_sb_nm} like #{searchKeyWord} or ${col_sb_title} like #{searchKeyWord} or ${col_sb_city} like #{searchKeyWord} or ${col_sb_content} like #{searchKeyWord} or ${col_sb_locinfo} like #{searchKeyWord}   
+		order by ${col_sb_no} desc
+	</select>
+	
+	<select id="searchDateShowBoard" resultType="ShowBoard">
+		select * from ${tbl_show_board}
+		<![CDATA[
+		where #{searchKeyDate} >= ${col_sb_startdate} and #{searchKeyDate} <= ${col_sb_enddate}
+		]]>
 		order by ${col_sb_no} desc
 	</select>
 	

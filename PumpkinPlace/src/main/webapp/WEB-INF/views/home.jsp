@@ -73,10 +73,10 @@ body {
             <c:forEach var="showboard" items="${showboardList}" begin="0"
                end="5" varStatus="vs">
                <div class="col-md-4" style="height: 400px">
-                  <a href="showboard/showdetail?page=1&numsPerPage=12&sb_no=${showboard.sb_no}"><img
+                  <a href="showboard/showdetail?sb_no=${showboard.sb_no}"><img
                      class="my-image" alt="Bootstrap Image Preview" width="220px;" height="280px;"
                      src="${pageContext.request.contextPath}/resources/assets/img/showboard/${showboard.sb_img}" /></a>
-                  <label href="showboard/showdetail?page=1&numsPerPage=12&sb_no=${showboard.sb_no}">
+                  <label href="showboard/showdetail?sb_no=${showboard.sb_no}">
                      <h4>${showboard.sb_title}</h4>
                         <fmt:formatDate value="${showboard.sb_startdate}"
                            pattern="yyyy년 MM월 dd일 " var="startdate" />
