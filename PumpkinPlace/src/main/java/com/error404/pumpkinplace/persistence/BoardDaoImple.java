@@ -66,16 +66,39 @@ public class BoardDaoImple implements BoardDao {
 
 		return sqlSession.delete(NAMESPACE + ".delete", b_no);
 	}
-
+	
 	@Override
-	public List<Board> search(int type, String keyword) {
+	public List<Board> search(int type, String keyword, int sectionNo, PaginationCriteria criteria) {
 		logger.info("type: {}, keyword: {}", type, keyword);
 		Map<String, Object> args = new HashMap<>();
 		args.put("searchType", type);
 		args.put("searchKeyword", "%" + keyword + "%");
-		List<Board> list = sqlSession.selectList(NAMESPACE + ".search", args);
-
-		return list;
+		args.put("b_section", sectionNo);
+		args.put("start", criteria.getStart());
+		args.put("end", criteria.getEnd());		
+		return sqlSession.selectList(NAMESPACE + ".searchWithSectionNo", args);
+	}
+	
+	@Override
+	public List<Board> searchSectionNo11(int type, String keyword, PaginationCriteria criteria) {
+		logger.info("searchWithSectionNo11() 호출");
+		Map<String, Object> args = new HashMap<>();
+		args.put("searchType", type);
+		args.put("searchKeyword", "%" + keyword + "%");
+		args.put("start", criteria.getStart());
+		args.put("end", criteria.getEnd());		
+		return sqlSession.selectList(NAMESPACE + ".searchWithSectionNo11", args);
+	}
+	
+	@Override
+	public List<Board> searchSectionNo12(int type, String keyword, PaginationCriteria criteria) {
+		logger.info("searchWithSectionNo12() 호출");
+		Map<String, Object> args = new HashMap<>();
+		args.put("searchType", type);
+		args.put("searchKeyword", "%" + keyword + "%");
+		args.put("start", criteria.getStart());
+		args.put("end", criteria.getEnd());		
+		return sqlSession.selectList(NAMESPACE + ".searchWithSectionNo12", args);
 	}
 
 	@Override
@@ -123,7 +146,7 @@ public class BoardDaoImple implements BoardDao {
 	@Override
 	public int getNumOfRecords(int sectionNo) {
 		if (sectionNo == 1 || sectionNo == 2 || sectionNo == 3 || sectionNo == 4 || sectionNo == 5 || sectionNo == 6
-				|| sectionNo == 7 || sectionNo == 8 || sectionNo == 9)
+				|| sectionNo == 7 || sectionNo == 8 || sectionNo == 9 || sectionNo == 10 || sectionNo == 20)
 			return sqlSession.selectOne(NAMESPACE + ".totalCount", sectionNo);
 		else if (sectionNo == 11)
 			return sqlSession.selectOne(NAMESPACE + ".countTotalSectionNo11", sectionNo);

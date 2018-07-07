@@ -31,10 +31,11 @@ public class BoardDaoTest {
 		// insertTest();
 		// selectByMemid();
 		// selectBySectionNoTest();
-//		 selectBySectionNo1Test();
-//		 selectBySectionNo11Test();
-		 selectPrevNo();
-		 selectNextNo();
+		// selectBySectionNo1Test();
+		// selectBySectionNo11Test();
+//		selectPrevNo();
+//		selectNextNo();
+		searchTest();
 	} // end doTest()
 
 	// private void insertTest() {
@@ -107,7 +108,7 @@ public class BoardDaoTest {
 			logger.info("{}, {}, {}, {}", b.getB_no(), b.getB_title(), b.getB_id(), b.getB_regdate());
 		}
 	}
-	
+
 	private void selectBySectionNo11Test() {
 		List<Board> list = boardDao.selectBySectionNo11();
 		for (Board b : list) {
@@ -121,7 +122,7 @@ public class BoardDaoTest {
 		int prevNo = boardDao.prevBoardNo(board);
 		logger.info("이전 번호:{}", prevNo);
 	}
-	
+
 	// 다음글 번호 받기
 	private void selectNextNo() {
 		Board board = new Board(1, 81, null, null, null, null, null, null, 0, 0, 0);
@@ -129,6 +130,13 @@ public class BoardDaoTest {
 		logger.info("다음 번호:{}", nextNo);
 	}
 
-
+	private void searchTest() {
+		PaginationCriteria criteria = new PaginationCriteria();
+		List<Board> list = boardDao.search(1, "admin", 9, criteria);
+		for (Board b : list) {
+			logger.info("{}, {}, {}, {}, {}", b.getB_no(), b.getB_title(), b.getB_content(), b.getB_regdate(),
+					b.getB_readcnt());
+		}
+	}
 
 } // end class MemberDaoTest

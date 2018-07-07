@@ -179,10 +179,11 @@ body {
 
 				</ul>
 				<ul>
-					<a id="register" href="register">
-					<button type="button" style="color: black;">글쓰기</button></a>
-				</ul>
-				
+					<c:if test="${urlNo ne 11 and urlNo ne 12}">
+						<a id="register" href="register">
+						<button type="button" style="color: black;">글쓰기</button></a>
+					</c:if>
+				</ul>		
 			</form>
 		</div>
 ${board.b_no}
@@ -201,7 +202,8 @@ ${board.b_no}
 					<c:forEach var="board" items="${boardList}">
 						<tr>
 							<td>${board.b_no}</td>
-							<td><a class="table-title-link" href="${board.b_no}">${board.b_title}</a></td>
+							<td><a class="table-title-link" href="${board.b_no}">
+							${board.b_title}</a></td>
 							<td>${board.b_id}</td>
 							<fmt:formatDate value="${board.b_regdate}"
 								pattern="yyyy.MM.dd HH:mm" var="b_regdate" />
@@ -226,24 +228,21 @@ ${board.b_no}
 				</c:if>
 			</ul>
 		</div>
-		<form action="search">
-			<select name="searchType">
-				<option value="1">작성자</option>
-				<option value="2">글 제목</option>
-				<option value="3">제목 + 내용</option>
-			</select> <input type="text" name="searchKeyword" placeholder="검색어 입력"
-				required /> <input type="submit" value="검색" />
-		</form>
+		<ul>
+				<a id="list" href="/pumpkinplace/board/list?urlNo=${urlNo}">
+						<button type="button" style="font-size : 20px; font-weight : bold; color: black; width:500px; height : 50px;"> 
+						◀ 재검색을 위한 전체보기로 돌아가기 ▶</button></a>
+				</ul>
 	</div>
 	<br />
 
 	<form id="page-form">
-		<input type="hidden" name="page" id="page"
-			value="${pageMaker.criteria.page}" /> <input type="hidden"
-			name="numsPerPage" id="numsPerPage"
-			value="${pageMaker.criteria.numsPerPage}" /> <input type="hidden"
-			name="b_no" id="page-form-bno" />
+		<input type="hidden" name="page" id="page" value="${pageMaker.criteria.page}" />
+		<input type="hidden" name="numsPerPage" id="numsPerPage" value="${pageMaker.criteria.numsPerPage}" />
+		<input type="hidden" name="b_no" id="page-form-bno" />
 			<input type="hidden" name="urlNo" value="${urlNo}" />
+			<input type="hidden" name="searchType" value="${searchType}"/>
+			<input type="hidden" name="searchKeyword" value="${searchKeyword}"/>
 	</form>
 
 
@@ -260,7 +259,7 @@ ${board.b_no}
 		var targetPage = $(this).attr('href');
 		$('#page').val(targetPage);
 		var frm = $('#page-form');
-		frm.attr('action', 'list');
+		frm.attr('action', 'search');
 		frm.attr('method', 'get');
 		frm.submit();
 	});
@@ -274,8 +273,7 @@ ${board.b_no}
 		frm.attr('method', 'get');
 		frm.submit();
 	});
-	
-	
+
 	$('#register').click(function () { // qna
 		event.preventDefault();
 		$('#url-no').val(${urlNo});
@@ -358,6 +356,7 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 <%@ include file="/WEB-INF/views/footer.jspf"%>
 
 </html>
+
 
 
 

@@ -32,8 +32,10 @@ public interface BoardService {
 	int delete(int bno);
 	
 	// 게시판DB에서 해당 keyword를 포함하는 게시글을 찾아 보여주는 서비스
-	List<Board> read(int type, String keyword); 
-	
+	List<Board> read(int type, String keyword, int b_section, PaginationCriteria criteria); 
+	List<Board> readSectionNo11(int type, String keyword, PaginationCriteria criteria); 
+	List<Board> readSectionNo12(int type, String keyword, PaginationCriteria criteria); 
+
 	// 아래 두 method는 Page 처리를 합니다
 	int getNumOfRecords(int b_section);
 	List<Board> read(PaginationCriteria criteria);

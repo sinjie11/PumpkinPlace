@@ -52,9 +52,19 @@ public class BoardServiceImple implements BoardService {
 	}
 
 	@Override
-	public List<Board> read(int type, String keyword) {
+	public List<Board> read(int type, String keyword, int b_section, PaginationCriteria criteria) {
 
-		return boardDao.search(type, keyword);
+		return boardDao.search(type, keyword, b_section, criteria);
+	}
+	
+	@Override
+	public List<Board> readSectionNo11(int type, String keyword, PaginationCriteria criteria) {
+		return boardDao.searchSectionNo11(type, keyword, criteria);
+	}
+	
+	@Override
+	public List<Board> readSectionNo12(int type, String keyword, PaginationCriteria criteria) {
+		return boardDao.searchSectionNo12(type, keyword,  criteria);
 	}
 
 	@Override

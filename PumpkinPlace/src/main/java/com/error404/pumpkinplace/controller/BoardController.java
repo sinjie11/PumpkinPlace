@@ -3,6 +3,8 @@ package com.error404.pumpkinplace.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -135,38 +137,64 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public void search(int searchType, String searchKeyword, Model model) {
-		
-//		logger.info("list(urlNo: {}) 호출", urlNo);
-//		// numsPerPage에 들어갈 수는 10/20/40 중 하나
-//		// PaginationCriteria criteria = new PaginationCriteria(page, numsPerPage);
-//		PaginationCriteria criteria = new PaginationCriteria();
-//		if (page != null) {
-//			criteria.setPage(page);
-//		}
-//		if (numsPerPage != null) {
-//			criteria.setNumsPerPage(numsPerPage);
-//		}
-//		if (urlNo == 1 || urlNo == 2 || urlNo == 3
-//		 || urlNo == 4 || urlNo == 5 || urlNo == 6
-//		 || urlNo == 7 || urlNo == 8 || urlNo == 9
-//		 || urlNo == 10 || urlNo == 20) {
-//			List<Board> list = boardService.readBySectionNo(urlNo, criteria);
-//			logger.info("urlNo : {}, page : {}, numsPerPage : {}", urlNo, criteria.getPage(),
-//					criteria.getNumsPerPage());
-//			model.addAttribute("boardList", list);
-//			logger.info("***** board list size {}", list.size());
-//			PageLinkMaker maker = new PageLinkMaker();
-//			maker.setCriteria(criteria);
-//			maker.setTotalCount(boardService.getNumOfRecords(urlNo));
-//			maker.setPageLinkData();
-//			model.addAttribute("pageMaker", maker);
-//			model.addAttribute("urlNo", urlNo);
-		
-		logger.info("search(type: {}, keyword: {})", searchType, searchKeyword);
-		List<Board> list = boardService.read(searchType, searchKeyword);
+	public void search(@RequestParam("searchType") Integer searchType, @RequestParam("searchKeyword") String searchKeyword, 
+			Integer urlNo,@RequestParam("page")Integer page, @RequestParam("numsPerPage")Integer numsPerPage, Model model, HttpServletRequest request) {
+		logger.info("search(page : {}, numsPerPage : {}) 호출", page, numsPerPage);
+		logger.info("search(type: {}, keyword: {}, urlNo : {})", searchType, searchKeyword, urlNo);
+		PaginationCriteria criteria = new PaginationCriteria();
+		if (page != null) {
+			criteria.setPage(page);
+		}
+		if (numsPerPage != null) {
+			criteria.setNumsPerPage(numsPerPage);
+		}
+		if (urlNo == 1 || urlNo == 2 || urlNo == 3
+				 || urlNo == 4 || urlNo == 5 || urlNo == 6
+				 || urlNo == 7 || urlNo == 8 || urlNo == 9
+				 || urlNo == 10 || urlNo == 20) {
+		List<Board> list = boardService.read(searchType, searchKeyword, urlNo, criteria);
 		model.addAttribute("boardList", list);
-		model.addAttribute("searchKeyword", searchKeyword);
+		request.setAttribute("searchType", searchType);
+		request.setAttribute("searchKeyword", searchKeyword);
+		request.setAttribute("numsPerPage", numsPerPage);
+		request.setAttribute("page", page);
+		request.setAttribute("urlNo", urlNo);
+		PageLinkMaker maker = new PageLinkMaker();
+		maker.setCriteria(criteria);
+		maker.setTotalCount(boardService.getNumOfRecords(urlNo));
+		maker.setPageLinkData();
+		model.addAttribute("pageMaker", maker);
+		} 
+		
+		else if (urlNo == 11) {
+			List<Board> list = boardService.readSectionNo11(searchType, searchKeyword,  criteria);
+			model.addAttribute("boardList", list);
+			request.setAttribute("searchType", searchType);
+			request.setAttribute("searchKeyword", searchKeyword);
+			request.setAttribute("numsPerPage", numsPerPage);
+			request.setAttribute("page", page);
+			request.setAttribute("urlNo", urlNo);
+			PageLinkMaker maker = new PageLinkMaker();
+			maker.setCriteria(criteria);
+			maker.setTotalCount(boardService.getNumOfRecords(urlNo));
+			maker.setPageLinkData();
+			model.addAttribute("pageMaker", maker);
+		}
+		else if (urlNo == 12) {
+			List<Board> list = boardService.readSectionNo12(searchType, searchKeyword, criteria);
+			model.addAttribute("boardList", list);
+			request.setAttribute("searchType", searchType);
+			request.setAttribute("searchKeyword", searchKeyword);
+			request.setAttribute("numsPerPage", numsPerPage);
+			request.setAttribute("page", page);
+			request.setAttribute("urlNo", urlNo);
+			PageLinkMaker maker = new PageLinkMaker();
+			maker.setCriteria(criteria);
+			maker.setTotalCount(boardService.getNumOfRecords(urlNo));
+			maker.setPageLinkData();
+			model.addAttribute("pageMaker", maker);
+		}
+		
 	}
 
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)

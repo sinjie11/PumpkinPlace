@@ -13,7 +13,11 @@ public interface BoardDao {
 
 	int update(Board board);
 	int delete(int bno);
-	List<Board> search(int type, String keyword);
+	
+	List<Board> search(int type, String keyword, int sectionNo, PaginationCriteria criteria);
+	List<Board> searchSectionNo11(int type, String keyword, PaginationCriteria criteria);
+	List<Board> searchSectionNo12(int type, String keyword, PaginationCriteria criteria);
+	
 	int getNumOfRecords(int sectionNo);
 	List<Board> select(PaginationCriteria criteria);
 	

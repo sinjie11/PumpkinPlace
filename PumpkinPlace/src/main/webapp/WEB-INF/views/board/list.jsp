@@ -229,23 +229,27 @@ ${board.b_no}
 			</ul>
 		</div>
 		<form action="search">
-			<select name="searchType">
+			<select name="searchType" style="width : 150px; height : 24px;"> 
 				<option value="1">작성자</option>
 				<option value="2">글 제목</option>
 				<option value="3">제목 + 내용</option>
 			</select> <input type="text" name="searchKeyword" placeholder="검색어 입력"
-				required /> <input type="submit" value="검색" />
+				required /> 
+				<input type="submit" value="검색" />
+				<input type="hidden" name="urlNo" value="${urlNo}"/>
+					<input type="hidden" name="page" id="page"
+			value="${pageMaker.criteria.page}" /> <input type="hidden"
+			name="numsPerPage" id="numsPerPage"
+			value="${pageMaker.criteria.numsPerPage}" />
 		</form>
 	</div>
 	<br />
 
 	<form id="page-form">
-		<input type="hidden" name="page" id="page"
-			value="${pageMaker.criteria.page}" /> <input type="hidden"
-			name="numsPerPage" id="numsPerPage"
-			value="${pageMaker.criteria.numsPerPage}" /> <input type="hidden"
-			name="b_no" id="page-form-bno" />
-			<input type="hidden" name="urlNo" value="${urlNo}" />
+		<input type="hidden" name="page" id="page" value="${pageMaker.criteria.page}" /> 
+		<input type="hidden" name="numsPerPage" id="numsPerPage"  value="${pageMaker.criteria.numsPerPage}" /> 
+		<input type="hidden" name="urlNo" value="${urlNo}" />
+		<input type="hidden" name="b_no" id="page-form-bno" />
 	</form>
 
 
