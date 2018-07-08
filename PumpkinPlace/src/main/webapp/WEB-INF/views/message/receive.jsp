@@ -79,15 +79,20 @@ body {
 			</tr>
 		</thead>
 		<tbody style="text-align: center;">
-			<c:forEach var="message" items="${receiveList}">
-				<tr>
-					<td>${message.mem_id}</td>
-					<td><a class="table-title-link" href="${message.msg_no}">${message.msg_content}</a></td>
-					<fmt:formatDate value="${message.msg_regdate}"
-						pattern="yyyy.MM.dd HH:mm" var="msg_regdate" />
-					<td>${msg_regdate}</td>
-				</tr>
+		
+			<c:forEach var="receive" items="${receiveList}">
+				<c:if test="${receive.mem_id2 eq loginId}">
+            			<tr>
+							<td>${receive.mem_id}</td>
+					
+							<td><a class="table-title-link" href="${receive.msg_no}">${receive.msg_content}</a></td>
+								<fmt:formatDate value="${receive.msg_regdate}"
+								pattern="yyyy.MM.dd HH:mm" var="msg_regdate" />
+							<td>${msg_regdate}</td>
+						</tr>
+				</c:if>
 			</c:forEach>
+			
 		</tbody>
 	</table>
 	</div>

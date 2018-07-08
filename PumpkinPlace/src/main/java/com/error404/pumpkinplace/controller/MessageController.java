@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import com.error404.pumpkinplace.domain.Message;
@@ -47,7 +48,7 @@ public class MessageController {
 	} // end insertMessage()
 	
 	@RequestMapping(value = "/send", method = RequestMethod.GET)
-	public void send(Integer page, Integer numsPerPage, String mem_id, Model model, HttpSession session) {
+	public void send(Integer page, Integer numsPerPage, Model model, HttpSession session) {
 		logger.info("send() GET 호출");
 		
 		PaginationCriteria criteria = new PaginationCriteria();
@@ -57,31 +58,31 @@ public class MessageController {
 		if (numsPerPage != null) {
 			criteria.setNumsPerPage(numsPerPage);
 		}
-		
-		List<Message> list = messageService.send((String) session.getAttribute("loginId"));
+	
+		List<Message> list = messageService.readSend(criteria);
 		model.addAttribute("sendList", list);
-				
+		
 		PageLinkMaker maker = new PageLinkMaker();
 		maker.setCriteria(criteria);
-		maker.setTotalCount(messageService.totalCount((String) session.getAttribute("loginId")));
+		maker.setTotalCount(messageService.getNumOfMessageMemId2Records()); // 보낸 쪽지함에서 받은 사람 추출
 		maker.setPageLinkData();
 		
-		model.addAttribute("pageMaker", maker);
+		model.addAttribute("pageMaker", maker);					
 				
-	} // end send(mem_id, model)
+	} // end send()
 	
 	@RequestMapping(value = "/senddetail", method = RequestMethod.GET)
-	public void sendDetail(int msg_no, Model model, HttpSession session) {
+	public void sendDetail(@ModelAttribute("criteria") PaginationCriteria criteria, int msg_no, Model model, HttpSession session) {
 		logger.info("sendDetail() GET 호출");
-				
-		Message message = messageService.read3(msg_no);
+		
+		Message message = messageService.read(msg_no);
 		
 		model.addAttribute("message", message);
 				
 	} // end sendDetail(mem_id, model, session)
 	
 	@RequestMapping(value = "/receive", method = RequestMethod.GET)
-	public void receive(Integer page, Integer numsPerPage, String mem_id2, Model model, HttpSession session) {
+	public void receive(Integer page, Integer numsPerPage, Model model, HttpSession session) {
 		logger.info("receivePage() GET 호출");
 		
 		PaginationCriteria criteria = new PaginationCriteria();
@@ -91,28 +92,29 @@ public class MessageController {
 		if (numsPerPage != null) {
 			criteria.setNumsPerPage(numsPerPage);
 		}
-		
-		List<Message> list = messageService.receive((String) session.getAttribute("loginId"));
+	
+		List<Message> list = messageService.readReceive(criteria);
 		
 		model.addAttribute("receiveList", list);
 		
 		PageLinkMaker maker = new PageLinkMaker();
 		maker.setCriteria(criteria);
-		maker.setTotalCount(messageService.totalCount2((String) session.getAttribute("loginId")));
+		maker.setTotalCount(messageService.getNumOfMessageMemIdRecords()); // 받은 쪽지함에서 보낸 사람 추출
 		maker.setPageLinkData();
 		
-		model.addAttribute("pageMaker", maker);
-
-
-	} // end receive(mem_id2, model, session)
+		model.addAttribute("pageMaker", maker);	;
+	
+	} // end receive()
 	
 	@RequestMapping(value = "/receivedetail", method = RequestMethod.GET)
-	public void receiveDetail(int msg_no, Model model, HttpSession session) {
+	public void receiveDetail(@ModelAttribute("criteria") PaginationCriteria criteria, int msg_no, Model model, HttpSession session) {
 		logger.info("receiveDetail() GET 호출");
 		
-		Message message = messageService.read3(msg_no);
+		Message message = messageService.read(msg_no);
 		
 		model.addAttribute("message", message);
+		
+	
 				
 	} // end receiveDetail(mem_id2, model, session)
 		

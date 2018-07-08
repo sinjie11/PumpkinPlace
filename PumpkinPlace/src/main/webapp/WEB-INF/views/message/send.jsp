@@ -80,15 +80,22 @@ body {
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="message" items="${sendList}">
-				<tr>
-					<td>${message.mem_id2}</td>
-					<td><a class="table-title-link" href="${message.msg_no}">${message.msg_content}</a></td>
-					<fmt:formatDate value="${message.msg_regdate}"
-						pattern="yyyy.MM.dd HH:mm" var="msg_regdate" />
-					<td>${msg_regdate}</td>
-				</tr>
+		
+			<c:forEach var="send" items="${sendList}">
+			<!-- 보낸쪽지함에서 보낸사람(mem_id)과 
+				로그인 아이디가 같을 때 받은사람 보이게  -->
+				<c:if test="${send.mem_id eq loginId}">
+						<tr>
+							<td>${send.mem_id2}</td>
+							
+							<td><a class="table-title-link" href="${send.msg_no}">${send.msg_content}</a></td>
+								<fmt:formatDate value="${send.msg_regdate}"
+								pattern="yyyy.MM.dd HH:mm" var="msg_regdate" />
+							<td>${msg_regdate}</td>
+						</tr>
+				</c:if>
 			</c:forEach>
+			
 		</tbody>
 	</table>
 	

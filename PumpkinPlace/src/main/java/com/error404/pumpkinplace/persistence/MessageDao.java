@@ -7,29 +7,21 @@ import com.error404.pumpkinplace.pageutil.PaginationCriteria;
 
 public interface MessageDao {
 	
-	List<Message> send(String mem_id);
-	
-	List<Message> receive(String mem_id2);
-		
-	List<Message> sendPage(PaginationCriteria criteria);
-	
-	List<Message> receivePage(PaginationCriteria criteria);
-	
-	int totalCount(String mem_id);
-	
-	int totalCount2(String mem_id2);
-	
 	int insert(Message message);
 	
-	Message select(String mem_id);
+	List<Message> selectAllMemId2();
 	
-	Message select2(String mem_id2);
+	List<Message> selectAllMemId();
 	
-	Message select3(int msg_no);
+	Message select(int msg_no);
 	
-	int update(Message message);
+	List<Message> selectSend(PaginationCriteria criteria);
 	
-	int delete(int msg_no);
-
+	List<Message> selectReceive(PaginationCriteria criteria);
+	
+	int getNumOfMessageMemIdRecords();
+	
+	int getNumOfMessageMemId2Records();
+	
 
 } // end interface MessageDao

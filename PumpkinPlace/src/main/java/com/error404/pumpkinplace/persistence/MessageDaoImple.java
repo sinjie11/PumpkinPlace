@@ -2,6 +2,7 @@ package com.error404.pumpkinplace.persistence;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,79 +20,61 @@ public class MessageDaoImple implements MessageDao {
 	private static final String NAMESPACE = "com.error404.pumpkinplace.mappers.MessageMapper";
 	
 	@Autowired
+	private SqlSession sqlSession;
+	
+	@Autowired
 	private MessageMapper messageMapper;
 	
 	
 	@Override
-	public List<Message> send(String mem_id) {
-		
-		return messageMapper.send(mem_id);
-	} // end send(mem_id)
-	
-	@Override
-	public List<Message> receive(String mem_id2) {
-		
-		return messageMapper.receive(mem_id2);
-	} // end receive(mem_id2)
-	
-	@Override
-	public List<Message> sendPage(PaginationCriteria criteria) {
-		
-		return messageMapper.sendPage(criteria);
-	} // end sendPage(criteria)
-	
-	@Override
-	public List<Message> receivePage(PaginationCriteria criteria) {
-	
-		return messageMapper.receivePage(criteria);
-	} // receivePage(criteria)
-	
-	@Override
-	public int totalCount(String mem_id) {
-	
-		return messageMapper.totalCount(mem_id);
-	}
-	
-	@Override
-	public int totalCount2(String mem_id2) {
-	
-		return messageMapper.totalCount2(mem_id2);
-	}
-	
-	@Override
 	public int insert(Message message) {
-	
+		
 		return messageMapper.insertMessage(message);
 	} // end insert(message)
-
-	@Override
-	public Message select(String mem_id) {
-	
-		return messageMapper.selectById(mem_id);
-	} // end select(mem_id)
 	
 	@Override
-	public Message select2(String mem_id2) {
+	public List<Message> selectAllMemId2() {
 		
-		return messageMapper.selectById2(mem_id2);
-	} // end select2(mem_id2)
-
-	@Override
-	public Message select3(int msg_no) {
+		return messageMapper.selectAllMemId2Message();
+	} // end selectAllMemId2()
 	
+	@Override
+	public List<Message> selectAllMemId() {
+		
+		return messageMapper.selectAllMemIdMessage();
+	} // end selectAllMemId()
+	
+	
+	@Override
+	public Message select(int msg_no) {
+		
 		return messageMapper.selectByMsgNo(msg_no);
-	} // end select3(msg_no)
+	} // end select(msg_no)
 	
 	@Override
-	public int update(Message message) {
+	public List<Message> selectSend(PaginationCriteria criteria) {
 		
-		return messageMapper.update(message);
-	} // end update(message)
-
+		return sqlSession.selectList(NAMESPACE + ".ListPageMemId2Message", criteria);
+	} // end select(criteria)
+	
 	@Override
-	public int delete(int msg_no) {
+	public List<Message> selectReceive(PaginationCriteria criteria) {
+	
+		return sqlSession.selectList(NAMESPACE + ".ListPageMemIdMessage", criteria);
+	} // end selectReceive(criteria)
+	
+	@Override
+	public int getNumOfMessageMemIdRecords() {
 		
-		return messageMapper.delete(msg_no);
-	} // end delete(msg_no)
+		return messageMapper.totalCountMemId();
+	} // end getNumOfMessageMemIdRecords
+	
+	@Override
+	public int getNumOfMessageMemId2Records() {
+		
+		return messageMapper.totalCountMemId2();
+	} // end getNumOfMessageRecords()
+	
+	
 
 } // end class MessageDaoImple
