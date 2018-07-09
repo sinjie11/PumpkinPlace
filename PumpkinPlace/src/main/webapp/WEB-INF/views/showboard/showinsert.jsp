@@ -117,7 +117,8 @@ body {
 	<br />
 
 		<div style="margin: 0; padding: 0; display: inline">
-			<input name="utf8" type="hidden" value="&#x2713;" /> <input
+			<input name="utf8" type="hidden" value="&#x2713;" /> 
+			<input
 				name="authenticity_token" type="hidden"
 				value="V/YmJsJD2LJVCi0HoeIknFutTxFudHJCyCNYLsakG/U=" />
 
@@ -133,7 +134,8 @@ body {
 								<div class="col align-self-end" style="margin-left: 5%;">
 									<div style="font-size: 15px; margin-left: 25%;">
 
-										<b>공연 포스터</b> <input type='file' id="imgInp" name="uploadFile" />
+										<b>공연 포스터</b> 
+										<input type='file' id="imgInp" name="uploadFile" />
 
 										<div></div>
 
@@ -250,11 +252,9 @@ body {
 									
 									<script>
 									$(function() {
-										<!-- 날짜 선택 -->
   $("#startdate, #enddate").datepicker({
     dateFormat : 'yy/mm/dd'
   });
-	<!-- 시간 -->   
 	 $("#starttime, #endtime").timepicker({
 	        timeFormat: 'HH:mm ',
 	        interval: 30,

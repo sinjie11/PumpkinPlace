@@ -512,11 +512,11 @@ $('#btnshowupdate').click(function () {
 	
 	
 	$.ajax({
-		type: 'post',
+		type: 'put',
 		url: '/pumpkinplace/showboard/showboardupdate/',
 		headers: {
 			'Content-Type': 'application/json',
-			'X-HTTP-Method-Override' : 'post'
+			'X-HTTP-Method-Override' : 'put'
 		},
 		data: JSON.stringify({
 			'sb_nm': sb_nm,

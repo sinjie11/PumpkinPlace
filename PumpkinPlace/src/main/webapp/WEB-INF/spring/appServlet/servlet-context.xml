@@ -30,7 +30,8 @@
 	<beans:bean id="authInterceptor"
 		class="com.error404.pumpkinplace.interceptor.AuthInterceptor">
 	</beans:bean>
-	  <!-- MultipartResolover: multipart/form-data를 처리 -->
+	
+	 <!-- MultipartResolover: multipart/form-data를 처리 -->
     <!-- id는 반드시 multipartResolver로 할 것!!! 
     DispatcherServlet이 특정 이름으로 등록된 CommonsMultipartResolver 객체만 인식 -->
     <beans:bean id="multipartResolver"
