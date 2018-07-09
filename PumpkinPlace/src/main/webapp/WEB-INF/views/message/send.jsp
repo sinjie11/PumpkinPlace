@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <!DOCTYPE html>
 <html>
@@ -87,8 +88,8 @@ body {
 				<c:if test="${send.mem_id eq loginId}">
 						<tr>
 							<td>${send.mem_id2}</td>
-							
-							<td><a class="table-title-link" href="${send.msg_no}">${send.msg_content}</a></td>
+							<c:set var="textValue" value="${send.msg_content}" />
+							<td id="send_content"><a class="table-title-link" href="${send.msg_no}">${fn:substring(textValue, 0, 10)}</a></td>
 								<fmt:formatDate value="${send.msg_regdate}"
 								pattern="yyyy.MM.dd HH:mm" var="msg_regdate" />
 							<td>${msg_regdate}</td>

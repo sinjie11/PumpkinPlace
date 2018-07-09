@@ -68,7 +68,7 @@ body {
 				src="${pageContext.request.contextPath}/resources/msgdetail.png"
 				style="background-color: white; width: 110px; height: 110px;" />
 		<br/>		
-	<h1><b>받은 쪽지 상세 페이지</b></h1>
+	<h1><b>받은 쪽지</b></h1>
 
 
 	<table class="table">
