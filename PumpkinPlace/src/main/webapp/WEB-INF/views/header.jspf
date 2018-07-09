@@ -53,12 +53,12 @@
             
                <!-- 쪽지함 버튼 -->
                <c:if test="${not empty loginId}">
-                  <li style="color: white; font-style:italic;"><a href="/pumpkinplace/message/list">쪽지함</a></li>
+                  <li style="color: white; font-style:italic;"><a href="/pumpkinplace/message/list">☞ 쪽지함 </a></li>
                </c:if>
 
                <!-- 로그인 아이디 정보 -->
                <c:if test="${not empty loginId}">
-                  <li style="color: white; font-style:italic;"><a href="/pumpkinplace/member/profile">${loginId}님</a></li>
+                  <li style="color: white; font-style:italic; text-decoration: underline;"><a href="/pumpkinplace/member/profile">${loginId}님</a></li>
                </c:if>
                
                <!-- 로그인 버튼 -->
