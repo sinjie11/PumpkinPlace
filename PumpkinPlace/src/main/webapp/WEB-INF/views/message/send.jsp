@@ -88,8 +88,22 @@ body {
 				<c:if test="${send.mem_id eq loginId}">
 						<tr>
 							<td>${send.mem_id2}</td>
-							<c:set var="textValue" value="${send.msg_content}" />
-							<td id="send_content"><a class="table-title-link" href="${send.msg_no}">${fn:substring(textValue, 0, 10)}</a></td>
+								<c:choose>
+									<c:when test="${fn:length(send.msg_content) > 16}">
+									<!-- 보낸 쪽지 내용이 15자 이상 넘어가면 뒤에 내용 ...으로 표기 -->
+										<c:set var="textValue" value="${send.msg_content}" />
+											<td id="send_content">
+											<a class="table-title-link" href="${send.msg_no}">${fn:substring(textValue, 0, 16)}...</a>
+											</td>
+									</c:when>
+									
+									<c:otherwise>
+											<td>
+											<a class="table-title-link" href="${send.msg_no}">${send.msg_content}</a>
+											</td>
+									</c:otherwise>
+								</c:choose>
+							
 								<fmt:formatDate value="${send.msg_regdate}"
 								pattern="yyyy.MM.dd HH:mm" var="msg_regdate" />
 							<td>${msg_regdate}</td>
