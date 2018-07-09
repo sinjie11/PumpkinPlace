@@ -85,7 +85,7 @@ body {
 					<td>${message.msg_content}</td>
 					<fmt:formatDate value="${message.msg_regdate}"
 						pattern="yyyy.MM.dd HH:mm" var="msg_regdate" />
-					<td>${msg_regdate}</td>
+					<td>${msg_regdate}</td>				
 				</tr>
 		
 		</tbody>

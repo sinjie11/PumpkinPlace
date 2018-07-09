@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.error404.pumpkinplace.domain.Message;
 import com.error404.pumpkinplace.pageutil.PageLinkMaker;
 import com.error404.pumpkinplace.pageutil.PaginationCriteria;
@@ -113,10 +115,21 @@ public class MessageController {
 		Message message = messageService.read(msg_no);
 		
 		model.addAttribute("message", message);
-		
-	
-				
+						
 	} // end receiveDetail(mem_id2, model, session)
+	
+	@RequestMapping(value = "delete", method = RequestMethod.GET)
+	public String delete(int msg_no, RedirectAttributes attr) {
+		logger.info("delete(msg_no : {})", msg_no);
+		
+		int result = messageService.delete(msg_no);
+		if (result == 1) {
+			attr.addFlashAttribute("msg_no_no", msg_no);
+			attr.addFlashAttribute("deleteResult", "success");
+		}
+		
+		return "redirect:/message/receivedetail";
+	} // end delete()
 		
 
 } // end class MessageController

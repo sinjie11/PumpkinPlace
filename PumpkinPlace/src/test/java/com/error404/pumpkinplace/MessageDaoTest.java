@@ -28,7 +28,8 @@ public class MessageDaoTest {
 	public void doTest() {
 //		insertTest();
 //		selectByMemIdTest();
-		selectByMsgNo();
+//		selectByMsgNo();
+		deleteTest();
 		
 	} // end doTest()
 	
@@ -60,6 +61,12 @@ public class MessageDaoTest {
 				message.getMsg_regdate(), message.getMsg_confirm());
 
 	} // end selectByMsgNoMem()
+	
+	private void deleteTest() {
+		int result = messageDao.delete(149);
+		
+		logger.info("delete result : " + result);
+	} // end deleteTest()
 
 	
 	
