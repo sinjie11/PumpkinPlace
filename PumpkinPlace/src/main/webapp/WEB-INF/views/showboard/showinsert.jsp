@@ -98,7 +98,6 @@ body {
 
 #infowindow-content {
 	display: none;
-	
 }
 
 #map #infowindow-content {
@@ -116,49 +115,55 @@ body {
 
 	<br />
 
+<<<<<<< HEAD
 		<div style="margin: 0; padding: 0; display: inline">
 			<input name="utf8" type="hidden" value="&#x2713;" /> 
 			<input
 				name="authenticity_token" type="hidden"
 				value="V/YmJsJD2LJVCi0HoeIknFutTxFudHJCyCNYLsakG/U=" />
+=======
+	<div style="margin: 0; padding: 0; display: inline">
+		<input name="utf8" type="hidden" value="&#x2713;" /> <input
+			name="authenticity_token" type="hidden"
+			value="V/YmJsJD2LJVCi0HoeIknFutTxFudHJCyCNYLsakG/U=" />
+>>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
 
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col align-self-center">
-						<div style="margin-left: 50%;">
-							<h1>공연 등록</h1>
-							<br /> <br />
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="col align-self-end" style="margin-left: 5%;">
-									<div style="font-size: 15px; margin-left: 25%;">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col align-self-center">
+					<div style="margin-left: 50%;">
+						<h1>공연 등록</h1>
+						<br /> <br />
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="col align-self-end" style="margin-left: 5%;">
+								<div style="font-size: 15px; margin-left: 25%;">
 
-										<b>공연 포스터</b> 
-										<input type='file' id="imgInp" name="uploadFile" />
+									<b>공연 포스터</b> <input type='file' id="imgInp" name="uploadFile" />
 
-										<div></div>
+									<div></div>
 
-										<p>
-											<small>공연을 위한 포스터를 업로드해주세요. 그렇지 않을 경우 대체 이미지가 사용됩니다.</small>
-										</p>
+									<p>
+										<small>공연을 위한 포스터를 업로드해주세요. 그렇지 않을 경우 대체 이미지가 사용됩니다.</small>
+									</p>
 
 
-										<br /> <img id="blah" src="#" alt="" width="570px;"
-											height="796px;" /> <br /> <br />
+									<br /> <img id="blah" src="#" alt="" width="570px;"
+										height="796px;" /> <br /> <br />
 
-										<!-- 사진 저장 -->
-										<script>
+									<!-- 사진 저장 -->
+									<script>
             $(document).ready(function() {
          if (${not empty saved}) {
             alert('${saved}' + 'SAVED');
          }
             });
          </script>
-										<!-- 사진저장 -->
+									<!-- 사진저장 -->
 
-										<!-- 사진 미리보기 -->
-										<script type="text/javascript">
+									<!-- 사진 미리보기 -->
+									<script type="text/javascript">
         $(function() {
             $("#imgInp").on('change', function(){
                 readURL(this);
@@ -178,30 +183,30 @@ body {
         }
 
     </script>
-										<!-- end 미리보기 -->
+									<!-- end 미리보기 -->
 
 
-										<!-- 유튜브 -->
-										<label for="event_영상:">영상: <input id="youtube"
-											name="sb_video" type="text"
-											style="text-align: center; width: 300px; margin-left: 12px;"
-											placeholder="YouTube 링크를 입력해주세요" />
-										</label> <br /> <br />
-									</div>
-									<script>
+									<!-- 유튜브 -->
+									<label for="event_영상:">영상: <input id="youtube"
+										name="sb_video" type="text"
+										style="text-align: center; width: 300px; margin-left: 12px;"
+										placeholder="YouTube 링크를 입력해주세요" />
+									</label> <br /> <br />
+								</div>
+								<script>
                               $(document).ready(function (){
                                  var youtube = $('#youtube').val();
                                  var youtube = $('#sb_video').val();
                                  console.log('youtube :' + youtube);
                               });
                            </script>
-									<div style="width: 570px; margin-left: 25%;">
-										<iframe width="560" height="315"
-											src="https://www.youtube.com/embed/+${youtube}"
-											frameborder="0" allow="autoplay; encrypted-media"
-											allowfullscreen></iframe>
-									</div>
-									<script>
+								<div style="width: 570px; margin-left: 25%;">
+									<iframe width="560" height="315"
+										src="https://www.youtube.com/embed/+${youtube}"
+										frameborder="0" allow="autoplay; encrypted-media"
+										allowfullscreen></iframe>
+								</div>
+								<script>
                               
                      jQuery(document).ready(
                            function($) {
@@ -210,47 +215,45 @@ body {
                            });
                         </script>
 
-								</div>
 							</div>
-							<div class="col-md-6">
-								<div class="col align-self-end" style="margin-left: 20%;">
+						</div>
+						<div class="col-md-6">
+							<div class="col align-self-end" style="margin-left: 20%;">
 
-									<!-- 제목 -->
-									<div id="en_title">
-										<p>
-											<label for="event_공연 이름 :">공연 제목: <input
-												id="show_name" name="sb_title" type="text"
-												style="text-align: center; width: 200px;" required />
-											</label>
-										</p>
-									</div>
-
-
-									<!-- 뮤지션이름 -->
-									<div id="en_bands">
-										<p>
-											<label for="event_공연하는 밴드:">뮤지션 명: <input
-												id="event_band_tokens" name="sb_nm" type="text"
-												style="text-align: center; width: 200px;" required /></label>
-										</p>
-									</div>
-
-									<div id="en_daytime">
-										<label for="event_공연 날짜">공연 날짜 / 시간:<br /> <input
-											type="text" id="startdate" placeholder="공연 시작 날짜 선택" /> 
-											<input
-											type="text" placeholder="시간 입력" id="starttime" required
-											size="10" maxlength="5"> ~ <input type="text"
-											id="enddate" placeholder="공연 종료 날짜 선택" required /> 
-											<input
-											type="text" placeholder="시간 입력" id="endtime" required
-											size="10" maxlength="5">
+								<!-- 제목 -->
+								<div id="en_title">
+									<p>
+										<label for="event_공연 이름 :">공연 제목: <input
+											id="show_name" name="sb_title" type="text"
+											style="text-align: center; width: 200px;" required />
 										</label>
-									</div>
-									<br />
+									</p>
+								</div>
 
-									
-									<script>
+
+								<!-- 뮤지션이름 -->
+								<div id="en_bands">
+									<p>
+										<label for="event_공연하는 밴드:">뮤지션 명: <input
+											id="event_band_tokens" name="sb_nm" type="text"
+											style="text-align: center; width: 200px;" required /></label>
+									</p>
+								</div>
+
+								<div id="en_daytime">
+									<label for="event_공연 날짜">공연 날짜 / 시간:<br /> <input
+										type="text" id="startdate" placeholder="공연 시작 날짜 선택" /> <input
+										type="text" placeholder="시간 입력" id="starttime" required
+										size="10" maxlength="5"> ~ <input type="text"
+										id="enddate" placeholder="공연 종료 날짜 선택" required /> <input
+										type="text" placeholder="시간 입력" id="endtime" required
+										size="10" maxlength="5">
+									</label>
+								</div>
+								<br />
+
+
+								<script>
 									$(function() {
   $("#startdate, #enddate").datepicker({
     dateFormat : 'yy/mm/dd'
@@ -270,42 +273,40 @@ body {
                   </script>
 
 
-									<!-- 지역 -->
-									<div id="sb_city">
-										<p>
-											<label for="sb_city"> 도시: <select id="country"
-												name="sb_city"
-												style="text-align: center; width: 100px; margin-left: 12px;">
-													<option value="seoul/서울">서울</option>
-													<option value="kyungki/경기">경기</option>
-													<option value="kwangju/광주">광주</option>
-													<option value="daegu/대구">대구</option>
-													<option value="busan/부산">부산</option>
-													<option value="jeju/제주">제주</option>
-											</select></label>
-										</p>
+								<!-- 지역 -->
+								<div id="sb_city">
+									<p>
+										<label for="sb_city"> 도시: <select id="country"
+											name="sb_city"
+											style="text-align: center; width: 100px; margin-left: 12px;">
+												<option value="seoul/서울">서울</option>
+												<option value="kyungki/경기">경기</option>
+												<option value="kwangju/광주">광주</option>
+												<option value="daegu/대구">대구</option>
+												<option value="busan/부산">부산</option>
+												<option value="jeju/제주">제주</option>
+										</select></label>
+									</p>
+								</div>
+
+								<!-- 공연장 -->
+
+								<div id="en_venue">
+									<input id="pac-input" class="controls" type="text"
+										name="sb_locinfo" placeholder="Enter a location">
+									<div id="map"></div>
+									<div id="infowindow-content">
+										<span id="place-name" class="title"><br /></span><br> <span
+											id="place-id" style="display: none;"></span> <br> <span
+											id="place-address"> <br /></span>
+
 									</div>
+									<br />
 
-									<!-- 공연장 -->
 
-									<div id="en_venue">
-										<input id="pac-input" class="controls" type="text"
-											name="sb_locinfo" placeholder="Enter a location">
-										<div id="map"></div>
-										<div id="infowindow-content">
-											<span id="place-name" class="title"><br/></span><br>
-											<span id="place-id" style="display: none;" ></span>
-											<br> 
-											<span id="place-address">
-											<br/></span>
-										
-										</div>
-										<br />
-									
-								
-										
 
-										<script>
+
+									<script>
 										 var sb_placeid = null;
 											function initMap() {
 										        var map = new google.maps.Map(document.getElementById('map'), {
@@ -375,52 +376,53 @@ body {
 										      }
       
     </script>
-										<script async defer
-											src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&libraries=places&callback=initMap"></script>
-									</div>
-
-									<!-- 연락처 -->
-									<div id="sb_tel">
-										<label for="event_연락처:">연락처: <input id="event_contact"
-											name="sb_tel" type="text"
-											style="text-align: center; width: 200px;" />
-										</label>
-									</div>
-									<br />
-
-									<!-- 가격 -->
-									<div id="en_price">
-										<p>
-											<label for="sb_price"> 가격:<input
-												id="event_door_price" name="sb_price" type="number"
-												style="text-align: center; width: 200px; margin-left: 18px;" />
-											</label>
-										</p>
-									</div>
-
-									<!-- 상세정보 -->
-									<div id="en_description">
-										<label>상세 정보</label>
-										<p>
-											<textarea name="description" rows="5" cols="50" name="sb_content"
-												id="showinserttext" required></textarea>
-										</p>
-										<br />
-									</div>
-									<br /> <br />
+									<script async defer
+										src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&libraries=places&callback=initMap"></script>
 								</div>
+
+								<!-- 연락처 -->
+								<div id="sb_tel">
+									<label for="event_연락처:">연락처: <input id="event_contact"
+										name="sb_tel" type="text"
+										style="text-align: center; width: 200px;" />
+									</label>
+								</div>
+								<br />
+
+								<!-- 가격 -->
+								<div id="en_price">
+									<p>
+										<label for="sb_price"> 가격:<input id="event_door_price"
+											name="sb_price" type="number"
+											style="text-align: center; width: 200px; margin-left: 18px;" />
+										</label>
+									</p>
+								</div>
+
+								<!-- 상세정보 -->
+								<div id="en_description">
+									<label>상세 정보</label>
+									<p>
+										<textarea name="description" rows="5" cols="50"
+											name="sb_content" id="showinserttext" required></textarea>
+									</p>
+									<br />
+								</div>
+								<br /> <br />
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<br /> 
-		<!-- <input  class="btn btn-primary"
+	</div>
+	<br />
+	<!-- <input  class="btn btn-primary"
 			name="uploadFile" type="submit" value="등록"
 			style="margin-bottom: 50px; margin-left: 50%;" /> -->
-			
-	<button type="button" class="btn btn-primary" id="btnshowinsert" class="btn btn-primary"  style="margin-bottom: 50px; margin-left: 50%;">등록</button>
+
+	<button type="button" class="btn btn-primary" id="btnshowinsert"
+		class="btn btn-primary" style="margin-bottom: 50px; margin-left: 50%;">등록</button>
 
 	<script>
 	

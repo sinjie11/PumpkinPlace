@@ -61,19 +61,25 @@ body {
 
 </head>
 <body>
+<%@ include file="/WEB-INF/views/header.jspf"%>
+	<div class="container text-center">
+<br/><br/><br/>
+<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/msgdetail.png"
+				style="background-color: white; width: 110px; height: 110px;" />
+		<br/>		
+	<h1>보낸 쪽지</h1>
 
-	<h1>보낸 쪽지 상세 페이지</h1>
 
-
-	<table>
+	<table class="table">
 		<thead>
 			<tr>
-				<th>받는 사람</th>
-				<th>내용</th>
-				<th>수신 일자</th>
+				<th style="text-align: center;">받는 사람</th>
+				<th style="text-align: center;">내용</th>
+				<th style="text-align: center;">수신 일자</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody style="text-align: center;">
 		
 				<tr>
 					<td>${message.mem_id2}</td>
@@ -85,6 +91,7 @@ body {
 		
 		</tbody>
 	</table>
-
+</div>
+	<%@ include file="/WEB-INF/views/footer.jspf"%>
 </body>
 </html>

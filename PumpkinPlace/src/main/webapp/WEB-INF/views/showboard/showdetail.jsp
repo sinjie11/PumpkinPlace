@@ -97,7 +97,11 @@ td, h5 {
 						<!-- 날짜 -->
 						<fmt:formatDate value="${showboard.sb_startdate}"
 							pattern="yyyy-MM-dd" var="startdate" />
-						<h2>${startdate}</h2>
+							<fmt:formatDate value="${showboard.sb_enddate}"
+							pattern="yyyy-MM-dd" var="enddate" />	
+							
+						<h2>${startdate} ~ ${enddate}</h2>
+						
 					</div>
 
 				</div>
@@ -212,7 +216,7 @@ td, h5 {
 				
 
 				$('#btnDelete').click(function () {
-					var result = confirm('${board.bno} 정말 삭제?');
+					var result = confirm('${board.bno} 정말 삭제하시겠습니까?');
 					if (result) {
 						location = 'delete?sb_no=' + ${showboard.sb_no};
 					}

@@ -285,9 +285,12 @@ body {
 								<!-- 지역 -->
 								<div id="sb_city">
 									<p>
-										<label for="sb_city"> 도시: <select id="country"
-											name="sb_city"
+										<label for="sb_city"> 도시: 
+										
+										<select id="country"  
+											name="sb_city" 
 											style="text-align: center; width: 100px; margin-left: 12px;">
+											
 												<option value="seoul/서울">서울</option>
 												<option value="kyungki/경기">경기</option>
 												<option value="kwangju/광주">광주</option>
@@ -297,7 +300,8 @@ body {
 										</select></label>
 									</p>
 									<script type="text/javascript">
-										$("#country > option[value='"+${showboard.sb_city}+"']").attr("selected","true");
+									
+				$("#country ? option[value='"${showboard.sb_city}"']").attr("selected","true");
 										
 
 									
@@ -519,6 +523,7 @@ $('#btnshowupdate').click(function () {
 			'X-HTTP-Method-Override' : 'put'
 		},
 		data: JSON.stringify({
+			'sb_no': ${sb_no},
 			'sb_nm': sb_nm,
 			'sb_title': sb_title,
 			'sb_content': sb_content,

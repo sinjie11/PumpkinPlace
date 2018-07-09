@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <!DOCTYPE html>
 <html>
@@ -81,11 +82,13 @@ body {
 		<tbody style="text-align: center;">
 		
 			<c:forEach var="receive" items="${receiveList}">
+				<!-- 받은 쪽지함 에서 받는사람(mem_id2)와 
+				로그인 아이디가 같을 때 보낸사람 보이게  -->
 				<c:if test="${receive.mem_id2 eq loginId}">
             			<tr>
 							<td>${receive.mem_id}</td>
-					
-							<td><a class="table-title-link" href="${receive.msg_no}">${receive.msg_content}</a></td>
+							<c:set var="textValue" value="${receive.msg_content}" />				
+							<td id="receive_content"><a class="table-title-link" href="${receive.msg_no}">${fn:substring(textValue, 0, 10)}</a></td>
 								<fmt:formatDate value="${receive.msg_regdate}"
 								pattern="yyyy.MM.dd HH:mm" var="msg_regdate" />
 							<td>${msg_regdate}</td>
