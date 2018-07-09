@@ -128,7 +128,7 @@ public class MessageController {
 			attr.addFlashAttribute("deleteResult", "success");
 		}
 		
-		return "redirect:/message/receivedetail";
+		return "redirect:/message/receive";
 	} // end delete()
 		
 

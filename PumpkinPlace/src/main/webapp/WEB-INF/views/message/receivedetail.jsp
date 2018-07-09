@@ -72,6 +72,8 @@ body {
 	<br />
 	<br />
 	<span><a href="/pumpkinplace/message/receive"><button>목록 보기</button></a></span>
+	&nbsp;&nbsp;&nbsp;
+	<span id="deleteMsg"><button>삭제</button></span>
 	<br/>
 	<br/>
 
@@ -96,6 +98,33 @@ body {
 		</tbody>
 	</table>
 	</div>
+	
+	<script>
+			
+		$(document).ready(function () {
+			$('#deleteMsg').click(function () {
+				var choice = confirm('※중요※ \n' 
+						+ '삭제를 요청하는 쪽지는 데이터베이스에서 영구 삭제 되며, \n' 
+						+ '삭제 후 에는 복구 불가 합니다. \n' 
+						+ '다시 한번 확인 후 진행 해주시기 바랍니다.');
+			
+				if (choice) {
+					var result = confirm('${message.mem_id}님이 ${msg_regdate} 에 \n' 
+							+ '보낸 쪽지를 정말 삭제하시겠습니까?');
+					
+					if (result || ${not empty deleteResult and deleteResult == 'success'}) {
+						alert('쪽지가 삭제 되었습니다.');
+						location = 'delete?msg_no=' + ${message.msg_no};
+					} // end if(result)
+						
+				} // end if(choice)	
+					
+			}); // end click(function())
+			
+		}); // end ready(function())
+	
+	</script>
+	
 	<%@ include file="/WEB-INF/views/footer.jspf"%>
 	
 </body>
