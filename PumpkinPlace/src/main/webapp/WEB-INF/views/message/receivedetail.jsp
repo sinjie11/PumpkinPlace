@@ -69,6 +69,11 @@ body {
 				style="background-color: white; width: 110px; height: 110px;" />
 		<br/>		
 	<h1><b>받은 쪽지</b></h1>
+	<br />
+	<br />
+	<span><a href="/pumpkinplace/message/receive"><button>목록 보기</button></a></span>
+	<br/>
+	<br/>
 
 
 	<table class="table">
@@ -92,5 +97,6 @@ body {
 	</table>
 	</div>
 	<%@ include file="/WEB-INF/views/footer.jspf"%>
+	
 </body>
 </html>

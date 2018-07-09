@@ -124,7 +124,7 @@ public class MessageController {
 		
 		int result = messageService.delete(msg_no);
 		if (result == 1) {
-			attr.addFlashAttribute("msg_no_no", msg_no);
+			attr.addFlashAttribute("msg_no", msg_no);
 			attr.addFlashAttribute("deleteResult", "success");
 		}
 		
