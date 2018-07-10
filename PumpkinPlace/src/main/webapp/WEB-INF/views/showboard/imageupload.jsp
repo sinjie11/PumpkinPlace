@@ -10,9 +10,9 @@
 <body>
 
 <form action="imageupload" method="post" 
-    enctype="multipart/form-data">
+    enctype="multipart/form-data" >
     <input type="file" name="uploadFile" id="imgInp"/>
-    <input type="submit" value="Upload" />
+    <input type="submit" value="Upload" onclick="sendimage();"/>
 </form>
 
 	<div></div>
@@ -27,14 +27,29 @@
 	<br />
 
 	<!-- 사진 저장 -->
+	<script type="text/javascript">
+	function sendimage(){
+		if (window.opener != null && !window.opener.closed) {
+            var txtName1 = window.opener.document.getElementById("txtName1");
+            var txtName2 = window.opener.document.getElementById("txtName2");
+            
+            txtName1.value = filename;
+            txtName2.value = imagefile;
+        }
+		window.close();
+	}
+	</script>
 	<script>
      $(document).ready(function() {
+    	 var filename = null;
          if (${not empty saved}) {
+        	// filename = saved;
+        	 //console.log('파일 이름 : ' filename);
             alert('${saved}' + 'SAVED');
-            
-            window.close();
+         	filename = '${saved}';
+         	console.log(filename);
+            //window.close();
          }
-        
       });
          </script>
 
@@ -45,19 +60,15 @@
                 readURL(this);
             });
         });
-
+		var imagefile = null;
         function readURL(input) {
             if (input.files && input.files[0]) {
             var reader = new FileReader();
-
             reader.onload = function (e) {
+            	imagefile = e.target.result;
+            	console.log('파일 : ' + imagefile);
                     $('#blah').attr('src', e.target.result);
-                    
-                    var text = e.target.result;
-                    console.log('파일명: '+ text);
-                    opener.document.getElementById("imgInp") = text;
                 }
-
               reader.readAsDataURL(input.files[0]);
             }
             

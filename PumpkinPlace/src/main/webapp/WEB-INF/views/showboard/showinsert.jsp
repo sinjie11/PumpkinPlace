@@ -132,12 +132,28 @@ body {
 							<div class="col align-self-end" style="margin-left: 5%;">
 								<div style="font-size: 15px; margin-left: 25%;">
 
-									<b>공연 포스터</b> <input type='file' id="imgInp" />
+									<b>공연 포스터</b> 
+									
+									<input type='file' id="imgInp" onclick="showPopupconsole();"/>
+									<input type="text" id="txtName1" readonly="readonly" />
+									<input type="text" id="txtName2" readonly="readonly" />
+									
 									<input type="button" value="파일 업로드" onclick="showPopup();" />
-									<div></div>
+									
+								
+									
  <script>
+ var imageupload;
   function showPopup() { 
-	  window.open('imageupload', '파일 업로드', 'width=700, height=950, left= 100, top=20'); 
+	  imageupload = window.open('imageupload', 'imageupload', 'width=700, height=950, left= 100, top=20');
+	  imageupload.focus();
+	  console.log('파일명' + $('#txtName1').val());
+	  console.log('파일데이터' + $('#txtName2').val());
+	  
+  }
+  function showPopupconsole() { 
+	  console.log('파일명' + $('#txtName1').val());
+	  console.log('파일데이터' + $('#txtName2').val());
 	  
   }
   </script>
@@ -145,19 +161,8 @@ body {
 										<small>공연을 위한 포스터를 업로드해주세요. 그렇지 않을 경우 대체 이미지가 사용됩니다.</small>
 									</p>
 
-
 									<br /> <img id="blah" src="${pageContext.request.contextPath}/resources/assets/img/showboard/imagesprepare.png" alt="" width="570px;"
 										height="796px;" /> <br /> <br />
-
-									<!-- 사진 저장 -->
-									<script>
-            $(document).ready(function() {
-         if (${not empty saved}) {
-            alert('${saved}' + 'SAVED');
-         }
-            });
-         </script>
-									<!-- 사진저장 -->
 
 									<!-- 사진 미리보기 -->
 									<script type="text/javascript">
@@ -198,8 +203,8 @@ body {
                               });
                            </script>
 								<div style="width: 570px; margin-left: 25%;">
-									<iframe width="560" height="315"
-										src="https://www.youtube.com/embed/+${youtube}"
+									<iframe width="560" height="315" id="ytubeid"
+										src="https://www.youtube.com/embed/KzK6XQMMLrk"
 										frameborder="0" allow="autoplay; encrypted-media"
 										allowfullscreen></iframe>
 								</div>
