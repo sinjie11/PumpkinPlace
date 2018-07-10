@@ -171,19 +171,22 @@ body {
 		<div class="container text-right">
 			<form action="search">
 				<ul>
-					<select name="searchType">
-						<option value="1">10개씩 보기</option>
-						<option value="2">20개씩 보기</option>
-						<option value="3">40개씩 보기</option>
-					</select>
-
-				</ul>
-				<ul>
 					<c:if test="${urlNo ne 11 and urlNo ne 12}">
 						<a id="register" href="register">
 						<button type="button" style="color: black;">글쓰기</button></a>
 					</c:if>
 				</ul>		
+				<ul style = "background-color : yellow; text-align : center; font-size : 150%;">
+				<c:if test="${searchType eq 1}">
+				 ---<strong> '${searchKeyword} (작성자만)'</strong> 검색어를 포함하는 게시물은 총 <strong>${pageMaker.totalCount} 개</strong> 입니다. ---
+				 </c:if>
+				 <c:if test="${searchType eq 2}">
+				 ---<strong>  '${searchKeyword} (글 제목만)'</strong> 검색어를 포함하는 게시물은 총 <strong>${pageMaker.totalCount} 개</strong>  입니다. ---
+				 </c:if>
+				 <c:if test="${searchType eq 3}">
+				 ---<strong> '${searchKeyword} (글 제목+ 내용)'</strong> 검색어를 포함하는 게시물은 총 <strong>${pageMaker.totalCount} 개</strong> 입니다. ---
+				 </c:if>
+				</ul>
 			</form>
 		</div>
 ${board.b_no}
@@ -230,19 +233,21 @@ ${board.b_no}
 		</div>
 		<ul>
 				<a id="list" href="/pumpkinplace/board/list?urlNo=${urlNo}">
-						<button type="button" style="font-size : 20px; font-weight : bold; color: black; width:500px; height : 50px;"> 
-						◀ 재검색을 위한 전체보기로 돌아가기 ▶</button></a>
+						<button type="button" style="font-weight : bold; color: black;"> 
+						목록</button></a>
 				</ul>
 	</div>
 	<br />
 
 	<form id="page-form">
-		<input type="hidden" name="page" id="page" value="${pageMaker.criteria.page}" />
-		<input type="hidden" name="numsPerPage" id="numsPerPage" value="${pageMaker.criteria.numsPerPage}" />
-		<input type="hidden" name="b_no" id="page-form-bno" />
-			<input type="hidden" name="urlNo" value="${urlNo}" />
-			<input type="hidden" name="searchType" value="${searchType}"/>
-			<input type="hidden" name="searchKeyword" value="${searchKeyword}"/>
+ 	<input type="hidden" name="searchType" value="${searchType}" /> 
+ 	<input type="hidden" name="searchKeyword" value="${searchKeyword}" />
+   <input type="hidden" name="page" id="page"
+         value="${pageMaker.criteria.page}" /> <input type="hidden"
+         name="numsPerPage" id="numsPerPage"
+         value="${pageMaker.criteria.numsPerPage}" /> 
+		<input type="hidden" name="urlNo" id="url-no" value="${urlNo}" />
+		<input type="hidden" name="b_no" id="page-form-bno"  />
 	</form>
 
 
@@ -276,6 +281,7 @@ ${board.b_no}
 
 	$('#register').click(function () { // qna
 		event.preventDefault();
+		var urlNo = $(this).attr('href');
 		$('#url-no').val(${urlNo});
 		var fb = $('#url-form');
 		fb.attr('action', '/pumpkinplace/board/register');

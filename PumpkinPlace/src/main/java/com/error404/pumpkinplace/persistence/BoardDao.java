@@ -17,8 +17,11 @@ public interface BoardDao {
 	List<Board> search(int type, String keyword, int sectionNo, PaginationCriteria criteria);
 	List<Board> searchSectionNo11(int type, String keyword, PaginationCriteria criteria);
 	List<Board> searchSectionNo12(int type, String keyword, PaginationCriteria criteria);
+
 	
 	int getNumOfRecords(int sectionNo);
+	int getNumOfSearchRecords(int type, String keyword, int sectionNo);
+	
 	List<Board> select(PaginationCriteria criteria);
 	
 	List<Board> selectBySectionNo(int sectionNo, PaginationCriteria criteria);

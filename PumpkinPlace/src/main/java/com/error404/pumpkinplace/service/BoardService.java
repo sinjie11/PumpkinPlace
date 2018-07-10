@@ -38,6 +38,7 @@ public interface BoardService {
 
 	// 아래 두 method는 Page 처리를 합니다
 	int getNumOfRecords(int b_section);
+	int getNumOfSearchRecords(int type, String keyword, int b_section);
 	List<Board> read(PaginationCriteria criteria);
 	
 	//board detail 불러오기 

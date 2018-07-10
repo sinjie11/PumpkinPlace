@@ -2,24 +2,24 @@ package com.error404.pumpkinplace.domain;
 
 public class Game {
 	
-	private int mem_no;
+	private String mem_id;
 	private int mem_account;
 	private int mem_gamescore;
 	
 	public Game() {}
 
-	public Game(int mem_no, int mem_account, int mem_gamescore) {
-		this.mem_no = mem_no;
+	public Game(String mem_id, int mem_account, int mem_gamescore) {
+		this.mem_id = mem_id;
 		this.mem_account = mem_account;
 		this.mem_gamescore = mem_gamescore;
 	}
 
-	public int getMem_no() {
-		return mem_no;
+	public String getMem_id() {
+		return mem_id;
 	}
 
-	public void setMem_no(int mem_no) {
-		this.mem_no = mem_no;
+	public void setMem_id(String mem_id) {
+		this.mem_id = mem_id;
 	}
 
 	public int getMem_account() {
