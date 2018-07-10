@@ -35,7 +35,9 @@ public class BoardDaoTest {
 		// selectBySectionNo11Test();
 //		selectPrevNo();
 //		selectNextNo();
-		searchTest();
+//		searchTest();
+//		searchCountTest();
+		updateTest();
 	} // end doTest()
 
 	// private void insertTest() {
@@ -132,11 +134,22 @@ public class BoardDaoTest {
 
 	private void searchTest() {
 		PaginationCriteria criteria = new PaginationCriteria();
-		List<Board> list = boardDao.search(1, "admin", 9, criteria);
+		List<Board> list = boardDao.search(3, "행배", 1, criteria);
 		for (Board b : list) {
 			logger.info("{}, {}, {}, {}, {}", b.getB_no(), b.getB_title(), b.getB_content(), b.getB_regdate(),
 					b.getB_readcnt());
 		}
+	}
+	
+	private void searchCountTest() {
+		int cnt = boardDao.getNumOfSearchRecords(3, "test", 1);
+		logger.info("searchCount : {}", cnt);
+	}
+	
+	private void updateTest() {
+		int result = boardDao.update(new Board(1, 293, "과일화채2", "{\"ops\":[{\"insert\":\"사과, 바나나\\n\"}]}", null, new Date(),null, null, 0, 0, 0 ));
+		logger.info("updateResult : {}",result);
+
 	}
 
 } // end class MemberDaoTest

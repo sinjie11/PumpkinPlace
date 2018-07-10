@@ -69,7 +69,7 @@
                
                <!-- 로그아웃 버튼 -->
                <c:if test="${not empty loginId}">
-                  <li><a href="/pumpkinplace/member/logout"><span
+                  <li id="logout"><a href="/pumpkinplace/member/logout"><span
                         class="glyphicon glyphicon-log-in"></span> Logout</a></li>
                </c:if>
                
@@ -308,6 +308,10 @@
             $('#url-no').val(20);
             sendUrlNo();
          });
+         
+         $('#logout').click(function () { // qna
+           alert("로그아웃되었습니다!");
+          });
          
          function sendUrlNo() {
             var fb = $('#url-form');

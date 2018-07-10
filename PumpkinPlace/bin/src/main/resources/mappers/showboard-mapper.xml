@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.error404.pumpkinplace.mappers.ShowBoardMapper">
+
+	<!--  showboard 테이블 sql   -->
+	<insert id="insertShowBoard">
+		insert into ${tbl_show_board} (${col_sb_nm}, ${col_sb_title}, ${col_sb_content}, ${col_sb_city}, ${col_sb_price}, ${col_sb_tel}, ${col_sb_locinfo}, ${col_sb_img}, ${col_sb_video}, ${col_sb_startdate}, ${col_sb_enddate}, ${col_sb_placeid})
+		values (#{sb_nm}, #{sb_title}, #{sb_content}, #{sb_city}, #{sb_price}, #{sb_tel}, #{sb_locinfo}, #{sb_img}, #{sb_video}, #{sb_startdate}, #{sb_enddate}, #{sb_placeid})
+	</insert> 
+	
+	<select id="selectAllShowBoard" resultType="ShowBoard">
+		select * from ${tbl_show_board} 
+		order by ${col_sb_no} desc
+	</select>
+	
+	<update id="updateShowBoard">
+		update ${tbl_show_board}
+		set ${col_sb_title} = #{sb_title}, ${col_sb_content} = #{sb_content}, ${col_sb_city} = #{sb_city}, ${col_sb_price} = #{sb_price}, ${col_sb_tel} = #{sb_tel}, ${col_sb_locinfo} = #{sb_locinfo}, ${col_sb_regdate} = sysdate, ${col_sb_img} = #{sb_img}, ${col_sb_video} = #{sb_video}, ${col_sb_startdate} = #{sb_startdate}, ${col_sb_enddate} = #{sb_enddate},
+			${col_sb_placeid} = #{sb_placeid}
+		where ${col_sb_no} = #{sb_no}
+	</update>
+	
+	<delete id="deleteShowBoard">
+		delete from ${tbl_show_board} 
+		where ${col_sb_no} = #{sb_no}
+	</delete>
+	
+	<select id="selectBySbNo" resultType="ShowBoard">
+		select * from ${tbl_show_board} where ${col_sb_no} = #{sb_no}
+	</select>
+	
+	<select id="totalCountShowBoard" resultType="Integer">
+		select count(${col_sb_no})
+		from ${tbl_show_board}
+	</select>
+	
+	<select id="listShowBoardPage" resultType="ShowBoard">
+		select b.sb_no, b.sb_nm, b.sb_title, b.sb_content, b.sb_city, b.sb_price, b.sb_tel, b.sb_locinfo, b.sb_regdate, b.sb_img, b.sb_video, b.sb_startdate, b.sb_enddate, b.sb_placeid
+		from (
+		select rownum rn, a.*
+		from (
+		select * from pumpkin_show_board
+		order by sb_no desc
+		) a
+		) b
+		where rn between #{start} and #{end}
+	</select>
+	
+	<select id="searchKeyShowBoard" resultType="ShowBoard">
+		select * from ${tbl_show_board}
+		where ${col_sb_nm} like #{searchKeyWord} or ${col_sb_title} like #{searchKeyWord} or ${col_sb_city} like #{searchKeyWord} or ${col_sb_content} like #{searchKeyWord} or ${col_sb_locinfo} like #{searchKeyWord}   
+		order by ${col_sb_no} desc
+	</select>
+	
+	<select id="searchDateShowBoard" resultType="ShowBoard">
+		select * from ${tbl_show_board}
+		<![CDATA[
+		where #{searchKeyDate} >= ${col_sb_startdate} and #{searchKeyDate} <= ${col_sb_enddate}
+		]]>
+		order by ${col_sb_no} desc
+	</select>
+	
+</mapper>

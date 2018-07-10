@@ -63,8 +63,11 @@ body {
 	<div class="container text-center">
 		<h1>${board.b_title}</h1>
 		
-		<button id="update" style="margin-left: 1000px;">수정</button>
-		<button id="backList">목록</button>
+		<c:if test="${loginId eq board.b_id}">
+			<button id="update" style="margin-left: 1000px;">수정</button>
+			<button id="delete">삭제</button>
+			<button id="backList">목록</button>
+		</c:if>
 		<div id="quillContents"></div>		
 		<button id="boardUp">up ${board.b_up}</button>
 		<button id="boardDown">down ${board.b_down}</button>
@@ -74,17 +77,12 @@ body {
 		<form action="#"></form>
 
 		<br> <br> <br> <br>
-		<c:if test="${loginId eq board.b_id}">
-			<div style="text-align: right;">
-				<button>삭제</button>
-			</div>
-		</c:if>
 			<div>
 				<button id="prevBoard">이전 글</button>
 				<button id="nextBoard">다음 글</button>
 			</div>
 		
-		<form id="send-update">
+		<form id="update">
 		<input type="hidden" name="page" id="page"
 			value="${criteria.page}" /> <input type="hidden"
 			name="numsPerPage" id="numsPerPage"
@@ -124,8 +122,15 @@ $(document).ready(function () {
 	var updownBoolean = true;
 	
 	$("#update").click(function(){
-		location.href='/pumpkinplace/board/update?b_no=' +  ${board.b_no};
+		location.href='/pumpkinplace/board/update?+ '&b_no=' +  ${board.b_no};
 		});
+	
+	$('#delete').click(function () {
+		var result = confirm('${board.b_no} 글을 정말 삭제하시겠습니까?');
+		if (result) {
+			location.href = '/pumpkinplace/board/delete?urlNo=' + ${board.b_section} + '&b_no=' + ${board.b_no};
+		}
+	});
 	
 	$("#backList").click(function (){//메뉴로 보내기
 		location.href='/pumpkinplace/board/list?urlNo=' +  ${board.b_section};
@@ -133,6 +138,8 @@ $(document).ready(function () {
 	$("#boardUp").click(function(){//up
 		if(updownBoolean==true){
 			updownBoolean=false;
+			alert("해당 게시물을 추천하였습니다");
+
 		$.ajax({
 			type : 'get',
 			url : '/pumpkinplace/board/pulsUp',
@@ -156,6 +163,7 @@ $(document).ready(function () {
 	$("#boardDown").click(function(){//up
 		if(updownBoolean==true){
 			updownBoolean=false;
+			alert("해당 게시물을 비추천하였습니다. 이런...");
 		$.ajax({
 			type : 'get',
 			url : '/pumpkinplace/board/pulsDown?',
@@ -227,12 +235,15 @@ $(document).ready(function () {
 });
 
 
+
 /*$('#update').click(function () {
 	event.preventDefault();
 	var fb = $('#send-update');
 	fb.attr('action', '/pumpkinplace/board/update');
 	fb.attr('method', 'get');
 	fb.submit();
+	
+	
 });*/
 
 </script>

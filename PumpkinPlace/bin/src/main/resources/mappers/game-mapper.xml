@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.error404.pumpkinplace.mappers.GameMapper">
+
+	<!-- Game 테이블 sql 쿼리문 작성 -->
+
+	<!-- 1) DB에서 해당 회원의 NO와 포인트, 게임점수를 처음으로 저장하는 SQL Statement -->
+	<insert id="insertGameInfo">
+		insert into pumpkin_game(${col_mem_no})
+		values((
+		select ${col_mem_no}
+		from ${tbl_member}
+		where ${col_mem_id} =
+		#{mem_id}));
+	</insert>
+
+	<!-- 2) 회원의 포인트와 최고점수를 갱신하는 SQL Statement -->
+	<update id="updatePointAndScore">
+		update ${tbl_game}
+
+		set ${col_mem_account} =#{mem_account},
+		${col_mem_gamescore} =
+		#{mem_gamescore}
+		where ${col_mem_no}=
+		(select ${col_mem_no}
+		from
+		${tbl_member}
+		where ${mem_id} = #{mem_id});
+	</update>
+
+	<!-- 3) DB에 저장된 회원들의 아이디와 게임점수를 내림차순으로 보여주는 SQL Statement -->
+	<select id="selectGameAll" resultType="Game">
+		select a.mem_id, b.mem_gamescore
+		from pumpkin_member a left outer join pumpkin_game b 
+		on a.mem_no = b.mem_no
+		where mem_gamescore is not null
+		order by mem_gamescore desc;
+	</select> 
+
+</mapper>

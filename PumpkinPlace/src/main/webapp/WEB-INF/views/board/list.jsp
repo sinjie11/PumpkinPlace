@@ -59,8 +59,11 @@ body {
 
 	<div class="container text-center">
 		<c:if test="${urlNo eq 1}">
-			<h5 style="text-align: left;"><b> 카테고리: 게시판 > 자유게시판 </b></h5>
-			<br/><br/>
+			<h5 style="text-align: left;">
+				<b> 카테고리: 게시판 > 자유게시판 </b>
+			</h5>
+			<br />
+			<br />
 			<img alt="이미지"
 				src="${pageContext.request.contextPath}/resources/presentation.png"
 				style="background-color: white; width: 110px; height: 110px;" />
@@ -68,55 +71,73 @@ body {
 		</c:if>
 
 
-		
+
 		<c:if test="${urlNo eq 2}">
-			<h5 style="text-align: left;"><b> 카테고리: 중고거래 > 기타 </b></h5>
-			<br/><br/>
+			<h5 style="text-align: left;">
+				<b> 카테고리: 중고거래 > 기타 </b>
+			</h5>
+			<br />
+			<br />
 			<img alt="이미지"
 				src="${pageContext.request.contextPath}/resources/guitar.png"
 				style="background-color: white; width: 110px; height: 110px;" />
 			<h1>기 타</h1>
 		</c:if>
-		
+
 		<c:if test="${urlNo eq 3}">
-			<h5 style="text-align: left;"><b> 카테고리: 중고거래 > 베이스 </b></h5>
-			<br/><br/>
+			<h5 style="text-align: left;">
+				<b> 카테고리: 중고거래 > 베이스 </b>
+			</h5>
+			<br />
+			<br />
 			<img alt="이미지"
 				src="${pageContext.request.contextPath}/resources/bass-guitar.png"
 				style="background-color: white; width: 110px; height: 110px;" />
 			<h1>베이스</h1>
 		</c:if>
-		
+
 		<c:if test="${urlNo eq 4}">
-			<h5 style="text-align: left;"><b> 카테고리: 중고거래 > 드럼/퍼커션 </b></h5>
-			<br/><br/>
+			<h5 style="text-align: left;">
+				<b> 카테고리: 중고거래 > 드럼/퍼커션 </b>
+			</h5>
+			<br />
+			<br />
 			<img alt="이미지"
 				src="${pageContext.request.contextPath}/resources/drummer-set.png"
 				style="background-color: white; width: 110px; height: 110px;" />
 			<h1>드럼/퍼커션</h1>
 		</c:if>
-		
+
 		<c:if test="${urlNo eq 5}">
-			<h5 style="text-align: left;"><b> 카테고리: 중고거래 > 앰프 </b></h5>
-			<br/><br/>
+			<h5 style="text-align: left;">
+				<b> 카테고리: 중고거래 > 앰프 </b>
+			</h5>
+			<br />
+			<br />
 			<img alt="이미지"
 				src="${pageContext.request.contextPath}/resources/music-woofer-with-sound.png"
 				style="background-color: white; width: 110px; height: 110px;" />
 			<h1>앰 프</h1>
 		</c:if>
-		
+
 		<c:if test="${urlNo eq 6}">
-			<h5 style="text-align: left;"><b> 카테고리: 중고거래 > 음향장비 </b></h5>
-			<br/><br/>
+			<h5 style="text-align: left;">
+				<b> 카테고리: 중고거래 > 음향장비 </b>
+			</h5>
+			<br />
+			<br />
 			<img alt="이미지"
 				src="${pageContext.request.contextPath}/resources/audio-equipment.png"
 				style="background-color: white; width: 110px; height: 110px;" />
 			<h1>음향장비</h1>
 		</c:if>
-		
+
 		<c:if test="${urlNo eq 7}">
-			<h5 style="text-align: left;"><b> 카테고리: 중고거래 > ect </b></h5>
-			<br/><br/>
+			<h5 style="text-align: left;">
+				<b> 카테고리: 중고거래 > ect </b>
+			</h5>
+			<br />
+			<br />
 			<img alt="이미지"
 				src="${pageContext.request.contextPath}/resources/three-dots-punctuation-sign.png"
 				style="background-color: white; width: 110px; height: 110px;" />
@@ -124,8 +145,11 @@ body {
 		</c:if>
 
 		<c:if test="${urlNo eq 8}">
-			<h5 style="text-align: left;"><b> 카테고리: 구인구직 > 구인 </b></h5>
-			<br /><br />
+			<h5 style="text-align: left;">
+				<b> 카테고리: 구인구직 > 구인 </b>
+			</h5>
+			<br />
+			<br />
 			<img alt="이미지"
 				src="${pageContext.request.contextPath}/resources/businessman.png"
 				style="background-color: white; width: 110px; height: 110px;" />
@@ -133,35 +157,47 @@ body {
 		</c:if>
 
 		<c:if test="${urlNo eq 9}">
-			<h5 style="text-align: left;"><b> 카테고리: 구인구직 > 구직 </b></h5>
-			<br/><br/>
+			<h5 style="text-align: left;">
+				<b> 카테고리: 구인구직 > 구직 </b>
+			</h5>
+			<br />
+			<br />
 			<img alt="이미지"
 				src="${pageContext.request.contextPath}/resources/resume.png"
-				style="background-color: white; width: 110px; height: 110px; margin-left: 15px;" />			
+				style="background-color: white; width: 110px; height: 110px; margin-left: 15px;" />
 			<h1>구 직</h1>
 		</c:if>
-		
+
 		<c:if test="${urlNo eq 11}">
-			<h5 style="text-align: left;"><b> 카테고리: 구인구직 > 전체보기 </b></h5>
-			<br/><br/>
+			<h5 style="text-align: left;">
+				<b> 카테고리: 구인구직 > 전체보기 </b>
+			</h5>
+			<br />
+			<br />
 			<img alt="이미지"
 				src="${pageContext.request.contextPath}/resources/resume.png"
-				style="background-color: white; width: 110px; height: 110px; margin-left: 15px;" />			
+				style="background-color: white; width: 110px; height: 110px; margin-left: 15px;" />
 			<h1>구인구직</h1>
 		</c:if>
-		
+
 		<c:if test="${urlNo eq 12}">
-			<h5 style="text-align: left;"><b> 카테고리: 중고거래 > 전체보기 </b></h5>
-			<br/><br/>
+			<h5 style="text-align: left;">
+				<b> 카테고리: 중고거래 > 전체보기 </b>
+			</h5>
+			<br />
+			<br />
 			<img alt="이미지"
 				src="${pageContext.request.contextPath}/resources/audio-equipment.png"
-				style="background-color: white; width: 110px; height: 110px; margin-left: 15px;" />			
+				style="background-color: white; width: 110px; height: 110px; margin-left: 15px;" />
 			<h1>중고거래</h1>
 		</c:if>
 
 		<c:if test="${urlNo eq 20}">
-			<h5 style="text-align: left;"><b> 카테고리: Q & A </b></h5>
-			<br/><br/>
+			<h5 style="text-align: left;">
+				<b> 카테고리: Q & A </b>
+			</h5>
+			<br />
+			<br />
 			<img alt="이미지"
 				src="${pageContext.request.contextPath}/resources/question-mark.png"
 				style="background-color: white; width: 110px; height: 110px;" />
@@ -173,17 +209,18 @@ body {
 				<ul>
 					<c:if test="${urlNo ne 11 and urlNo ne 12}">
 						<a id="register" href="register">
-						<button type="button" style="color: black;">글쓰기</button></a>
+							<button type="button" style="color: black;">글쓰기</button>
+						</a>
 					</c:if>
 				</ul>
-				
+
 			</form>
 		</div>
-${board.b_no}
+		${board.b_no}
 		<div class="container text-center">
 			<table class="table">
 				<thead>
-					<tr> 
+					<tr>
 						<th class="text-center">글번호</th>
 						<th class="text-center">제목</th>
 						<th class="text-center">작성자</th>
@@ -202,47 +239,46 @@ ${board.b_no}
 							<td>${b_regdate}</td>
 							<td>${board.b_readcnt}</td>
 						</tr>
-					</c:forEach>					
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>
-		<div class="container text-center">
-			<ul class="pagination">
-				<c:if test="${pageMaker.hasPrev}">
-					<li><a class="page-link" href="${pageMaker.startPageNo - 1}">이전</a></li>
-				</c:if>
-				<c:forEach begin="${pageMaker.startPageNo}"
-					end="${pageMaker.endPageNo}" var="num">
-					<li><a class="page-link" href="${num}">${num}</a></li>
-				</c:forEach>
-				<c:if test="${pageMaker.hasNext}">
-					<li><a class="page-link" href="${pageMaker.endPageNo + 1}">다음</a></li>
-				</c:if>
-			</ul>
-		</div>
-		<form action="search">
-			<select name="searchType" style="width : 150px; height : 24px;"> 
-				<option value="1">작성자</option>
-				<option value="2">글 제목</option>
-				<option value="3">제목 + 내용</option>
-			</select> <input type="text" name="searchKeyword" placeholder="검색어 입력"
-				required /> 
-				<input type="submit" value="검색" />
-				<input type="hidden" name="urlNo" value="${urlNo}"/>
-					<input type="hidden" name="page" id="page"
-			value="${pageMaker.criteria.page}" /> <input type="hidden"
-			name="numsPerPage" id="numsPerPage"
-			value="${pageMaker.criteria.numsPerPage}" />
-		</form>
-	</div>
-	<br />
+		    <div class="container text-center">
+         <ul class="pagination">
+            <c:if test="${pageMaker.hasPrev}">
+               <li><a class="page-link" href="${pageMaker.startPageNo - 1}">이전</a></li>
+            </c:if>
+            <c:forEach begin="${pageMaker.startPageNo}"
+               end="${pageMaker.endPageNo}" var="num">
+               <li><a class="page-link" href="${num}">${num}</a></li>
+            </c:forEach>
+            <c:if test="${pageMaker.hasNext}">
+               <li><a class="page-link" href="${pageMaker.endPageNo + 1}">다음</a></li>
+            </c:if>
+         </ul>
+      </div>
+      <form action="search">
+         <select name="searchType">
+            <option value="1">작성자</option>
+            <option value="2">글 제목</option>
+            <option value="3">제목 + 내용</option>
+         </select> <input type="text" name="searchKeyword" placeholder="검색어 입력"
+            required /> <input type="submit" value="검색" />
+                     <input type="hidden" name="urlNo" value="${urlNo}" />
+ 
+      </form>
+   </div>
+   <br />
 
-	<form id="page-form">
-		<input type="hidden" name="page" id="page" value="${pageMaker.criteria.page}" /> 
-		<input type="hidden" name="numsPerPage" id="numsPerPage"  value="${pageMaker.criteria.numsPerPage}" /> 
-		<input type="hidden" name="urlNo" value="${urlNo}" />
-		<input type="hidden" name="b_no" id="page-form-bno" />
-	</form>
+   <form id="page-form">
+      <input type="hidden" name="page" id="page"
+         value="${pageMaker.criteria.page}" /> <input type="hidden"
+         name="numsPerPage" id="numsPerPage"
+         value="${pageMaker.criteria.numsPerPage}" /> <input type="hidden"
+         name="b_no" id="page-form-bno" />
+         <input type="hidden" name="urlNo" value="${urlNo}" />
+   </form>
+
 
 
 	<script
@@ -250,38 +286,38 @@ ${board.b_no}
 	<script>
 	$(document).ready(function () {
 	if (${not empty deleteResult and deleteResult == 'success'}) {
-		alert('${b_no} 삭제 성공');
+		alert('${b_no} 번 글이 성공적으로 삭제되었습니다.');
 	}
-	
-	$('.page-link').click(function () {
-		event.preventDefault();
-		var targetPage = $(this).attr('href');
-		$('#page').val(targetPage);
-		var frm = $('#page-form');
-		frm.attr('action', 'list');
-		frm.attr('method', 'get');
-		frm.submit();
-	});
-	
-	$('.table-title-link').click(function () {
-		event.preventDefault();
-		var b_no = $(this).attr('href');
-		$('#page-form-bno').val(b_no);
-		var frm = $('#page-form');
-		frm.attr('action', 'detail');
-		frm.attr('method', 'get');
-		frm.submit();
-	});
-	
-	
-	$('#register').click(function () { // qna
-		event.preventDefault();
-		$('#url-no').val(${urlNo});
-		var fb = $('#url-form');
-		fb.attr('action', '/pumpkinplace/board/register');
-		fb.attr('method', 'get');
-		fb.submit();
-	});
+	 
+	   $('.page-link').click(function () {
+	      event.preventDefault();
+	      var targetPage = $(this).attr('href');
+	      $('#page').val(targetPage);
+	      var frm = $('#page-form');
+	      frm.attr('action', 'list');
+	      frm.attr('method', 'get');
+	      frm.submit();
+	   });
+	   
+	   $('.table-title-link').click(function () {
+	      event.preventDefault();
+	      var b_no = $(this).attr('href');
+	      $('#page-form-bno').val(b_no);
+	      var frm = $('#page-form');
+	      frm.attr('action', 'detail');
+	      frm.attr('method', 'get');
+	      frm.submit();
+	   });
+	   
+	   
+	   $('#register').click(function () { // qna
+	      event.preventDefault();
+	      $('#url-no').val(${urlNo});
+	      var fb = $('#url-form');
+	      fb.attr('action', '/pumpkinplace/board/register');
+	      fb.attr('method', 'get');
+	      fb.submit();
+	   });
 	
 	});
 	</script>
@@ -331,7 +367,7 @@ ${board.b_no}
 				zoom : 12,
 				scrollwheel : false,
 				draggable : false,
-				
+	
 				mapTypeId : google.maps.MapTypeId.ROADMAP
 			};
 			var map = new google.maps.Map(document.getElementById("googleMap"),

@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.error404.pumpkinplace.mappers.BoardMapper">
+
+	<!-- board 테이블 sql 쿼리문 작성 -->
+
+	<!-- Insert Statement -->
+	<insert id="insert" parameterType="java.util.Map">
+		insert into ${tbl_board}
+		(${col_b_section},
+		${col_b_title}, ${col_b_content},
+		${col_b_id})
+		values
+		(${b_section}, #{b_title, jdbcType=VARCHAR},
+		#{b_content,
+		jdbcType=CLOB},
+		#{b_id, jdbcType=VARCHAR})
+	</insert>
+
+	<select id="selectAll" resultType="Board">
+		select * from ${tbl_board}
+		order by ${col_b_no} desc
+	</select>
+
+	<select id="selectBySectionNo" resultType="Board">
+		select
+		b.b_no,
+		b.b_title,
+		b.b_id, b.b_regdate,
+		b.b_readcnt
+		from (
+		select rownum rn, a.*
+		from (
+		select * from
+		pumpkin_board
+		where b_section
+		= ${b_section}
+		order by
+		b_no desc
+		) a
+		) b
+		where rn between
+		${start} and
+		${end}
+	</select>
+
+	<!-- Section No에 따라 다르게 하는 search 페이지 관련 SQL Statement -->
+	<select id="searchWithSectionNo" resultType="Board">
+		select b.b_section, b.b_no, b.b_title, b.b_id, b.b_regdate,
+		b.b_readcnt
+		from (
+		select rownum rn,a.b_section, a.b_no, a.b_title,
+		a.b_id, a.b_regdate, a.b_readcnt
+		from (
+		select * from pumpkin_board
+		where
+		<if test="searchType == 1">
+			b_section = ${b_section} and (${col_b_id} like
+			#{searchKeyword})
+		</if>
+		<if test="searchType == 2">
+			b_section = ${b_section} and (${col_b_title} like
+			#{searchKeyword})
+		</if>
+		<if test="searchType == 3">
+			b_section = ${b_section} and (${col_b_title} like
+			#{searchKeyword})
+			or
+			${col_b_content}
+			like #{searchKeyword}
+		</if>
+		order by ${col_b_no} desc
+		) a
+		) b
+		where rn between
+		${start} and
+		${end}
+		</select>
+
+		<select id="searchWithSectionNo11" resultType="Board">
+			select b.b_section, b.b_no, b.b_title, b.b_id, b.b_regdate,
+			b.b_readcnt
+			from (
+			select rownum rn,a.b_section, a.b_no, a.b_title,
+			a.b_id, a.b_regdate,
+			a.b_readcnt
+			from (
+			select * from pumpkin_board
+			where
+			<if test="searchType == 1">
+				(b_section = 8 or b_section = 9) and (${col_b_id} like
+				#{searchKeyword})
+			</if>
+			<if test="searchType == 2">
+				(b_section = 8 or b_section = 9) and (${col_b_title} like
+				#{searchKeyword})
+			</if>
+			<if test="searchType == 3">
+				(b_section = 8 or b_section = 9) and (${col_b_title} like
+				#{searchKeyword})
+				or
+				${col_b_content}
+				like #{searchKeyword}
+			</if>
+			order by ${col_b_no} desc
+			) a
+			) b
+			where rn between
+			${start} and
+			${end}
+		</select>
+
+		<select id="searchWithSectionNo12" resultType="Board">
+			select b.b_section, b.b_no, b.b_title, b.b_id, b.b_regdate,
+			b.b_readcnt
+			from (
+			select rownum rn,a.b_section, a.b_no, a.b_title,
+			a.b_id, a.b_regdate,
+			a.b_readcnt
+			from (
+			select * from pumpkin_board
+			where
+			<if test="searchType == 1">
+				(b_section = 2 or b_section = 3 or b_section = 4 or
+				b_section = 5
+				or b_section = 6 or b_section = 7) and (${col_b_id}
+				like
+				#{searchKeyword})
+			</if>
+			<if test="searchType == 2">
+				(b_section = 2 or b_section = 3 or b_section = 4 or
+				b_section = 5
+				or b_section = 6 or b_section = 7) and (${col_b_id}
+				like
+				#{searchKeyword})
+			</if>
+			<if test="searchType == 3">
+				(b_section = 2 or b_section = 3 or b_section = 4 or b_section = 5
+				or b_section = 6 or b_section = 7) and (${col_b_id} like
+				#{searchKeyword}) or
+				${col_b_content}
+				like #{searchKeyword}
+			</if>
+			order by ${col_b_no} desc
+			) a
+			) b
+			where rn between
+			${start} and
+			${end}
+		</select>
+
+
+		<select id="selectAllBySectionNo11" resultType="Board">
+			select
+			b.b_no,
+			b.b_title,
+			b.b_id, b.b_regdate,
+			b.b_readcnt
+			from (
+			select rownum rn, a.*
+			from (
+			select * from
+			pumpkin_board
+			where b_section = 8 or b_section = 9
+			order by b_no desc
+			) a
+			) b
+			where rn between
+			${start} and
+			${end}
+		</select>
+
+		<select id="countTotalSectionNo11" resultType="Integer">
+			select
+			count(${col_b_no})
+			from ${tbl_board}
+			where ${col_b_section} = 8 or
+			${col_b_section} = 9
+		</select>
+
+		<select id="selectAllBySectionNo12" resultType="Board">
+			select
+			b.b_no,
+			b.b_title,
+			b.b_id, b.b_regdate,
+			b.b_readcnt
+			from (
+			select rownum rn, a.*
+			from (
+			select * from
+			pumpkin_board
+			where b_section = 2 or b_section = 3
+			or b_section = 4
+			or
+			b_section = 5 or b_section = 6 or b_section = 7
+			order by b_no desc
+			) a
+			)
+			b
+			where rn between
+			${start} and
+			${end}
+		</select>
+
+		<select id="countTotalSectionNo12" resultType="Integer">
+			select
+			count(${col_b_no})
+			from ${tbl_board}
+			where ${col_b_section} = 2 or
+			${col_b_section} = 3
+			or ${col_b_section} = 4 or ${col_b_section} = 5
+			or ${col_b_section} = 6 or ${col_b_section} = 7
+		</select>
+
+		<select id="selectBySectionNo1" resultType="Board">
+			select b.b_no,
+			b.b_title, b.b_id, b.b_regdate
+			from (
+			select
+			rownum rn, a.*
+			from (
+			select
+			*
+			from pumpkin_board
+			where b_section = 1
+			order by b_no desc
+			) a
+			) b
+			where
+			rn
+			between 1 and 5
+		</select>
+
+		<select id="selectBySectionNo11" resultType="Board">
+			select b.b_no,
+			b.b_title, b.b_id, b.b_regdate
+			from (
+			select
+			rownum rn, a.*
+			from (
+			select
+			*
+			from pumpkin_board
+			where b_section = 8 or
+			b_section = 9
+			order by b_no
+			desc
+			) a
+			) b
+			where rn between 1 and 5
+		</select>
+
+		<select id="selectBySectionNo12" resultType="Board">
+			select b.b_no,
+			b.b_title, b.b_id, b.b_regdate
+			from (
+			select
+			rownum rn, a.*
+			from (
+			select
+			*
+			from pumpkin_board
+			where b_section = 2 or b_section = 3
+			or b_section =
+			4
+			or b_section = 5 or
+			b_section = 6 or b_section = 7
+			order by b_no desc
+			) a
+			) b
+			where rn
+			between 1 and 5
+		</select>
+
+		<select id="selectByBno" resultType="Board">
+			select * from ${tbl_board}
+			where ${col_b_no} = #{b_no}
+		</select>
+
+		<select id="totalCount" resultType="Integer">
+			select count(${col_b_no})
+			from ${tbl_board}
+			where ${col_b_section} = #{b_section}
+		</select>
+
+		<select id="listPage" resultType="Board">
+			select b.b_no, b.b_title,
+			b.b_content, b.b_id, b.b_regdate, b.b_readcnt
+			from (
+			select rownum rn,
+			a.*
+			from (
+			select * from pumpkin_board
+			order by b_no desc
+			) a
+			) b
+			where rn
+			between
+			#{start} and #{end}
+		</select>
+
+		<!-- bno 로 글검색 -->
+		<select id="boardSelect" resultType="Board">
+			select * from ${tbl_board}
+			where ${col_b_no} = #{b_no}
+		</select>
+
+		<update id="puls1">
+			update ${tbl_board}
+
+			<if test="type == 1">
+				set ${col_b_readcnt} = ${col_b_readcnt} + 1
+			</if>
+			<if test="type == 2">
+				set ${col_b_up} = ${col_b_up} + 1
+			</if>
+			<if test="type == 3">
+				set ${col_b_down} = ${col_b_down} + 1
+			</if>
+			where ${col_b_no} = #{b_no}
+		</update>
+
+
+		<!-- <update id="updateCount"> update ${tbl_board} <if test="type == 1"> 
+			set ${col_readcnt} = ${col_readcnt} + 1 </if> <if test="type == 2"> set ${col_b_up} 
+			= ${col_b_up} + 1 </if> <if test="type == 3"> set ${col_b_down} = ${col_b_down} 
+			+ 1 </if> where ${col_b_bno} = #{b_no} set ${col_b_title} = #{b_title}, ${col_b_content} 
+			= #{b_content}, ${col_b_regdate} = sysdate where ${col_b_no} = #{b_no} </update> -->
+
+		<update id="update">
+			update ${tbl_board}
+			set ${col_b_title} = #{b_title},
+			${col_b_content} = #{b_content},
+			${col_b_regdate} = sysdate
+			where
+			${col_b_no} = #{b_no}
+		</update>
+
+
+
+		<delete id="delete">
+			delete from ${tbl_board} where ${col_b_no} = #{b_no}
+		</delete>
+
+
+		<!-- 해당 글이 어느 Section에 속하는지를 b_no를 통해 알아내는 SQL Statement -->
+		<select id="checkSectionNoByBno" resultType="Integer">
+			select
+			${col_b_section}
+			from ${tbl_board}
+			where ${col_b_no} = #{b_no};
+		</select>
+
+
+		<!-- 현재 보드의 section과 no로 이전 보드 번호 받아오기 -->
+		<select id="boardPrevNo" resultType="Integer">
+			select ${col_b_no}
+			from
+			(select rownum r,a.*
+			from
+			(select b_no from ${tbl_board} WHERE
+			${col_b_section} = #{b_section} and ${col_b_no} &lt; #{b_no}
+			order by
+			${col_b_no} desc) a)
+			where r = 1
+		</select>
+
+		<!-- 현재 보드의 section과 no로 다음 보드 번호 받아오기 -->
+		<select id="boardNextNo" resultType="Integer">
+			select ${col_b_no}
+			from
+			(select rownum r,a.*
+			from
+			(select b_no from ${tbl_board} WHERE
+			${col_b_section} = #{b_section} and ${col_b_no} &gt; #{b_no}
+			order by
+			${col_b_no} desc) a)
+			(select b_no from ${tbl_board} WHERE
+			${col_b_section} = #{b_section} and
+			${col_b_no} &gt; #{b_no}
+			order by
+			${col_b_no}) a)
+			where r = 1
+		</select>
+
+
+</mapper>

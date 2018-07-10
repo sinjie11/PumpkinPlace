@@ -154,7 +154,7 @@ body {
             <!-- 중고거래 -->
             <div class="col-md-4">
                <p class="text-left" style="font-size: medium;">
-                  <b>중고 거래 "최신 5"</b> <a href="/pumpkinplace/board/list?urlNo=12" style="float: right">more</a>
+                  <b>중고 거래 "최신 5"</b> <a href="/pumpkinplace/board/list?urlNo=12&" style="float: right">more</a>
                </p>
                <table class="table">
                   <thead>
