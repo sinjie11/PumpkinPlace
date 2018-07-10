@@ -38,5 +38,11 @@
 		where mem_gamescore is not null
 		order by mem_gamescore desc;
 	</select> 
-
+	
+	<select id="selectOneGame" resultType="Game">
+	        select * from pumpkin_game
+        where ${mem_id} = (select mem_id
+        from pumpkin_member
+        where ${mem_no} = #{mem_no})
+	</select>
 </mapper>

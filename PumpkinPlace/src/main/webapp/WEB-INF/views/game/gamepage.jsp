@@ -20,7 +20,8 @@
 </script>
 
 	<script>
-	
+		var user_id = "";
+		var result_score= 0;
 	
 		/* Init */ //asd
 		var run = "main";
