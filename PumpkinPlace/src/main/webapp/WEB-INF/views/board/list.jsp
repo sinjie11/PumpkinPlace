@@ -267,8 +267,7 @@ body {
 				<option value="3">제목 + 내용</option>
 			</select> <input type="text" name="searchKeyword" placeholder="검색어 입력"
 				required /> 
-				<button type="submit" class="btn btn-primary" id="btnshowinsert"
-		class="btn btn-primary">검색</button>
+				<button type="submit" class="btn btn-primary" >검색</button>
 				<input type="hidden" name="urlNo" value="${urlNo}"/>
 					<input type="hidden" name="page" id="page"
 			value="${pageMaker.criteria.page}" /> <input type="hidden"
