@@ -96,7 +96,7 @@ body {
 		<br/>
 		<span style="font-size:18px; margin-right: 15px;"><b>가입일자</b></span>
 		<fmt:formatDate value="${member.mem_regdate}"
-			pattern="yyyy-MM-dd" var="regdate" />
+			pattern="yyyy.MM.dd" var="regdate" />
 
 		<input type="text" value="${regdate}" readonly />
 		<br/>

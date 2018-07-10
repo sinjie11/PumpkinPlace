@@ -11,20 +11,13 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 <title>Insert title here</title>
-<style>
-.gameview_Wrap {
-	position: relative;
-	width: 50vw;
-	height: 50vh;
-}
-</style>
+
 </head>
 <body>
-	<!-- <div class="gameview_Wrap">overflow: auto; -->
-
 	<canvas id="canvas" width="1440" height="2960"></canvas>
-	<!-- <canvas id="canvas" width="100vw" height="100vh"></canvas> -->
-	<!-- <iframe src="http://192.168.11.29:8181/pumpkinplace/game/gamepage" style="display:block; width:100vw; height: 100vh"></iframe> -->
+	<script type="text/javascript">
+
+</script>
 
 	<script>
 	

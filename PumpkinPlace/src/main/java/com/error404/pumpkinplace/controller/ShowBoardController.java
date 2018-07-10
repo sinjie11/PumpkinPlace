@@ -26,13 +26,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.error404.pumpkinplace.domain.Board;
 import com.error404.pumpkinplace.domain.Member;
 
 import com.error404.pumpkinplace.domain.ShowBoard;
 import com.error404.pumpkinplace.pageutil.PageLinkMaker;
 import com.error404.pumpkinplace.pageutil.PaginationCriteria;
-
+import com.error404.pumpkinplace.service.BoardServiceImple;
 import com.error404.pumpkinplace.service.ShowBoardService;
+import com.error404.pumpkinplace.service.ShowBoardServiceImple;
+
 
 
 
@@ -76,6 +79,9 @@ public class ShowBoardController {
 		model.addAttribute("showboard", showboard);
 	}
 
+//	@Resource(name = "uploadPath")
+//	private String uploadPath;
+	
 	@RequestMapping(value = "/showinsert", method = RequestMethod.GET)
 	public void showInsert(Model model) {
 		logger.info("showInsert() GET 호출");
@@ -86,49 +92,53 @@ public class ShowBoardController {
 
 	@RequestMapping(value = "/showinsert", method = RequestMethod.POST)
 	@ResponseBody
-	public int showInsert(@RequestBody ShowBoard showboard) {
+	public int showInsert(@RequestBody ShowBoard showboard, Model model) {
 		logger.info("showInsert({}, {}) POST 호출", showboard, showboard.getSb_nm());
+		
 		int result = showBoardService.create(showboard);
 		return result;
 	}
 	
-//	@Resource(name = "uploadPath")
-//	private String uploadPath;
+	@Resource(name = "uploadPath")
+	private String uploadPath;
+	
+	@RequestMapping(value = "/imageupload", method = RequestMethod.GET)
+	public void uploadGet() {
+		logger.info("uploadGet() called");
+	}
+	
+	@RequestMapping(value = "/imageupload", method = RequestMethod.POST)
+	public void uploadPost(MultipartFile uploadFile, Model model) {
+		logger.info("uploadPost() called");
+		logger.info("Name: {}", uploadFile.getName()); // request param name
+		logger.info("Original File Name: {}", uploadFile.getOriginalFilename());
+		logger.info("Size: {}", uploadFile.getSize());
+		
+		String savedName = saveUploadedFile(uploadFile);
+		model.addAttribute("saved", savedName);
+		logger.info("savedName: {}", savedName);
+	}
+	
+	private String saveUploadedFile(MultipartFile uploadedFile) {
+		// UUID: Universally Unique Identifier
+		// 업로드 파일 이름의 중복 문제를 해결하기 위해서
+		UUID uuid = UUID.randomUUID();
+		String savedName = uuid + "_" + uploadedFile.getOriginalFilename();
+		File file = new File(uploadPath, savedName);
+		try {
+			// uploadedFile.transferTo(file);
+			// org.springframework.util.FileCopyUtils
+			FileCopyUtils.copy(uploadedFile.getBytes(), file);
+			logger.info("FILE SAVED: " + savedName);
 
-//	// 업로드
-//	@RequestMapping(value = "/showinsert", method = RequestMethod.POST)
-//	public void uploadPost(ShowBoard showboard, MultipartFile uploadFile, Model model) {
-//		logger.info("uploadPost({}) POST 호출", showboard);
-//		logger.info("Name: {}", uploadFile.getName()); // request param name
-//		logger.info("Original File Name: {}", uploadFile.getOriginalFilename());
-//		logger.info("Size: {}", uploadFile.getSize());
-//
-//		showBoardService.create(showboard);
-//		String savedName = saveUploadedFile(uploadFile);
-//		model.addAttribute("saved", savedName);
-//		
-//		return "redirect:/showboardmain";
-//	}
-//
-//	private String saveUploadedFile(MultipartFile uploadedFile) {
-//		// UUID: Universally Unique Identifier
-//		// 업로드 파일 이름의 중복 문제를 해결하기 위해서
-//		UUID uuid = UUID.randomUUID();
-//		String savedName = uuid + "_" + uploadedFile.getOriginalFilename();
-//		File file = new File(uploadPath, savedName);
-//		try {
-//			// uploadedFile.transferTo(file);
-//			// org.springframework.util.FileCopyUtils
-//			FileCopyUtils.copy(uploadedFile.getBytes(), file);
-//			logger.info("FILE SAVED: " + savedName);
-//
-//			return savedName;
-//		} catch (IOException e) {
-//			logger.error("FILE NOT SAVED: " + e.getMessage());
-//
-//			return null;
-//		}
-//	}
+			return savedName;
+		} catch (IOException e) {
+			logger.error("FILE NOT SAVED: " + e.getMessage());
+
+			return null;
+		}
+	}
+	
 	@RequestMapping(value = "/showboardsearch", method = RequestMethod.GET)
 	public void searchShowBoard(String searchKeyword, String searchKeyDate, Model model) {
 		logger.info("showboardsearch(keyword: {})", searchKeyword);
@@ -148,18 +158,19 @@ public class ShowBoardController {
 	@RequestMapping(value = "/showboardupdate", method = RequestMethod.GET)
 	public void update(
 			@ModelAttribute("criteria") PaginationCriteria criteria, int sb_no, Model model) {
-		logger.info("update(bno: {})", sb_no);
+		logger.info("update(bnoooooo: {})", sb_no);
 		ShowBoard showboard = showBoardService.read(sb_no);
 		model.addAttribute("showboard", showboard);
+		model.addAttribute("sb_no", sb_no);
 		
 	} // end update()
 	
-	
+
 	@RequestMapping(value = "/showboardupdate", method = RequestMethod.POST)
-	public String update(
+	public  ResponseEntity<Integer> update(
 			@ModelAttribute("criteria") PaginationCriteria criteria,
-			ShowBoard showboard, RedirectAttributes attr) {
-		logger.info("update(board: {})", showboard);
+		@RequestBody ShowBoard showboard, RedirectAttributes attr) {
+		logger.info("update(board: {})", showboard.getSb_no());
 		int result = showBoardService.update(showboard);
 		if (result == 1) {
 			attr.addFlashAttribute("updateResult", "success");
@@ -169,7 +180,9 @@ public class ShowBoardController {
 		// RedirectAttributes: redirect 방식에서 View(JSP)에게 데이터를 전달할 때 사용하는 객체
 		// redirectAttributes.addFlashAttribute(이름, 값);
 		
-		return "redirect:detail?sb_no=" + showboard.getSb_no();
+		
+		ResponseEntity<Integer> entity = new ResponseEntity<Integer>(result, HttpStatus.OK);
+		return entity;
 	} // end update()
 	 
 	@RequestMapping(value = "delete", method = RequestMethod.GET)

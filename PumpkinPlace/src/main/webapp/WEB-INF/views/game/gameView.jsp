@@ -5,8 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>game</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <script type="text/javascript">
 	function onLoad() {
 		var params = window.location.search.substring(1).split('&');
@@ -76,6 +75,9 @@ testcss {
 	height: 100%;
 }
 </style>
+=======
+   src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+>>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
 </head>
 <body>
 	<!-- 	<div class="wrapper">
@@ -111,8 +113,19 @@ testcss {
 		console.log("window.innerHeight1 : " + window.innerHeight);
 	</script> -->
 
+<<<<<<< HEAD
 		<!-- <iframe src="http://192.168.11.29:8181/pumpkinplace/game/gamepage" style="display:block; width:100vw; height: 100vh"></iframe> -->
 		<!-- <iframe src="http://localhost:8181/pumpkinplace/WEB-INF/views/game/gamepage.jsp" style="display:block; width:100vw; height: 100vh"></iframe> -->
 	</div>
+=======
+<!--  <iframe width="1440" height="2960" src="http://192.168.11.28:8181/pumpkinplace/game/gamepage" frameborder="0" ></iframe>-->
+<iframe frameborder="10" 
+scrolling="no"src="http://192.168.11.28:8181/pumpkinplace/game/gamepage" width="200" 
+height="400" allowFullScreen="true" webkitallowfullscreen="true" 
+mozallowfullscreen="true">
+</iframe>
+
+
+>>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
 </body>
 </html>

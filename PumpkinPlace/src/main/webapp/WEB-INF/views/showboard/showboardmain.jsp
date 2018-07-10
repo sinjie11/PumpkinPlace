@@ -101,7 +101,7 @@ body {
 											<p class="card-text">${showboard.sb_nm}</p>
 										</div>
 										<fmt:formatDate value="${showboard.sb_startdate}"
-											pattern="yyyy년 MM월 dd일 HH시 mm분" var="startdate" />
+											pattern="yyyy.MM.dd HH:mm" var="startdate" />
 										<div class="card-footer">${startdate}</div>
 									</div>
 							</label>
@@ -149,7 +149,7 @@ body {
 		$(document).ready(function() {
 			$(function() {
 				$("#searchdate").datepicker({
-					dateFormat : 'yy/mm/dd'
+					dateFormat : 'yy.mm.dd'
 				});
 			});
 

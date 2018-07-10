@@ -20,5 +20,5 @@ public class GameController {
 	public void game() {
 		logger.info("game 페이지 호출");
 	}
-	
+
 }

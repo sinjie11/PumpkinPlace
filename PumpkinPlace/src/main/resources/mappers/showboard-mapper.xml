@@ -18,7 +18,7 @@
 	
 	<update id="updateShowBoard">
 		update ${tbl_show_board}
-		set ${col_sb_title} = #{sb_title}, ${col_sb_content} = #{sb_content}, ${col_sb_city} = #{sb_city}, ${col_sb_price} = #{sb_price}, ${col_sb_tel} = #{sb_tel}, ${col_sb_locinfo} = #{sb_locinfo}, ${col_sb_regdate} = sysdate, ${col_sb_img} = #{sb_img}, ${col_sb_video} = #{sb_video}, ${col_sb_startdate} = #{sb_startdate}, ${col_sb_enddate} = #{sb_enddate},
+		set ${col_sb_nm} = #{sb_nm}, ${col_sb_title} = #{sb_title}, ${col_sb_content} = #{sb_content}, ${col_sb_city} = #{sb_city}, ${col_sb_price} = #{sb_price}, ${col_sb_tel} = #{sb_tel}, ${col_sb_locinfo} = #{sb_locinfo}, ${col_sb_regdate} = sysdate, ${col_sb_img} = #{sb_img}, ${col_sb_video} = #{sb_video}, ${col_sb_startdate} = #{sb_startdate}, ${col_sb_enddate} = #{sb_enddate},
 			${col_sb_placeid} = #{sb_placeid}
 		where ${col_sb_no} = #{sb_no}
 	</update>

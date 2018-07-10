@@ -18,5 +18,7 @@ public interface MessageMapper {
 	int totalCountMemId();
 	
 	int totalCountMemId2();
+	
+	int delete(int msg_no);
 
 } // end interface MessageMapper
