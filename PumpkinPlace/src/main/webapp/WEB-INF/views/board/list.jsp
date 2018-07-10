@@ -208,14 +208,8 @@ body {
 			<form action="search">
 				<ul>
 					<c:if test="${urlNo ne 11 and urlNo ne 12}">
-<<<<<<< HEAD
 						<a id="register" href="/pumpkinplace/board/list?urlNo=${urlNo}">
-						<button type="button" style="color: black;">글쓰기</button></a>
-=======
-						<a id="register" href="register">
-							<button type="button" style="color: black;">글쓰기</button>
-						</a>
->>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
+						<button class="btn btn-primary" type="button">글쓰기</button></a>
 					</c:if>
 				</ul>
 
@@ -268,7 +262,7 @@ body {
             <option value="2">글 제목</option>
             <option value="3">제목 + 내용</option>
          </select> <input type="text" name="searchKeyword" placeholder="검색어 입력"
-            required /> <input type="submit" value="검색" />
+            required /> <input class="btn btn-primary" type="submit" value="검색" />
                      <input type="hidden" name="urlNo" value="${urlNo}" />
  
       </form>
