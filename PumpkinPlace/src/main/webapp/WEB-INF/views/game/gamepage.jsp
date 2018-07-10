@@ -384,7 +384,7 @@
 		 */ /* console.log("event.pageX : " + event.pageX); */
 		//		console.log("event.offsetY : " + event.offsetY);
 		/* console.log("event.pageY : " + event.pageY); */
-		//asdasdasdasdas
+		//asdasdasdasdasㅁㄴㅇㅁㄴㅇ
 		//document.addEventListener("click", action_coords(event));
 		//console.log("click thermometerSpeed : " + thermometerSpeed);
 		//console.log("thermometerY : " + thermometerY);
