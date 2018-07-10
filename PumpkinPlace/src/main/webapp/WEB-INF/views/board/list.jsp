@@ -7,6 +7,57 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<c:choose>
+	<c:when test="${urlNo eq 1}">
+	<title>자유 게시판</title>
+	</c:when>
+	
+	<c:when test="${urlNo eq 2}">
+	<title>기타</title>
+	</c:when>
+	
+	<c:when test="${urlNo eq 3}">
+	<title>베이스</title>
+	</c:when>
+	
+	<c:when test="${urlNo eq 4}">
+	<title>드럼/퍼커션</title>
+	</c:when>
+	
+	<c:when test="${urlNo eq 5}">
+	<title>앰프</title>
+	</c:when>
+	
+	<c:when test="${urlNo eq 6}">
+	<title>음향장비</title>
+	</c:when>
+	
+	<c:when test="${urlNo eq 7}">
+	<title>etc</title>
+	</c:when>
+	
+	<c:when test="${urlNo eq 8}">
+	<title>구인</title>
+	</c:when>
+	
+	<c:when test="${urlNo eq 9}">
+	<title>구직</title>
+	</c:when>
+	
+	<c:when test="${urlNo eq 11}">
+	<title>전체보기(구인구직)</title>
+	</c:when>
+	
+	<c:when test="${urlNo eq 12}">
+	<title>전체보기(중고거래)</title>
+	</c:when>
+	
+	<c:when test="${urlNo eq 20}">
+	<title>Q&A</title>
+	</c:when>
+	
+</c:choose>
+
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- 부트스트랩 -->
@@ -134,7 +185,7 @@ body {
 
 		<c:if test="${urlNo eq 7}">
 			<h5 style="text-align: left;">
-				<b> 카테고리: 중고거래 > ect </b>
+				<b> 카테고리: 중고거래 > etc </b>
 			</h5>
 			<br />
 			<br />
