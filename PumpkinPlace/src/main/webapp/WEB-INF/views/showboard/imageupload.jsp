@@ -30,13 +30,11 @@
 	<script type="text/javascript">
 	function sendimage(){
 		if (window.opener != null && !window.opener.closed) {
-            var txtName1 = window.opener.document.getElementById("txtName1");
-            var txtName2 = window.opener.document.getElementById("txtName2");
-            
-            txtName1.value = filename;
-            txtName2.value = imagefile;
+           // var txtName1 = window.opener.document.getElementById("txtName1");
+          //  var txtName2 = window.opener.document.getElementById("txtName2");
+           // txtName1.value = filename;
+           // txtName2.value = imagefile;
         }
-		window.close();
 	}
 	</script>
 	<script>
@@ -48,7 +46,10 @@
             alert('${saved}' + 'SAVED');
          	filename = '${saved}';
          	console.log(filename);
-            //window.close();
+         	var txtName1 = window.opener.document.getElementById("txtName1");
+         	 txtName1.value = filename;
+         	console.log('filename' + filename);
+            window.close();
          }
       });
          </script>
@@ -67,6 +68,9 @@
             reader.onload = function (e) {
             	imagefile = e.target.result;
             	console.log('파일 : ' + imagefile);
+            	var txtName2 = window.opener.document.getElementById("txtName2");
+            	txtName2.value = imagefile;
+            	console.log('imagefile' + imagefile);
                     $('#blah').attr('src', e.target.result);
                 }
               reader.readAsDataURL(input.files[0]);
