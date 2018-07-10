@@ -79,7 +79,7 @@ body {
                   <label href="showboard/showdetail?sb_no=${showboard.sb_no}">
                      <h4>${showboard.sb_title}</h4>
                         <fmt:formatDate value="${showboard.sb_startdate}"
-                           pattern="yyyy년 MM월 dd일 " var="startdate" />
+                           pattern="yyyy.MM.dd" var="startdate" />
                         <p>${showboard.sb_city}/${startdate}</p>
                   </label>
                </div>

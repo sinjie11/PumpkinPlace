@@ -115,18 +115,10 @@ body {
 
 	<br />
 
-<<<<<<< HEAD
-		<div style="margin: 0; padding: 0; display: inline">
-			<input name="utf8" type="hidden" value="&#x2713;" /> 
-			<input
-				name="authenticity_token" type="hidden"
-				value="V/YmJsJD2LJVCi0HoeIknFutTxFudHJCyCNYLsakG/U=" />
-=======
 	<div style="margin: 0; padding: 0; display: inline">
 		<input name="utf8" type="hidden" value="&#x2713;" /> <input
 			name="authenticity_token" type="hidden"
 			value="V/YmJsJD2LJVCi0HoeIknFutTxFudHJCyCNYLsakG/U=" />
->>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
 
 		<div class="container-fluid">
 			<div class="row">
@@ -140,16 +132,21 @@ body {
 							<div class="col align-self-end" style="margin-left: 5%;">
 								<div style="font-size: 15px; margin-left: 25%;">
 
-									<b>공연 포스터</b> <input type='file' id="imgInp" name="uploadFile" />
-
+									<b>공연 포스터</b> <input type='file' id="imgInp" />
+									<input type="button" value="파일 업로드" onclick="showPopup();" />
 									<div></div>
-
+ <script>
+  function showPopup() { 
+	  window.open('imageupload', '파일 업로드', 'width=700, height=950, left= 100, top=20'); 
+	  
+  }
+  </script>
 									<p>
 										<small>공연을 위한 포스터를 업로드해주세요. 그렇지 않을 경우 대체 이미지가 사용됩니다.</small>
 									</p>
 
 
-									<br /> <img id="blah" src="#" alt="" width="570px;"
+									<br /> <img id="blah" src="${pageContext.request.contextPath}/resources/assets/img/showboard/imagesprepare.png" alt="" width="570px;"
 										height="796px;" /> <br /> <br />
 
 									<!-- 사진 저장 -->

@@ -16,5 +16,8 @@ public class GameController {
 		logger.info("game 페이지 호출");
 	}
 	
-	
+	@RequestMapping(value = "/gamepage")
+	public void gamepage() {
+		logger.info("gamepage 페이지 호출");
+	}
 }

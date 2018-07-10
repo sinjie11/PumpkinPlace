@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE>
 <html>
 <head>
@@ -8,13 +8,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
+
 <form action="imageupload" method="post" 
     enctype="multipart/form-data">
-    <input type="file" name="uploadFile" />
+    <input type="file" name="uploadFile" id="imgInp"/>
     <input type="submit" value="Upload" />
 </form>
 
-	<input type='file' id="imgInp" name="uploadFile" />
 	<div></div>
 
 	<p>
@@ -22,19 +22,21 @@
 	</p>
 
 	<br />
-	<img id="blah" src="#" alt="" width="570px;" height="796px;" />
+	<img id="blah" src="${pageContext.request.contextPath}/resources/assets/img/showboard/imagesprepare.png" alt="" width="570px;" height="796px;" />
 	<br />
 	<br />
 
 	<!-- 사진 저장 -->
 	<script>
-            $(document).ready(function() {
+     $(document).ready(function() {
          if (${not empty saved}) {
             alert('${saved}' + 'SAVED');
+            
+            window.close();
          }
-            });
+        
+      });
          </script>
-	<!-- 사진저장 -->
 
 	<!-- 사진 미리보기 -->
 	<script type="text/javascript">
@@ -50,13 +52,19 @@
 
             reader.onload = function (e) {
                     $('#blah').attr('src', e.target.result);
+                    
+                    var text = e.target.result;
+                    console.log('파일명: '+ text);
+                    opener.document.getElementById("imgInp") = text;
                 }
 
               reader.readAsDataURL(input.files[0]);
             }
+            
         }
 
     </script>
 	<!-- end 미리보기 -->
+	
 </body>
 </html>

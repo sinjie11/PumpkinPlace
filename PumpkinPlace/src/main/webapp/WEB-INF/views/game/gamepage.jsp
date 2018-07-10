@@ -8,10 +8,31 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
+
 </head>
 <body>
-
 	<canvas id="canvas" width="1440" height="2960"></canvas>
+	<script type="text/javascript">
+function resize() {
+    var ratio = canvas.width/canvas.height;
+    if (window.innerHeight/window.innerWidth <= .667) {
+    var height = window.innerHeight;
+    var width = height * ratio;
+    canvas.style.width = width+'px';
+    canvas.style.height = height+'px';
+    }
+    else {
+    var width = window.innerWidth;
+    var height = width / ratio;
+    canvas.style.width = width+'px';
+    canvas.style.height = height+'px';
+    }
+}
+
+window.addEventListener('load', resize, false);
+window.addEventListener('resize', resize, false);
+</script>
 	<script>
 		/* Init */ //asd
 		var run = "main";

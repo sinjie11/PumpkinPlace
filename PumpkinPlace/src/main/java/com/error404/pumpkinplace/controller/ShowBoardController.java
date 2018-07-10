@@ -32,8 +32,10 @@ import com.error404.pumpkinplace.domain.Member;
 import com.error404.pumpkinplace.domain.ShowBoard;
 import com.error404.pumpkinplace.pageutil.PageLinkMaker;
 import com.error404.pumpkinplace.pageutil.PaginationCriteria;
-
+import com.error404.pumpkinplace.service.BoardServiceImple;
 import com.error404.pumpkinplace.service.ShowBoardService;
+import com.error404.pumpkinplace.service.ShowBoardServiceImple;
+
 
 
 
@@ -77,8 +79,8 @@ public class ShowBoardController {
 		model.addAttribute("showboard", showboard);
 	}
 
-	@Resource(name = "uploadPath")
-	private String uploadPath;
+//	@Resource(name = "uploadPath")
+//	private String uploadPath;
 	
 	@RequestMapping(value = "/showinsert", method = RequestMethod.GET)
 	public void showInsert(Model model) {
@@ -90,20 +92,33 @@ public class ShowBoardController {
 
 	@RequestMapping(value = "/showinsert", method = RequestMethod.POST)
 	@ResponseBody
-	public int showInsert(@RequestBody ShowBoard showboard, MultipartFile uploadFile, Model model) {
+	public int showInsert(@RequestBody ShowBoard showboard, Model model) {
 		logger.info("showInsert({}, {}) POST 호출", showboard, showboard.getSb_nm());
+		
+		int result = showBoardService.create(showboard);
+		return result;
+	}
+	
+	@Resource(name = "uploadPath")
+	private String uploadPath;
+	
+	@RequestMapping(value = "/imageupload", method = RequestMethod.GET)
+	public void uploadGet() {
+		logger.info("uploadGet() called");
+	}
+	
+	@RequestMapping(value = "/imageupload", method = RequestMethod.POST)
+	public void uploadPost(MultipartFile uploadFile, Model model) {
+		logger.info("uploadPost() called");
 		logger.info("Name: {}", uploadFile.getName()); // request param name
 		logger.info("Original File Name: {}", uploadFile.getOriginalFilename());
 		logger.info("Size: {}", uploadFile.getSize());
 		
-		
-		int result = showBoardService.create(showboard);
 		String savedName = saveUploadedFile(uploadFile);
 		model.addAttribute("saved", savedName);
-		
-		return result;
+		logger.info("savedName: {}", savedName);
 	}
-
+	
 	private String saveUploadedFile(MultipartFile uploadedFile) {
 		// UUID: Universally Unique Identifier
 		// 업로드 파일 이름의 중복 문제를 해결하기 위해서
