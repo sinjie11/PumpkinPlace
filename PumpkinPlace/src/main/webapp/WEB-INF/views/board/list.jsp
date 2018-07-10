@@ -172,7 +172,7 @@ body {
 			<form action="search">
 				<ul>
 					<c:if test="${urlNo ne 11 and urlNo ne 12}">
-						<a id="register" href="register">
+						<a id="register" href="/pumpkinplace/board/list?urlNo=${urlNo}">
 						<button type="button" style="color: black;">글쓰기</button></a>
 					</c:if>
 				</ul>
@@ -274,7 +274,7 @@ ${board.b_no}
 	});
 	
 	
-	$('#register').click(function () { // qna
+	$('#register').click(function () { 
 		event.preventDefault();
 		$('#url-no').val(${urlNo});
 		var fb = $('#url-form');

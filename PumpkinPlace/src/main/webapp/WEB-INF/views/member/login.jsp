@@ -46,6 +46,8 @@
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="form-password">Password</label>
 			                        	<input type="password" name="mem_pwd" placeholder="Password..." class="form-password form-control" id="form-password" required>
+			                        	<input type="hidden" name="targetUrl" value="${targetUrl}"/><!-- sdljfakfasfdkausdkf -->
+			                        	<input type="hidden" name="urlNo" value="${urlNo}"/>
 			                        </div>
 			                        <button type="submit" class="btn">Sign in!</button>
 			                    </form>
