@@ -71,7 +71,9 @@ body {
 	<h1>보낸 쪽지</h1>
 	<br />
 	<br />
+	<div class="container text-right">
 	<span><a href="/pumpkinplace/message/send"><button>목록 보기</button></a></span>
+	</div>
 	<br/>
 	<br/>
 
@@ -79,7 +81,7 @@ body {
 		<thead>
 			<tr>
 				<th style="text-align: center;">받는 사람</th>
-				<th style="text-align: center;">내용</th>
+				<th style="text-align: center;">상세 내용</th>
 				<th style="text-align: center;">수신 일자</th>
 			</tr>
 		</thead>
