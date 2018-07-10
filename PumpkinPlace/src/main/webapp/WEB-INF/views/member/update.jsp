@@ -101,7 +101,8 @@ body {
 		<br/>
 		<br/>
 		
-		<button>수정 완료</button>
+		<button class="btn btn-primary" id="btnshowinsert"
+		class="btn btn-primary">수정 완료</button>
 
 		<br /><br />
 

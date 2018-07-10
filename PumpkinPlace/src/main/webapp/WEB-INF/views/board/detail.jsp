@@ -63,14 +63,23 @@ body {
 	<div class="container text-center">
 		<h1>${board.b_title}</h1>
 		
+
+		<button  class="btn btn-primary" id="btnshowinsert"
+		class="btn btn-primary" id="update" style="margin-left: 1000px;">수정</button>
+		<button class="btn btn-primary" id="btnshowinsert"
+		class="btn btn-primary" id="backList">목록</button>
+
 		<c:if test="${loginId eq board.b_id}">
 			<button id="update" style="margin-left: 1000px;">수정</button>
 			<button id="delete">삭제</button>
 			<button id="backList">목록</button>
 		</c:if>
+
 		<div id="quillContents"></div>		
-		<button id="boardUp">up ${board.b_up}</button>
-		<button id="boardDown">down ${board.b_down}</button>
+		<button class="btn btn-primary" id="btnshowinsert"
+		class="btn btn-primary" id="boardUp">up ${board.b_up}</button>
+		<button class="btn btn-primary" id="btnshowinsert"
+		class="btn btn-primary" id="boardDown">down ${board.b_down}</button>
 
 
 
@@ -78,8 +87,10 @@ body {
 
 		<br> <br> <br> <br>
 			<div>
-				<button id="prevBoard">이전 글</button>
-				<button id="nextBoard">다음 글</button>
+				<button class="btn btn-primary" id="btnshowinsert"
+		class="btn btn-primary" id="prevBoard">이전 글</button>
+				<button class="btn btn-primary" id="btnshowinsert"
+		class="btn btn-primary" id="nextBoard">다음 글</button>
 			</div>
 		
 		<form id="update">
@@ -100,9 +111,12 @@ body {
 		
 		
 		<br><br><br><br>
-		<button>댓글 입력</button>
-		<button>댓글 up</button>
-		<button>댓글 down</button>
+		<button class="btn btn-primary" id="btnshowinsert"
+		class="btn btn-primary">댓글 입력</button>
+		<button class="btn btn-primary" id="btnshowinsert"
+		class="btn btn-primary">댓글 up</button>
+		<button class="btn btn-primary" id="btnshowinsert"
+		class="btn btn-primary">댓글 down</button>
 	</div>
 
 
