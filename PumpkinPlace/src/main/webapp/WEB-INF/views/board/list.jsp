@@ -213,9 +213,6 @@ body {
 						<button class="btn btn-primary" id="btnshowinsert"
 		class="btn btn-primary">글쓰기</button></a>
 
-							<button type="button" style="color: black;">글쓰기</button>
-						</a>
-
 					</c:if>
 				</ul>
 
@@ -279,36 +276,6 @@ body {
 			value="${pageMaker.criteria.numsPerPage}" />
 		</form>
 	</div>
-	<br />
-=======
-		    <div class="container text-center">
-         <ul class="pagination">
-            <c:if test="${pageMaker.hasPrev}">
-               <li><a class="page-link" href="${pageMaker.startPageNo - 1}">이전</a></li>
-            </c:if>
-            <c:forEach begin="${pageMaker.startPageNo}"
-               end="${pageMaker.endPageNo}" var="num">
-               <li><a class="page-link" href="${num}">${num}</a></li>
-            </c:forEach>
-            <c:if test="${pageMaker.hasNext}">
-               <li><a class="page-link" href="${pageMaker.endPageNo + 1}">다음</a></li>
-            </c:if>
-         </ul>
-      </div>
-      <form action="search">
-         <select name="searchType">
-            <option value="1">작성자</option>
-            <option value="2">글 제목</option>
-            <option value="3">제목 + 내용</option>
-         </select> <input type="text" name="searchKeyword" placeholder="검색어 입력"
-            required /> <input type="submit" value="검색" />
-                     <input type="hidden" name="urlNo" value="${urlNo}" />
- 
-      </form>
-   </div>
-   <br />
-
-
    <form id="page-form">
       <input type="hidden" name="page" id="page"
          value="${pageMaker.criteria.page}" /> <input type="hidden"
