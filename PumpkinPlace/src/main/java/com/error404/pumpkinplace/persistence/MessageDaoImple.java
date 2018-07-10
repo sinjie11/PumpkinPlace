@@ -75,6 +75,10 @@ public class MessageDaoImple implements MessageDao {
 		return messageMapper.totalCountMemId2();
 	} // end getNumOfMessageRecords()
 	
+	@Override
+	public int delete(int msg_no) {
 	
+		return messageMapper.delete(msg_no);
+	} // end delete(msg_no)
 
 } // end class MessageDaoImple

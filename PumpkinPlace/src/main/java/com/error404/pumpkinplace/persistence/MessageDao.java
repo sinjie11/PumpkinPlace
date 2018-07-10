@@ -23,5 +23,7 @@ public interface MessageDao {
 	
 	int getNumOfMessageMemId2Records();
 	
+	int delete(int msg_no);
+	
 
 } // end interface MessageDao

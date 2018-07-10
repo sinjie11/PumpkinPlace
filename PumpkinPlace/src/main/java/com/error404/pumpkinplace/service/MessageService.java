@@ -23,4 +23,6 @@ public interface MessageService {
 	
 	int getNumOfMessageMemId2Records(); // 받은 쪽지 갯수 서비스
 	
+	int delete(int msg_no); // 쪽지 삭제 서비스
+	
 } // end interface MessageService

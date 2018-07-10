@@ -63,5 +63,11 @@ public class MessageServiceImple implements MessageService {
 		
 		return messageDao.getNumOfMessageMemId2Records();
 	} // end getNumOfMessageRecords()
+	
+	@Override
+	public int delete(int msg_no) {
+		
+		return messageDao.delete(msg_no);
+	} // end delete(msg_no)
 
 } // end class MessageServiceImple

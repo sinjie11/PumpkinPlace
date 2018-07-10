@@ -60,8 +60,8 @@ body {
 
 </head>
 <body>
-<%@ include file="/WEB-INF/views/header.jspf"%>
-<div class="container text-center">
+	<%@ include file="/WEB-INF/views/header.jspf"%>
+	<div class="container text-center">
 
 	<br/>
 	<br/>
@@ -71,29 +71,35 @@ body {
 				src="${pageContext.request.contextPath}/resources/msg1.png"
 				style="background-color: white; width: 110px; height: 110px;" /></a>
 
-	<h1><b>쪽지 보내기</b></h1><br/><br/>
+	<h1><b>쪽지 보내기</b></h1>
+	<br/>
+	<br/>
 
 	<form action="insert" method="post"  style="font-size: 15px;">
 	
-	<div style="margin-right: 220px;">
-		<label>보내는 사람</label>
-		<input type="text" name="mem_id" value="${loginId}" readonly />
-		<br/>
-		<br/>
+		<div style="margin-right: 220px;">
+			<label>보내는 사람</label>
+				<input type="text" name="mem_id" value="${loginId}" readonly />
+				<br/>
+				<br/>
 		
-		<label>받는 사람</label> <input type="text" style="margin-left: 15px;" name="mem_id2" placeholder="받는사람" required />
-		<br/>
-		<br/>
-	</div>		
-		<p style="font-weight: bold; margin-right: 430px;" >쪽지 내용</p>
-		<textarea style="margin-left: 80px;" rows="8" cols="50" name="msg_content" placeholder="쪽지 내용 작성" required></textarea>
-		<br/>
-		<br/>
-
-		<input type="submit" value="작성 완료"/>
-		<br/>
+			<label>받는 사람</label>
+		 		<input type="text" style="margin-left: 15px;" name="mem_id2" placeholder="받는 사람" required />
+				<br/>
+				<br/>
+		</div>		
+			<p style="font-weight: bold; margin-right: 430px;" >쪽지 내용</p>
+			<textarea style="margin-left: 80px;" rows="8" cols="50" name="msg_content" placeholder="쪽지 내용을 작성해주세요." required></textarea>
+			<br/>
+			<br/>
+			<input type="submit" value="작성 완료"/>
+			 &nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="reset" value="취소" onclick="history.back()" />
+			<br/>
 	</form>
+	
 	</div>
+	
 <%@ include file="/WEB-INF/views/footer.jspf"%>
 </body>
 </html>
