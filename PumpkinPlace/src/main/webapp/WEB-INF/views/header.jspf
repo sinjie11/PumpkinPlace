@@ -117,7 +117,7 @@
                         <li class="active"><a class="dropdown-toggle"data-toggle="dropdown" href="#">공연<span class="caret"></span></a>
                            <ul class="dropdown-menu">
                               <li><a href="/pumpkinplace/showboard/showboardmain">공연</a></li>
-                              <li><a href="/pumpkinplace/showboard/showinsert">공연 등록</a></li>
+                              <li><a id="show_insert" href="/pumpkinplace/showboard/showinsert">공연 등록</a></li>
                            </ul>
                         </li>
                      </c:when>
@@ -126,7 +126,7 @@
                         <li class="dropdown"><a class="dropdown-toggle"data-toggle="dropdown" href="#">공연<span class="caret"></span></a>
                            <ul class="dropdown-menu">
                               <li><a href="/pumpkinplace/showboard/showboardmain">공연</a></li>
-                              <li><a href="/pumpkinplace/showboard/showinsert">공연 등록</a></li>
+                              <li><a id="show_insert" href="/pumpkinplace/showboard/showinsert">공연 등록</a></li>
                            </ul>
                         </li>
                      </c:when>
@@ -315,6 +315,22 @@
             fb.attr('method', 'get');
             fb.submit();   
          }
+         
+         $('#show_insert').click(function () {
+        	 event.preventDefault();
+        	 var loginId = '${loginId}';
+        	 if(loginId==='') {
+        		 var result = confirm('로그인 후 이용가능합니다. 로그인 창으로 가시겠습니까?')
+        		 if(result) {
+        			 location = '/pumpkinplace/member/login';
+        		 }
+        	 } else {
+        		 location = '/pumpkinplace/showboard/showinsert';
+        	 }
+        	 
+        	
+        	 
+		});
          
       });
    </script>
