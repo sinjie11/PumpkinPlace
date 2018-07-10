@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.error404.pumpkinplace.domain.Board;
 import com.error404.pumpkinplace.domain.Member;
 
 import com.error404.pumpkinplace.domain.ShowBoard;
@@ -148,18 +149,19 @@ public class ShowBoardController {
 	@RequestMapping(value = "/showboardupdate", method = RequestMethod.GET)
 	public void update(
 			@ModelAttribute("criteria") PaginationCriteria criteria, int sb_no, Model model) {
-		logger.info("update(bno: {})", sb_no);
+		logger.info("update(bnoooooo: {})", sb_no);
 		ShowBoard showboard = showBoardService.read(sb_no);
 		model.addAttribute("showboard", showboard);
+		model.addAttribute("sb_no", sb_no);
 		
 	} // end update()
 	
 	
 	@RequestMapping(value = "/showboardupdate", method = RequestMethod.POST)
-	public String update(
+	public  ResponseEntity<Integer> update(
 			@ModelAttribute("criteria") PaginationCriteria criteria,
-			ShowBoard showboard, RedirectAttributes attr) {
-		logger.info("update(board: {})", showboard);
+		@RequestBody ShowBoard showboard, RedirectAttributes attr) {
+		logger.info("update(board: {})", showboard.getSb_no());
 		int result = showBoardService.update(showboard);
 		if (result == 1) {
 			attr.addFlashAttribute("updateResult", "success");
@@ -169,7 +171,9 @@ public class ShowBoardController {
 		// RedirectAttributes: redirect 방식에서 View(JSP)에게 데이터를 전달할 때 사용하는 객체
 		// redirectAttributes.addFlashAttribute(이름, 값);
 		
-		return "redirect:detail?sb_no=" + showboard.getSb_no();
+		
+		ResponseEntity<Integer> entity = new ResponseEntity<Integer>(result, HttpStatus.OK);
+		return entity;
 	} // end update()
 	 
 	@RequestMapping(value = "delete", method = RequestMethod.GET)

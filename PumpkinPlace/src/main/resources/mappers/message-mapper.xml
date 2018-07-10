@@ -62,5 +62,9 @@
 		where rn between #{start} and #{end}
 	
 	</select>
+	
+	<delete id="delete">
+		delete from ${tbl_message} where ${col_msg_no} = #{msg_no}
+	</delete>
   	
 </mapper>

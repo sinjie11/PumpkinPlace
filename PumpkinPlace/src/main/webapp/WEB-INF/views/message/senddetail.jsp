@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>쪽지 보내기</title>
+<title>보낸 쪽지(상세)</title>
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -69,7 +69,11 @@ body {
 				style="background-color: white; width: 110px; height: 110px;" />
 		<br/>		
 	<h1>보낸 쪽지</h1>
-
+	<br />
+	<br />
+	<span><a href="/pumpkinplace/message/send"><button>목록 보기</button></a></span>
+	<br/>
+	<br/>
 
 	<table class="table">
 		<thead>
