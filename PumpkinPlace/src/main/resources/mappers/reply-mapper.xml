@@ -6,48 +6,5 @@
 <mapper namespace="com.error404.pumpkinplace.mappers.ReplyMapper">
 
 	<!--  reply 테이블 sql 쿼리문 작성  -->
-	<insert id="insert">
-		insert into ${tbl_reply} 
-		(${col_b_no} , ${col_r_section} , ${col_r_content} ,${col_r_id})
-		values 
-		(#{b_no} , #{r_section} , #{r_content} , #{r_id})
-	</insert>
-	
-	<select id="selectAll" resultType="Reply">
-		select ${col_r_no} , ${col_r_content}, ${col_r_id} , ${col_r_regdate} , ${col_r_like} , ${col_r_hate}
-		from ${tbl_reply}  
-		where ${col_b_no} = #{b_no}
-		and ${col_r_section} = #{r_section} 
-		order by ${col_r_no} desc
-	</select>
-	
-	<update id="updateReply">
-		update  ${tbl_reply}  
-		set ${col_r_content} =#{r_content}, 
-		${col_r_regdate} = sysdate 
-		where ${col_r_no} = #{r_no}
-	</update>
-	
-		
-	<delete id="deleteReply">
-		delete from  ${tbl_reply} 
-		where R_NO = 2
-	</delete>
-	
-	<select id="getUpDown" resultType="Reply">
-		select ${col_r_up}, ${col_r_down} from ${tbl_reply} where ${col_r_no} = #{r_no}
-	</select>
-	
-	<update id="puls1">
-		update ${tbl_reply} 
-		<if test="type == 1">
-			set ${col_r_up} = ${col_r_up} + 1
-		</if>
-		<if test="type == 2">
-			set ${col_r_down} = ${col_r_down} + 1
-		</if>
-		where ${col_r_no} = #{r_no}
-	</update>
-	
 
 </mapper>
