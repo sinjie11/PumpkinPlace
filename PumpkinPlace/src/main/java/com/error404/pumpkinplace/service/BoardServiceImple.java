@@ -38,10 +38,9 @@ public class BoardServiceImple implements BoardService {
 		return boardDao.selectByBno(bno);
 
 	}
-
+	
 	@Override
 	public int update(Board board) {
-
 		return boardDao.update(board);
 	}
 
@@ -72,6 +71,11 @@ public class BoardServiceImple implements BoardService {
 		return boardDao.getNumOfRecords(b_section);
 	}
 
+	@Override
+	public int getNumOfSearchRecords(int type, String keyword, int b_section) {
+		return boardDao.getNumOfSearchRecords(type, keyword, b_section);
+	}
+	
 	@Override
 	public List<Board> read(PaginationCriteria criteria) {
 		return boardDao.select(criteria);

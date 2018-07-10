@@ -65,15 +65,18 @@ body {
 	<div class="container text-center">
 			<div class="tab-content">
 			<form action="showboardsearch" style="float: right;">
-				<input type="text" id="searchdate" name="searchKeyDate" placeholder="공연 날짜 선택" /> <input
-					type="submit" value="Search" />
+				<input type="text" id="searchdate" name="searchKeyDate" placeholder="공연 날짜 선택" /> 
+				<button type="submit" class="btn btn-primary" id="btnshowinsert"
+		class="btn btn-primary">검색</button>
 			</form>
 			<br /> <br />
 			<!-- 검색창 -->
 			<form action="showboardsearch"
 				style="float: right; margin-bottom: 50px;">
 				<input type="text" name="searchKeyword" placeholder="검색어 입력"
-					required /> <input type="submit" value="Search" />
+					required /> 
+					<button type="submit" class="btn btn-primary" id="btnshowinsert"
+		class="btn btn-primary">검색</button>
 			</form>
 
 			<br /> <br />
@@ -101,7 +104,7 @@ body {
 											<p class="card-text">${showboard.sb_nm}</p>
 										</div>
 										<fmt:formatDate value="${showboard.sb_startdate}"
-											pattern="yyyy년 MM월 dd일 HH시 mm분" var="startdate" />
+											pattern="yyyy.MM.dd HH:mm" var="startdate" />
 										<div class="card-footer">${startdate}</div>
 									</div>
 							</label>
@@ -149,7 +152,7 @@ body {
 		$(document).ready(function() {
 			$(function() {
 				$("#searchdate").datepicker({
-					dateFormat : 'yy/mm/dd'
+					dateFormat : 'yy.mm.dd'
 				});
 			});
 

@@ -96,9 +96,9 @@ td, h5 {
 						</h1>
 						<!-- 날짜 -->
 						<fmt:formatDate value="${showboard.sb_startdate}"
-							pattern="yyyy-MM-dd" var="startdate" />
+							pattern="yyyy.MM.dd" var="startdate" />
 							<fmt:formatDate value="${showboard.sb_enddate}"
-							pattern="yyyy-MM-dd" var="enddate" />	
+							pattern="yyyy.MM.dd" var="enddate" />	
 							
 						<h2>${startdate} ~ ${enddate}</h2>
 						

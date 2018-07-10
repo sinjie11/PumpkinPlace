@@ -54,9 +54,6 @@ public class BoardDaoImple implements BoardDao {
 
 	@Override
 	public int update(Board board) {
-		logger.info("update(bno: {}, title: {}, content: {}, date : {}, access count : {])", board.getB_no(),
-				board.getB_title(), board.getB_content(), board.getB_regdate(), board.getB_readcnt());
-
 		return sqlSession.update(NAMESPACE + ".update", board);
 	}
 
@@ -72,7 +69,7 @@ public class BoardDaoImple implements BoardDao {
 		logger.info("type: {}, keyword: {}", type, keyword);
 		Map<String, Object> args = new HashMap<>();
 		args.put("searchType", type);
-		args.put("searchKeyword", "%" + keyword + "%");
+		args.put("searchKeyword", keyword);
 		args.put("b_section", sectionNo);
 		args.put("start", criteria.getStart());
 		args.put("end", criteria.getEnd());		
@@ -84,7 +81,7 @@ public class BoardDaoImple implements BoardDao {
 		logger.info("searchWithSectionNo11() 호출");
 		Map<String, Object> args = new HashMap<>();
 		args.put("searchType", type);
-		args.put("searchKeyword", "%" + keyword + "%");
+		args.put("searchKeyword",keyword);
 		args.put("start", criteria.getStart());
 		args.put("end", criteria.getEnd());		
 		return sqlSession.selectList(NAMESPACE + ".searchWithSectionNo11", args);
@@ -95,7 +92,7 @@ public class BoardDaoImple implements BoardDao {
 		logger.info("searchWithSectionNo12() 호출");
 		Map<String, Object> args = new HashMap<>();
 		args.put("searchType", type);
-		args.put("searchKeyword", "%" + keyword + "%");
+		args.put("searchKeyword", keyword);
 		args.put("start", criteria.getStart());
 		args.put("end", criteria.getEnd());		
 		return sqlSession.selectList(NAMESPACE + ".searchWithSectionNo12", args);
@@ -152,6 +149,31 @@ public class BoardDaoImple implements BoardDao {
 			return sqlSession.selectOne(NAMESPACE + ".countTotalSectionNo11", sectionNo);
 		else 
 			return sqlSession.selectOne(NAMESPACE + ".countTotalSectionNo12", sectionNo);
+	}
+	
+	@Override
+	public int getNumOfSearchRecords(int type, String keyword, int sectionNo) {
+		if (sectionNo == 1 || sectionNo == 2 || sectionNo == 3 || sectionNo == 4 || sectionNo == 5 || sectionNo == 6
+				|| sectionNo == 7 || sectionNo == 8 || sectionNo == 9 || sectionNo == 10 || sectionNo == 20) {
+			Map<String, Object> args = new HashMap<>();
+			args.put("b_section", sectionNo);
+			args.put("searchType", type);
+			args.put("searchKeyword", keyword);
+			return sqlSession.selectOne(NAMESPACE + ".countTotalSearch", args);
+		}
+		else if(sectionNo == 11) {
+			Map<String, Object> args = new HashMap<>();
+			args.put("searchType", type);
+			args.put("searchKeyword", keyword);
+			return sqlSession.selectOne(NAMESPACE + ".countTotalSearch11", args);
+		}
+		else {
+			Map<String, Object> args = new HashMap<>();
+			args.put("searchType", type);
+			args.put("searchKeyword", keyword);
+			return sqlSession.selectOne(NAMESPACE + ".countTotalSearch12", args);
+		}
+		
 	}
 
 	@Override

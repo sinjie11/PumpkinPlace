@@ -52,25 +52,23 @@
 		select b.b_section, b.b_no, b.b_title, b.b_id, b.b_regdate,
 		b.b_readcnt
 		from (
-		select rownum rn,a.b_section, a.b_no, a.b_title,
+		select rownum rn,a.b_section, a.b_no, a.b_title, a.b_content,
 		a.b_id, a.b_regdate, a.b_readcnt
 		from (
 		select * from pumpkin_board
-		where
+		 where
 		<if test="searchType == 1">
-			b_section = ${b_section} and (${col_b_id} like
-			#{searchKeyword})
+			b_section = ${b_section} and ${col_b_id} like
+			'%'||#{searchKeyword}||'%'
 		</if>
 		<if test="searchType == 2">
-			b_section = ${b_section} and (${col_b_title} like
-			#{searchKeyword})
+			b_section = ${b_section} and ${col_b_title} like
+			'%'||#{searchKeyword}||'%'
 		</if>
 		<if test="searchType == 3">
-			b_section = ${b_section} and (${col_b_title} like
-			#{searchKeyword})
-			or
-			${col_b_content}
-			like #{searchKeyword}
+			b_section = ${b_section} and 
+			(${col_b_title}  like  
+			'%'||#{searchKeyword}||'%'  or  dbms_lob.instr(b_content,  '%'||#{searchKeyword}||'%') > 0)
 		</if>
 		order by ${col_b_no} desc
 		) a
@@ -79,10 +77,65 @@
 		${start} and
 		${end}
 		</select>
+		
+		<select id="countTotalSearch" resultType="Integer">
+				select count(b.b_no)
+		from (
+		select a.b_section, a.b_no, a.b_title,
+		a.b_id, a.b_regdate, a.b_readcnt
+		from (
+		select * from pumpkin_board
+		where
+		<if test="searchType == 1">
+			b_section = ${b_section} and ${col_b_id} like
+			'%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchType == 2">
+			b_section = ${b_section} and ${col_b_title} like
+			'%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchType == 3">
+			b_section = ${b_section} and (${col_b_title} like
+			'%'||#{searchKeyword}||'%'  or  dbms_lob.instr(b_content,  '%'||#{searchKeyword}||'%') > 0)
+
+		</if>
+		) a
+		)b
+		</select>
 
 		<select id="searchWithSectionNo11" resultType="Board">
 			select b.b_section, b.b_no, b.b_title, b.b_id, b.b_regdate,
 			b.b_readcnt
+			from (
+			select rownum rn,a.b_section, a.b_no, a.b_title,  a.b_content,
+			a.b_id, a.b_regdate,
+			a.b_readcnt
+			from (
+			select * from pumpkin_board
+			where
+			<if test="searchType == 1">
+				(b_section = 8 or b_section = 9) and (${col_b_id} like
+				'%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchType == 2">
+				(b_section = 8 or b_section = 9) and (${col_b_title} like
+				'%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchType == 3">
+				(b_section = 8 or b_section = 9) and (${col_b_title} like
+			'%'||#{searchKeyword}||'%'  or  dbms_lob.instr(b_content,  '%'||#{searchKeyword}||'%') > 0)
+
+			</if>
+			order by ${col_b_no} desc
+			) a
+			) b
+			where rn between
+			${start} and
+			${end}
+		</select>
+		
+		<select id="countTotalSearch11" resultType="Integer">
+				select count(b.b_no)
 			from (
 			select rownum rn,a.b_section, a.b_no, a.b_title,
 			a.b_id, a.b_regdate,
@@ -92,18 +145,50 @@
 			where
 			<if test="searchType == 1">
 				(b_section = 8 or b_section = 9) and (${col_b_id} like
-				#{searchKeyword})
+				'%'||#{searchKeyword}||'%'
 			</if>
 			<if test="searchType == 2">
 				(b_section = 8 or b_section = 9) and (${col_b_title} like
-				#{searchKeyword})
+				'%'||#{searchKeyword}||'%'
 			</if>
 			<if test="searchType == 3">
 				(b_section = 8 or b_section = 9) and (${col_b_title} like
-				#{searchKeyword})
-				or
-				${col_b_content}
-				like #{searchKeyword}
+			'%'||#{searchKeyword}||'%'  or  dbms_lob.instr(b_content,  '%'||#{searchKeyword}||'%') > 0)
+
+			</if>
+			) a
+			) b
+		</select>
+
+		<select id="searchWithSectionNo12" resultType="Board">
+			select b.b_section, b.b_no, b.b_title, b.b_id, b.b_regdate,
+			b.b_readcnt
+			from (
+			select rownum rn,a.b_section, a.b_no, a.b_title,  a.b_content,
+			a.b_id, a.b_regdate,
+			a.b_readcnt
+			from (
+			select * from pumpkin_board
+			where
+			<if test="searchType == 1">
+				(b_section = 2 or b_section = 3 or b_section = 4 or
+				b_section = 5
+				or b_section = 6 or b_section = 7) and (${col_b_id}
+				like
+				'%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchType == 2">
+				(b_section = 2 or b_section = 3 or b_section = 4 or
+				b_section = 5
+				or b_section = 6 or b_section = 7) and (${col_b_id}
+				like
+				'%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchType == 3">
+				(b_section = 2 or b_section = 3 or b_section = 4 or b_section = 5
+				or b_section = 6 or b_section = 7) and (${col_b_id} like
+			'%'||#{searchKeyword}||'%'  or  dbms_lob.instr(b_content,  '%'||#{searchKeyword}||'%') > 0)
+
 			</if>
 			order by ${col_b_no} desc
 			) a
@@ -112,10 +197,9 @@
 			${start} and
 			${end}
 		</select>
-
-		<select id="searchWithSectionNo12" resultType="Board">
-			select b.b_section, b.b_no, b.b_title, b.b_id, b.b_regdate,
-			b.b_readcnt
+		
+		<select id="countTotalSearch12" resultType="Integer">
+				select count(b.b_no)
 			from (
 			select rownum rn,a.b_section, a.b_no, a.b_title,
 			a.b_id, a.b_regdate,
@@ -128,30 +212,24 @@
 				b_section = 5
 				or b_section = 6 or b_section = 7) and (${col_b_id}
 				like
-				#{searchKeyword})
+				'%'||#{searchKeyword}||'%'
 			</if>
 			<if test="searchType == 2">
 				(b_section = 2 or b_section = 3 or b_section = 4 or
 				b_section = 5
 				or b_section = 6 or b_section = 7) and (${col_b_id}
 				like
-				#{searchKeyword})
+				'%'||#{searchKeyword}||'%'
 			</if>
 			<if test="searchType == 3">
 				(b_section = 2 or b_section = 3 or b_section = 4 or b_section = 5
 				or b_section = 6 or b_section = 7) and (${col_b_id} like
-				#{searchKeyword}) or
-				${col_b_content}
-				like #{searchKeyword}
+			'%'||#{searchKeyword}||'%'  or  dbms_lob.instr(b_content,  '%'||#{searchKeyword}||'%') > 0)
+
 			</if>
-			order by ${col_b_no} desc
 			) a
 			) b
-			where rn between
-			${start} and
-			${end}
 		</select>
-
 
 		<select id="selectAllBySectionNo11" resultType="Board">
 			select
@@ -172,6 +250,8 @@
 			${start} and
 			${end}
 		</select>
+		
+		
 
 		<select id="countTotalSectionNo11" resultType="Integer">
 			select
@@ -330,10 +410,11 @@
 			+ 1 </if> where ${col_b_bno} = #{b_no} set ${col_b_title} = #{b_title}, ${col_b_content} 
 			= #{b_content}, ${col_b_regdate} = sysdate where ${col_b_no} = #{b_no} </update> -->
 
-		<update id="update">
+		<update id="update"  parameterType="java.util.Map">
 			update ${tbl_board}
 			set ${col_b_title} = #{b_title},
-			${col_b_content} = #{b_content},
+			${col_b_content} = #{b_content,
+		jdbcType=CLOB},
 			${col_b_regdate} = sysdate
 			where
 			${col_b_no} = #{b_no}

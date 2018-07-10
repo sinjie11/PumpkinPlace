@@ -19,7 +19,7 @@
 	
 	<bean id="uploadPath" class="java.lang.String">
         <constructor-arg 
-            value="\\192.168.11.4\D:\img\showimg" />
+            value="C:\\Users\\user\\git\\Pumpkinplace\\PumpkinPlace\\src\\main\\webapp\\resources\\assets\\img\\showboard" />
 </bean>
 
 	<bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

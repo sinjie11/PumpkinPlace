@@ -1,6 +1,11 @@
 package com.error404.pumpkinplace.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
+
+import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +19,10 @@ public class ShowBoardServiceImple implements ShowBoardService {
 	
 	@Autowired
 	private ShowBoardDao showBoardDao;
-
+	
+	@Resource(name = "uploadPath")
+	private String uploadPath;
+	
 	@Override
 	public List<ShowBoard> read() {
 
@@ -23,7 +31,8 @@ public class ShowBoardServiceImple implements ShowBoardService {
 	
 	@Override
 	public int create(ShowBoard showBoard) {
-
+		
+		
 		return showBoardDao.insert(showBoard);
 	}
 	

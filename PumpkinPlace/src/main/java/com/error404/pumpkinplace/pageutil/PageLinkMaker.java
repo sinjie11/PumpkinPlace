@@ -10,12 +10,8 @@ public class PageLinkMaker {
 	private boolean hasPrev; // 이전 페이지 링크가 있는 지 결정
 	private boolean hasNext; // 다음 페이지 링크가 있는 지 결정
 	
-	public PageLinkMaker() { // 디폴트 생성자로 사용 X
+	public PageLinkMaker() {
 		this.numsOfPageLinks = 10;
-	}
-	
-	public PageLinkMaker(int numsOfPageLinks) { // Parameter가 있는 생성자를 사용
-		this.numsOfPageLinks = numsOfPageLinks;
 	}
 
 	public PaginationCriteria getCriteria() {
@@ -82,36 +78,9 @@ public class PageLinkMaker {
 			hasNext = true;
 		}
 		
-	} 
+	} // end setPageLinkData()
 	
-	public void setPageLinkDataForSectionNo(int totalCount) {
-		int totalPageLinks = (int)
-				Math.ceil((double) totalCount / criteria.getNumsPerPage());
-		
-		int temp = (int)
-				Math.ceil((double) criteria.getPage() / numsOfPageLinks) * numsOfPageLinks;
-		if (temp > totalPageLinks) {
-			endPageNo = totalPageLinks;
-		} else {
-			endPageNo = temp;
-		}
-		
-		startPageNo = ((endPageNo - 1) / numsOfPageLinks) * numsOfPageLinks + 1;
-
-		if (startPageNo == 1) {
-			hasPrev = false;
-		} else {
-			hasPrev = true;
-		}
-		
-		if (endPageNo * criteria.getNumsPerPage() >= totalCount) {
-			hasNext = false;
-		} else {
-			hasNext = true;
-		}
-	}
-	
-} 
+} // end class PageLinkMaker
 
 
 

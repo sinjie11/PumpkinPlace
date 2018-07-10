@@ -3,10 +3,13 @@ package com.error404.pumpkinplace.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import com.error404.pumpkinplace.domain.Game;
 import com.error404.pumpkinplace.persistence.GameDao;
 
+@Service
 public class GameServiceImple implements GameService {
 	
 	@Autowired
@@ -25,5 +28,10 @@ public class GameServiceImple implements GameService {
 	@Override
 	public List<Game> read() {
 		return gameDao.select();
+	}
+	
+	@Override
+	public Game readOne(int mem_no) {
+		return gameDao.selectByNo(mem_no);
 	}
 }

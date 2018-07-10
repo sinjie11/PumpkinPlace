@@ -60,6 +60,7 @@ public class ShowBoardDaoImple implements ShowBoardDao {
 		logger.info("update(sb_no: {}, sb_title; {}, sb_content: {}, sb_city: {}, sb_price: {}, sb_tel: {}, sb_locinfo: {}, sb_regdate: {}, sb_img: {}, sb_vide: {}, sb_startdate: {}, sb_enddate: {}"
 				+ "sb_placeid: {})",
 				showBoard.getSb_no(),
+				showBoard.getSb_nm(),
 				showBoard.getSb_title(), 
 				showBoard.getSb_content(),	
 				showBoard.getSb_city(),	

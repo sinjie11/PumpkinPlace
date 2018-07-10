@@ -7,25 +7,24 @@
 
 	<!-- Game 테이블 sql 쿼리문 작성 -->
 
-	<!-- 1) DB에서 해당 회원의 NO와 포인트, 게임점수를 처음으로 저장하는 SQL Statement -->
+	<!-- 1) DB에서 해당 회원의 ID를 처음으로 저장하는 SQL Statement -->
 	<insert id="insertGameInfo">
-		insert into pumpkin_game(${col_mem_no})
+		insert into pumpkin_game(${col_mem_id}, ${col_mem_account}, ${col_dmem_gamescore})
 		values((
-		select ${col_mem_no}
-		from ${tbl_member}
-		where ${col_mem_id} =
-		#{mem_id}));
+		select ${col_mem_id}
+		from pumpkin_member
+		where ${col_mem_no} =
+		#{mem_no}), #{mem_account}, #{mem_gamescore});
 	</insert>
 
 	<!-- 2) 회원의 포인트와 최고점수를 갱신하는 SQL Statement -->
 	<update id="updatePointAndScore">
 		update ${tbl_game}
-
 		set ${col_mem_account} =#{mem_account},
 		${col_mem_gamescore} =
 		#{mem_gamescore}
-		where ${col_mem_no}=
-		(select ${col_mem_no}
+		where ${col_mem_id}=
+		(select ${col_mem_id}
 		from
 		${tbl_member}
 		where ${mem_id} = #{mem_id});
@@ -39,5 +38,11 @@
 		where mem_gamescore is not null
 		order by mem_gamescore desc;
 	</select> 
-
+	
+	<select id="selectOneGame" resultType="Game">
+	        select * from pumpkin_game
+        where ${mem_id} = (select mem_id
+        from pumpkin_member
+        where ${mem_no} = #{mem_no})
+	</select>
 </mapper>

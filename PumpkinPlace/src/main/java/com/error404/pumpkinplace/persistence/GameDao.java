@@ -8,4 +8,5 @@ public interface GameDao {
 	int insert(Game game);
 	int update(Game game);
 	List<Game> select();
+	Game selectByNo(int mem_no);
 }

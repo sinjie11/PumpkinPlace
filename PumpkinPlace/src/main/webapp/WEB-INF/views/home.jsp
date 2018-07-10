@@ -79,7 +79,7 @@ body {
                   <label href="showboard/showdetail?sb_no=${showboard.sb_no}">
                      <h4>${showboard.sb_title}</h4>
                         <fmt:formatDate value="${showboard.sb_startdate}"
-                           pattern="yyyy년 MM월 dd일 " var="startdate" />
+                           pattern="yyyy.MM.dd" var="startdate" />
                         <p>${showboard.sb_city}/${startdate}</p>
                   </label>
                </div>
@@ -154,7 +154,7 @@ body {
             <!-- 중고거래 -->
             <div class="col-md-4">
                <p class="text-left" style="font-size: medium;">
-                  <b>중고 거래 "최신 5"</b> <a href="/pumpkinplace/board/list?urlNo=12" style="float: right">more</a>
+                  <b>중고 거래 "최신 5"</b> <a href="/pumpkinplace/board/list?urlNo=12&" style="float: right">more</a>
                </p>
                <table class="table">
                   <thead>
