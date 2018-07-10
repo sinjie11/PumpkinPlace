@@ -72,7 +72,8 @@ body {
 	<br />
 	<br />
 	<div class="container text-right">
-	<span><a href="/pumpkinplace/message/send"><button>목록 보기</button></a></span>
+	<span><a href="/pumpkinplace/message/send"><button class="btn btn-primary" id="btnshowinsert"
+		class="btn btn-primary">목록 보기</button></a></span>
 	</div>
 	<br/>
 	<br/>

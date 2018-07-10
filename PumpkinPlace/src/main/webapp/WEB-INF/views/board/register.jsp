@@ -90,7 +90,8 @@ body {
 		</div>
 		<div id="quillContents"></div>
 				<br />
-				<div class="text-center"><button id="submit" >작성완료</button></div>
+				<div class="text-center"><button class="btn btn-primary" id="btnshowinsert"
+		class="btn btn-primary" id="submit" >작성완료</button></div>
 	</div>
 	<br />
 	<br />

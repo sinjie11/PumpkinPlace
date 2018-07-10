@@ -72,9 +72,11 @@ body {
 	<br />
 	<br />
 	<div class="container text-right">
-	<span><a href="/pumpkinplace/message/receive"><button>목록 보기</button></a></span>
-	&nbsp;&nbsp;&nbsp;
-	<span id="deleteMsg"><button>삭제</button></span>
+	<span><a href="/pumpkinplace/message/receive"><button class="btn btn-primary" id="btnshowinsert"
+		class="btn btn-primary">목록 보기</button></a></span>
+	
+	<span id="deleteMsg"><button class="btn btn-primary" id="btnshowinsert"
+		class="btn btn-primary">삭제</button></span>
 	</div>
 	<br/>
 	<br/>

@@ -12,7 +12,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- 부트스트랩 -->
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	src="https://ajax.go ogleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- jquery -->
@@ -92,10 +92,14 @@ body {
 			<textarea style="margin-left: 80px;" rows="8" cols="50" name="msg_content" placeholder="쪽지 내용을 작성해주세요." required></textarea>
 			<br/>
 			<br/>
-			<input type="submit" value="작성 완료"/>
+			<button type="submit" class="btn btn-primary" id="btnshowinsert"
+		class="btn btn-primary" >작성완료</button>
 			 &nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="reset" value="취소" onclick="history.back()" />
+			<button class="btn btn-primary" id="btnshowinsert"
+		class="btn btn-primary" type="submit" onclick="history.back()">취소</button>
+		
 			<br/>
+			<!-- <input type="reset" value="취소" onclick="history.back()" />-->
 	</form>
 	
 	</div>

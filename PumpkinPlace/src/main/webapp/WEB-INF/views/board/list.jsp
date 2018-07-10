@@ -173,7 +173,8 @@ body {
 				<ul>
 					<c:if test="${urlNo ne 11 and urlNo ne 12}">
 						<a id="register" href="register">
-						<button type="button" style="color: black;">글쓰기</button></a>
+						<button class="btn btn-primary" id="btnshowinsert"
+		class="btn btn-primary">글쓰기</button></a>
 					</c:if>
 				</ul>
 				
@@ -227,7 +228,8 @@ ${board.b_no}
 				<option value="3">제목 + 내용</option>
 			</select> <input type="text" name="searchKeyword" placeholder="검색어 입력"
 				required /> 
-				<input type="submit" value="검색" />
+				<button type="submit" class="btn btn-primary" id="btnshowinsert"
+		class="btn btn-primary">검색</button>
 				<input type="hidden" name="urlNo" value="${urlNo}"/>
 					<input type="hidden" name="page" id="page"
 			value="${pageMaker.criteria.page}" /> <input type="hidden"
