@@ -62,7 +62,10 @@ body {
 
 	<div class="container text-center">
 		<h1>${board.b_title}</h1>
-
+		<div id="quillContents"></div>
+		<button id="backList">목록</button>
+		<button id="boardUp">up ${board.b_up}</button>
+		<button id="boardDown">down ${board.b_down}</button>
 		<c:if test="${loginId eq board.b_id}">
 			<button class="btn btn-primary" id="update" style="margin-left: 800px;">수정</button>
 			<button class="btn btn-primary" id="delete">삭제</button>
@@ -78,6 +81,7 @@ body {
 		<form action="#"></form>
 
 		<br> <br> <br> <br>
+		
 			<div>
 				<button class="btn btn-primary" 
 		 id="prevBoard">이전 글</button>
@@ -98,10 +102,17 @@ body {
 
 		<form action="#">
 		</form>
-		<div id="quillContents" style="border: 1px solid black;"></div>
+		<div id="quillContents" style="border: 1px solid black; "></div>
 		<br />
 		
 		
+		<br><br>
+		<div id="replyTesk">
+			<hr>
+		</div>
+		<br><br>
+		<textarea rows="3" cols="50" id="replyCibtent" ></textarea>
+		<button id="insertReply">댓글 입력</button>
 		<br><br><br><br>
 		<button class="btn btn-primary">댓글 입력</button>
 		<button class="btn btn-primary">댓글 up</button>
@@ -112,6 +123,8 @@ body {
 	<br />
 
 	<script type="text/javascript">
+	
+//quill 을 가져옴
 var options = {
 		  debug: 'info',
 		  readOnly: true,
@@ -119,10 +132,74 @@ var options = {
 		};
 var editor= new Quill('#quillContents', options);
 
+//TODO 리뎃글 불러오기   style ='display: inline-block;' 인라인을 블럭으로 바꾸기  div 용
+function getReReply(r_no){
+	
+	$.getJSON('/pumpkinplace/reply/selectAll2?b_no='+r_no,function (data) {
+		
+		var stringfiled = '#rereplyfiled'+r_no;
+		$(data).each(function (){
+			var list='';
+			console.log(this.r_no);
+			var date = new Date(this.r_regdate)
+			var dateString = date.toLocaleDateString() + ' ' +date.toLocaleTimeString();
+			list+= 
+				"<tr><td>"+this.r_id+"</td><td>"+this.r_content+"</td><td>"+dateString+
+				"</td><td><div><input type='hidden' id='r_no' value="+this.r_no+" readonly/>";
+				if("${loginId}"===this.r_id){
+					list+="<button id='updateReReply'>수정</button><button id='deleteReply'>삭제</button></div></td></tr>"
+				}else{
+					list+="</div></td></tr>";
+				}
+			$('#replyTesk').append(list);
+		});
+		//$(stringfiled).html(list);
+		//console.log(stringfiled);
+		//console.log(list);
+});
+}
+//리플을 가져오는 펑션
+function getReply(){ 
+	$.getJSON('/pumpkinplace/reply/selectAll1?b_no='+${board.b_no},function (data) {
+		$('#replyTesk').html('');
+		$(data).each(function (){
+			var list='';
+			console.log(this.r_no);
+			var date = new Date(this.r_regdate)
+			var dateString = date.toLocaleDateString() + ' ' +date.toLocaleTimeString();
+			list+= 
+				"<tr><td>"+this.r_id+"</td><td>"+this.r_content+"</td><td>"+dateString+
+				"</td><td><div><input type='hidden' id='r_no' value="+this.r_no+" readonly/><div style ='display: inline-block;' id='insertReplyPaddiv'>";
+				if("${loginId}"===this.r_id){
+					list+="<button id='updateReply'>수정</button><button id='deleteReply'>삭제</button><div id='stringfiled' style ='display: inline-block;'><div id='rereplyBtndiv' style ='display: inline-block;'><button id='rereplyBtn'>답글보기</button></div></div></td></tr>"
+				}else{
+					list+="<div id='stringfiled' style ='display: inline-block;'><button id='rereplyBtn'>답글보기</button></div></div></td></tr>";
+				}
+					//list+="</br><div id='rereplyfiled"+this.r_no+"'></div>";
+				
+					
+					$('#replyTesk').append(list);
+			
+		});
+		
+	});	
+}
 
 $(document).ready(function () {
+	
+	
 	editor.updateContents(${board.getB_content()});
+	var replyPad = true;
 	var updownBoolean = true;
+	var loginId = "${loginId}";
+	if(loginId===""){
+		var loginStatus = false;
+		console.log("로그인안됨");
+	}else{
+		var loginStatus = true;
+		console.log("로그인됨");
+	}
+	getReply();
 	
 	$("#update").click(function(){
 		location.href='/pumpkinplace/board/update?&b_no=' +  ${board.b_no};
@@ -139,7 +216,7 @@ $(document).ready(function () {
 		location.href='/pumpkinplace/board/list?urlNo=' +  ${board.b_section};
 	});
 	$("#boardUp").click(function(){//up
-		if(updownBoolean==true){
+		if(updownBoolean==true&&loginStatus){
 			updownBoolean=false;
 			alert("해당 게시물을 추천하였습니다");
 
@@ -158,18 +235,21 @@ $(document).ready(function () {
 				$("#boardDown").text("down "+result.b_down);
 			} 
 			});
-		}else{
-			alert("이미 추천 비추천을 하셧습니다 씨발");
-		}
+		}else if(loginStatus==false){
+			alert("씨발 로그인해 ");
+			}	
+			else{
+			alert("이미 추천 비추천을 하셧습니다");
+			}
 	});
 	
-	$("#boardDown").click(function(){//up
+	$("#boardDown").click(function(){//u
 		if(updownBoolean==true){
 			updownBoolean=false;
 			alert("해당 게시물을 비추천하였습니다. 이런...");
 		$.ajax({
 			type : 'get',
-			url : '/pumpkinplace/board/pulsDown?',
+			url : '/pumpkinplace/board/pulsDown',
 			headers : {
 				'Content-Type' : 'application/json',
 				'X-HTTP-Method-Override' : 'get'
@@ -185,6 +265,115 @@ $(document).ready(function () {
 		}else{
 			alert("이미 추천 비추천을 하셧습니다 씨발");
 		}
+	});
+	$('#delete').click(function () {
+		var qqqq = confirm("글을 삭제 하시겠습니까?");
+		
+		if(qqqq){
+			console.log("${board.b_section}");
+			location.href='/pumpkinplace/board/delete?b_no='+${board.b_no}+'&urlNo='+${board.b_section};
+		}else{
+			
+		}
+	});
+	$('#insertReply').click(function(){
+
+		if(loginId != ""){
+			var rcontent = $('#replyCibtent').val();
+			$.ajax({
+				type : 'get',
+				url : '/pumpkinplace/reply/insert',
+				headers : {
+					'Content-Type' : 'application/json',
+					'X-HTTP-Method-Override' : 'get'
+				},//요청해더
+				data : {'b_no': ${board.b_no},
+						'r_section': 1,
+						'r_content': $(replyCibtent).val() ,
+						'r_id':	"${loginId}"
+				}, //서버로 보낼 JSON 객체문자열
+				success : function(result) {
+					$('#replyCibtent').val('');
+					getReply();
+				}});
+		}else{
+			alert("씨발 로그인해 ");
+		}
+	});
+	$('#replyTesk').on('click', 'td div #insertReplyPad', function () {
+		if(replyPad){
+			replyPad =false;
+		var list = '<br><textarea rows="3" cols="50" id="rereplyCibtent" ></textarea><br><button id="insertreReply">답글 입력</button><button id = "closePad">닫기</button>';
+		$(this).parent().parent().append(list);
+		}else{
+			replyPad =true;
+			getReply();
+		}
+	});
+	$('#replyTesk').on('click', 'td div #insertreReply', function () {
+		replyPad =true;
+		if(loginId != ""){
+			var r_no = $(this).parent().parent().parent().prevAll('#r_no').val();
+			var rcontent = $('#rereplyCibtent').val();
+			console.log(r_no);
+			console.log(rcontent);
+			$.ajax({
+				type : 'get',
+				url : '/pumpkinplace/reply/insert',
+				headers : {
+					'Content-Type' : 'application/json',
+					'X-HTTP-Method-Override' : 'get'
+				},//요청해더
+				data : {'b_no': r_no,
+						'r_section': 2,
+						'r_content': $(rereplyCibtent).val() ,
+						'r_id':	"${loginId}"
+				}, //서버로 보낼 JSON 객체문자열
+				success : function(result) {
+					getReply();
+				}});
+		}else{
+			alert("씨발 로그인해 ");
+		}
+	});
+	
+	$('#replyTesk').on('click', 'td div #rereplyBtn', function () {
+		var parent = $(this).parent();
+		var r_no = $(this).parent().parent().parent().prevAll('#r_no').val();
+		console.log(r_no);
+		
+		parent.empty();
+		parent.append("<button id='closeRereply'>닫기</button>");
+		$.getJSON('/pumpkinplace/reply/selectAll2?b_no='+r_no,function (data) {
+			
+			var stringfiled = '#rereplyfiled'+r_no;
+			$(data).each(function (){
+				var list='';
+				console.log(this.r_no);
+				var date = new Date(this.r_regdate)
+				var dateString = date.toLocaleDateString() + ' ' +date.toLocaleTimeString();
+				list+= 
+					"<tr><td>"+this.r_id+"</td><td>"+this.r_content+"</td><td>"+dateString+
+					"</td><td><div><input type='hidden' id='r_no' value="+this.r_no+" readonly/>";
+					if("${loginId}"===this.r_id){
+						list+="<button id='updateReReply'>수정</button><button id='deleteReply'>삭제</button></div></td></tr>"
+					}else{
+						list+="</div></td></tr>";
+					}
+					parent.append(list);
+					
+			});
+			parent.append('<br><textarea rows="3" cols="50" id="rereplyCibtent" ></textarea><br><button id="insertreReply">답글 입력</button><button id = "closePad">닫기</button>');
+	});
+	});
+	
+	$('#replyTesk').on('click', 'td div #closePad', function () {
+		
+	});
+	$('#replyTesk').on('click', 'td div #closeRereply', function () {
+		var parent = $(this).parent()
+		parent.empty();
+		parent.append("<button id='rereplyBtn'>답글보기</button>");
 	});
 	
 	$('#prevBoard').click(function () {
@@ -239,15 +428,6 @@ $(document).ready(function () {
 
 
 
-/*$('#update').click(function () {
-	event.preventDefault();
-	var fb = $('#send-update');
-	fb.attr('action', '/pumpkinplace/board/update');
-	fb.attr('method', 'get');
-	fb.submit();
-	
-	
-});*/
 
 </script>
 

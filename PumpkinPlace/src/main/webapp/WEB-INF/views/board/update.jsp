@@ -138,6 +138,7 @@ body {
 				if (result) {
 				var contents = quillContents.getContents();
 				var jsonContents =JSON.stringify(contents);
+				console.log(jsonContents);
 				$.ajax({
 					type : 'post',
 					url : '/pumpkinplace/board/update',
@@ -145,6 +146,10 @@ body {
 						'Content-Type' : 'application/json',
 						'X-HTTP-Method-Override' : 'post'
 					},//요청해더
+					data :JSON.stringify(//오브 잭트를 문자열로 변환
+						{'b_no':${board.b_no},
+						'b_content': jsonContents}
+					), //서버로 보낼 JSON 객체문자열
 					data : JSON.stringify({//오브 잭트를 문자열로 변환
 
 					}), //서버로 보낼 JSON 객체문자열

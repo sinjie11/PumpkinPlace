@@ -1,9 +1,6 @@
 package com.error404.pumpkinplace.controller;
 
 import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -103,6 +99,30 @@ public class BoardController {
 	public void detail(@ModelAttribute("criteria") PaginationCriteria criteria, int  b_no, Model model) {
 		Board board = boardService.readDetail(b_no);
 		model.addAttribute("board", board);
+	} 
+	
+	
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	public void update(
+			@ModelAttribute("criteria") PaginationCriteria criteria,
+			int b_no ,Model model) {
+			Board board = boardService.readByBno(b_no);
+			model.addAttribute("board",board);
+	}
+	
+	@RequestMapping(value="/update" ,method = RequestMethod.POST)
+	public void update(@RequestBody Board board) {
+			System.out.println("******" + board.getB_content());
+			boardService.update(board);
+			
+	}
+	
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public String delete(int b_no,int urlNo) {//TODO 딜리드 애이작스로 다시 안보내줌 왜 안보내주는거냐 씹새끼야 
+		System.out.println("/pumpkinplace/board/list?urlNo="+urlNo);
+		boardService.delete(b_no);
+		return "redirect:list?urlNo="+urlNo ;
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
@@ -208,24 +228,19 @@ public class BoardController {
 		ResponseEntity<Integer> entity = new ResponseEntity<Integer>(result, HttpStatus.OK);
 		return entity;
 	}
-
-	@RequestMapping(value = "/testdetail", method = RequestMethod.GET)
-	public void testdetail(int bno, Model model) {
-		Board board = boardService.readDetail(bno);
-		model.addAttribute("board", board);
-	}// 테스트용 컨트롤러 지워도됨
-
-	@RequestMapping(value = "/pulsUp")
-	public ResponseEntity<Board> pulsUp(int b_no) {// 좋아요
+	
+	@RequestMapping(value="/pulsUp")
+	public ResponseEntity<Board> pulsUp(int b_no ) {//좋아요
 		Board result = boardService.upPuls1(b_no);
-		ResponseEntity<Board> entity = new ResponseEntity<Board>(result, HttpStatus.OK);
+		ResponseEntity<Board> entity = 
+				new ResponseEntity<Board>(result,HttpStatus.OK);
 		return entity;
 	}
-
-	@RequestMapping(value = "/pulsDown")
-	public ResponseEntity<Board> pulsDowm(int b_no) {// 싫어요
+	@RequestMapping(value="/pulsDown")
+	public ResponseEntity<Board> pulsDowm(int b_no) {//싫어요
 		Board result = boardService.downPuls1(b_no);
-		ResponseEntity<Board> entity = new ResponseEntity<Board>(result, HttpStatus.OK);
+		ResponseEntity<Board> entity = 
+				new ResponseEntity<Board>(result,HttpStatus.OK);
 		return entity;
 	}
 	
