@@ -22,7 +22,7 @@
 	</p>
 
 	<br />
-	<img id="blah" src="${pageContext.request.contextPath}/resources/assets/img/showboard/imagesprepare.png" alt="" width="570px;" height="796px;" />
+	<img id="blah" src="${pageContext.request.contextPath}/resources/assets/img/showboard/imageprepare.png" alt="" width="570px;" height="796px;" />
 	<br />
 	<br />
 

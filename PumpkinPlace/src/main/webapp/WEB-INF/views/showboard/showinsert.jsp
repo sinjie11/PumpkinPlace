@@ -154,18 +154,22 @@ body {
 	  //console.log('파일데이터' + $('#txtName2').val());
 	  console.log('파일명' + $('#txtName1').val());
 	  console.log('파일데이터' + $('#txtName2').val());
-		  
-          
-        	  console.log('파일명' + $('#txtName1').val());
-        	  $('#blah').attr('src', "${pageContext.request.contextPath}/resources/assets/img/showboard/"+$('#txtName1').val());
-          
-  }
+  }  
   </script>
+  
+          
+ 
+ 
 									<p>
 										<small>공연을 위한 포스터를 업로드해주세요. 그렇지 않을 경우 대체 이미지가 사용됩니다.</small>
 									</p>
-
-									<br /> <img id="blah" src="${pageContext.request.contextPath}/resources/assets/img/showboard/imagesprepare.png" alt="" width="570px;"
+ <script>
+	  $( "p" ).mouseup(function() {
+		  console.log('마우스오버' + $('#txtName1').val());
+		  $("#blah").attr('src', $('#txtName2').val());
+		});
+	  </script> 
+									<br /> <img id="blah" src="${pageContext.request.contextPath}/resources/assets/img/showboard/imageprepare.png" alt="" width="570px;"
 										height="796px;" /> <br /> <br />
 
 									<!-- 사진 미리보기 -->
@@ -206,6 +210,12 @@ body {
                                  console.log('youtube :' + youtube);
                               });
                            </script>
+                            <script>
+	  $( "label" ).mouseup(function() {
+		  console.log('마우스업' + $('#youtube').val());
+		  $("#ytubeid").attr('src', "https://www.youtube.com/embed/" + $('#youtube').val());
+		});
+	  </script> 
 								<div style="width: 570px; margin-left: 25%;">
 									<iframe width="560" height="315" id="ytubeid"
 										src="https://www.youtube.com/embed/KzK6XQMMLrk"
@@ -441,7 +451,7 @@ body {
 	var sb_price = $('#event_door_price').val();
 	var sb_tel = $('#event_contact').val();
 	var sb_locinfo = $('#pac-input').val();
-	var sb_img = $('#imgInp').val();
+	var sb_img = $('#txtName1').val();
 	var sb_video = $('#youtube').val(); 
 	var startdate = $('#startdate').val();
 	var starttime = $('#starttime').val();
