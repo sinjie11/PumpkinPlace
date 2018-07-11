@@ -137,9 +137,9 @@ body {
 								<div style="font-size: 15px; margin-left: 25%;">
 
 									<b>공연 포스터</b>
-								<input type='file' id="imgInp" /> 
-									<input type="text" id="txtName1" value="${showboard.sb_img}" />
-									<input type="text" id="txtName2"  />
+							
+									<input type="text" id="txtName1" value="${showboard.sb_img}"  hidden=""/>
+									<input type="text" id="txtName2" hidden=""  />
 									
 									<input type="button" value="파일 업로드" onclick="showPopup();" />
 									
@@ -221,7 +221,7 @@ body {
 	  </script> 
 								<div style="width: 570px; margin-left: 25%;">
 									<iframe width="560" height="315" id="ytubeid"
-										src="https://www.youtube.com/embed/KzK6XQMMLrk"
+										src="https://www.youtube.com/embed/"
 										frameborder="0" allow="autoplay; encrypted-media"
 										allowfullscreen></iframe>
 								</div>
@@ -270,17 +270,17 @@ body {
 										<fmt:formatDate value="${showboard.sb_startdate}"
 											pattern="yyyy.MM.dd" var="startdate" /> <input type="text"
 										id="startdate" placeholder="공연 시작 날짜 선택" required
-										value="${startdate}" /> <!-- 시작시간 --> <fmt:formatDate
+										value="${startdate}"size="13" /> <!-- 시작시간 --> <fmt:formatDate
 											value="${showboard.sb_startdate}" pattern="HH:mm"
 											var="starttime" /> <input placeholder="시간 입력" id="starttime"
-										size="10" value="${starttime}" required /> <!-- 종료날짜 --> <fmt:formatDate
+										size="9" value="${starttime}" required /> <!-- 종료날짜 --> <fmt:formatDate
 											value="${showboard.sb_enddate}" pattern="yyyy.MM.dd"
 											var="enddate" /> <fmt:formatDate
 											value="${showboard.sb_startdate}" pattern="HH:mm"
 											var="endtime" /> ~ <input type="text" id="enddate"
-										placeholder="공연 종료 날짜 선택" required value="${ enddate}" /> <input
+										placeholder="공연 종료 날짜 선택" required value="${ enddate}" size="13"/> <input
 										type="text" placeholder="시간 입력" id="endtime" required
-										size="10" maxlength="5" value="${endtime }">
+										size="9" maxlength="5" value="${endtime}">
 									</label>
 								</div>
 								<br />
