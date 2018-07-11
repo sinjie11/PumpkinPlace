@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>공연 등록</title>
+<title>Pumk</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -132,63 +132,74 @@ body {
 							<div class="col align-self-end" style="margin-left: 5%;">
 								<div style="font-size: 15px; margin-left: 25%;">
 
-									<b>공연 포스터</b> 
-									
-									<input type='file' id="imgInp" /> 
-									<input type="text" id="txtName1"  />
-									<input type="text" id="txtName2"  />
-									
+									<b>공연 포스터</b>  <input
+										type="text" id="txtName1" hidden="" /> <input type="text" id="txtName2" hidden=""/>
 									<input type="button" value="파일 업로드" onclick="showPopup();" />
-									
-								
-									
- <script>
- var imageupload;
- 
-  function showPopup() { 
-	  imageupload = window.open('imageupload', 'imageupload', 'width=700, height=950, left= 100, top=20');
-	  imageupload.focus();
-	  var fileimagename = $('#txtName1').val();
-	  var fileimagedata = $('#txtName2').val();
-	  //console.log('파일명' + $('#txtName1').val());
-	  //console.log('파일데이터' + $('#txtName2').val());
-	  console.log('파일명' + $('#txtName1').val());
-	  console.log('파일데이터' + $('#txtName2').val());
-		  
-          
-        	  console.log('파일명' + $('#txtName1').val());
-        	  $('#blah').attr('src', "${pageContext.request.contextPath}/resources/assets/img/showboard/"+$('#txtName1').val());
-          
-  }
-  </script>
+
+									<script>
+										var imageupload;
+
+										function showPopup() {
+											imageupload = window
+													.open('imageupload',
+															'imageupload',
+															'width=700, height=950, left= 100, top=20');
+											imageupload.focus();
+											var fileimagename = $('#txtName1')
+													.val();
+											var fileimagedata = $('#txtName2')
+													.val();
+											//console.log('파일명' + $('#txtName1').val());
+											//console.log('파일데이터' + $('#txtName2').val());
+											console.log('파일명'
+													+ $('#txtName1').val());
+											console.log('파일데이터'
+													+ $('#txtName2').val());
+										}
+									</script>
+
 									<p>
 										<small>공연을 위한 포스터를 업로드해주세요. 그렇지 않을 경우 대체 이미지가 사용됩니다.</small>
 									</p>
-
-									<br /> <img id="blah" src="${pageContext.request.contextPath}/resources/assets/img/showboard/imagesprepare.png" alt="" width="570px;"
-										height="796px;" /> <br /> <br />
+									<script>
+										$("p").mouseup(
+												function() {
+													console.log('마우스오버'
+															+ $('#txtName1')
+																	.val());
+													$("#blah").attr(
+															'src',
+															$('#txtName2')
+																	.val());
+												});
+									</script>
+									<br /> <img id="blah"
+										src="${pageContext.request.contextPath}/resources/assets/img/showboard/imageprepare.png"
+										alt="" width="570px;" height="796px;" /> <br /> <br />
 
 									<!-- 사진 미리보기 -->
-		<script type="text/javascript">
-        $(function() {
-            $("#imgInp").on('change', function(){
-                readURL(this);
-            });
-        });
+									<script type="text/javascript">
+										$(function() {
+											$("#imgInp").on('change',
+													function() {
+														readURL(this);
+													});
+										});
 
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-            var reader = new FileReader();
+										function readURL(input) {
+											if (input.files && input.files[0]) {
+												var reader = new FileReader();
 
-            reader.onload = function (e) {
-                    $('#blah').attr('src', e.target.result);
-                }
+												reader.onload = function(e) {
+													$('#blah').attr('src',
+															e.target.result);
+												}
 
-              reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-    </script>
+												reader
+														.readAsDataURL(input.files[0]);
+											}
+										}
+									</script>
 									<!-- end 미리보기 -->
 
 
@@ -200,26 +211,43 @@ body {
 									</label> <br /> <br />
 								</div>
 								<script>
-                              $(document).ready(function (){
-                                 var youtube = $('#youtube').val();
-                                 var youtube = $('#sb_video').val();
-                                 console.log('youtube :' + youtube);
-                              });
-                           </script>
+									$(document).ready(function() {
+										var youtube = $('#youtube').val();
+										var youtube = $('#sb_video').val();
+										console.log('youtube :' + youtube);
+									});
+								</script>
+								<script>
+									$("label")
+											.mouseup(
+													function() {
+														console.log('마우스업'
+																+ $('#youtube')
+																		.val());
+														$("#ytubeid")
+																.attr(
+																		'src',
+																		"https://www.youtube.com/embed/"
+																				+ $(
+																						'#youtube')
+																						.val());
+													});
+								</script>
 								<div style="width: 570px; margin-left: 25%;">
 									<iframe width="560" height="315" id="ytubeid"
-										src="https://www.youtube.com/embed/KzK6XQMMLrk"
-										frameborder="0" allow="autoplay; encrypted-media"
-										allowfullscreen></iframe>
+										src="https://www.youtube.com/embed/" frameborder="0"
+										allow="autoplay; encrypted-media" allowfullscreen></iframe>
 								</div>
 								<script>
-                              
-                     jQuery(document).ready(
-                           function($) {
-                              $('iframe[src^="https://www.youtube.com/"]').wrap(
-                              '<div class="youtubeWrap"></div>');
-                           });
-                        </script>
+									jQuery(document)
+											.ready(
+													function($) {
+														$(
+																'iframe[src^="https://www.youtube.com/"]')
+																.wrap(
+																		'<div class="youtubeWrap"></div>');
+													});
+								</script>
 
 							</div>
 						</div>
@@ -240,11 +268,13 @@ body {
 								<!-- 뮤지션이름 -->
 								<div id="en_bands">
 									<p>
-										<label for="event_공연하는 밴드:">작성자  : <input
+										<label for="event_공연하는 밴드:">  작성자 : <input
 											id="event_band_tokens" name="sb_nm" type="text"
-											style="text-align: center; width: 200px;" readonly value="${loginId}" /></label>
+											style="text-align: center; width: 200px;" readonly
+											value="${loginId}" /></label>
 									</p>
 								</div>
+
 
 								<div id="en_daytime">
 									<label for="event_공연 날짜">공연 날짜 / 시간:<br /> <input
@@ -261,22 +291,22 @@ body {
 
 								<script>
 									$(function() {
-  $("#startdate, #enddate").datepicker({
-    dateFormat : 'yy/mm/dd'
-  });
-	 $("#starttime, #endtime").timepicker({
-	        timeFormat: 'HH:mm ',
-	        interval: 30,
-	        minTime: '00:00',
-	        maxTime: '23:00',
-	        defaultTime: '19',
-	        startTime: '00:00',
-	        dynamic: false,
-	        dropdown: true,
-	        scrollbar: true
-	    });
+										$("#startdate, #enddate").datepicker({
+											dateFormat : 'yy.mm.dd'
+										});
+										$("#starttime, #endtime").timepicker({
+											timeFormat : 'HH:mm',
+											interval : 30,
+											minTime : '00:00',
+											maxTime : '23:00',
+											defaultTime : '19',
+											startTime : '00:00',
+											dynamic : false,
+											dropdown : true,
+											scrollbar : true
+										});
 									});
-                  </script>
+								</script>
 
 
 								<!-- 지역 -->
@@ -313,75 +343,107 @@ body {
 
 
 									<script>
-										 var sb_placeid = null;
-											function initMap() {
-										        var map = new google.maps.Map(document.getElementById('map'), {
-										          center: {lat: 37.498145, lng: 127.027612},
-										          
-										      
-										          zoom: 16
-										        });
+										var sb_placeid = null;
+										function initMap() {
+											var map = new google.maps.Map(
+													document
+															.getElementById('map'),
+													{
+														center : {
+															lat : 37.498145,
+															lng : 127.027612
+														},
 
-										        var input = document.getElementById('pac-input');
+														zoom : 16
+													});
 
-										        var autocomplete = new google.maps.places.Autocomplete(
-										            input, {placeIdOnly: true});
-										        autocomplete.bindTo('bounds', map);
+											var input = document
+													.getElementById('pac-input');
 
-										        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+											var autocomplete = new google.maps.places.Autocomplete(
+													input, {
+														placeIdOnly : true
+													});
+											autocomplete.bindTo('bounds', map);
 
-										        var infowindow = new google.maps.InfoWindow();
-										        var infowindowContent = document.getElementById('infowindow-content');
-										        infowindow.setContent(infowindowContent);
-										        var geocoder = new google.maps.Geocoder;
-										        var marker = new google.maps.Marker({
-										          map: map
-										        });
-										        marker.addListener('click', function() {
-										          infowindow.open(map, marker);
-										        });
+											map.controls[google.maps.ControlPosition.TOP_LEFT]
+													.push(input);
 
-										        autocomplete.addListener('place_changed', function() {
-										          infowindow.close();
-										          var place = autocomplete.getPlace();
+											var infowindow = new google.maps.InfoWindow();
+											var infowindowContent = document
+													.getElementById('infowindow-content');
+											infowindow
+													.setContent(infowindowContent);
+											var geocoder = new google.maps.Geocoder;
+											var marker = new google.maps.Marker(
+													{
+														map : map
+													});
+											marker.addListener('click',
+													function() {
+														infowindow.open(map,
+																marker);
+													});
 
-										          if (!place.place_id) {
-										            return;
-										          }
-										          
-										          sb_placeid = place.place_id;
-										          console.log('placeId :' + place.place_id);
-										          console.log('sb_placeid :' + sb_placeid);
-										          geocoder.geocode({'placeId': place.place_id}, function(results, status) {
-										        	  
-										        	  
+											autocomplete
+													.addListener(
+															'place_changed',
+															function() {
+																infowindow
+																		.close();
+																var place = autocomplete
+																		.getPlace();
 
-										            if (status !== 'OK') {
-										              window.alert('Geocoder failed due to: ' + status);
-										              return;
-										            }
-										            map.setZoom(16);
-										            map.setCenter(results[0].geometry.location);
-										            // Set the position of the marker using the place ID and location.
-										            marker.setPlace({
-										              placeId: place.place_id,
-										              location: results[0].geometry.location
-										            });
-										            marker.setVisible(true);
-										            infowindowContent.children['place-name'].textContent = place.name;
-										            infowindowContent.children['place-id'].textContent = place.place_id;
-										            infowindowContent.children['place-address'].textContent =
-										                results[0].formatted_address;
-										            
-										            
-										            
-										            
-										            infowindow.open(map, marker);
-										          });
-										        });
-										      }
-      
-    </script>
+																if (!place.place_id) {
+																	return;
+																}
+
+																sb_placeid = place.place_id;
+																console
+																		.log('placeId :'
+																				+ place.place_id);
+																console
+																		.log('sb_placeid :'
+																				+ sb_placeid);
+																geocoder
+																		.geocode(
+																				{
+																					'placeId' : place.place_id
+																				},
+																				function(
+																						results,
+																						status) {
+
+																					if (status !== 'OK') {
+																						window
+																								.alert('Geocoder failed due to: '
+																										+ status);
+																						return;
+																					}
+																					map
+																							.setZoom(16);
+																					map
+																							.setCenter(results[0].geometry.location);
+																					// Set the position of the marker using the place ID and location.
+																					marker
+																							.setPlace({
+																								placeId : place.place_id,
+																								location : results[0].geometry.location
+																							});
+																					marker
+																							.setVisible(true);
+																					infowindowContent.children['place-name'].textContent = place.name;
+																					infowindowContent.children['place-id'].textContent = place.place_id;
+																					infowindowContent.children['place-address'].textContent = results[0].formatted_address;
+
+																					infowindow
+																							.open(
+																									map,
+																									marker);
+																				});
+															});
+										}
+									</script>
 									<script async defer
 										src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLOpelo4l6yKdCApN_d5uUehocuiw7Uuk&libraries=places&callback=initMap"></script>
 								</div>
@@ -426,83 +488,78 @@ body {
 	<!-- <input  class="btn btn-primary"
 			name="uploadFile" type="submit" value="등록"
 			style="margin-bottom: 50px; margin-left: 50%;" /> -->
-			
-	<br />
-	<br />
-	<button type="button" class="btn btn-primary" id="btnshowinsert" style="margin-left: 50%;">등록</button>
-	<button type="button" class="btn btn-primary" onclick="history.back()">취소</button>
+
+	<button type="button" class="btn btn-primary" id="btnshowinsert"
+		class="btn btn-primary" style="margin-bottom: 50px; margin-left: 50%;">등록</button>
 
 	<script>
-	
-	
-	$('#btnshowinsert').click(function () {
- 	var sb_nm = $('#event_band_tokens').val();
-	var sb_title = $('#show_name').val();
-	var sb_content = $('#showinserttext').val();
-	var sb_city = $('#country').val();
-	var sb_price = $('#event_door_price').val();
-	var sb_tel = $('#event_contact').val();
-	var sb_locinfo = $('#pac-input').val();
-	var sb_img = $('#imgInp').val();
-	var sb_video = $('#youtube').val(); 
-	var startdate = $('#startdate').val();
-	var starttime = $('#starttime').val();
-	var enddate = $('#enddate').val();
-	var endtime = $('#endtime').val();
-	var startdatetime = startdate + ' ' + starttime;
-	var sb_startdate = new Date(startdatetime);
-	var enddatetime = enddate + ' ' + endtime;
-	var sb_enddate = new Date(enddatetime);
+		$('#btnshowinsert').click(function() {
+			var sb_nm = $('#event_band_tokens').val();
+			var sb_title = $('#show_name').val();
+			var sb_content = $('#showinserttext').val();
+			var sb_city = $('#country').val();
+			var sb_price = $('#event_door_price').val();
+			var sb_tel = $('#event_contact').val();
+			var sb_locinfo = $('#pac-input').val();
+			var sb_img = $('#txtName1').val();
+			var sb_video = $('#youtube').val();
+			var startdate = $('#startdate').val();
+			var starttime = $('#starttime').val();
+			var enddate = $('#enddate').val();
+			var endtime = $('#endtime').val();
+			var startdatetime = startdate + ' ' + starttime;
+			var sb_startdate = new Date(startdatetime);
+			var enddatetime = enddate + ' ' + endtime;
+			var sb_enddate = new Date(enddatetime);
 
-	console.log('sb_nm :' + sb_nm);
-	console.log('sb_title :' + sb_title);
-	console.log('sb_content :' + sb_content);
-	console.log('sb_city :' + sb_city);
-	console.log('sb_price :' + sb_price);
-	console.log('sb_tel :' + sb_tel);
-	console.log('sb_locinfo :' + sb_locinfo);
-	console.log('sb_img :' + sb_img);
-	console.log('sb_video :' + sb_video);
-	console.log('startdate :' + startdate);
-	console.log('starttime :' + starttime);
-	console.log('enddate :' + enddate);
-	console.log('endtime :' + endtime);
-	console.log('startdatetime :' + startdatetime);
-	console.log('enddatetime :' + enddatetime);
-	console.log('sb_startdate :' + sb_startdate);
-	console.log('sb_enddate :' + sb_enddate);
-	console.log('sb_placeId :' + sb_placeid);	
-	
-	
-	$.ajax({
-		type: 'post',
-		url: '/pumpkinplace/showboard/showinsert/',
-		headers: {
-			'Content-Type': 'application/json',
-			'X-HTTP-Method-Override' : 'post'
-		},
-		data: JSON.stringify({
-			'sb_nm': sb_nm,
-			'sb_title': sb_title,
-			'sb_content': sb_content,
-			'sb_city': sb_city,
-			'sb_price': sb_price,
-			'sb_tel': sb_tel,
-			'sb_locinfo': sb_locinfo,
-			'sb_img': sb_img,
-			'sb_video': sb_video,
-			'sb_startdate': sb_startdate,
-			'sb_enddate': sb_enddate,
-			'sb_placeid' : sb_placeid
-		}),
-		success: function (result){
-				alert(sb_nm + '님 공연 등록 성공');
-				location = '/pumpkinplace/showboard/showboardmain';
-			}
-		
+			console.log('sb_nm :' + sb_nm);
+			console.log('sb_title :' + sb_title);
+			console.log('sb_content :' + sb_content);
+			console.log('sb_city :' + sb_city);
+			console.log('sb_price :' + sb_price);
+			console.log('sb_tel :' + sb_tel);
+			console.log('sb_locinfo :' + sb_locinfo);
+			console.log('sb_img :' + sb_img);
+			console.log('sb_video :' + sb_video);
+			console.log('startdate :' + startdate);
+			console.log('starttime :' + starttime);
+			console.log('enddate :' + enddate);
+			console.log('endtime :' + endtime);
+			console.log('startdatetime :' + startdatetime);
+			console.log('enddatetime :' + enddatetime);
+			console.log('sb_startdate :' + sb_startdate);
+			console.log('sb_enddate :' + sb_enddate);
+			console.log('sb_placeId :' + sb_placeid);
+
+			$.ajax({
+				type : 'post',
+				url : '/pumpkinplace/showboard/showinsert/',
+				headers : {
+					'Content-Type' : 'application/json',
+					'X-HTTP-Method-Override' : 'post'
+				},
+				data : JSON.stringify({
+					'sb_nm' : sb_nm,
+					'sb_title' : sb_title,
+					'sb_content' : sb_content,
+					'sb_city' : sb_city,
+					'sb_price' : sb_price,
+					'sb_tel' : sb_tel,
+					'sb_locinfo' : sb_locinfo,
+					'sb_img' : sb_img,
+					'sb_video' : sb_video,
+					'sb_startdate' : sb_startdate,
+					'sb_enddate' : sb_enddate,
+					'sb_placeid' : sb_placeid
+				}),
+				success : function(result) {
+					alert(sb_nm + '님 공연 등록 성공');
+					location = '/pumpkinplace/showboard/showboardmain';
+				}
+
+			});
 		});
-	});
-</script>
+	</script>
 
 
 </body>

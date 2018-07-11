@@ -165,7 +165,7 @@ public class ShowBoardController {
 	} // end update()
 	
 
-	@RequestMapping(value = "/showboardupdate", method = RequestMethod.POST)
+	@RequestMapping(value = "/showboardupdate", method = RequestMethod.PUT)
 	public  ResponseEntity<Integer> update(
 			@ModelAttribute("criteria") PaginationCriteria criteria,
 		@RequestBody ShowBoard showboard, RedirectAttributes attr) {
