@@ -56,14 +56,14 @@ body {
 </style>
 </head>
 <img alt="이미지"
-				src="${pageContext.request.contextPath}/resources/banner1.png"
-				style="background-color: white; width: 200px; height: 800px; position: relative; display: flex; float: left; margin-left: 20px; margin-top: 50px;"
-				>
-				<img alt="이미지"
-				src="${pageContext.request.contextPath}/resources/banner2.png"
-				style="background-color: white; width: 200px; height: 800px; position: relative; display: flex; float: right; margin-right: 20px; margin-top: 50px;"
-				>
+            src="${pageContext.request.contextPath}/resources/banner1.png"
+            style="background-color: white; width: 200px; height: 800px; position: relative; display: flex; float: left; margin-left: 20px; margin-top: 50px;"
+            >
 				
+				<img alt="이미지"
+            src="${pageContext.request.contextPath}/resources/banner2.png"
+            style="background-color: white; width: 200px; height: 800px; position: relative; display: flex; float: right; margin-right: 20px; margin-top: 50px;"
+            >
 <body>
    <br/>
 
@@ -86,12 +86,13 @@ body {
                   <a href="showboard/showdetail?sb_no=${showboard.sb_no}"><img
                      class="my-image" alt="Bootstrap Image Preview" width="220px;" height="280px;"
                      src="${pageContext.request.contextPath}/resources/assets/img/showboard/${showboard.sb_img}" /></a>
-                  <label href="showboard/showdetail?sb_no=${showboard.sb_no}">
+                  <div >
+                  <a href="showboard/showdetail?sb_no=${showboard.sb_no}"></a>
                      <h4>${showboard.sb_title}</h4>
                         <fmt:formatDate value="${showboard.sb_startdate}"
                            pattern="yyyy.MM.dd" var="startdate" />
                         <p>${showboard.sb_city}/${startdate}</p>
-                  </label>
+                  </div>
                </div>
             </c:forEach>
          </div>
