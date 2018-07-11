@@ -30,7 +30,7 @@ public class GameDaoImple implements GameDao {
 	@Override
 	public int update(Game game) {
 		logger.info("update() 호출");
-		return sqlSession.update(NAMESPACE + ".updatePointAndScore",  game);
+		return sqlSession.update(NAMESPACE + ".updateOrInsertPointAndScore",  game);
 	}
 
 	@Override

@@ -32,7 +32,6 @@ import com.error404.pumpkinplace.domain.Member;
 import com.error404.pumpkinplace.domain.ShowBoard;
 import com.error404.pumpkinplace.pageutil.PageLinkMaker;
 import com.error404.pumpkinplace.pageutil.PaginationCriteria;
-import com.error404.pumpkinplace.service.BoardServiceImple;
 import com.error404.pumpkinplace.service.ShowBoardService;
 import com.error404.pumpkinplace.service.ShowBoardServiceImple;
 

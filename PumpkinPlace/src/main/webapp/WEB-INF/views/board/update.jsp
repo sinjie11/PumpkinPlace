@@ -146,7 +146,8 @@ body {
 						'X-HTTP-Method-Override' : 'post'
 					},//요청해더
 					data : JSON.stringify({//오브 잭트를 문자열로 변환
-
+						'b_no':${board.b_no},
+						'b_content' :jsonContents
 					}), //서버로 보낼 JSON 객체문자열
 					success : function(result) {
 						location = '/pumpkinplace/board/detail?page=1&numsPerPage=10&b_no='+ ${board.b_no} + '&urlNo=' +  ${board.b_section};

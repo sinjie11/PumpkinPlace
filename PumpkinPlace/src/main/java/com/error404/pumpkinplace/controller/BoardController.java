@@ -1,9 +1,6 @@
 package com.error404.pumpkinplace.controller;
 
 import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -103,44 +99,32 @@ public class BoardController {
 	public void detail(@ModelAttribute("criteria") PaginationCriteria criteria, int  b_no, Model model) {
 		Board board = boardService.readDetail(b_no);
 		model.addAttribute("board", board);
-	}
-
+	} 
+	
+	
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
-	public void update( Integer b_no, Integer urlNo, Model model) {
-		Board board = boardService.readByBno(b_no);
-		logger.info("update(b_no :{})", b_no);
-		model.addAttribute("board", board);
-		model.addAttribute("b_no", b_no);
+	public void update(
+			@ModelAttribute("criteria") PaginationCriteria criteria,
+			int b_no ,Model model) {
+			Board board = boardService.readByBno(b_no);
+			model.addAttribute("board",board);
 	}
 	
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String update(Board board, RedirectAttributes attr, Integer urlNo) {
-		logger.info("update(board: {})", board);
-		int result = boardService.update(board);
-		if (result == 1) {
-			attr.addFlashAttribute("updateResult", "success");
-			attr.addFlashAttribute("urlNo", urlNo);
-		}
-		
-		return "redirect:/board/list?urlNo=" + urlNo;
+	@RequestMapping(value="/update" ,method = RequestMethod.POST)
+	public void update(@RequestBody Board board) {
+			System.out.println("******" + board.getB_content());
+			boardService.update(board);
+			
 	}
-		
-
+	
+	
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public String delete(int b_no, RedirectAttributes attr, Integer urlNo) {
-		logger.info("delete(b_no: {})", b_no);
-		logger.info("delete(urlNo: {}) 호출", urlNo);
-
-		int result = boardService.delete(b_no);
-		if (result == 1) {
-			attr.addFlashAttribute("b_no", b_no);
-			attr.addFlashAttribute("urlNo", urlNo);
-			attr.addFlashAttribute("deleteResult", "success");
-
-		}
-
-		return "redirect:/board/list?urlNo=" + urlNo;
+	public String delete(int b_no,int urlNo) {//TODO 딜리드 애이작스로 다시 안보내줌 왜 안보내주는거냐 씹새끼야 
+		System.out.println("/pumpkinplace/board/list?urlNo="+urlNo);
+		boardService.delete(b_no);
+		return "redirect:list?urlNo="+urlNo ;
 	}
+
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public void search( Integer searchType,String searchKeyword, 
@@ -208,24 +192,19 @@ public class BoardController {
 		ResponseEntity<Integer> entity = new ResponseEntity<Integer>(result, HttpStatus.OK);
 		return entity;
 	}
-
-	@RequestMapping(value = "/testdetail", method = RequestMethod.GET)
-	public void testdetail(int bno, Model model) {
-		Board board = boardService.readDetail(bno);
-		model.addAttribute("board", board);
-	}// 테스트용 컨트롤러 지워도됨
-
-	@RequestMapping(value = "/pulsUp")
-	public ResponseEntity<Board> pulsUp(int b_no) {// 좋아요
+	
+	@RequestMapping(value="/pulsUp")
+	public ResponseEntity<Board> pulsUp(int b_no ) {//좋아요
 		Board result = boardService.upPuls1(b_no);
-		ResponseEntity<Board> entity = new ResponseEntity<Board>(result, HttpStatus.OK);
+		ResponseEntity<Board> entity = 
+				new ResponseEntity<Board>(result,HttpStatus.OK);
 		return entity;
 	}
-
-	@RequestMapping(value = "/pulsDown")
-	public ResponseEntity<Board> pulsDowm(int b_no) {// 싫어요
+	@RequestMapping(value="/pulsDown")
+	public ResponseEntity<Board> pulsDowm(int b_no) {//싫어요
 		Board result = boardService.downPuls1(b_no);
-		ResponseEntity<Board> entity = new ResponseEntity<Board>(result, HttpStatus.OK);
+		ResponseEntity<Board> entity = 
+				new ResponseEntity<Board>(result,HttpStatus.OK);
 		return entity;
 	}
 	
@@ -245,8 +224,7 @@ public class BoardController {
 	public ResponseEntity<Integer> NextBoardNo(@RequestBody Board board) {
 		logger.info("----- b_no: {}, b_section: {}", board.getB_no(), board.getB_section());
 		int result = boardService.nextboardNo(board); // 다음 게시글 번호 넘겨줌
-		ResponseEntity<Integer> entity = new ResponseEntity<Integer>(result, HttpStatus.OK);	
-
+		ResponseEntity<Integer> entity = new ResponseEntity<Integer>(result, HttpStatus.OK);
 		return entity;
 	}
 }

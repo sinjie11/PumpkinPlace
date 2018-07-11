@@ -470,6 +470,7 @@
 	
 			//ctx.getImageData(sx, sy, sw, sh)
 			if (run == "main") {
+				init();
 				run = "run";
 			/* console.log("run start1? : " + run); */
 			}
@@ -666,14 +667,13 @@
 						'mem_gamescore' :  scoreText
 					}), 
 					success : function(result) {
-						location = '/pumpkinplace/game/gamepage';
+						location = '/pumpkinplace/game/gamepage/';
 					} 
 				});
 				
 				
 				
 				ctx.clearRect(0, 0, 1440, 2960);
-				init();
 			/* asdasd
 							ctx.drawImage(bg, 0, 0); // Draw BackGround
 							ctx.drawImage(end, 520, 1780);

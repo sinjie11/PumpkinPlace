@@ -412,9 +412,8 @@
 
 		<update id="update"  parameterType="java.util.Map">
 			update ${tbl_board}
-			set ${col_b_title} = #{b_title},
-			${col_b_content} = #{b_content,
-		jdbcType=CLOB},
+			set 
+			${col_b_content} = #{b_content},
 			${col_b_regdate} = sysdate
 			where
 			${col_b_no} = #{b_no}
