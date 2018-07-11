@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Pumk</title>
+<title>공연 등록</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -169,7 +169,7 @@ body {
 										height="796px;" /> <br /> <br />
 
 									<!-- 사진 미리보기 -->
-									<script type="text/javascript">
+		<script type="text/javascript">
         $(function() {
             $("#imgInp").on('change', function(){
                 readURL(this);
@@ -426,9 +426,11 @@ body {
 	<!-- <input  class="btn btn-primary"
 			name="uploadFile" type="submit" value="등록"
 			style="margin-bottom: 50px; margin-left: 50%;" /> -->
-
-	<button type="button" class="btn btn-primary" id="btnshowinsert"
-		class="btn btn-primary" style="margin-bottom: 50px; margin-left: 50%;">등록</button>
+			
+	<br />
+	<br />
+	<button type="button" class="btn btn-primary" id="btnshowinsert" style="margin-left: 50%;">등록</button>
+	<button type="button" class="btn btn-primary" onclick="history.back()">취소</button>
 
 	<script>
 	
