@@ -1,19 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
 
-<form action="imageupload" method="post" 
-    enctype="multipart/form-data" >
-    <input type="file" name="uploadFile" id="imgInp"/>
-    <input type="submit" value="Upload" onclick="sendimage();"/>
-</form>
+	<form action="imageupload" method="post" enctype="multipart/form-data">
+		<input type="file" name="uploadFile" id="imgInp" /> <input
+			type="submit" value="Upload" onclick="sendimage();" />
+	</form>
 
 	<div></div>
 
@@ -22,7 +23,9 @@
 	</p>
 
 	<br />
-	<img id="blah" src="${pageContext.request.contextPath}/resources/assets/img/showboard/imagesprepare.png" alt="" width="570px;" height="796px;" />
+	<img id="blah"
+		src="${pageContext.request.contextPath}/resources/assets/img/showboard/imagesprepare.png"
+		alt="" width="570px;" height="796px;" />
 	<br />
 	<br />
 
@@ -80,6 +83,6 @@
 
     </script>
 	<!-- end 미리보기 -->
-	
+
 </body>
 </html>
