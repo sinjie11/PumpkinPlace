@@ -245,7 +245,8 @@ public class BoardController {
 	public ResponseEntity<Integer> NextBoardNo(@RequestBody Board board) {
 		logger.info("----- b_no: {}, b_section: {}", board.getB_no(), board.getB_section());
 		int result = boardService.nextboardNo(board); // 다음 게시글 번호 넘겨줌
-		ResponseEntity<Integer> entity = new ResponseEntity<Integer>(result, HttpStatus.OK);
+		ResponseEntity<Integer> entity = new ResponseEntity<Integer>(result, HttpStatus.OK);	
+
 		return entity;
 	}
 }

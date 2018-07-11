@@ -9,4 +9,5 @@ public interface GameDao {
 	int update(Game game);
 	List<Game> select();
 	Game selectByNo(int mem_no);
+	int checkNullOfScore(String userid);
 }
