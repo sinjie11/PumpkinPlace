@@ -21,6 +21,7 @@
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <style>
+
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
    margin-bottom: 0;
@@ -54,13 +55,22 @@ body {
 }
 </style>
 </head>
+<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/banner1.png"
+				style="background-color: white; width: 200px; height: 800px; position: relative; display: flex; float: left; margin-left: 20px; margin-top: 50px;"
+				>
+				<img alt="이미지"
+				src="${pageContext.request.contextPath}/resources/banner2.png"
+				style="background-color: white; width: 200px; height: 800px; position: relative; display: flex; float: right; margin-right: 20px; margin-top: 50px;"
+				>
+				
 <body>
    <br/>
 
    <%@ include file="header.jspf"%>
 
 
-   <!-- 가운데 정렬해주는거 -->
+   <!-- 가운데 정렬해주는거 -->		
    <div class="container text-center">
       <h5 style="text-align: left;"><b> 카테고리: 홈 </b></h5>
 
