@@ -205,9 +205,12 @@ td, h5 {
 
 						<br />
 
-
-						<button id="updatebutton" style="size: small; margin-left: 50%;">수정하기</button>
-						<button id = "btnDelete" style="size: small; margin-left: 50%;">삭제하기</button>
+						<c:if test="${loginId eq showboard.sb_nm}">
+						<button class="btn btn-primary" id="updatebutton" 
+						style="size: small; margin-left: 50%; margin-bottom: 10px;">수정하기</button>
+						<button class="btn btn-primary" id = "btnDelete" 
+						style="size: small; margin-left: 50%;">삭제하기</button>
+						</c:if>
 						<script>
 		
 				$("#updatebutton").click(function(){

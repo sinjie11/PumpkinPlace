@@ -240,9 +240,9 @@ body {
 								<!-- 뮤지션이름 -->
 								<div id="en_bands">
 									<p>
-										<label for="event_공연하는 밴드:">뮤지션 명: <input
+										<label for="event_공연하는 밴드:">작성자  : <input
 											id="event_band_tokens" name="sb_nm" type="text"
-											style="text-align: center; width: 200px;" required /></label>
+											style="text-align: center; width: 200px;" readonly value="${loginId}" /></label>
 									</p>
 								</div>
 
