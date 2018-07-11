@@ -327,7 +327,7 @@ body {
 									</p>
 									<script type="text/javascript">
 									
-				$("#country ? option[value='"${showboard.sb_city}"']").attr("selected","true");
+				$
 										
 
 									
@@ -510,7 +510,7 @@ $('#btnshowupdate').click(function () {
 	var sb_price = $('#event_door_price').val();
 	var sb_tel = $('#event_contact').val();
 	var sb_locinfo = $('#pac-input').val();
-	var sb_img = $('#imgInp').val();
+	var sb_img = $('#txtName1').val();
 	var sb_video = $('#youtube').val(); 
 	var startdate = $('#startdate').val();
 	var starttime = $('#starttime').val();
