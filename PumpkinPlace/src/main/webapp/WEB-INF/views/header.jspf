@@ -53,29 +53,36 @@
             
                <!-- 쪽지함 버튼 -->
                <c:if test="${not empty loginId}">
-                  <li style="color: white; font-style:italic;"><a href="/pumpkinplace/message/list">☞ 쪽지함 </a></li>
+                  <li style="color: white; font-style:italic;">
+                  <a href="/pumpkinplace/message/list" class="glyphicon glyphicon-envelope"> 쪽지함 </a>
+                  </li>
                </c:if>
 
                <!-- 로그인 아이디 정보 -->
                <c:if test="${not empty loginId}">
-                  <li style="color: white; font-style:italic; text-decoration: underline;"><a href="/pumpkinplace/member/profile">${loginId}님</a></li>
+                  <li style="color: white; font-style:italic; text-decoration: underline;">
+                  <a href="/pumpkinplace/member/profile">${loginId}님</a>
+                  </li>
                </c:if>
                
                <!-- 로그인 버튼 -->
                <c:if test="${empty loginId}">
                   <li><a href="/pumpkinplace/member/login"><span
-                        class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        class="glyphicon glyphicon-log-in"></span> Login</a>
+                        </li>
                </c:if>
                
                <!-- 로그아웃 버튼 -->
                <c:if test="${not empty loginId}">
-                  <li id="logout"><a href="/pumpkinplace/member/logout"><span
-                        class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                  <li id="logout"><a href="/pumpkinplace/member/logout">
+                  <span class="glyphicon glyphicon-log-in"></span> Logout</a>
+                  </li>
                </c:if>
                
                <!-- 회원가입 버튼 -->
-               <li><a href="/pumpkinplace/member/register"><span
-                     class="glyphicon glyphicon-user"></span> Register </a></li>
+               <li><a href="/pumpkinplace/member/register">
+               <span class="glyphicon glyphicon-user"></span> Register </a>
+               </li>
                      
                </ul>
             
@@ -310,7 +317,7 @@
          });
          
          $('#logout').click(function () { // qna
-           alert("로그아웃되었습니다!");
+           alert("로그아웃 되었습니다!");
           });
          
          function sendUrlNo() {
@@ -324,7 +331,8 @@
         	 event.preventDefault();
         	 var loginId = '${loginId}';
         	 if(loginId==='') {
-        		 var result = confirm('로그인 후 이용가능합니다. 로그인 화면으로 넘어가시겠습니까?')
+        		 var result = confirm('로그인 후 이용가능합니다.\n' 
+        				 			+ '로그인 창으로 가시겠습니까?')
         		 if(result) {
         			 location = '/pumpkinplace/member/login';
         		 }

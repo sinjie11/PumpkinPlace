@@ -64,13 +64,13 @@ body {
 		<h1>${board.b_title}</h1>
 
 		<c:if test="${loginId eq board.b_id}">
-			<button id="update" style="margin-left: 1000px;">수정</button>
-			<button  id="delete">삭제</button>
-			<button  id="backList">목록</button>
+			<button class="btn btn-primary" id="update" style="margin-left: 800px;">수정</button>
+			<button class="btn btn-primary" id="delete">삭제</button>
+			<button class="btn btn-primary" id="backList">목록</button>
 		</c:if>
 
 		<div id="quillContents"></div>		
-		<button class="btn btn-primary" id="boardUp">up ${board.b_up}</button>
+		<button class="btn btn-primary"  id="boardUp">up ${board.b_up}</button>
 		<button class="btn btn-primary"  id="boardDown">down ${board.b_down}</button>
 
 
@@ -103,12 +103,9 @@ body {
 		
 		
 		<br><br><br><br>
-		<button class="btn btn-primary" id="btnshowinsert"
-		>댓글 입력</button>
-		<button class="btn btn-primary" id="btnshowinsert"
-		>댓글 up</button>
-		<button class="btn btn-primary" id="btnshowinsert"
-		>댓글 down</button>
+		<button class="btn btn-primary">댓글 입력</button>
+		<button class="btn btn-primary">댓글 up</button>
+		<button class="btn btn-primary">댓글 down</button>
 	</div>
 
 

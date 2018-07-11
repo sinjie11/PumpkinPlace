@@ -134,9 +134,9 @@ body {
 
 									<b>공연 포스터</b> 
 									
-									<input type='file' id="imgInp" onclick="showPopupconsole();"/>
-									<input type="text" id="txtName1" readonly="readonly" />
-									<input type="text" id="txtName2" readonly="readonly" />
+									<input type='file' id="imgInp" /> 
+									<input type="text" id="txtName1"  />
+									<input type="text" id="txtName2"  />
 									
 									<input type="button" value="파일 업로드" onclick="showPopup();" />
 									
@@ -144,17 +144,21 @@ body {
 									
  <script>
  var imageupload;
+ 
   function showPopup() { 
 	  imageupload = window.open('imageupload', 'imageupload', 'width=700, height=950, left= 100, top=20');
 	  imageupload.focus();
+	  var fileimagename = $('#txtName1').val();
+	  var fileimagedata = $('#txtName2').val();
+	  //console.log('파일명' + $('#txtName1').val());
+	  //console.log('파일데이터' + $('#txtName2').val());
 	  console.log('파일명' + $('#txtName1').val());
 	  console.log('파일데이터' + $('#txtName2').val());
-	  
-  }
-  function showPopupconsole() { 
-	  console.log('파일명' + $('#txtName1').val());
-	  console.log('파일데이터' + $('#txtName2').val());
-	  
+		  
+          
+        	  console.log('파일명' + $('#txtName1').val());
+        	  $('#blah').attr('src', "${pageContext.request.contextPath}/resources/assets/img/showboard/"+$('#txtName1').val());
+          
   }
   </script>
 									<p>

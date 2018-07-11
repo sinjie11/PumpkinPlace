@@ -8,7 +8,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bootstrap Login Form Template</title>
+        <title>Login</title>
 
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -20,14 +20,14 @@
     </head>
 
     <body>
-
         <!-- Top content -->
         <div class="top-content">
-
             <div class="inner-bg">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
+                        <!-- 로그인 창에서 회원가입(Register) 버튼 -->
+                        <p><a class="btn btn-link-1 btn-link-1-google-plus" href="/pumpkinplace/member/register" style="width: 100px; margin-left: 80%;">Register</a></p>                          
                         	<div class="form-top">
                         		<div class="form-top-left">
                         			<h3>Login to our site</h3>
@@ -46,7 +46,7 @@
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="form-password">Password</label>
 			                        	<input type="password" name="mem_pwd" placeholder="Password..." class="form-password form-control" id="form-password" required>
-			                        	<input type="hidden" name="targetUrl" value="${targetUrl}"/><!-- sdljfakfasfdkausdkf -->
+			                        	<input type="hidden" name="targetUrl" value="${targetUrl}"/>
 			                        	<input type="hidden" name="urlNo" value="${urlNo}"/>
 			                        </div>
 			                        <button type="submit" class="btn">Sign in!</button>
@@ -57,13 +57,13 @@
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 social-login">
                         	<div class="social-login-buttons">
-	                        	<a class="btn btn-link-1 btn-link-1-facebook" href="#">
+	                        	<a class="btn btn-link-1 btn-link-1-facebook" href="https://www.facebook.com/">
 	                        		<i class="fa fa-facebook"></i> Facebook
 	                        	</a>
-	                        	<a class="btn btn-link-1 btn-link-1-twitter" href="#">
+	                        	<a class="btn btn-link-1 btn-link-1-twitter" href="https://twitter.com">
 	                        		<i class="fa fa-twitter"></i> Twitter
 	                        	</a>
-	                        	<a class="btn btn-link-1 btn-link-1-google-plus" href="#">
+	                        	<a class="btn btn-link-1 btn-link-1-google-plus" href="https://plus.google.com">
 	                        		<i class="fa fa-google-plus"></i> Google Plus
 	                        	</a>
                         	</div>

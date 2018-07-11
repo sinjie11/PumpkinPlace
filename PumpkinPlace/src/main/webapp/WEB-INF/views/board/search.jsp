@@ -173,7 +173,7 @@ body {
 				<ul>
 					<c:if test="${urlNo ne 11 and urlNo ne 12}">
 						<a id="register" href="register">
-						<button type="button" style="color: black;">글쓰기</button></a>
+						<button class="btn btn-primary" type="button">글쓰기</button></a>
 					</c:if>
 				</ul>		
 				<ul style = "background-color : yellow; text-align : center; font-size : 150%;">
@@ -233,7 +233,7 @@ ${board.b_no}
 		</div>
 		<ul>
 				<a id="list" href="/pumpkinplace/board/list?urlNo=${urlNo}">
-						<button type="button" style="font-weight : bold; color: black;"> 
+						<button class="btn btn-primary" type="button" style="font-weight : bold;"> 
 						목록</button></a>
 				</ul>
 	</div>
