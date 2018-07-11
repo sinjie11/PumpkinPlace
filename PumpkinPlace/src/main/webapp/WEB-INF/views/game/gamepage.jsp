@@ -10,7 +10,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-<title>Insert title here</title>
+	<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<title>라이언의 즐거운 목욕시간</title>
 
 </head>
 <body>
@@ -20,8 +22,11 @@
 </script>
 
 	<script>
-		var user_id = "";
-		var result_score= 0;
+		var user_id = '${loginId}';
+		if(user_id != null)
+			user_id;
+		else
+			user_id = 'guest';
 	
 		/* Init */ //asd
 		var run = "main";
@@ -47,7 +52,7 @@
 		var buff_Cnt = 0;
 		var buff_time = false;
 		var player_costume = 0;
-	
+		
 		var bg = new Image();
 		var title = new Image();
 		var player = new Image();
@@ -512,10 +517,10 @@
 				/* console.log("BaseCoin Up"); */
 				if (buff_time) {
 					coinText += 2000;
-				/* console.log("Buff On"); */
+				 console.log("Buff On"); 
 				} else {
 					coinText += 1000;
-				/* console.log("Buff Off"); */
+				 console.log("Buff Off"); 
 				}
 			}
 		}, 1000);
@@ -650,6 +655,23 @@
 	
 			}
 			if (run == "end") {
+				if(${checkResult == 'success'})
+					point = point + 500;
+				$.ajax({
+					type : 'post',
+					url : '/pumpkinplace/game/gameupdate/',
+					data : ({
+						'mem_id' : "${loginId}", 
+						'mem_account' : coinText,
+						'mem_gamescore' :  scoreText
+					}), 
+					success : function(result) {
+						location = '/pumpkinplace/game/gamepage';
+					} 
+				});
+				
+				
+				
 				ctx.clearRect(0, 0, 1440, 2960);
 				init();
 			/* asdasd

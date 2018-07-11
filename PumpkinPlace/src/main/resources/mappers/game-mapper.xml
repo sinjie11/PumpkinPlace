@@ -9,12 +9,12 @@
 
 	<!-- 1) DB에서 해당 회원의 ID를 처음으로 저장하는 SQL Statement -->
 	<insert id="insertGameInfo">
-		insert into pumpkin_game(${col_mem_id}, ${col_mem_account}, ${col_dmem_gamescore})
+		insert into pumpkin_game(${col_mem_id}, ${col_mem_account}, ${col_mem_gamescore})
 		values((
 		select ${col_mem_id}
 		from pumpkin_member
 		where ${col_mem_no} =
-		#{mem_no}), #{mem_account}, #{mem_gamescore});
+		#{mem_no}), #{mem_account}, #{mem_gamescore})
 	</insert>
 
 	<!-- 2) 회원의 포인트와 최고점수를 갱신하는 SQL Statement -->
@@ -23,11 +23,7 @@
 		set ${col_mem_account} =#{mem_account},
 		${col_mem_gamescore} =
 		#{mem_gamescore}
-		where ${col_mem_id}=
-		(select ${col_mem_id}
-		from
-		${tbl_member}
-		where ${mem_id} = #{mem_id});
+		where ${col_mem_id} = #{mem_id}
 	</update>
 
 	<!-- 3) DB에 저장된 회원들의 아이디와 게임점수를 내림차순으로 보여주는 SQL Statement -->
@@ -36,13 +32,17 @@
 		from pumpkin_member a left outer join pumpkin_game b 
 		on a.mem_no = b.mem_no
 		where mem_gamescore is not null
-		order by mem_gamescore desc;
+		order by mem_gamescore desc
 	</select> 
 	
 	<select id="selectOneGame" resultType="Game">
 	        select * from pumpkin_game
         where ${mem_id} = (select mem_id
         from pumpkin_member
-        where ${mem_no} = #{mem_no})
+        where ${mem_id} = #{mem_id})
+	</select>
+	
+	<select id="checkNullOfScore" resultType = "Integer">
+	        select nvl2(mem_gamescore, 1, 0) from pumpkin_game where ${mem_id} =#{mem_id}
 	</select>
 </mapper>

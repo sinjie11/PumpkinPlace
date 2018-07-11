@@ -30,18 +30,23 @@ public class GameDaoImple implements GameDao {
 	@Override
 	public int update(Game game) {
 		logger.info("update() 호출");
-		return sqlSession.update(NAMESPACE + "updatePointAndScore",  game);
+		return sqlSession.update(NAMESPACE + ".updatePointAndScore",  game);
 	}
 
 	@Override
 	public List<Game> select() {
 		logger.info("select() 호출");
-		return sqlSession.selectList(NAMESPACE + "selectGameAll");
+		return sqlSession.selectList(NAMESPACE + ".selectGameAll");
 	}
 	
 	@Override
 	public Game selectByNo(int mem_no) {
 		return sqlSession.selectOne(NAMESPACE + ".selectOneGame", mem_no);
+	}
+	
+	@Override
+	public int checkNullOfScore(String userid) {
+		return sqlSession.selectOne(NAMESPACE + ".checkNullOfScore", userid);
 	}
 
 }

@@ -23,6 +23,11 @@ public class GameController {
 	@Autowired
 	private GameService gameService;
 
+	@RequestMapping(value = "/gamepage")
+	public void game() {
+		
+	}
+
 	@RequestMapping(value = "/register", method=RequestMethod.GET)
 	public void register() {	
 	}
@@ -30,17 +35,16 @@ public class GameController {
 	@RequestMapping(value = "/register",  method=RequestMethod.POST)
 	public String register(Game game) {
 		gameService.insert(game);
-		
 		return "redirect:/game/gamepage";
 	}
 	
-	@RequestMapping(value = "/update", method=RequestMethod.GET)
+	@RequestMapping(value = "/gameupdate", method=RequestMethod.GET)
 	public void update(int mem_no, Model model) {
 		Game game = gameService.readOne(mem_no);
-		model.addAttribute(game);
+		model.addAttribute("game" , game);
 	}
 	
-	@RequestMapping(value = "/update", method=RequestMethod.POST)
+	@RequestMapping(value = "/gameupdate", method=RequestMethod.POST)
 	public String update(Game game, RedirectAttributes attr) {
 		int result = gameService.update(game);
 		if(result ==1) {
@@ -54,6 +58,15 @@ public class GameController {
 	public void rank(Model model) {
 		List<Game> list = gameService.read();
 		model.addAttribute("gameList", list);
+	}
+	
+	@RequestMapping(value="/check", method=RequestMethod.GET)
+	public void checkNullOfScore(String userid, RedirectAttributes attr) {
+		int result = gameService.checkNullOfScore(userid);
+		if (result == 1) {
+			attr.addFlashAttribute("userid", userid);
+			attr.addFlashAttribute("checkResult", "success");
+		}
 	}
 }
 

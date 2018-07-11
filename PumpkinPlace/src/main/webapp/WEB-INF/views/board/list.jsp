@@ -260,7 +260,6 @@ body {
 				<ul>
 					<c:if test="${urlNo ne 11 and urlNo ne 12}">
 						<a id="register" href="/pumpkinplace/board/list?urlNo=${urlNo}">
-
 						<button class="btn btn-primary" type="button">글쓰기</button></a>
 					</c:if>
 				</ul>

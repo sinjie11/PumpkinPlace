@@ -208,7 +208,11 @@ $(document).ready(function () {
 				console.log('numsPerPage:' + ${criteria.numsPerPage})
 				location='/pumpkinplace/board/detail?page=' + ${criteria.page} 
 				+ '&numsPerPage=' + ${criteria.numsPerPage} + '&b_no=' + result + '&urlNo=' + ${board.b_section};
-			}
+			},
+			
+			error : function(){
+		    	alert("이전 게시물이 없습니다.");
+		    }
 			
 			});
 	});
@@ -229,8 +233,13 @@ $(document).ready(function () {
 			//서버로 보낼 JSON 객체문자열
 			success : function(result) {
 				console.log(result);
+
 				location='/pumpkinplace/board/detail?page=' + ${criteria.page}
 				+ '&numsPerPage=' + ${criteria.numsPerPage} + '&b_no=' + result + '&urlNo=' + ${board.b_section};
+			},
+			
+			error : function(){
+		        alert("다음 게시물이 없습니다.");
 			}
 			
 			});
