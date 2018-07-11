@@ -19,7 +19,7 @@
 	
 	<bean id="uploadPath" class="java.lang.String">
         <constructor-arg 
-            value="C:\\Users\\user\\git\\Pumpkinplace\\PumpkinPlace\\src\\main\\webapp\\resources\\assets\\img\\showboard" />
+            value="C:\\Study\\lab-web\\Error404\\Pumpkinplace\\PumpkinPlace\\src\\main\\webapp\\resources\\assets\\img\\showboard" />
            <!--  value="C:\\Users\\stu\\git\\Pumpkinplace\\PumpkinPlace\\src\\main\\webapp\\resources\\assets\\img\\showboard" /> -->
 </bean>
 

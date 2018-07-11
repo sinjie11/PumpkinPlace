@@ -175,6 +175,7 @@ function getReply(){
 				"</td><td><div><input type='hidden' id='r_no' value="+this.r_no+" readonly/><div style ='display: inline-block;' id='insertReplyPaddiv'>";
 				if("${loginId}"===this.r_id){
 					list+="<button id='updateReply'>수정</button><button id='deleteReply'>삭제</button><div id='stringfiled' style ='display: inline-block;'><div id='rereplyBtndiv' style ='display: inline-block;'><button id='rereplyBtn'>답글보기</button></div></div></td></tr>"
+			
 				}else{
 					//list+="<div id='stringfiled' style ='display: inline-block;'><button id='rereplyBtn'>답글보기</button></div></div></td></tr>";
 					list+="<div id='stringfiled' style ='display: inline-block;'><div id='rereplyBtndiv' style ='display: inline-block;'><button id='rereplyBtn'>답글보기</button></div></div></td></tr>";
