@@ -32,7 +32,7 @@
 	<input type="text" value="${board.b_id}" readonly />
 	<br/>
 	<fmt:formatDate value="${board.b_regdate}"
-		pattern="yyyy/MM/dd HH:mm:ss"
+		pattern="yyyy.MM.dd HH:mm"
 		var="b_regdate" />
 	<input type="text" value="${b_regdate}" readonly />
 	<br/>
