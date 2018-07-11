@@ -34,4 +34,9 @@ public class GameServiceImple implements GameService {
 	public Game readOne(int mem_no) {
 		return gameDao.selectByNo(mem_no);
 	}
+	
+	@Override
+	public int checkNullOfScore(String userid) {
+		return gameDao.checkNullOfScore(userid);
+	}
 }

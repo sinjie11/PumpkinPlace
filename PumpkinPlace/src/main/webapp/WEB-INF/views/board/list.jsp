@@ -208,14 +208,8 @@ body {
 			<form action="search">
 				<ul>
 					<c:if test="${urlNo ne 11 and urlNo ne 12}">
-<<<<<<< HEAD
 						<a id="register" href="/pumpkinplace/board/list?urlNo=${urlNo}">
 						<button type="button" style="color: black;">글쓰기</button></a>
-=======
-						<a id="register" href="register">
-							<button type="button" style="color: black;">글쓰기</button>
-						</a>
->>>>>>> branch 'master' of https://github.com/sinjie11/Pumpkinplace.git
 					</c:if>
 				</ul>
 

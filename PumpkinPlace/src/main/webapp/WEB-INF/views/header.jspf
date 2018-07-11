@@ -82,7 +82,7 @@
          </div>
       </div>
 
-         <a href="/pumpkinplace/game/gamepage"><img alt="이미지"
+         <a  id="show_game" href="/pumpkinplace/game/gamepage"><img alt="이미지"
             src="${pageContext.request.contextPath}/resources/top_logo.png"
             style="background-color: white; width: 100%; height: 220px;" /></a>
 
@@ -324,16 +324,26 @@
         	 event.preventDefault();
         	 var loginId = '${loginId}';
         	 if(loginId==='') {
-        		 var result = confirm('로그인 후 이용가능합니다. 로그인 창으로 가시겠습니까?')
+        		 var result = confirm('로그인 후 이용가능합니다. 로그인 화면으로 넘어가시겠습니까?')
         		 if(result) {
         			 location = '/pumpkinplace/member/login';
         		 }
         	 } else {
         		 location = '/pumpkinplace/showboard/showinsert';
-        	 }
-        	 
-        	
-        	 
+        	 }	 
+		});
+         
+         $('#show_game').click(function () {
+        	 event.preventDefault();
+        	 var loginId = '${loginId}';
+        	 if(loginId==='') {
+        		 var result = confirm('로그인 후 이용가능합니다. 로그인 화면으로 넘어가시겠습니까?')
+        		 if(result) {
+        			 location = '/pumpkinplace/member/login';
+        		 }
+        	 } else {
+        		 location = '/pumpkinplace/game/gamepage';
+        	 }	 
 		});
          
       });
