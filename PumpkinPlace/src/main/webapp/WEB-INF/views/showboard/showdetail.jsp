@@ -102,6 +102,9 @@ td, h5 {
 							
 						<h2>${startdate} ~ ${enddate}</h2>
 						
+							<div>
+							<h3> ${showboard.sb_locinfo}</h3>
+							</div>
 					</div>
 
 				</div>
@@ -113,7 +116,17 @@ td, h5 {
 
 						<img alt="포스터"
 							src="${pageContext.request.contextPath}/resources/assets/img/showboard/${showboard.sb_img}"
-							style="margin-left: 30%; width: 570px; height: 796px;" />
+							style="margin-left: 33%; width: 570px; height: 796px;" />
+							<br/>
+								<br/>
+
+						<div class="container text-center">
+
+							<iframe width="567" height="415" 
+								src="https://www.youtube.com/embed/${showboard.sb_video}"
+								frameborder="0" allow="autoplay; encrypted-media"
+								allowfullscreen></iframe>
+						</div>
 
 					</div>
 
@@ -133,7 +146,9 @@ td, h5 {
 								<td width="40%">시간:</td>
 								<fmt:formatDate value="${showboard.sb_startdate}"
 									pattern="HH:mm" var="starttime" />
-								<td>${starttime}</td>
+									<fmt:formatDate value="${showboard.sb_enddate}"
+									pattern="HH:mm" var="enddate" />
+								<td>${starttime} ~  ${enddate}</td>
 							</tr>
 
 							<tr>
@@ -154,13 +169,13 @@ td, h5 {
 						</table>
 						<div class="">
 							<h5>상세 정보</h5>
-							<textarea rows="6" cols="68" readonly="readonly">${showboard.sb_content}</textarea>
+							<textarea rows="10" cols="68" readonly="readonly">${showboard.sb_content}</textarea>
 						</div>
 
 						<br />
 
 						<div>
-							<h3>공연장: ${showboard.sb_locinfo}</h3>
+						<h4>공연장: ${showboard.sb_locinfo}</h4>
 							<br />
 
 
@@ -205,9 +220,14 @@ td, h5 {
 
 						<br />
 
-
-						<button id="updatebutton" style="size: small; margin-left: 50%;">수정하기</button>
-						<button id = "btnDelete" style="size: small; margin-left: 50%;">삭제하기</button>
+						<c:if test="${loginId eq showboard.sb_nm}">
+						<button class="btn btn-primary" id="updatebutton" 
+						style="size: small; margin-left: 50%; margin-bottom: 10px;">수정하기</button>
+						<button class="btn btn-primary" id = "btnDelete" 
+						style="size: small; margin-left: 50%;">삭제하기</button>
+						</c:if>
+				
+						
 						<script>
 		
 				$("#updatebutton").click(function(){
@@ -236,11 +256,7 @@ td, h5 {
 	</div>
 
 	<br />
-	<div class="container text-center">
-		<iframe width="560" height="315"
-			src="https://www.youtube.com/embed/${showboard.sb_video}"
-			frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-	</div>
+	
 	<br />
 
 

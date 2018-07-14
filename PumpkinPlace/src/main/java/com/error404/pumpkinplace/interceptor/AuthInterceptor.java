@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.ui.Model;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 public class AuthInterceptor extends HandlerInterceptorAdapter{
@@ -20,7 +21,9 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
 		} else { // 로그아웃 상태 , login(GET) 페이지로 이동(redirect) -> return false;
 			String url = getTargetUrl(request);
 			logger.info("url: {}", url);
+			logger.info("urlNo: {}", request.getQueryString().charAt(6));
 			
+			request.setAttribute("urlNo", request.getQueryString().charAt(6));
 			response.sendRedirect(url);
 			
 			return false;
@@ -40,6 +43,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
 		} else {
 			queryString += "&target=" + url;
 		}
+		
 		
 		return "/pumpkinplace/member/login?" + queryString;
 	

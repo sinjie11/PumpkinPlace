@@ -71,9 +71,13 @@ body {
 	<h1><b>받은 쪽지</b></h1>
 	<br />
 	<br />
-	<span><a href="/pumpkinplace/message/receive"><button>목록 보기</button></a></span>
-	&nbsp;&nbsp;&nbsp;
-	<span id="deleteMsg"><button>삭제</button></span>
+	<div class="container text-right">
+	<span><a href="/pumpkinplace/message/receive"><button class="btn btn-primary" id="btnshowinsert"
+		class="btn btn-primary">목록 보기</button></a></span>
+	
+	<span id="deleteMsg"><button class="btn btn-primary" id="btnshowinsert"
+		class="btn btn-primary">삭제</button></span>
+	</div>
 	<br/>
 	<br/>
 
@@ -82,7 +86,7 @@ body {
 		<thead>
 			<tr>
 				<th style="text-align: center;">보낸 사람</th>
-				<th style="text-align: center;">내용</th>
+				<th style="text-align: center;">상세 내용</th>
 				<th style="text-align: center;">수신 일자</th>
 			</tr>
 		</thead>

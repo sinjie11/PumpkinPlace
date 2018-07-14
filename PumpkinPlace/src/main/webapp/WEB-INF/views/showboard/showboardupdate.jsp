@@ -136,29 +136,44 @@ body {
 							<div class="col align-self-end" style="margin-left: 5%;">
 								<div style="font-size: 15px; margin-left: 25%;">
 
-									<b>공연 포스터</b> <input type='file' id="imgInp" name="uploadFile" />
-
-									<div></div>
-
+									<b>공연 포스터</b>
+							
+									<input type="text" id="txtName1" value="${showboard.sb_img}"  hidden=""/>
+									<input type="text" id="txtName2" hidden=""  />
+									
+									<input type="button" value="파일 업로드" onclick="showPopup();" />
+									
+								
+									
+ <script>
+ var imageupload;
+ 
+  function showPopup() { 
+	  imageupload = window.open('imageupload', 'imageupload', 'width=700, height=950, left= 100, top=20');
+	  imageupload.focus();
+	  var fileimagename = $('#txtName1').val();
+	  var fileimagedata = $('#txtName2').val();
+	  //console.log('파일명' + $('#txtName1').val());
+	  //console.log('파일데이터' + $('#txtName2').val());
+	  console.log('파일명' + $('#txtName1').val());
+	  console.log('파일데이터' + $('#txtName2').val());
+  }  
+  </script>
+  
+          
+ 
+ 
 									<p>
 										<small>공연을 위한 포스터를 업로드해주세요. 그렇지 않을 경우 대체 이미지가 사용됩니다.</small>
 									</p>
-
-
-									<br /> <img id="blah" 
-									src="${pageContext.request.contextPath}/resources/assets/img/showboard/${showboard.sb_img}" alt="포스터" 
-									width="570px;"
+ <script>
+	  $( "p" ).mouseup(function() {
+		  console.log('마우스오버' + $('#txtName1').val());
+		  $("#blah").attr('src', $('#txtName2').val());
+		});
+	  </script> 
+									<br /> <img id="blah" src="${pageContext.request.contextPath}/resources/assets/img/showboard/${showboard.sb_img}" alt="" width="570px;"
 										height="796px;" /> <br /> <br />
-
-									<!-- 사진 저장 -->
-									<script>
-            $(document).ready(function() {
-         if (${not empty saved}) {
-            alert('${saved}' + 'SAVED');
-         }
-            });
-         </script>
-									<!-- 사진저장 -->
 
 									<!-- 사진 미리보기 -->
 									<script type="text/javascript">
@@ -188,7 +203,7 @@ body {
 									<label for="event_영상:">영상: <input id="youtube"
 										name="sb_video" type="text"
 										style="text-align: center; width: 300px; margin-left: 12px;"
-										placeholder="YouTube 링크를 입력해주세요" value="${showboard.sb_video}" />
+										placeholder="YouTube 링크를 입력해주세요" value="${showboard.sb_video}"/>
 									</label> <br /> <br />
 								</div>
 								<script>
@@ -198,22 +213,33 @@ body {
                                  console.log('youtube :' + youtube);
                               });
                            </script>
+                            <script>
+	  $( "label" ).mouseup(function() {
+		  console.log('마우스업' + $('#youtube').val());
+		  $("#ytubeid").attr('src', "https://www.youtube.com/embed/" + $('#youtube').val());
+		});
+	  </script> 
 								<div style="width: 570px; margin-left: 25%;">
-									<iframe width="560" height="315"
-										src="https://www.youtube.com/embed/${youtube}" frameborder="0"
-										allow="autoplay; encrypted-media" allowfullscreen></iframe>
+									<iframe width="560" height="315" id="ytubeid"
+										src="https://www.youtube.com/embed/"
+										frameborder="0" allow="autoplay; encrypted-media"
+										allowfullscreen></iframe>
 								</div>
 								<script>
                               
                      jQuery(document).ready(
                            function($) {
-                              $('iframe[src^="https://www.youtube.com/${youtube}"]').wrap(
+                              $('iframe[src^="https://www.youtube.com/"]').wrap(
                               '<div class="youtubeWrap"></div>');
                            });
                         </script>
 
 							</div>
 						</div>
+						<div class="col-md-6">
+						
+
+
 						<div class="col-md-6">
 							<div class="col align-self-end" style="margin-left: 20%;">
 
@@ -232,29 +258,29 @@ body {
 								<!-- 뮤지션이름 -->
 								<div id="en_bands">
 									<p>
-										<label for="event_공연하는 밴드:">뮤지션 명: <input
+										<label for="event_공연하는 밴드:">작성자: <input
 											id="event_band_tokens" name="sb_nm" type="text"
 											style="text-align: center; width: 200px;"
-											value=" ${showboard.sb_nm}" required /></label>
+											value="${showboard.sb_nm}" required /></label>
 									</p>
 								</div>
 
 								<div id="en_daytime">
 									<label for="event_공연 날짜">공연 날짜 / 시간:<br /> <!-- 시작날짜 -->
 										<fmt:formatDate value="${showboard.sb_startdate}"
-											pattern="yyyy-MM-dd" var="startdate" /> <input type="text"
+											pattern="yyyy.MM.dd" var="startdate" /> <input type="text"
 										id="startdate" placeholder="공연 시작 날짜 선택" required
-										value="${startdate}" /> <!-- 시작시간 --> <fmt:formatDate
+										value="${startdate}"size="13" /> <!-- 시작시간 --> <fmt:formatDate
 											value="${showboard.sb_startdate}" pattern="HH:mm"
 											var="starttime" /> <input placeholder="시간 입력" id="starttime"
-										size="10" value="${starttime}" required /> <!-- 종료날짜 --> <fmt:formatDate
-											value="${showboard.sb_enddate}" pattern="yyyy-MM-dd"
+										size="9" value="${starttime}" required /> <!-- 종료날짜 --> <fmt:formatDate
+											value="${showboard.sb_enddate}" pattern="yyyy.MM.dd"
 											var="enddate" /> <fmt:formatDate
 											value="${showboard.sb_startdate}" pattern="HH:mm"
 											var="endtime" /> ~ <input type="text" id="enddate"
-										placeholder="공연 종료 날짜 선택" required value="${ enddate}" /> <input
+										placeholder="공연 종료 날짜 선택" required value="${ enddate}" size="13"/> <input
 										type="text" placeholder="시간 입력" id="endtime" required
-										size="10" maxlength="5" value="${endtime }">
+										size="9" maxlength="5" value="${endtime}">
 									</label>
 								</div>
 								<br />
@@ -264,7 +290,7 @@ body {
 									$(function() {
 										<!-- 날짜 선택 -->
   $("#startdate, #enddate").datepicker({
-    dateFormat : 'yy/mm/dd'
+    dateFormat : 'yy.mm.dd'
   });
 	<!-- 시간 -->   
 	 $("#starttime, #endtime").timepicker({
@@ -301,7 +327,7 @@ body {
 									</p>
 									<script type="text/javascript">
 									
-				$("#country ? option[value='"${showboard.sb_city}"']").attr("selected","true");
+				$
 										
 
 									
@@ -484,7 +510,7 @@ $('#btnshowupdate').click(function () {
 	var sb_price = $('#event_door_price').val();
 	var sb_tel = $('#event_contact').val();
 	var sb_locinfo = $('#pac-input').val();
-	var sb_img = $('#imgInp').val();
+	var sb_img = $('#txtName1').val();
 	var sb_video = $('#youtube').val(); 
 	var startdate = $('#startdate').val();
 	var starttime = $('#starttime').val();

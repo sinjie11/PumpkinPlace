@@ -102,7 +102,8 @@ body {
 		<br/>
 		<br/>
 
-		<button id=btnUpdate type="submit">수정</button>
+		<button id=btnUpdate type="submit" class="btn btn-primary" id="btnshowinsert"
+		class="btn btn-primary">수정</button>
 		<br /><br />
 	</form>
 </div>

@@ -7,37 +7,56 @@
 
 	<!-- Game 테이블 sql 쿼리문 작성 -->
 
-	<!-- 1) DB에서 해당 회원의 NO와 포인트, 게임점수를 처음으로 저장하는 SQL Statement -->
-	<insert id="insertGameInfo">
-		insert into pumpkin_game(${col_mem_no})
+	<!-- 1) DB에서 해당 회원의 ID를 처음으로 저장하는 SQL Statement -->
+<!-- 	<insert id="insertGameInfo">
+		insert into pumpkin_game(${col_mem_id}, ${col_mem_account}, ${col_mem_gamescore})
 		values((
-		select ${col_mem_no}
-		from ${tbl_member}
-		where ${col_mem_id} =
-		#{mem_id}));
-	</insert>
+		select ${col_mem_id}
+		from pumpkin_member
+		where ${col_mem_no} =
+		#{mem_no}),0, 0)
+	</insert> -->
 
 	<!-- 2) 회원의 포인트와 최고점수를 갱신하는 SQL Statement -->
-	<update id="updatePointAndScore">
-		update ${tbl_game}
-
-		set ${col_mem_account} =#{mem_account},
-		${col_mem_gamescore} =
-		#{mem_gamescore}
-		where ${col_mem_no}=
-		(select ${col_mem_no}
-		from
-		${tbl_member}
-		where ${mem_id} = #{mem_id});
+	<update id="updateOrInsertPointAndScore" parameterType="java.util.Map">
+  merge into pumpkin_game
+        using DUAL
+        on(${col_mem_id} = #{mem_id})
+        when matched then
+        update set
+        ${col_mem_account} = #{mem_account},
+        ${col_mem_gamescore} = #{mem_gamescore}
+        where ${col_mem_id} = #{mem_id}
+        when not matched then
+        insert (${col_mem_id}, ${col_mem_account}, ${col_mem_gamescore})
+        values(#{mem_id, jdbcType=VARCHAR}, #{mem_account, jdbcType=INTEGER}, #{mem_gamescore, jdbcType=INTEGER})
+		
 	</update>
 
-	<!-- 3) DB에 저장된 회원들의 아이디와 게임점수를 내림차순으로 보여주는 SQL Statement -->
+	<!-- 3) DB에 저장된 회원들의 아이디와 게임점수를 내림차순으로 10위까지 보여주는 SQL Statement -->
 	<select id="selectGameAll" resultType="Game">
-		select a.mem_id, b.mem_gamescore
-		from pumpkin_member a left outer join pumpkin_game b 
-		on a.mem_no = b.mem_no
-		where mem_gamescore is not null
-		order by mem_gamescore desc;
+        	select
+            b.mem_id, b.mem_gamescore
+			from (
+			select rownum rn, a.*
+			from (
+			select * from
+			pumpkin_game
+			order by mem_gamescore desc
+			) a
+			) b
+			where rn between
+			1 and 10
 	</select> 
-
+	
+	<select id="selectOneGame" resultType="Game">
+	        select * from pumpkin_game
+        where ${mem_id} = (select mem_id
+        from pumpkin_member
+        where ${mem_id} = #{mem_id})
+	</select>
+	
+	<select id="checkNullOfScore" resultType = "Integer">
+	        select nvl2(mem_gamescore, 1, 0) from pumpkin_game where ${mem_id} =#{mem_id}
+	</select>
 </mapper>

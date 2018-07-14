@@ -21,6 +21,7 @@
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <style>
+
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
    margin-bottom: 0;
@@ -54,13 +55,22 @@ body {
 }
 </style>
 </head>
+<img alt="이미지"
+            src="${pageContext.request.contextPath}/resources/banner1.png"
+            style="background-color: white; width: 200px; height: 800px; position: relative; display: flex; float: left; margin-left: 20px; margin-top: 50px;"
+            >
+				
+				<img alt="이미지"
+            src="${pageContext.request.contextPath}/resources/banner2.png"
+            style="background-color: white; width: 200px; height: 800px; position: relative; display: flex; float: right; margin-right: 20px; margin-top: 50px;"
+            >
 <body>
    <br/>
 
    <%@ include file="header.jspf"%>
 
 
-   <!-- 가운데 정렬해주는거 -->
+   <!-- 가운데 정렬해주는거 -->		
    <div class="container text-center">
       <h5 style="text-align: left;"><b> 카테고리: 홈 </b></h5>
 
@@ -76,12 +86,13 @@ body {
                   <a href="showboard/showdetail?sb_no=${showboard.sb_no}"><img
                      class="my-image" alt="Bootstrap Image Preview" width="220px;" height="280px;"
                      src="${pageContext.request.contextPath}/resources/assets/img/showboard/${showboard.sb_img}" /></a>
-                  <label href="showboard/showdetail?sb_no=${showboard.sb_no}">
+                  <div >
+                  <a href="showboard/showdetail?sb_no=${showboard.sb_no}"></a>
                      <h4>${showboard.sb_title}</h4>
                         <fmt:formatDate value="${showboard.sb_startdate}"
                            pattern="yyyy.MM.dd" var="startdate" />
                         <p>${showboard.sb_city}/${startdate}</p>
-                  </label>
+                  </div>
                </div>
             </c:forEach>
          </div>
@@ -154,7 +165,7 @@ body {
             <!-- 중고거래 -->
             <div class="col-md-4">
                <p class="text-left" style="font-size: medium;">
-                  <b>중고 거래 "최신 5"</b> <a href="/pumpkinplace/board/list?urlNo=12" style="float: right">more</a>
+                  <b>중고 거래 "최신 5"</b> <a href="/pumpkinplace/board/list?urlNo=12&" style="float: right">more</a>
                </p>
                <table class="table">
                   <thead>

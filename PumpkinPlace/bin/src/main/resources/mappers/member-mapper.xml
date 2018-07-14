@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.error404.pumpkinplace.mappers.MemberMapper">
+
+	<!-- member 테이블 sql 쿼리문 작성 -->
+
+<!-- insert into pumpkin_member (mem_id, mem_pwd, mem_email, mem_tel) values (?, ?, ?, ?) -->
+	<insert id="insertMember">
+		insert into ${tbl_member} (${col_mem_id}, ${col_mem_pwd}, ${col_mem_email}, ${col_mem_tel})
+		 values (#{mem_id}, #{mem_pwd}, #{mem_email}, #{mem_tel})
+	</insert>
+
+<!-- select * from pumpkin_member where mem_id = ? -->
+	<select id="checkMemid" resultType="Member">
+		select * from ${tbl_member}
+		where ${col_mem_id} = #{mem_id}
+	</select>
+
+<!-- select * from pumpkin_member where mem_id = ? and mem_pwd = ? -->
+	<select id="login" resultType="Member">
+		select * from ${tbl_member}
+		where
+		${col_mem_id} = #{mem_id} and ${col_mem_pwd} = #{mem_pwd}
+	</select>
+	
+<!-- update pumpkin_member set mem_pwd = ?, mem_email = ?, mem_tel = ? where mem_id = ? -->
+	<update id="update">
+		update ${tbl_member} set ${col_mem_pwd} = #{mem_pwd}, ${col_mem_email} = #{mem_email}, ${col_mem_tel} = #{mem_tel}
+		 where ${col_mem_id} = #{mem_id}
+	</update>
+	
+
+</mapper>

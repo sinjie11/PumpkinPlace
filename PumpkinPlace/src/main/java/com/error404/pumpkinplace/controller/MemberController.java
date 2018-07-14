@@ -1,7 +1,10 @@
 package com.error404.pumpkinplace.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -73,17 +76,19 @@ public class MemberController {
 	
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET) // 로그인
-	public void login(String target, Model model) {
+	public void login(HttpServletRequest request, String target, Model model) {
 		logger.info("login(target: {}) 호출", target);
+		logger.info(request.getParameter("urlNo"));
 		
 		model.addAttribute("targetUrl", target);
+		model.addAttribute("urlNo", request.getParameter("urlNo"));
 		
 	} // end login(target)
 	
 	
 	@RequestMapping(value = "/login-post", method = RequestMethod.POST) // 로그인(null 여부 체크)
 	public void login(Member member, Model model) {
-		logger.info("login(mem_id: {}, mem_pwd: {}) 호출", member.getMem_id(), member.getMem_pwd());
+		logger.info("login(mem_id: {}, mem_pwd: {}, urlNo: {}) 호출", member.getMem_id(), member.getMem_pwd());
 		
 		Member loginResult = memberService.read(member);
 		
@@ -91,6 +96,7 @@ public class MemberController {
 		// null이 아니면 session에 로그인 정보 저장, target으로 redirect
 		// -> 컨트롤러에서 직접 담당하지 않고, LoginInterceptor에서 담당.
 		model.addAttribute("loginResult", loginResult);
+//		model.addAttribute("", );
 		
 	} // end login(member)
 	

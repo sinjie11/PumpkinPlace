@@ -32,7 +32,6 @@ import com.error404.pumpkinplace.domain.Member;
 import com.error404.pumpkinplace.domain.ShowBoard;
 import com.error404.pumpkinplace.pageutil.PageLinkMaker;
 import com.error404.pumpkinplace.pageutil.PaginationCriteria;
-import com.error404.pumpkinplace.service.BoardServiceImple;
 import com.error404.pumpkinplace.service.ShowBoardService;
 import com.error404.pumpkinplace.service.ShowBoardServiceImple;
 
@@ -166,7 +165,7 @@ public class ShowBoardController {
 	} // end update()
 	
 
-	@RequestMapping(value = "/showboardupdate", method = RequestMethod.POST)
+	@RequestMapping(value = "/showboardupdate", method = RequestMethod.PUT)
 	public  ResponseEntity<Integer> update(
 			@ModelAttribute("criteria") PaginationCriteria criteria,
 		@RequestBody ShowBoard showboard, RedirectAttributes attr) {

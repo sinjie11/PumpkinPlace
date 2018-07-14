@@ -26,7 +26,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		// 기존에 loginId 정보가 세션에 남아 있다면 제거
 		HttpSession session = request.getSession();
 		Object loginId = session.getAttribute("loginId");
-		
+
 		if (loginId != null) {
 			session.removeAttribute("loginId");
 		
@@ -48,7 +48,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		Member m = (Member) model.get("loginResult");
 		
 		String targetUrl = request.getParameter("targetUrl");
-		
+		logger.info("URL::::::::::{}", targetUrl);
+		logger.info("urlNo::::::::::{}", request.getParameter("urlNo"));
 		if (m != null) { // 로그인 성공,  null이 아니면 targetUrl로 리다이렉트
 			request.getSession().setAttribute("loginNo", m.getMem_no());
 			request.getSession().setAttribute("loginId", m.getMem_id());
@@ -58,7 +59,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			request.getSession().setAttribute("loginDate", m.getMem_regdate());
 			
 			if (targetUrl != null && !targetUrl.equals("")) {
-				response.sendRedirect(targetUrl);
+				response.sendRedirect(targetUrl + "?urlNo=" + request.getParameter("urlNo"));
 				
 			} else {
 				response.sendRedirect("/pumpkinplace");

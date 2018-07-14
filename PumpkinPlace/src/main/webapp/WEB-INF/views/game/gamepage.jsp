@@ -15,6 +15,11 @@
 <body>
 	<canvas id="canvas" width="1440" height="2960"></canvas>
 	<script>
+	var user_id = '${loginId}';
+	if(user_id != null)
+		user_id;
+	else
+		user_id = 'guest';
 		/* Init */ //asd
 		var user_Id = "";
 		var result_Score = 0;
@@ -899,6 +904,22 @@
 				ctx.font = "160px a로케트 보통";
 				ctx.fillText(scoreText, 926, 1732);
 				ctx.drawImage(end_bg, 0, 0);
+			}
+			if (run == "end") {
+				if(${checkResult == 'success'})
+					point = point + 500;
+				$.ajax({
+					type : 'post',
+					url : '/pumpkinplace/game/gameupdate/',
+					data : ({
+						'mem_id' : "${loginId}", 
+						'mem_account' : coinText,
+						'mem_gamescore' :  scoreText
+					}), 
+					success : function(result) {
+						location = '/pumpkinplace/game/gamepage/';
+					} 
+				});
 			}
 			requestAnimationFrame(draw);
 		}
