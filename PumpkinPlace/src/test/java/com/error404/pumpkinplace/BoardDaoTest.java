@@ -118,14 +118,14 @@ public class BoardDaoTest {
 		}
 	}
 
-	// 이전글 번호 받기
+	// 이전글 번호 받기(수정 후)
 	private void selectPrevNo() {
 		Board board = new Board(1, 81, null, null, null, null, null, null, 0, 0, 0);
 		int prevNo = boardDao.prevBoardNo(board);
 		logger.info("이전 번호:{}", prevNo);
 	}
 
-	// 다음글 번호 받기
+	// 다음글 번호 받기(수정 후)
 	private void selectNextNo() {
 		Board board = new Board(1, 81, null, null, null, null, null, null, 0, 0, 0);
 		int nextNo = boardDao.nextBoardNo(board);
